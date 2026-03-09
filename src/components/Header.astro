@@ -28,10 +28,27 @@ const { activePage = '' } = Astro.props;
       <a href="/ordering" class:list={["nav-link", { active: activePage === 'ordering' }]}>Ordering Information</a>
       <a href="/contact" class:list={["nav-link", { active: activePage === 'contact' }]}>Contact Us</a>
     </nav>
-    <div class="menu-toggle" id="menuToggle">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="header-actions">
+      <button class="search-toggle" id="searchToggle" aria-label="Search">
+        <i class="fas fa-search"></i>
+      </button>
+      <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
     </div>
   </div>
 </header>
+
+<!-- Search Overlay -->
+<div class="search-overlay" id="searchOverlay">
+  <div class="search-overlay-inner">
+    <button class="search-close" id="searchClose" aria-label="Close search"><i class="fas fa-times"></i></button>
+    <form class="search-form" id="searchForm">
+      <input type="text" class="search-input" id="searchInput" placeholder="Search products, pages..." autocomplete="off" />
+      <button type="submit" class="search-submit"><i class="fas fa-search"></i></button>
+    </form>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>

@@ -127,3 +127,70 @@ document.querySelectorAll('form:not(#contactForm)').forEach(form => {
     }
   });
 });
+
+// Search functionality
+const searchToggle = document.getElementById('searchToggle');
+const searchOverlay = document.getElementById('searchOverlay');
+const searchClose = document.getElementById('searchClose');
+const searchInput = document.getElementById('searchInput');
+const searchResults = document.getElementById('searchResults');
+const searchForm = document.getElementById('searchForm');
+
+const sitePages = [
+  { title: 'Home', url: '/', description: 'Industrial-grade chemical solutions — Caluanie, Red Mercury, Silver Mercury' },
+  { title: 'About Us', url: '/about', description: 'Learn about UE Chemicals, our mission, and quality commitment' },
+  { title: 'Applications', url: '/applications', description: 'Industrial applications — metalworking, refining, research, electronics' },
+  { title: 'Safety Information', url: '/safety', description: 'Chemical safety guidelines, storage, handling, and compliance' },
+  { title: 'Products', url: '/products', description: 'Browse our full range of specialty industrial chemicals' },
+  { title: 'Caluanie Muelear Oxidize', url: '/products/caluanie', description: 'Powerful oxidizing agent for metalworking and mineral processing' },
+  { title: 'Red Liquid Mercury', url: '/products/red-mercury', description: 'Rare compound for laboratory research and chemical synthesis' },
+  { title: 'Silver Liquid Mercury', url: '/products/silver-mercury', description: '99.99% purity mercury for scientific instrumentation and electronics' },
+  { title: 'Ordering Information', url: '/ordering', description: 'How to place orders, shipping, payment, and delivery details' },
+  { title: 'Contact Us', url: '/contact', description: 'Get in touch — quotes, support, and product inquiries' },
+];
+
+function openSearch() {
+  searchOverlay?.classList.add('active');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => searchInput?.focus(), 200);
+}
+
+function closeSearch() {
+  searchOverlay?.classList.remove('active');
+  document.body.style.overflow = '';
+  if (searchInput) searchInput.value = '';
+  if (searchResults) searchResults.innerHTML = '';
+}
+
+searchToggle?.addEventListener('click', openSearch);
+searchClose?.addEventListener('click', closeSearch);
+searchOverlay?.addEventListener('click', (e) => {
+  if (e.target === searchOverlay) closeSearch();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeSearch();
+});
+
+searchInput?.addEventListener('input', () => {
+  const q = searchInput.value.trim().toLowerCase();
+  if (!searchResults) return;
+  if (!q) { searchResults.innerHTML = ''; return; }
+
+  const matches = sitePages.filter(p =>
+    p.title.toLowerCase().includes(q) || p.description.toLowerCase().includes(q)
+  );
+
+  if (matches.length === 0) {
+    searchResults.innerHTML = '<p class="search-no-results">No results found.</p>';
+  } else {
+    searchResults.innerHTML = matches.map(p =>
+      `<a href="${p.url}" class="search-result-item"><h4>${p.title}</h4><p>${p.description}</p></a>`
+    ).join('');
+  }
+});
+
+searchForm?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const firstResult = searchResults?.querySelector('.search-result-item');
+  if (firstResult) firstResult.click();
+});
