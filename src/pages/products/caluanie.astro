@@ -202,11 +202,11 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <form>
             <div class="form-group">
               <label>Full Name</label>
-              <input type="text" class="form-control" placeholder="Your full name" required>
+              <input type="text" name="name" class="form-control" placeholder="Your full name" required>
             </div>
             <div class="form-group">
               <label>Email Address</label>
-              <input type="email" class="form-control" placeholder="Your email address" required>
+              <input type="email" name="email" class="form-control" placeholder="Your email address" required>
             </div>
             <div class="form-group">
               <label>Phone Number</label>
@@ -218,12 +218,12 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
                   <option>+49 DE</option>
                   <option>+33 FR</option>
                 </select>
-                <input type="tel" class="form-control" placeholder="Phone number">
+                <input type="tel" name="phone" class="form-control" placeholder="Phone number">
               </div>
             </div>
             <div class="form-group">
               <label>Product</label>
-              <select class="form-control">
+              <select name="product" class="form-control">
                 <option selected>Caluanie Muelear Oxidize</option>
                 <option>Red Liquid Mercury</option>
                 <option>Silver Liquid Mercury</option>
@@ -231,7 +231,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             </div>
             <div class="form-group">
               <label>Message</label>
-              <textarea class="form-control" placeholder="Tell us about your requirements..." rows="4"></textarea>
+              <textarea name="message" class="form-control" placeholder="Tell us about your requirements..." rows="4"></textarea>
             </div>
             <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Request <i class="fas fa-arrow-right"></i></button>
           </form>

@@ -85,20 +85,45 @@ if (cookieBanner) {
   });
 }
 
-// Form handling
-document.querySelectorAll('form').forEach(form => {
-  form.addEventListener('submit', (e) => {
+// Form handling — generic quote forms (excludes #contactForm which has its own handler)
+document.querySelectorAll('form:not(#contactForm)').forEach(form => {
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
     const btn = form.querySelector('button[type="submit"]');
-    if (btn) {
-      const orig = btn.textContent;
-      btn.textContent = 'Sent!';
-      btn.setAttribute('disabled', 'true');
-      setTimeout(() => {
-        btn.textContent = orig;
-        btn.removeAttribute('disabled');
-        form.reset();
-      }, 2000);
+    if (!btn) return;
+    const orig = btn.textContent;
+    btn.textContent = 'Sending...';
+    btn.setAttribute('disabled', 'true');
+
+    const inputs = form.querySelectorAll('input, select, textarea');
+    const data = {};
+    inputs.forEach(el => {
+      const name = el.getAttribute('name') || el.getAttribute('placeholder') || el.tagName;
+      data[name] = el.value;
+    });
+
+    try {
+      const res = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: data['name'] || data['Full Name'] || data['Your full name'] || '',
+          email: data['email'] || data['Email Address'] || data['Your email address'] || '',
+          phone: data['phone'] || data['Phone number'] || data['Phone Number'] || '',
+          product: data['product'] || data['SELECT'] || '',
+          message: data['message'] || data['Message'] || data['Tell us about your requirements...'] || '',
+        }),
+      });
+      if (res.ok) {
+        btn.textContent = 'Sent!';
+        setTimeout(() => { btn.textContent = orig; btn.removeAttribute('disabled'); form.reset(); }, 2000);
+      } else {
+        btn.textContent = 'Error — try again';
+        setTimeout(() => { btn.textContent = orig; btn.removeAttribute('disabled'); }, 2000);
+      }
+    } catch {
+      btn.textContent = 'Error — try again';
+      setTimeout(() => { btn.textContent = orig; btn.removeAttribute('disabled'); }, 2000);
     }
   });
 });
