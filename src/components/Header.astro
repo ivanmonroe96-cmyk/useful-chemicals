@@ -1,0 +1,37 @@
+---
+interface Props {
+  activePage?: string;
+}
+const { activePage = '' } = Astro.props;
+---
+
+<header class="header" id="header">
+  <div class="container">
+    <a href="/" class="logo">
+      <img src="/images/logo.png" alt="UE Chemicals" />
+    </a>
+    <nav class="nav" id="nav">
+      <a href="/" class:list={["nav-link", { active: activePage === 'home' }]}>Home</a>
+      <a href="/about" class:list={["nav-link", { active: activePage === 'about' }]}>About</a>
+      <a href="/applications" class:list={["nav-link", { active: activePage === 'applications' }]}>Applications</a>
+      <a href="/safety" class:list={["nav-link", { active: activePage === 'safety' }]}>Safety Information</a>
+      <div class="nav-dropdown">
+        <a href="/products" class:list={["nav-link", { active: activePage === 'products' }]}>
+          Our Products <i class="fas fa-chevron-down"></i>
+        </a>
+        <div class="dropdown-menu">
+          <a href="/products/caluanie">Caluanie Muelear Oxidize</a>
+          <a href="/products/red-mercury">Red Mercury</a>
+          <a href="/products/silver-mercury">Silver Mercury</a>
+        </div>
+      </div>
+      <a href="/ordering" class:list={["nav-link", { active: activePage === 'ordering' }]}>Ordering Information</a>
+      <a href="/contact" class:list={["nav-link", { active: activePage === 'contact' }]}>Contact Us</a>
+    </nav>
+    <div class="menu-toggle" id="menuToggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+  </div>
+</header>

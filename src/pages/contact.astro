@@ -1,0 +1,94 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Contact Us" activePage="contact">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="section-label">Get in Touch</div>
+      <h1>Contact UE Chemicals</h1>
+      <p>Whether you have questions about our products, need technical support, or are ready to place an order, our team is ready to assist you.</p>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="quote-section">
+    <div class="container">
+      <div class="quote-grid">
+        <!-- Contact Info -->
+        <div>
+          <div class="section-label">Have Questions?</div>
+          <h2 class="section-title">Contact Information</h2>
+          <p>Contact us today for personalized service from experts in industrial chemical solutions. We're here to help with product inquiries, order details, and technical support.</p>
+
+          <div class="contact-info-list">
+            <div class="contact-info-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Brecksville, OH 44141, United States</span>
+            </div>
+            <div class="contact-info-item">
+              <i class="fas fa-envelope"></i>
+              <span>Email: info@useful-chemicals.com</span>
+            </div>
+          </div>
+
+          <!-- Map Placeholder -->
+          <div style="margin-top:30px;background:var(--white);border:1px solid var(--border);height:250px;display:flex;align-items:center;justify-content:center;color:var(--body-text);">
+            <div style="text-align:center;">
+              <i class="fas fa-map" style="font-size:2.5rem;margin-bottom:10px;display:block;color:var(--accent);"></i>
+              <p style="margin:0;font-size:0.9rem;">Brecksville, OH 44141, USA</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div>
+          <div class="product-specs">
+            <h4 style="margin-bottom:25px;">Send Us a Message</h4>
+            <form>
+              <div class="form-group">
+                <label>Full Name</label>
+                <input type="text" class="form-control" placeholder="Your full name" required>
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input type="email" class="form-control" placeholder="Your email address" required>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <div class="phone-input">
+                  <select class="form-control">
+                    <option>+1 USA</option>
+                    <option>+44 UK</option>
+                    <option>+61 AU</option>
+                    <option>+49 DE</option>
+                    <option>+33 FR</option>
+                    <option>+237 CM</option>
+                  </select>
+                  <input type="tel" class="form-control" placeholder="Phone number">
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Select Product</label>
+                <select class="form-control">
+                  <option>Select Product</option>
+                  <option>Caluanie Muelear Oxidize</option>
+                  <option>Red Liquid Mercury</option>
+                  <option>Silver Liquid Mercury</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Message</label>
+                <textarea class="form-control" placeholder="How can we help you?" rows="5"></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
