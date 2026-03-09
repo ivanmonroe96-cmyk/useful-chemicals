@@ -4,107 +4,96 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
 <BaseLayout title="Silver Liquid Mercury" activePage="products">
 
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <div class="container">
-      <div class="section-label">Product Details</div>
-      <h1>Silver Liquid Mercury</h1>
-      <p>High-purity silver liquid mercury certified at 99.99% purity. Suitable for precision tasks from scientific lab work to industrial applications.</p>
+  <!-- ========== HERO ========== -->
+  <section class="pd-hero">
+    <div class="pd-hero-bg">
+      <img src="/images/Buy-Silver-Liquid-Mercury.jpg" alt="" />
+      <div class="pd-hero-overlay"></div>
+    </div>
+    <div class="container pd-hero-inner">
+      <div class="pd-hero-content">
+        <div class="pd-hero-badge"><i class="fas fa-atom"></i> Product Details</div>
+        <h1>Silver Liquid<br />Mercury</h1>
+        <p class="pd-hero-sub">High-purity elemental mercury certified at 99.99% (4N grade). Precision-grade for scientific, industrial, and extraction applications.</p>
+        <div class="pd-hero-actions">
+          <a href="/contact" class="btn btn-accent">Get a Quote <i class="fas fa-arrow-right"></i></a>
+          <a href="/safety" class="btn btn-outline-white">Safety Info <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Product Detail -->
-  <section class="product-detail">
+  <!-- ========== KEY SPECS BAR ========== -->
+  <section class="pd-specs-bar">
     <div class="container">
-      <div class="product-detail-grid">
-        <div class="product-info">
-          <h5>Why Choose High-Purity Silver Liquid Mercury?</h5>
-          <p>Purity matters when it comes to mercury, especially for sensitive applications. Our silver liquid mercury is certified with 99.99% purity (free from heavy metals), ensuring it's suitable for precision tasks, from scientific lab work to industrial applications.</p>
-
-          <h5>Common Uses</h5>
-          <ul>
-            <li><strong>Mining and Extraction:</strong> Widely used in gold extraction due to its binding properties.</li>
-            <li><strong>Medical Applications:</strong> Useful in dental amalgams and some medical devices.</li>
-            <li><strong>Manufacturing:</strong> Employed in various industrial tools and measurement devices.</li>
-            <li><strong>Scientific Research:</strong> Essential for laboratories requiring controlled, high-purity materials.</li>
-          </ul>
-
-          <h5>Product Specifications</h5>
-          <div class="product-specs">
-            <ul>
-              <li><strong>Purity Level</strong> <span>99.99% certified</span></li>
-              <li><strong>Packaging</strong> <span>Safe, tamper-resistant cylinders (25g–5kg)</span></li>
-              <li><strong>Safety</strong> <span>Heavy metal-free for precision tasks</span></li>
-              <li><strong>Delivery</strong> <span>Worldwide from our Essen, Germany facility</span></li>
-            </ul>
-          </div>
-
-          <h5>Handling and Safety Precautions</h5>
-          <p>Silver mercury is a powerful substance but requires careful handling. Always store it in a temperature-controlled environment, ideally in containers designed to prevent leakage and minimize evaporation.</p>
-          <ul>
-            <li>Keep in well-ventilated areas.</li>
-            <li>Wear protective gloves and eye protection.</li>
-            <li>Avoid prolonged exposure to vapors by handling in controlled, low-temperature environments.</li>
-          </ul>
+      <div class="pd-specs-row">
+        <div class="pd-spec-item">
+          <span class="pd-spec-label">Symbol</span>
+          <span class="pd-spec-value">Hg</span>
         </div>
+        <div class="pd-spec-item">
+          <span class="pd-spec-label">Purity</span>
+          <span class="pd-spec-value">99.99% (4N)</span>
+        </div>
+        <div class="pd-spec-item">
+          <span class="pd-spec-label">Density</span>
+          <span class="pd-spec-value">13.534 g/cm³</span>
+        </div>
+        <div class="pd-spec-item">
+          <span class="pd-spec-label">Shipping</span>
+          <span class="pd-spec-value">Europe &amp; Worldwide</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-        <div>
-          <!-- Product Image -->
-          <div class="about-image" style="overflow:hidden;">
-            <img src="/images/Buy-Silver-Liquid-Mercury.jpg" alt="Silver Liquid Mercury" style="width:100%;height:350px;object-fit:cover;display:block;">
+  <!-- ========== OVERVIEW SPLIT ========== -->
+  <section class="pd-overview">
+    <div class="pd-overview-image">
+      <img src="/images/silver-liquid-mercury-for-sale.png" alt="Silver Liquid Mercury" />
+    </div>
+    <div class="pd-overview-content">
+      <div class="section-label">Overview</div>
+      <h2>What Is Silver Liquid Mercury?</h2>
+      <p>Silver liquid mercury (Hg) is a naturally occurring element and the only metal that is liquid at standard temperature and pressure. Its unique physical and chemical properties make it indispensable across a wide range of industries.</p>
+      <p>Our mercury is certified at 99.99% purity (4N grade), free from heavy metal contaminants, ensuring it meets the highest standards for scientific, medical, and industrial applications.</p>
+      <div class="pd-overview-features">
+        <div class="pd-overview-feat">
+          <div class="pd-overview-feat-icon"><i class="fas fa-check-circle"></i></div>
+          <div>
+            <h6>Ultra-High Purity</h6>
+            <p>99.99% (4N grade) certified, free from heavy metal contaminants.</p>
           </div>
-
-          <!-- Quote Form -->
-          <div class="product-specs" style="margin-top:30px;">
-            <h4 style="margin-bottom:20px;">Get Quote</h4>
-            <form>
-              <div class="form-group">
-                <input type="text" name="name" class="form-control" placeholder="Full Name" required>
-              </div>
-              <div class="form-group">
-                <input type="email" name="email" class="form-control" placeholder="Email Address" required>
-              </div>
-              <div class="form-group">
-                <div class="phone-input">
-                  <select class="form-control">
-                    <option>+49 DE</option>
-                    <option>+1 USA</option>
-                    <option>+33 FR</option>
-                  </select>
-                  <input type="tel" name="phone" class="form-control" placeholder="Phone Number">
-                </div>
-              </div>
-              <div class="form-group">
-                <select name="product" class="form-control">
-                  <option>Select Product</option>
-                  <option>Caluanie Muelear Oxidize</option>
-                  <option>Red Liquid Mercury</option>
-                  <option selected>Silver Liquid Mercury</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <textarea name="message" class="form-control" placeholder="Message" rows="4"></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send</button>
-            </form>
+        </div>
+        <div class="pd-overview-feat">
+          <div class="pd-overview-feat-icon"><i class="fas fa-check-circle"></i></div>
+          <div>
+            <h6>Full Certification</h6>
+            <p>Every shipment includes Certificate of Analysis and batch documentation.</p>
+          </div>
+        </div>
+        <div class="pd-overview-feat">
+          <div class="pd-overview-feat-icon"><i class="fas fa-check-circle"></i></div>
+          <div>
+            <h6>Compliant Packaging</h6>
+            <p>Shipped in UN-approved 34.5 kg steel flasks meeting ADR/IMDG regulations.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <div class="section-divider"></div>
-
-  <!-- Technical Specifications -->
-  <section class="sm-tech-specs">
+  <!-- ========== TECHNICAL SPECIFICATIONS ========== -->
+  <section class="pd-tech-specs">
     <div class="container">
-      <div class="sm-tech-header">
-        <div class="section-label">Technical Data</div>
-        <h2>Detailed Chemical Specifications</h2>
-      </div>
-      <div class="sm-tech-grid">
-        <div class="sm-tech-table-wrap">
-          <table class="sm-tech-table">
+      <div class="pd-tech-grid">
+        <div class="pd-tech-content">
+          <div class="section-label">Technical Data</div>
+          <h2>Chemical Specifications</h2>
+          <p>Detailed technical specifications for Silver Liquid Mercury as verified by our quality control laboratory.</p>
+        </div>
+        <div class="pd-tech-table-wrap">
+          <table class="pd-tech-table">
             <tbody>
               <tr><td>Chemical Name</td><td>Mercury (Liquid Silver)</td></tr>
               <tr><td>Chemical Symbol</td><td>Hg</td></tr>
@@ -121,37 +110,103 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
               <tr><td>Hazard Classification</td><td>Class 8 (Corrosive) / 6.1 (Toxic)</td></tr>
               <tr><td>Packing Group</td><td>III</td></tr>
               <tr><td>Pack Sizes</td><td>34.5 kg (76 lbs) UN-approved steel flasks</td></tr>
-              <tr><td>Origin</td><td>Germany</td></tr>
+              <tr><td>Origin</td><td>Essen, Germany</td></tr>
             </tbody>
           </table>
         </div>
-        <div class="sm-docs-col">
-          <h4>Documentation</h4>
-          <p>Request product documentation for compliance and quality verification.</p>
-          <div class="sm-doc-items">
-            <div class="sm-doc-item">
-              <i class="fas fa-file-pdf"></i>
-              <div>
-                <strong>Technical Data Sheet (TDS)</strong>
-                <span>Complete chemical specifications</span>
-              </div>
-              <a href="/contact">Request</a>
+      </div>
+      <div class="pd-docs-row">
+        <div class="pd-doc-card">
+          <i class="fas fa-file-pdf"></i>
+          <div>
+            <h5>Technical Data Sheet (TDS)</h5>
+            <p>Complete chemical specifications and physical properties.</p>
+          </div>
+          <a href="/contact" class="btn btn-outline btn-sm">Request TDS <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="pd-doc-card">
+          <i class="fas fa-file-shield"></i>
+          <div>
+            <h5>Safety Data Sheet (SDS)</h5>
+            <p>Hazard identification, handling, and emergency procedures.</p>
+          </div>
+          <a href="/contact" class="btn btn-outline btn-sm">Request SDS <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="pd-doc-card">
+          <i class="fas fa-file-certificate"></i>
+          <div>
+            <h5>Certificate of Analysis (COA)</h5>
+            <p>Batch-specific purity and quality verification.</p>
+          </div>
+          <a href="/contact" class="btn btn-outline btn-sm">Request COA <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== APPLICATIONS ========== -->
+  <section class="pd-apps">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:60px;">
+        <div class="section-label">Applications</div>
+        <h2>Industrial &amp; Scientific Uses</h2>
+      </div>
+      <div class="pd-apps-grid">
+        <div class="pd-app-card">
+          <div class="pd-app-num">01</div>
+          <h5>Mining &amp; Extraction</h5>
+          <p>Widely used in artisanal and small-scale gold mining (ASGM) due to its ability to form amalgams with precious metals, enabling efficient extraction from ore.</p>
+        </div>
+        <div class="pd-app-card">
+          <div class="pd-app-num">02</div>
+          <h5>Scientific Research</h5>
+          <p>Essential for laboratories requiring high-purity materials for thermometers, barometers, manometers, and other precision measurement instruments.</p>
+        </div>
+        <div class="pd-app-card">
+          <div class="pd-app-num">03</div>
+          <h5>Manufacturing</h5>
+          <p>Employed in the production of industrial tools, electrical switches, fluorescent lighting, and various measurement devices requiring liquid metal properties.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== BUYING GUIDE (DARK) ========== -->
+  <section class="pd-benefits">
+    <div class="container">
+      <div class="pd-benefits-grid">
+        <div class="pd-benefits-content">
+          <div class="section-label">Why Buy From Us</div>
+          <h2>Benefits of Choosing<br />UE Chemicals</h2>
+          <p>We deliver premium-grade mercury with full regulatory compliance and exceptional customer support.</p>
+        </div>
+        <div class="pd-benefits-cards">
+          <div class="pd-benefit-card">
+            <div class="pd-benefit-num">01</div>
+            <div>
+              <h5>Certified Purity</h5>
+              <p>Every batch undergoes rigorous testing. Certificate of Analysis included with every order to verify 99.99% purity.</p>
             </div>
-            <div class="sm-doc-item">
-              <i class="fas fa-file-shield"></i>
-              <div>
-                <strong>Safety Data Sheet (SDS)</strong>
-                <span>Hazard, handling & emergency info</span>
-              </div>
-              <a href="/contact">Request</a>
+          </div>
+          <div class="pd-benefit-card">
+            <div class="pd-benefit-num">02</div>
+            <div>
+              <h5>EU Regulatory Compliance</h5>
+              <p>Full compliance with REACH (EC 1907/2006) and EU Mercury Regulation (EU 2017/852). We handle all export documentation.</p>
             </div>
-            <div class="sm-doc-item">
-              <i class="fas fa-file-certificate"></i>
-              <div>
-                <strong>Certificate of Analysis (COA)</strong>
-                <span>Batch purity verification</span>
-              </div>
-              <a href="/contact">Request</a>
+          </div>
+          <div class="pd-benefit-card">
+            <div class="pd-benefit-num">03</div>
+            <div>
+              <h5>Safe &amp; Secure Shipping</h5>
+              <p>UN-approved steel flasks shipped via ADR/IMDG compliant carriers. Full insurance and tracking on every shipment.</p>
+            </div>
+          </div>
+          <div class="pd-benefit-card">
+            <div class="pd-benefit-num">04</div>
+            <div>
+              <h5>Dedicated Support</h5>
+              <p>Our team provides expert guidance on handling, storage, and regulatory requirements for your specific region and application.</p>
             </div>
           </div>
         </div>
@@ -159,29 +214,129 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     </div>
   </section>
 
-  <div class="section-divider"></div>
+  <!-- ========== SAFETY ========== -->
+  <section class="pd-safety">
+    <div class="container">
+      <div class="pd-safety-inner">
+        <div class="pd-safety-text">
+          <div class="section-label">Safety &amp; Handling</div>
+          <h2>Handling Information</h2>
+          <p>Silver mercury is a powerful substance that requires careful handling. Follow these essential safety guidelines at all times.</p>
+        </div>
+        <div class="pd-safety-items">
+          <div class="pd-safety-item">
+            <i class="fas fa-wind"></i>
+            <span><strong>Ventilation:</strong> Handle only in well-ventilated areas to minimize vapor exposure. Use fume hoods when possible.</span>
+          </div>
+          <div class="pd-safety-item">
+            <i class="fas fa-shield-halved"></i>
+            <span><strong>PPE Required:</strong> Wear chemical-resistant gloves, safety goggles, and protective clothing during handling.</span>
+          </div>
+          <div class="pd-safety-item">
+            <i class="fas fa-box"></i>
+            <span><strong>Storage:</strong> Store in cool, temperature-controlled environments in sealed containers to prevent leakage and evaporation.</span>
+          </div>
+          <div class="pd-safety-item">
+            <i class="fas fa-recycle"></i>
+            <span><strong>Disposal:</strong> Follow EU Waste Framework Directive and local hazardous waste regulations for proper disposal.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <!-- FAQ -->
+  <!-- ========== QUOTE FORM ========== -->
+  <section class="pd-quote">
+    <div class="container">
+      <div class="pd-quote-grid">
+        <div class="pd-quote-text">
+          <div class="section-label">Get Started</div>
+          <h2>Request a Quote</h2>
+          <p>Ready to order Silver Liquid Mercury? Fill out the form and our team will respond with a customized quote within 24 hours.</p>
+          <div class="pd-quote-badges">
+            <div class="pd-quote-badge"><i class="fas fa-clock"></i> 24hr Response</div>
+            <div class="pd-quote-badge"><i class="fas fa-lock"></i> Secure &amp; Private</div>
+            <div class="pd-quote-badge"><i class="fas fa-certificate"></i> COA Included</div>
+          </div>
+        </div>
+        <div class="pd-quote-form-wrap">
+          <form>
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" name="name" class="form-control" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+              <label>Email Address</label>
+              <input type="email" name="email" class="form-control" placeholder="Your email address" required>
+            </div>
+            <div class="form-group">
+              <label>Phone Number</label>
+              <div class="phone-input">
+                <select class="form-control">
+                  <option>+49 DE</option>
+                  <option>+1 USA</option>
+                  <option>+44 UK</option>
+                  <option>+61 AU</option>
+                  <option>+33 FR</option>
+                </select>
+                <input type="tel" name="phone" class="form-control" placeholder="Phone number">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Product</label>
+              <select name="product" class="form-control">
+                <option>Caluanie Muelear Oxidize</option>
+                <option>Red Liquid Mercury</option>
+                <option selected>Silver Liquid Mercury</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Message</label>
+              <textarea name="message" class="form-control" placeholder="Tell us about your requirements..." rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send Request <i class="fas fa-arrow-right"></i></button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ ========== -->
   <section class="faq-section">
-    <div class="container text-center">
-      <div class="section-label">Common Questions</div>
-      <h2 class="section-title">Frequently Asked Questions</h2>
-      <div class="faq-list">
-        <div class="faq-item">
-          <div class="faq-question">Can I purchase in bulk? <i class="fas fa-chevron-down"></i></div>
-          <div class="faq-answer"><div class="faq-answer-inner">Yes, we offer bulk purchasing options to meet both small and large-scale needs. Contact our sales team for custom quantities or special requirements.</div></div>
+    <div class="container">
+      <div class="faq-row">
+        <div class="faq-content-col">
+          <div class="section-label">Common Questions</div>
+          <h2 class="section-title">Frequently Asked Questions</h2>
+          <div class="faq-list">
+            <div class="faq-item">
+              <div class="faq-question">Can I purchase in bulk? <i class="fas fa-chevron-down"></i></div>
+              <div class="faq-answer"><div class="faq-answer-inner">Yes, we offer bulk purchasing options to meet both small and large-scale needs. Contact our sales team for custom quantities or special requirements.</div></div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">How do I know if this mercury is suitable for my industry? <i class="fas fa-chevron-down"></i></div>
+              <div class="faq-answer"><div class="faq-answer-inner">Our team can help you determine if silver liquid mercury is suitable for your specific application. Contact us for a consultation.</div></div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">What purity level should I expect? <i class="fas fa-chevron-down"></i></div>
+              <div class="faq-answer"><div class="faq-answer-inner">Our silver liquid mercury is certified at 99.99% purity (4N grade), free from heavy metals, ensuring suitability for the most demanding precision tasks.</div></div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Are there legal restrictions on buying mercury in Europe? <i class="fas fa-chevron-down"></i></div>
+              <div class="faq-answer"><div class="faq-answer-inner">Mercury sales are regulated under EU REACH Regulation (EC 1907/2006) and the EU Mercury Regulation (EU 2017/852). We ensure full compliance with all applicable regulations and can guide you through the requirements for your region.</div></div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">How is the mercury packaged for shipping? <i class="fas fa-chevron-down"></i></div>
+              <div class="faq-answer"><div class="faq-answer-inner">All mercury is shipped in UN-approved 34.5 kg steel flasks that meet ADR (road) and IMDG (sea) transport regulations. Each flask is sealed and tested for leak-proof integrity.</div></div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Do you provide a Certificate of Analysis? <i class="fas fa-chevron-down"></i></div>
+              <div class="faq-answer"><div class="faq-answer-inner">Yes, all orders include a batch-specific Certificate of Analysis (COA) verifying purity, composition, and compliance with quality standards.</div></div>
+            </div>
+          </div>
         </div>
-        <div class="faq-item">
-          <div class="faq-question">How do I know if this mercury is suitable for my industry? <i class="fas fa-chevron-down"></i></div>
-          <div class="faq-answer"><div class="faq-answer-inner">Our team can help you determine if silver liquid mercury is suitable for your specific application. Contact us for a consultation.</div></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">What purity level should I expect? <i class="fas fa-chevron-down"></i></div>
-          <div class="faq-answer"><div class="faq-answer-inner">Our silver liquid mercury is certified at 99.99% purity, free from heavy metals, ensuring suitability for the most demanding precision tasks.</div></div>
-        </div>
-        <div class="faq-item">
-          <div class="faq-question">Are there legal restrictions on buying mercury in Europe? <i class="fas fa-chevron-down"></i></div>
-          <div class="faq-answer"><div class="faq-answer-inner">Mercury sales are regulated under EU REACH Regulation (EC 1907/2006) and the EU Mercury Regulation (EU 2017/852). We ensure full compliance with all applicable regulations and can guide you through the requirements for your region.</div></div>
+        <div class="faq-image-col">
+          <img src="/images/Buy-Silver-Liquid-Mercury.jpg" alt="Silver Liquid Mercury" />
         </div>
       </div>
     </div>
@@ -190,28 +345,126 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
-  .sm-tech-specs { padding: 60px 0; }
-  .sm-tech-header { margin-bottom: 40px; }
-  .sm-tech-header h2 { margin-top: 8px; }
-  .sm-tech-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: start; }
-  .sm-tech-table-wrap { overflow-x: auto; }
-  .sm-tech-table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 8px; overflow: hidden; }
-  .sm-tech-table td { padding: 11px 18px; border-bottom: 1px solid var(--border-light); font-size: 0.88rem; }
-  .sm-tech-table td:first-child { font-weight: 600; color: var(--heading); width: 42%; background: rgba(0,0,0,0.02); }
-  .sm-tech-table td:last-child { color: var(--body-text); }
-  .sm-tech-table tr:last-child td { border-bottom: none; }
-  .sm-docs-col { background: var(--surface); border: 1px solid var(--border-light); border-radius: 12px; padding: 30px; }
-  .sm-docs-col h4 { margin-bottom: 8px; }
-  .sm-docs-col > p { color: var(--body-text); font-size: 0.88rem; margin-bottom: 20px; }
-  .sm-doc-items { display: flex; flex-direction: column; gap: 14px; }
-  .sm-doc-item { display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg); border-radius: 8px; border: 1px solid var(--border-light); }
-  .sm-doc-item i { font-size: 1.4rem; color: var(--primary); flex-shrink: 0; }
-  .sm-doc-item div { flex: 1; }
-  .sm-doc-item strong { display: block; font-size: 0.85rem; }
-  .sm-doc-item span { font-size: 0.78rem; color: var(--body-text); }
-  .sm-doc-item a { color: var(--primary); font-weight: 600; font-size: 0.82rem; text-decoration: none; white-space: nowrap; }
-  .sm-doc-item a:hover { text-decoration: underline; }
+  /* Hero */
+  .pd-hero { position: relative; min-height: 70vh; display: flex; align-items: center; overflow: hidden; }
+  .pd-hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .pd-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .pd-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(25,24,23,0.94) 0%, rgba(25,24,23,0.8) 50%, rgba(25,24,23,0.65) 100%); }
+  .pd-hero-inner { position: relative; z-index: 1; padding-top: 140px; padding-bottom: 80px; }
+  .pd-hero-content { max-width: 650px; }
+  .pd-hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px; border: 1px solid rgba(255,255,255,0.2); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.8); margin-bottom: 24px; }
+  .pd-hero-badge i { color: var(--accent); font-size: 13px; }
+  .pd-hero h1 { color: var(--white); font-size: clamp(36px, 5vw, 68px); line-height: 1.05; margin-bottom: 20px; letter-spacing: -1px; }
+  .pd-hero-sub { color: rgba(255,255,255,0.65); font-size: 18px; line-height: 1.7; max-width: 500px; margin-bottom: 36px; }
+  .pd-hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-outline-white { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
+  .btn-outline-white:hover { background: var(--white); color: var(--near-black); border-color: var(--white); }
+
+  /* Specs Bar */
+  .pd-specs-bar { background: var(--near-black); padding: 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .pd-specs-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .pd-spec-item { padding: 28px 24px; border-left: 1px solid rgba(255,255,255,0.08); display: flex; flex-direction: column; gap: 4px; }
+  .pd-spec-item:last-child { border-right: 1px solid rgba(255,255,255,0.08); }
+  .pd-spec-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.4); }
+  .pd-spec-value { font-size: 15px; font-weight: 700; color: var(--white); }
+
+  /* Overview Split */
+  .pd-overview { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+  .pd-overview-image { overflow: hidden; }
+  .pd-overview-image img { width: 100%; height: 100%; object-fit: cover; }
+  .pd-overview-content { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; background: var(--light-bg); }
+  .pd-overview-content h2 { font-size: clamp(24px, 3vw, 38px); margin-bottom: 20px; line-height: 1.15; }
+  .pd-overview-content > p { max-width: 480px; }
+  .pd-overview-features { margin-top: 30px; display: flex; flex-direction: column; gap: 20px; }
+  .pd-overview-feat { display: flex; gap: 14px; align-items: flex-start; }
+  .pd-overview-feat-icon { color: var(--near-black); font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+  .pd-overview-feat h6 { font-size: 15px; margin-bottom: 3px; }
+  .pd-overview-feat p { font-size: 14px; margin: 0; color: var(--body-text); }
+
+  /* Tech Specs */
+  .pd-tech-specs { padding: 100px 0; background: var(--white); border-top: 1px solid var(--border); }
+  .pd-tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; margin-bottom: 50px; }
+  .pd-tech-content h2 { font-size: clamp(24px, 3vw, 38px); margin-bottom: 16px; line-height: 1.15; }
+  .pd-tech-content p { color: var(--body-text); }
+  .pd-tech-table-wrap { overflow-x: auto; }
+  .pd-tech-table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 8px; overflow: hidden; }
+  .pd-tech-table td { padding: 12px 18px; border-bottom: 1px solid var(--border-light); font-size: 0.9rem; }
+  .pd-tech-table td:first-child { font-weight: 600; color: var(--heading); width: 40%; background: rgba(0,0,0,0.02); }
+  .pd-tech-table td:last-child { color: var(--body-text); }
+  .pd-tech-table tr:last-child td { border-bottom: none; }
+  .pd-docs-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .pd-doc-card { display: flex; align-items: center; gap: 16px; padding: 20px 24px; background: var(--surface); border: 1px solid var(--border-light); border-radius: 10px; }
+  .pd-doc-card i { font-size: 1.8rem; color: var(--primary); flex-shrink: 0; }
+  .pd-doc-card div { flex: 1; }
+  .pd-doc-card h5 { font-size: 0.9rem; margin-bottom: 4px; }
+  .pd-doc-card p { font-size: 0.8rem; color: var(--body-text); margin: 0; }
+  .btn-sm { padding: 8px 16px; font-size: 0.75rem; white-space: nowrap; }
+
+  /* Applications */
+  .pd-apps { padding: 120px 0; background: var(--white); border-top: 1px solid var(--border); }
+  .pd-apps h2 { font-size: clamp(28px, 3.5vw, 50px); line-height: 1.15; }
+  .pd-apps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .pd-app-card { padding: 50px 35px; border-left: 1px solid var(--border); transition: var(--transition); }
+  .pd-app-card:last-child { border-right: 1px solid var(--border); }
+  .pd-app-card:hover { background: var(--light-bg); }
+  .pd-app-num { font-size: 14px; font-weight: 800; color: var(--accent); letter-spacing: 1px; margin-bottom: 16px; }
+  .pd-app-card h5 { font-size: 17px; text-transform: uppercase; margin-bottom: 12px; }
+  .pd-app-card p { font-size: 14px; color: var(--body-text); margin: 0; line-height: 1.6; }
+
+  /* Benefits (Dark) */
+  .pd-benefits { padding: 120px 0; background: var(--near-black); }
+  .pd-benefits-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .pd-benefits-content .section-label { color: rgba(255,255,255,0.6); }
+  .pd-benefits-content .section-label::before { background: var(--accent); }
+  .pd-benefits-content h2 { color: var(--white); font-size: clamp(24px, 3vw, 42px); margin-bottom: 20px; line-height: 1.15; }
+  .pd-benefits-content p { color: rgba(255,255,255,0.5); max-width: 440px; }
+  .pd-benefits-cards { display: flex; flex-direction: column; }
+  .pd-benefit-card { display: flex; gap: 24px; padding: 28px 0; border-bottom: 1px solid rgba(255,255,255,0.1); align-items: flex-start; }
+  .pd-benefit-card:first-child { padding-top: 0; }
+  .pd-benefit-num { font-size: 14px; font-weight: 800; color: var(--accent); letter-spacing: 1px; flex-shrink: 0; padding-top: 2px; }
+  .pd-benefit-card h5 { color: var(--white); font-size: 16px; margin-bottom: 6px; text-transform: uppercase; }
+  .pd-benefit-card p { color: rgba(255,255,255,0.45); font-size: 14px; margin: 0; }
+
+  /* Safety */
+  .pd-safety { padding: 100px 0; background: var(--light-bg); border-top: 1px solid var(--border); }
+  .pd-safety-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .pd-safety-text h2 { font-size: clamp(24px, 3vw, 38px); margin-bottom: 16px; line-height: 1.15; }
+  .pd-safety-items { display: flex; flex-direction: column; gap: 0; }
+  .pd-safety-item { display: flex; gap: 16px; align-items: flex-start; padding: 20px 0; border-bottom: 1px solid var(--border); font-size: 15px; color: var(--body-text); line-height: 1.6; }
+  .pd-safety-item:first-child { padding-top: 0; }
+  .pd-safety-item:last-child { border-bottom: none; }
+  .pd-safety-item i { color: var(--near-black); font-size: 16px; margin-top: 3px; flex-shrink: 0; }
+
+  /* Quote */
+  .pd-quote { padding: 120px 0; background: var(--white); border-top: 1px solid var(--border); }
+  .pd-quote-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .pd-quote-text h2 { font-size: clamp(24px, 3vw, 42px); margin-bottom: 16px; line-height: 1.15; }
+  .pd-quote-text > p { max-width: 440px; }
+  .pd-quote-badges { display: flex; gap: 12px; margin-top: 30px; flex-wrap: wrap; }
+  .pd-quote-badge { display: flex; align-items: center; gap: 8px; padding: 10px 18px; border: 1px solid var(--border); font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--near-black); }
+  .pd-quote-badge i { color: var(--near-black); font-size: 14px; }
+  .pd-quote-form-wrap { background: var(--light-bg); border: 1px solid var(--border); padding: 40px; }
+
+  @media (max-width: 1024px) {
+    .pd-specs-row { grid-template-columns: 1fr 1fr; }
+    .pd-spec-item { border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .pd-overview { grid-template-columns: 1fr; }
+    .pd-overview-image { height: 400px; }
+    .pd-overview-content { padding: 60px 24px; }
+    .pd-apps-grid { grid-template-columns: 1fr; }
+    .pd-app-card { border-left: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .pd-app-card:first-child { border-top: 1px solid var(--border); }
+    .pd-benefits-grid { grid-template-columns: 1fr; gap: 50px; }
+    .pd-safety-inner { grid-template-columns: 1fr; }
+    .pd-quote-grid { grid-template-columns: 1fr; }
+    .pd-tech-grid { grid-template-columns: 1fr; }
+    .pd-docs-row { grid-template-columns: 1fr; }
+  }
   @media (max-width: 768px) {
-    .sm-tech-grid { grid-template-columns: 1fr; }
+    .pd-hero { min-height: 65vh; }
+    .pd-hero h1 { font-size: clamp(30px, 8vw, 48px); }
+    .pd-specs-row { grid-template-columns: 1fr; }
+    .pd-apps, .pd-benefits, .pd-quote { padding: 80px 0; }
+    .pd-quote-form-wrap { padding: 24px; }
   }
 </style>
