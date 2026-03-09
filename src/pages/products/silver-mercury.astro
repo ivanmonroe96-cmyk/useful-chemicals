@@ -35,7 +35,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
               <li><strong>Purity Level</strong> <span>99.99% certified</span></li>
               <li><strong>Packaging</strong> <span>Safe, tamper-resistant cylinders (25g–5kg)</span></li>
               <li><strong>Safety</strong> <span>Heavy metal-free for precision tasks</span></li>
-              <li><strong>Delivery</strong> <span>Available to all permissible states within the USA</span></li>
+              <li><strong>Delivery</strong> <span>Worldwide from our Essen, Germany facility</span></li>
             </ul>
           </div>
 
@@ -67,10 +67,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
               <div class="form-group">
                 <div class="phone-input">
                   <select class="form-control">
-                    <option>+1 USA</option>
-                    <option>+44 UK</option>
-                    <option>+61 AU</option>
                     <option>+49 DE</option>
+                    <option>+1 USA</option>
                     <option>+33 FR</option>
                   </select>
                   <input type="tel" name="phone" class="form-control" placeholder="Phone Number">
@@ -89,6 +87,72 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
               </div>
               <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Send</button>
             </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Technical Specifications -->
+  <section class="sm-tech-specs">
+    <div class="container">
+      <div class="sm-tech-header">
+        <div class="section-label">Technical Data</div>
+        <h2>Detailed Chemical Specifications</h2>
+      </div>
+      <div class="sm-tech-grid">
+        <div class="sm-tech-table-wrap">
+          <table class="sm-tech-table">
+            <tbody>
+              <tr><td>Chemical Name</td><td>Mercury (Liquid Silver)</td></tr>
+              <tr><td>Chemical Symbol</td><td>Hg</td></tr>
+              <tr><td>CAS Number</td><td>7439-97-6</td></tr>
+              <tr><td>Purity</td><td>≥99.99% (4N Grade)</td></tr>
+              <tr><td>Appearance</td><td>Bright silver metallic liquid, odorless</td></tr>
+              <tr><td>Molecular Weight</td><td>200.59 g/mol</td></tr>
+              <tr><td>Density</td><td>13.534 g/cm³ at 25°C</td></tr>
+              <tr><td>Melting Point</td><td>-38.87°C</td></tr>
+              <tr><td>Boiling Point</td><td>357°C</td></tr>
+              <tr><td>Vapor Pressure</td><td>0.00185 mm Hg at 25°C</td></tr>
+              <tr><td>Solubility in Water</td><td>Insoluble</td></tr>
+              <tr><td>UN Number</td><td>UN2809</td></tr>
+              <tr><td>Hazard Classification</td><td>Class 8 (Corrosive) / 6.1 (Toxic)</td></tr>
+              <tr><td>Packing Group</td><td>III</td></tr>
+              <tr><td>Pack Sizes</td><td>34.5 kg (76 lbs) UN-approved steel flasks</td></tr>
+              <tr><td>Origin</td><td>Germany</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="sm-docs-col">
+          <h4>Documentation</h4>
+          <p>Request product documentation for compliance and quality verification.</p>
+          <div class="sm-doc-items">
+            <div class="sm-doc-item">
+              <i class="fas fa-file-pdf"></i>
+              <div>
+                <strong>Technical Data Sheet (TDS)</strong>
+                <span>Complete chemical specifications</span>
+              </div>
+              <a href="/contact">Request</a>
+            </div>
+            <div class="sm-doc-item">
+              <i class="fas fa-file-shield"></i>
+              <div>
+                <strong>Safety Data Sheet (SDS)</strong>
+                <span>Hazard, handling & emergency info</span>
+              </div>
+              <a href="/contact">Request</a>
+            </div>
+            <div class="sm-doc-item">
+              <i class="fas fa-file-certificate"></i>
+              <div>
+                <strong>Certificate of Analysis (COA)</strong>
+                <span>Batch purity verification</span>
+              </div>
+              <a href="/contact">Request</a>
+            </div>
           </div>
         </div>
       </div>
@@ -116,11 +180,38 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
           <div class="faq-answer"><div class="faq-answer-inner">Our silver liquid mercury is certified at 99.99% purity, free from heavy metals, ensuring suitability for the most demanding precision tasks.</div></div>
         </div>
         <div class="faq-item">
-          <div class="faq-question">Are there legal restrictions on buying mercury in the USA? <i class="fas fa-chevron-down"></i></div>
-          <div class="faq-answer"><div class="faq-answer-inner">Mercury sales are regulated at both federal and state levels. We ensure full compliance with all applicable regulations and can guide you through the requirements for your area.</div></div>
+          <div class="faq-question">Are there legal restrictions on buying mercury in Europe? <i class="fas fa-chevron-down"></i></div>
+          <div class="faq-answer"><div class="faq-answer-inner">Mercury sales are regulated under EU REACH Regulation (EC 1907/2006) and the EU Mercury Regulation (EU 2017/852). We ensure full compliance with all applicable regulations and can guide you through the requirements for your region.</div></div>
         </div>
       </div>
     </div>
   </section>
 
 </BaseLayout>
+
+<style>
+  .sm-tech-specs { padding: 60px 0; }
+  .sm-tech-header { margin-bottom: 40px; }
+  .sm-tech-header h2 { margin-top: 8px; }
+  .sm-tech-grid { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: 40px; align-items: start; }
+  .sm-tech-table-wrap { overflow-x: auto; }
+  .sm-tech-table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 8px; overflow: hidden; }
+  .sm-tech-table td { padding: 11px 18px; border-bottom: 1px solid var(--border-light); font-size: 0.88rem; }
+  .sm-tech-table td:first-child { font-weight: 600; color: var(--heading); width: 42%; background: rgba(0,0,0,0.02); }
+  .sm-tech-table td:last-child { color: var(--body-text); }
+  .sm-tech-table tr:last-child td { border-bottom: none; }
+  .sm-docs-col { background: var(--surface); border: 1px solid var(--border-light); border-radius: 12px; padding: 30px; }
+  .sm-docs-col h4 { margin-bottom: 8px; }
+  .sm-docs-col > p { color: var(--body-text); font-size: 0.88rem; margin-bottom: 20px; }
+  .sm-doc-items { display: flex; flex-direction: column; gap: 14px; }
+  .sm-doc-item { display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg); border-radius: 8px; border: 1px solid var(--border-light); }
+  .sm-doc-item i { font-size: 1.4rem; color: var(--primary); flex-shrink: 0; }
+  .sm-doc-item div { flex: 1; }
+  .sm-doc-item strong { display: block; font-size: 0.85rem; }
+  .sm-doc-item span { font-size: 0.78rem; color: var(--body-text); }
+  .sm-doc-item a { color: var(--primary); font-weight: 600; font-size: 0.82rem; text-decoration: none; white-space: nowrap; }
+  .sm-doc-item a:hover { text-decoration: underline; }
+  @media (max-width: 768px) {
+    .sm-tech-grid { grid-template-columns: 1fr; }
+  }
+</style>

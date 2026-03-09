@@ -14,7 +14,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <div class="pd-hero-content">
         <div class="pd-hero-badge"><i class="fas fa-vial"></i> Product Details</div>
         <h1>Caluanie<br />Muelear Oxidize</h1>
-        <p class="pd-hero-sub">Premium-quality chemical for industrial processes. Now available with fresh stock, high purity, and reliable supply from our Ohio facility.</p>
+        <p class="pd-hero-sub">Premium-quality chemical for industrial processes. Now available with fresh stock, high purity, and reliable supply from our Essen facility.</p>
         <div class="pd-hero-actions">
           <a href="/contact" class="btn btn-accent">Get a Quote <i class="fas fa-arrow-right"></i></a>
           <a href="/safety" class="btn btn-outline-white">Safety Info <i class="fas fa-arrow-right"></i></a>
@@ -41,7 +41,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </div>
         <div class="pd-spec-item">
           <span class="pd-spec-label">Shipping</span>
-          <span class="pd-spec-value">USA &amp; International</span>
+          <span class="pd-spec-value">Europe &amp; Worldwide</span>
         </div>
       </div>
     </div>
@@ -78,6 +78,63 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <h6>Trusted Supplier</h6>
             <p>Years of experience in the industrial chemical market make us your reliable partner.</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TECHNICAL SPECIFICATIONS ========== -->
+  <section class="pd-tech-specs">
+    <div class="container">
+      <div class="pd-tech-grid">
+        <div class="pd-tech-content">
+          <div class="section-label">Technical Data</div>
+          <h2>Product Specifications</h2>
+          <p>Detailed technical specifications for Caluanie Muelear Oxidize as verified by our quality control laboratory.</p>
+        </div>
+        <div class="pd-tech-table-wrap">
+          <table class="pd-tech-table">
+            <tbody>
+              <tr><td>Product Name</td><td>Caluanie Muelear Oxidize</td></tr>
+              <tr><td>Type</td><td>Heavy Water / Liquid Oxidizer</td></tr>
+              <tr><td>Appearance</td><td>Clear to slightly amber liquid</td></tr>
+              <tr><td>Application</td><td>Metalworking, Refining, Processing</td></tr>
+              <tr><td>Oxidizing Power</td><td>Premium Industrial Grade</td></tr>
+              <tr><td>Density</td><td>~1.2 g/cm³</td></tr>
+              <tr><td>pH</td><td>Acidic</td></tr>
+              <tr><td>Solubility</td><td>Miscible with water</td></tr>
+              <tr><td>Shelf Life</td><td>24 months from manufacture</td></tr>
+              <tr><td>Pack Sizes</td><td>1 L, 5 L, 10 L, 25 L, 200 L drums</td></tr>
+              <tr><td>Storage</td><td>Cool, dry, well-ventilated area</td></tr>
+              <tr><td>Origin</td><td>Essen, Germany</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="pd-docs-row">
+        <div class="pd-doc-card">
+          <i class="fas fa-file-pdf"></i>
+          <div>
+            <h5>Technical Data Sheet (TDS)</h5>
+            <p>Complete product specifications and properties.</p>
+          </div>
+          <a href="/contact" class="btn btn-outline btn-sm">Request TDS <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="pd-doc-card">
+          <i class="fas fa-file-shield"></i>
+          <div>
+            <h5>Safety Data Sheet (SDS)</h5>
+            <p>Hazard identification, handling, and emergency procedures.</p>
+          </div>
+          <a href="/contact" class="btn btn-outline btn-sm">Request SDS <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="pd-doc-card">
+          <i class="fas fa-file-certificate"></i>
+          <div>
+            <h5>Certificate of Analysis (COA)</h5>
+            <p>Batch-specific purity and quality verification.</p>
+          </div>
+          <a href="/contact" class="btn btn-outline btn-sm">Request COA <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -212,10 +269,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
               <label>Phone Number</label>
               <div class="phone-input">
                 <select class="form-control">
-                  <option>+1 USA</option>
-                  <option>+44 UK</option>
-                  <option>+61 AU</option>
                   <option>+49 DE</option>
+                  <option>+1 USA</option>
                   <option>+33 FR</option>
                 </select>
                 <input type="tel" name="phone" class="form-control" placeholder="Phone number">
@@ -328,6 +383,25 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   .pd-overview-feat h6 { font-size: 15px; margin-bottom: 3px; }
   .pd-overview-feat p { font-size: 14px; margin: 0; color: var(--body-text); }
 
+  /* Tech Specs */
+  .pd-tech-specs { padding: 100px 0; background: var(--white); border-top: 1px solid var(--border); }
+  .pd-tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; margin-bottom: 50px; }
+  .pd-tech-content h2 { font-size: clamp(24px, 3vw, 38px); margin-bottom: 16px; line-height: 1.15; }
+  .pd-tech-content p { color: var(--body-text); }
+  .pd-tech-table-wrap { overflow-x: auto; }
+  .pd-tech-table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 8px; overflow: hidden; }
+  .pd-tech-table td { padding: 12px 18px; border-bottom: 1px solid var(--border-light); font-size: 0.9rem; }
+  .pd-tech-table td:first-child { font-weight: 600; color: var(--heading); width: 40%; background: rgba(0,0,0,0.02); }
+  .pd-tech-table td:last-child { color: var(--body-text); }
+  .pd-tech-table tr:last-child td { border-bottom: none; }
+  .pd-docs-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .pd-doc-card { display: flex; align-items: center; gap: 16px; padding: 20px 24px; background: var(--surface); border: 1px solid var(--border-light); border-radius: 10px; }
+  .pd-doc-card i { font-size: 1.8rem; color: var(--primary); flex-shrink: 0; }
+  .pd-doc-card div { flex: 1; }
+  .pd-doc-card h5 { font-size: 0.9rem; margin-bottom: 4px; }
+  .pd-doc-card p { font-size: 0.8rem; color: var(--body-text); margin: 0; }
+  .btn-sm { padding: 8px 16px; font-size: 0.75rem; white-space: nowrap; }
+
   /* Applications */
   .pd-apps { padding: 120px 0; background: var(--white); border-top: 1px solid var(--border); }
   .pd-apps h2 { font-size: clamp(28px, 3.5vw, 50px); line-height: 1.15; }
@@ -385,6 +459,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     .pd-benefits-grid { grid-template-columns: 1fr; gap: 50px; }
     .pd-safety-inner { grid-template-columns: 1fr; }
     .pd-quote-grid { grid-template-columns: 1fr; }
+    .pd-tech-grid { grid-template-columns: 1fr; }
+    .pd-docs-row { grid-template-columns: 1fr; }
   }
   @media (max-width: 768px) {
     .pd-hero { min-height: 65vh; }

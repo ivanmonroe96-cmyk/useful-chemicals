@@ -12,7 +12,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </div>
     <div class="container hero-inner">
       <div class="hero-content">
-        <div class="hero-badge">Ohio, USA &mdash; Trusted Since Day One</div>
+        <div class="hero-badge">Essen, Germany &mdash; Trusted Since Day One</div>
         <h1>Industrial-Grade<br />Chemical Solutions</h1>
         <p class="hero-sub">Precision-manufactured specialty chemicals for metalworking, research, and advanced industrial processes. Quality assured, globally delivered.</p>
         <div class="hero-actions">
@@ -124,7 +124,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="hp-about-content">
       <div class="section-label">About UE Chemicals</div>
       <h2>Precision Chemistry, Trusted Worldwide</h2>
-      <p>Based in Ohio, USA, UE Chemicals manufactures and supplies high-grade industrial chemicals that meet the strictest purity and safety standards. Our state-of-the-art facility and dedicated quality team ensure every batch exceeds expectations.</p>
+      <p>Based in Essen, Germany, UE Chemicals manufactures and supplies high-grade industrial chemicals that meet the strictest purity and safety standards. Our state-of-the-art facility and dedicated quality team ensure every batch exceeds expectations.</p>
       <div class="hp-about-features">
         <div class="hp-about-feat">
           <div class="hp-about-feat-icon"><i class="fas fa-microscope"></i></div>
@@ -226,6 +226,57 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div>
               <h5>Reliable Delivery</h5>
               <p>Partnered with leading freight companies for safe, timely delivery to any destination worldwide.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="hp-testimonials">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:50px;">
+        <div class="section-label">Client Feedback</div>
+        <h2>What Our Clients Say</h2>
+      </div>
+      <div class="hp-test-grid">
+        <div class="hp-test-card">
+          <div class="hp-test-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>"Excellent quality Caluanie Muelear Oxidize. The product arrived on time with full documentation. Their customer service team was very responsive and helpful throughout the ordering process."</p>
+          <div class="hp-test-author">
+            <div class="hp-test-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <strong>M. Krauss</strong>
+              <span>Industrial Manufacturing, Germany</span>
+            </div>
+          </div>
+        </div>
+        <div class="hp-test-card">
+          <div class="hp-test-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>"We've been sourcing Silver Liquid Mercury from UE Chemicals for our research laboratory. The 99.99% purity is consistent batch after batch, and the COA documentation is thorough."</p>
+          <div class="hp-test-author">
+            <div class="hp-test-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <strong>Dr. R. Oliveira</strong>
+              <span>Research Laboratory, Brazil</span>
+            </div>
+          </div>
+        </div>
+        <div class="hp-test-card">
+          <div class="hp-test-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>"Fast shipping to South America with complete customs documentation. The packaging was secure and professional. Will definitely order again for our gold extraction operations."</p>
+          <div class="hp-test-author">
+            <div class="hp-test-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <strong>J. Martinez</strong>
+              <span>Mining Operations, Colombia</span>
             </div>
           </div>
         </div>
@@ -631,6 +682,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   .hp-cta .btn-outline-white { border-color: rgba(255,255,255,0.4); }
   .hp-cta .btn-outline-white:hover { background: var(--white); color: var(--accent); border-color: var(--white); }
 
+  /* Testimonials */
+  .hp-testimonials { padding: 100px 0; background: var(--surface); border-top: 1px solid var(--border); }
+  .hp-test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+  .hp-test-card { background: var(--bg); border: 1px solid var(--border-light); border-radius: 12px; padding: 32px; transition: transform 0.3s, box-shadow 0.3s; }
+  .hp-test-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
+  .hp-test-stars { color: #f4b400; margin-bottom: 16px; font-size: 0.9rem; display: flex; gap: 3px; }
+  .hp-test-card > p { color: var(--body-text); line-height: 1.7; font-size: 0.92rem; margin-bottom: 20px; font-style: italic; }
+  .hp-test-author { display: flex; align-items: center; gap: 12px; }
+  .hp-test-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .hp-test-author strong { display: block; font-size: 0.9rem; }
+  .hp-test-author span { font-size: 0.8rem; color: var(--body-text); }
+
   /* ========== RESPONSIVE ========== */
   @media (max-width: 1024px) {
     .hp-products-grid { grid-template-columns: 1fr; }
@@ -645,6 +708,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     .hp-app-card:nth-child(-n+3) { border-top: none; }
     .hp-app-card:nth-child(-n+2) { border-top: 1px solid var(--border); }
     .hp-why-grid { grid-template-columns: 1fr; gap: 50px; }
+    .hp-test-grid { grid-template-columns: 1fr; }
     .hp-cta-inner { flex-direction: column; text-align: center; }
     .hp-cta-actions { justify-content: center; }
     .hp-section-header { flex-direction: column; align-items: flex-start; gap: 20px; }

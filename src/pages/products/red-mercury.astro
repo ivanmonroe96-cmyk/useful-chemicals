@@ -33,15 +33,15 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         </div>
         <div class="pd-spec-item">
           <span class="pd-spec-label">Purity</span>
-          <span class="pd-spec-value">Verified &amp; Certified</span>
+          <span class="pd-spec-value">99.999% (5N)</span>
         </div>
         <div class="pd-spec-item">
-          <span class="pd-spec-label">Documentation</span>
-          <span class="pd-spec-value">Full Certification</span>
+          <span class="pd-spec-label">Formula</span>
+          <span class="pd-spec-value">Sb₂O₇Hg₂</span>
         </div>
         <div class="pd-spec-item">
           <span class="pd-spec-label">Shipping</span>
-          <span class="pd-spec-value">USA &amp; International</span>
+          <span class="pd-spec-value">Europe &amp; Worldwide</span>
         </div>
       </div>
     </div>
@@ -78,6 +78,65 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
             <h6>Customer Service</h6>
             <p>Our customer service team is available to help with any questions about authenticity, safety, and use.</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TECHNICAL SPECIFICATIONS ========== -->
+  <section class="pd-tech-specs">
+    <div class="container">
+      <div class="pd-tech-grid">
+        <div class="pd-tech-content">
+          <div class="section-label">Technical Data</div>
+          <h2>Chemical Specifications</h2>
+          <p>Detailed technical specifications for Red Liquid Mercury as verified by our quality control laboratory.</p>
+        </div>
+        <div class="pd-tech-table-wrap">
+          <table class="pd-tech-table">
+            <tbody>
+              <tr><td>Chemical Name</td><td>Antimony Mercury Oxide</td></tr>
+              <tr><td>Molecular Formula</td><td>Sb₂O₇Hg₂</td></tr>
+              <tr><td>Appearance</td><td>Cherry red metallic liquid</td></tr>
+              <tr><td>Purity</td><td>99.999% (5N)</td></tr>
+              <tr><td>Density</td><td>20.2 g/cm³</td></tr>
+              <tr><td>Molar Mass</td><td>756.70 g/mol</td></tr>
+              <tr><td>Melting Point</td><td>-37.67°C</td></tr>
+              <tr><td>Boiling Point</td><td>356.72°C</td></tr>
+              <tr><td>Flash Point</td><td>170.03°C</td></tr>
+              <tr><td>CAS Number</td><td>7439-97-6 (Hg base)</td></tr>
+              <tr><td>UN Number</td><td>UN2809</td></tr>
+              <tr><td>Hazard Class</td><td>8 (Corrosive) / 6.1 (Toxic)</td></tr>
+              <tr><td>Packing Group</td><td>III</td></tr>
+              <tr><td>Pack Sizes</td><td>1 kg, 5 kg, 17.5 kg, 34.5 kg</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="pd-docs-row">
+        <div class="pd-doc-card">
+          <i class="fas fa-file-pdf"></i>
+          <div>
+            <h5>Technical Data Sheet (TDS)</h5>
+            <p>Complete chemical specifications and physical properties.</p>
+          </div>
+          <a href="/contact" class="btn btn-outline btn-sm">Request TDS <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="pd-doc-card">
+          <i class="fas fa-file-shield"></i>
+          <div>
+            <h5>Safety Data Sheet (SDS)</h5>
+            <p>Hazard identification, handling, and emergency procedures.</p>
+          </div>
+          <a href="/contact" class="btn btn-outline btn-sm">Request SDS <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <div class="pd-doc-card">
+          <i class="fas fa-file-certificate"></i>
+          <div>
+            <h5>Certificate of Analysis (COA)</h5>
+            <p>Batch-specific purity and quality verification.</p>
+          </div>
+          <a href="/contact" class="btn btn-outline btn-sm">Request COA <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -205,6 +264,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
               <label>Phone Number</label>
               <div class="phone-input">
                 <select class="form-control">
+                  <option>+49 DE</option>
                   <option>+1 USA</option>
                   <option>+44 UK</option>
                   <option>+61 AU</option>
@@ -305,6 +365,25 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
   .pd-overview-feat h6 { font-size: 15px; margin-bottom: 3px; }
   .pd-overview-feat p { font-size: 14px; margin: 0; color: var(--body-text); }
 
+  /* Tech Specs */
+  .pd-tech-specs { padding: 100px 0; background: var(--white); border-top: 1px solid var(--border); }
+  .pd-tech-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: start; margin-bottom: 50px; }
+  .pd-tech-content h2 { font-size: clamp(24px, 3vw, 38px); margin-bottom: 16px; line-height: 1.15; }
+  .pd-tech-content p { color: var(--body-text); }
+  .pd-tech-table-wrap { overflow-x: auto; }
+  .pd-tech-table { width: 100%; border-collapse: collapse; background: var(--surface); border-radius: 8px; overflow: hidden; }
+  .pd-tech-table td { padding: 12px 18px; border-bottom: 1px solid var(--border-light); font-size: 0.9rem; }
+  .pd-tech-table td:first-child { font-weight: 600; color: var(--heading); width: 40%; background: rgba(0,0,0,0.02); }
+  .pd-tech-table td:last-child { color: var(--body-text); }
+  .pd-tech-table tr:last-child td { border-bottom: none; }
+  .pd-docs-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .pd-doc-card { display: flex; align-items: center; gap: 16px; padding: 20px 24px; background: var(--surface); border: 1px solid var(--border-light); border-radius: 10px; }
+  .pd-doc-card i { font-size: 1.8rem; color: var(--primary); flex-shrink: 0; }
+  .pd-doc-card div { flex: 1; }
+  .pd-doc-card h5 { font-size: 0.9rem; margin-bottom: 4px; }
+  .pd-doc-card p { font-size: 0.8rem; color: var(--body-text); margin: 0; }
+  .btn-sm { padding: 8px 16px; font-size: 0.75rem; white-space: nowrap; }
+
   /* Applications */
   .pd-apps { padding: 120px 0; background: var(--white); border-top: 1px solid var(--border); }
   .pd-apps h2 { font-size: clamp(28px, 3.5vw, 50px); line-height: 1.15; }
@@ -362,6 +441,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     .pd-benefits-grid { grid-template-columns: 1fr; gap: 50px; }
     .pd-safety-inner { grid-template-columns: 1fr; }
     .pd-quote-grid { grid-template-columns: 1fr; }
+    .pd-tech-grid { grid-template-columns: 1fr; }
+    .pd-docs-row { grid-template-columns: 1fr; }
   }
   @media (max-width: 768px) {
     .pd-hero { min-height: 65vh; }

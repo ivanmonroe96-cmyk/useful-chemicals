@@ -1,0 +1,111 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="Terms of Service" description="Terms of Service for UE Chemicals. Read the terms and conditions governing your use of our website and services." activePage="">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="section-label">Legal</div>
+      <h1>Terms of Service</h1>
+      <p>Terms and conditions governing the use of our website and services.</p>
+    </div>
+  </section>
+
+  <!-- Terms Content -->
+  <section class="legal-content">
+    <div class="container">
+      <div class="legal-inner">
+
+        <p class="legal-updated">Last Updated: July 2025</p>
+
+        <h3>1. Acceptance of Terms</h3>
+        <p>By accessing or using the UE Chemicals website (useful-chemicals.com), you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you must not use our website or services.</p>
+
+        <h3>2. About UE Chemicals</h3>
+        <p>UE Chemicals is a specialty chemical supplier based at 104 Essen, 45001, Germany. We supply industrial-grade chemicals including Caluanie Muelear Oxidize, Red Liquid Mercury, and Silver Liquid Mercury for legitimate industrial, research, and commercial applications.</p>
+
+        <h3>3. Products and Services</h3>
+        <ul>
+          <li>All products are intended for lawful industrial, research, and commercial purposes only.</li>
+          <li>Product descriptions, specifications, and images are provided for informational purposes and may be subject to change without notice.</li>
+          <li>We reserve the right to refuse service or cancel orders at our discretion, particularly if we suspect misuse or non-compliance with applicable regulations.</li>
+        </ul>
+
+        <h3>4. Ordering and Payment</h3>
+        <ul>
+          <li>All orders are subject to acceptance and availability.</li>
+          <li>Prices are quoted on a per-inquiry basis. A Proforma Invoice will be issued upon order confirmation.</li>
+          <li>Payment terms will be specified in the Proforma Invoice. Orders are processed once payment is confirmed.</li>
+          <li>We reserve the right to modify pricing at any time without prior notice.</li>
+        </ul>
+
+        <h3>5. Shipping and Delivery</h3>
+        <ul>
+          <li>We ship internationally using licensed hazardous materials carriers in compliance with applicable transport regulations (ADR, IATA, IMDG).</li>
+          <li>Delivery timelines are estimates only and may vary based on destination, customs clearance, and carrier schedules.</li>
+          <li>Risk of loss and title for products passes to the buyer upon delivery to the carrier.</li>
+          <li>Please refer to our <a href="/shipping">Shipping Information</a> page for detailed logistics information.</li>
+        </ul>
+
+        <h3>6. Regulatory Compliance</h3>
+        <ul>
+          <li>Buyers are responsible for ensuring compliance with all applicable local, national, and international laws and regulations regarding the purchase, import, handling, and use of chemical products.</li>
+          <li>Certain products may require permits, licenses, or end-use declarations. It is the buyer's responsibility to obtain these prior to ordering.</li>
+          <li>We comply with EU REACH Regulation (EC 1907/2006) and the EU Mercury Regulation (EU 2017/852) where applicable.</li>
+        </ul>
+
+        <h3>7. Safety and Handling</h3>
+        <ul>
+          <li>Safety Data Sheets (SDS) and Technical Data Sheets (TDS) are provided with all shipments.</li>
+          <li>Buyers must follow all safety guidelines, handling instructions, and storage requirements specified in the SDS.</li>
+          <li>UE Chemicals assumes no liability for injuries, damages, or losses resulting from improper handling, storage, or use of our products.</li>
+        </ul>
+
+        <h3>8. Intellectual Property</h3>
+        <p>All content on this website, including text, images, logos, graphics, and design elements, is the property of UE Chemicals and is protected by applicable intellectual property laws. You may not reproduce, distribute, or use any content without our prior written consent.</p>
+
+        <h3>9. Limitation of Liability</h3>
+        <p>To the maximum extent permitted by law:</p>
+        <ul>
+          <li>UE Chemicals provides this website and its content on an "as is" basis without warranties of any kind.</li>
+          <li>We shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our website or products.</li>
+          <li>Our total liability for any claim shall not exceed the amount paid by you for the specific product or service in question.</li>
+        </ul>
+
+        <h3>10. Indemnification</h3>
+        <p>You agree to indemnify and hold harmless UE Chemicals, its officers, employees, and agents from any claims, damages, losses, or expenses arising from your use of our website or products, your violation of these terms, or your violation of any applicable laws or regulations.</p>
+
+        <h3>11. Governing Law</h3>
+        <p>These Terms of Service are governed by the laws of the Federal Republic of Germany. Any disputes arising from or related to these terms shall be subject to the exclusive jurisdiction of the courts in Essen, Germany.</p>
+
+        <h3>12. Modifications</h3>
+        <p>We reserve the right to update or modify these Terms of Service at any time. Changes take effect upon posting to this page. Your continued use of the website after changes are posted constitutes acceptance of the revised terms.</p>
+
+        <h3>13. Contact</h3>
+        <p>For questions about these Terms of Service, contact us at:</p>
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a></li>
+          <li><strong>Address:</strong> 104 Essen, 45001, Germany</li>
+          <li><strong>Phone:</strong> +1 (234) 567-890</li>
+        </ul>
+
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .legal-content { padding: 80px 0; }
+  .legal-inner { max-width: 800px; margin: 0 auto; }
+  .legal-updated { color: var(--primary); font-weight: 600; margin-bottom: 32px; font-size: 0.95rem; }
+  .legal-inner h3 { font-size: 1.35rem; color: var(--heading); margin: 40px 0 16px; padding-top: 16px; border-top: 1px solid var(--border-light); }
+  .legal-inner h3:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
+  .legal-inner h4 { font-size: 1.05rem; color: var(--heading); margin: 20px 0 10px; }
+  .legal-inner p { color: var(--body-text); line-height: 1.8; margin-bottom: 16px; }
+  .legal-inner ul { margin: 0 0 20px 24px; }
+  .legal-inner li { color: var(--body-text); line-height: 1.8; margin-bottom: 8px; }
+  .legal-inner a { color: var(--primary); text-decoration: underline; }
+</style>

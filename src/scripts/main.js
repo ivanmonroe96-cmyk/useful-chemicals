@@ -143,10 +143,15 @@ const sitePages = [
   { title: 'Safety Information', url: '/safety', description: 'Chemical safety guidelines, storage, handling, and compliance' },
   { title: 'Products', url: '/products', description: 'Browse our full range of specialty industrial chemicals' },
   { title: 'Caluanie Muelear Oxidize', url: '/products/caluanie', description: 'Powerful oxidizing agent for metalworking and mineral processing' },
-  { title: 'Red Liquid Mercury', url: '/products/red-mercury', description: 'Rare compound for laboratory research and chemical synthesis' },
+  { title: 'Red Liquid Mercury', url: '/products/red-mercury', description: 'Rare compound for laboratory research and chemical synthesis — Sb₂O₇Hg₂' },
   { title: 'Silver Liquid Mercury', url: '/products/silver-mercury', description: '99.99% purity mercury for scientific instrumentation and electronics' },
   { title: 'Ordering Information', url: '/ordering', description: 'How to place orders, shipping, payment, and delivery details' },
   { title: 'Contact Us', url: '/contact', description: 'Get in touch — quotes, support, and product inquiries' },
+  { title: 'Shipping & Logistics', url: '/shipping', description: 'Worldwide delivery, ADR/IMDG/IATA compliance, packaging, and timelines' },
+  { title: 'FAQ', url: '/faq', description: 'Frequently asked questions about products, ordering, shipping, and safety' },
+  { title: 'Blog', url: '/blog', description: 'Chemical industry insights, product guides, and regulatory updates' },
+  { title: 'Privacy Policy', url: '/privacy-policy', description: 'How we collect, use, and protect your personal data — GDPR compliant' },
+  { title: 'Terms of Service', url: '/terms-of-service', description: 'Terms and conditions for using our website and services' },
 ];
 
 function openSearch() {
