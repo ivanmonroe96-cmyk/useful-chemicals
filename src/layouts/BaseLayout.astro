@@ -28,7 +28,7 @@ const orgSchema = {
   "name": "UE Chemicals",
   "url": siteUrl,
   "logo": `${siteUrl}/images/favicon.png`,
-  "description": "Industrial chemical manufacturer and supplier based in Bangkok, Thailand. Specializing in Caluanie Muelear Oxidize, Red Liquid Mercury, and Silver Liquid Mercury.",
+  "description": "Industrial chemical manufacturer and supplier based in Bangkok, Thailand. Specializing in Caluanie Muelear Oxidize, Red Liquid Mercury, and Silver Liquid Mercury for metalworking, refining, research, and industrial applications.",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Bangkok",
@@ -39,14 +39,28 @@ const orgSchema = {
   "contactPoint": {
     "@type": "ContactPoint",
     "contactType": "sales",
-    "email": "info@useful-chemicals.com"
+    "email": "info@useful-chemicals.com",
+    "availableLanguage": "English"
   },
   "sameAs": []
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "UE Chemicals",
+  "url": siteUrl,
+  "description": "Buy Caluanie Muelear Oxidize, Red Liquid Mercury and Silver Liquid Mercury from UE Chemicals. Industrial chemical manufacturer and supplier in Bangkok, Thailand.",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": `${siteUrl}/?s={search_term_string}`,
+    "query-input": "required name=search_term_string"
+  }
+};
+
 const allSchemas = jsonLd
-  ? Array.isArray(jsonLd) ? [orgSchema, ...jsonLd] : [orgSchema, jsonLd]
-  : [orgSchema];
+  ? Array.isArray(jsonLd) ? [orgSchema, websiteSchema, ...jsonLd] : [orgSchema, websiteSchema, jsonLd]
+  : [orgSchema, websiteSchema];
 
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';

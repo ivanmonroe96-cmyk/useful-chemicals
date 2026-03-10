@@ -1,20 +1,33 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const homeFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What is Caluanie Muelear Oxidize?", "acceptedAnswer": { "@type": "Answer", "text": "Caluanie Muelear Oxidize is an industrial liquid oxidizer used in metalworking, refining, mineral extraction, and chemical manufacturing. It is a high-density chemical compound manufactured by UE Chemicals in Bangkok, Thailand." } },
+    { "@type": "Question", "name": "What is red mercury used for?", "acceptedAnswer": { "@type": "Answer", "text": "Red Liquid Mercury (Sb₂O₇Hg₂) is used in specialized industrial and research applications. It has a 99.999% purity (5N grade) and a density of 20.2 g/cm³. It is available for purchase from certified suppliers like UE Chemicals." } },
+    { "@type": "Question", "name": "Where can I buy silver liquid mercury?", "acceptedAnswer": { "@type": "Answer", "text": "You can buy Silver Liquid Mercury from UE Chemicals at useful-chemicals.com. We supply 99.99% purity (4N grade) elemental mercury (CAS 7439-97-6) for gold extraction, scientific instruments, and industrial applications with worldwide shipping." } },
+    { "@type": "Question", "name": "Is Caluanie Muelear Oxidize legal?", "acceptedAnswer": { "@type": "Answer", "text": "Caluanie Muelear Oxidize is a legal industrial chemical when purchased for legitimate industrial purposes. Regulations vary by country. UE Chemicals ensures full compliance with international chemical trade regulations." } },
+    { "@type": "Question", "name": "What are the uses of mercury in industry?", "acceptedAnswer": { "@type": "Answer", "text": "Mercury is used in gold and precious metal extraction, scientific measurement instruments (thermometers, barometers), electrical and electronic equipment, chemical synthesis, and laboratory research. Silver Liquid Mercury (99.99% purity) is the standard grade for most industrial applications." } },
+    { "@type": "Question", "name": "Can you ship chemicals internationally?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, UE Chemicals ships worldwide from Bangkok, Thailand using licensed hazardous materials carriers. We deliver to Europe, Asia, Africa, North America, South America, and Oceania with full compliance documentation." } }
+  ]
+};
 ---
 
-<BaseLayout title="Buy Industrial Chemicals Online" description="Buy Caluanie Muelear Oxidize, Red Mercury & Silver Mercury from Bangkok, Thailand. Premium purity, certified quality, global shipping. Request a quote from UE Chemicals today." activePage="home">
+<BaseLayout title="Buy Caluanie Muelear Oxidize, Red Mercury & Silver Mercury for Sale" description="Buy Caluanie Muelear Oxidize, Red Liquid Mercury & Silver Liquid Mercury online from UE Chemicals. Industrial-grade, 99.99% purity certified, global shipping from Bangkok, Thailand. Request a quote today." activePage="home" jsonLd={[homeFaqSchema]}>
 
   <!-- ========== HERO ========== -->
   <section class="hero">
     <div class="hero-bg">
-      <img src="/images/caluanie-muelear-oxidize-manufacturer-in-usa.webp" alt="UE Chemicals - Industrial chemical manufacturer in Bangkok, Thailand" />
+      <img src="/images/caluanie-muelear-oxidize-manufacturer-in-usa.webp" alt="Buy Caluanie Muelear Oxidize, Red Mercury and Silver Mercury for sale from UE Chemicals" />
       <div class="hero-overlay"></div>
     </div>
     <div class="container hero-inner">
       <div class="hero-content">
         <div class="hero-badge">Bangkok, Thailand &mdash; Trusted Since Day One</div>
-        <h1>Industrial-Grade<br />Chemical Solutions</h1>
-        <p class="hero-sub">Precision-manufactured specialty chemicals for metalworking, research, and advanced industrial processes. Quality assured, globally delivered.</p>
+        <h1>Caluanie Muelear Oxidize, Red Mercury &amp; Silver Mercury for Sale</h1>
+        <p class="hero-sub">Buy industrial-grade Caluanie Muelear Oxidize, Red Liquid Mercury and Silver Liquid Mercury. Purity certified, manufactured in Thailand, shipped worldwide. Trusted chemical supplier since day one.</p>
         <div class="hero-actions">
           <a href="/products" class="btn btn-accent">Explore Products <i class="fas fa-arrow-right"></i></a>
           <a href="/contact" class="btn btn-outline-white">Get a Quote <i class="fas fa-arrow-right"></i></a>
@@ -280,6 +293,44 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ (AEO) ========== -->
+  <section class="hp-faq">
+    <div class="container">
+      <div class="hp-section-header">
+        <div>
+          <div class="section-label">Common Questions</div>
+          <h2>Frequently Asked Questions</h2>
+        </div>
+      </div>
+      <div class="hp-faq-grid">
+        <details class="hp-faq-item">
+          <summary>What is Caluanie Muelear Oxidize?</summary>
+          <p>Caluanie Muelear Oxidize is an industrial liquid oxidizer used in metalworking, refining, mineral extraction, and chemical manufacturing. It is a high-density chemical compound manufactured by UE Chemicals in Bangkok, Thailand. It is commonly used for crushing and processing metals and minerals in industrial settings.</p>
+        </details>
+        <details class="hp-faq-item">
+          <summary>What is red mercury used for?</summary>
+          <p>Red Liquid Mercury (Sb₂O₇Hg₂) is used in specialized industrial and research applications. Our Red Liquid Mercury has a 99.999% purity (5N grade) and a density of 20.2 g/cm³. It is available for purchase from certified suppliers like UE Chemicals with full documentation.</p>
+        </details>
+        <details class="hp-faq-item">
+          <summary>Where can I buy silver liquid mercury?</summary>
+          <p>You can buy Silver Liquid Mercury from UE Chemicals at useful-chemicals.com. We supply 99.99% purity (4N grade) elemental mercury (CAS 7439-97-6) for gold extraction, scientific instruments, and industrial applications with worldwide shipping from Bangkok, Thailand.</p>
+        </details>
+        <details class="hp-faq-item">
+          <summary>Is Caluanie Muelear Oxidize legal?</summary>
+          <p>Caluanie Muelear Oxidize is a legal industrial chemical when purchased for legitimate industrial purposes such as metalworking, refining, and mineral extraction. Regulations vary by country. UE Chemicals ensures full compliance with international chemical trade regulations including REACH.</p>
+        </details>
+        <details class="hp-faq-item">
+          <summary>What are the uses of mercury in industry?</summary>
+          <p>Mercury is used in gold and precious metal extraction, scientific measurement instruments (thermometers, barometers), electrical and electronic equipment, chemical synthesis, and laboratory research. Silver Liquid Mercury (99.99% purity) is the standard grade for most industrial and scientific applications.</p>
+        </details>
+        <details class="hp-faq-item">
+          <summary>Can you ship chemicals internationally?</summary>
+          <p>Yes, UE Chemicals ships worldwide from Bangkok, Thailand using licensed hazardous materials carriers. We deliver to Europe, Asia, Africa, North America, South America, and Oceania with full compliance documentation and secure packaging.</p>
+        </details>
       </div>
     </div>
   </section>
@@ -658,6 +709,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     text-transform: uppercase;
   }
   .hp-why-card p { color: rgba(255,255,255,0.45); font-size: 14px; margin: 0; }
+
+  /* FAQ Section */
+  .hp-faq { padding: 100px 0; background: var(--light-bg); border-top: 1px solid var(--border); }
+  .hp-faq-grid { display: flex; flex-direction: column; gap: 0; max-width: 800px; }
+  .hp-faq-item { border-bottom: 1px solid var(--border); }
+  .hp-faq-item summary {
+    padding: 24px 0;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hp-faq-item summary::after { content: '+'; font-size: 22px; color: var(--accent); font-weight: 300; }
+  .hp-faq-item[open] summary::after { content: '−'; }
+  .hp-faq-item summary::-webkit-details-marker { display: none; }
+  .hp-faq-item p { padding: 0 0 24px 0; margin: 0; color: var(--body-text); line-height: 1.7; font-size: 15px; }
 
   /* CTA Section */
   .hp-cta {

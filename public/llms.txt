@@ -1,0 +1,71 @@
+# UE Chemicals – llms.txt
+
+> UE Chemicals is an industrial chemical manufacturer and supplier based in Bangkok, Thailand. We specialize in three core products: Caluanie Muelear Oxidize, Red Liquid Mercury, and Silver Liquid Mercury.
+
+## Company Information
+
+- **Name**: UE Chemicals
+- **Website**: https://useful-chemicals.com
+- **Location**: Bangkok, 10110, Thailand
+- **Contact**: info@useful-chemicals.com
+- **WhatsApp**: +66 951 690 848
+- **Industry**: Industrial Chemical Manufacturing & Supply
+
+## Products
+
+### Caluanie Muelear Oxidize
+- Industrial liquid oxidizer used in metalworking, refining, mineral extraction, and chemical manufacturing
+- High-density formula manufactured in Thailand
+- Available in wholesale and bulk quantities
+- SKU: UEC-CMO-HQ
+- Product page: https://useful-chemicals.com/products/caluanie
+
+### Red Liquid Mercury
+- Chemical formula: Sb₂O₇Hg₂
+- Purity: 99.999% (5N Grade)
+- Density: 20.2 g/cm³
+- Used in research, industrial, and specialized applications
+- SKU: UEC-RLM-5N
+- Product page: https://useful-chemicals.com/products/red-mercury
+
+### Silver Liquid Mercury
+- Chemical formula: Hg (elemental mercury)
+- Purity: 99.99% (4N Grade)
+- CAS Number: 7439-97-6
+- Density: 13.534 g/cm³
+- Used in gold extraction, scientific instruments, manufacturing, and laboratory research
+- Shipped in UN-approved 34.5 kg steel flasks
+- SKU: UEC-SLM-4N
+- Product page: https://useful-chemicals.com/products/silver-mercury
+
+## Key Pages
+
+- Home: https://useful-chemicals.com/
+- Products: https://useful-chemicals.com/products
+- About: https://useful-chemicals.com/about
+- Applications: https://useful-chemicals.com/applications
+- Safety: https://useful-chemicals.com/safety
+- Contact: https://useful-chemicals.com/contact
+- Ordering: https://useful-chemicals.com/ordering
+- Shipping: https://useful-chemicals.com/shipping
+- Wholesale: https://useful-chemicals.com/wholesale
+- FAQ: https://useful-chemicals.com/faq
+- Certificates: https://useful-chemicals.com/certificates
+
+## Capabilities
+
+- Global shipping via licensed hazardous materials carriers
+- Certificate of Analysis (COA) provided with every order
+- Full regulatory compliance (REACH, GHS, ADR, IMDG)
+- Bulk and wholesale pricing available
+- Custom quantities available on request
+- 24-hour response time on inquiries
+
+## Industries Served
+
+- Metalworking & Refining
+- Chemical Manufacturing
+- Mineral Extraction & Mining
+- Scientific Research & Laboratories
+- Electronics & Instruments
+- Gold & Precious Metal Recovery

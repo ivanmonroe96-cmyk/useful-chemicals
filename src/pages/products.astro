@@ -1,20 +1,42 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const productListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Industrial Chemicals for Sale",
+  "description": "Buy Caluanie Muelear Oxidize, Red Liquid Mercury and Silver Liquid Mercury from UE Chemicals.",
+  "numberOfItems": 3,
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Caluanie Muelear Oxidize", "url": "https://useful-chemicals.com/products/caluanie" },
+    { "@type": "ListItem", "position": 2, "name": "Red Liquid Mercury", "url": "https://useful-chemicals.com/products/red-mercury" },
+    { "@type": "ListItem", "position": 3, "name": "Silver Liquid Mercury", "url": "https://useful-chemicals.com/products/silver-mercury" }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://useful-chemicals.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://useful-chemicals.com/products" }
+  ]
+};
 ---
 
-<BaseLayout title="Chemicals for Sale – Mercury & Caluanie" description="Buy premium Caluanie Muelear Oxidize, Red Liquid Mercury & Silver Liquid Mercury. German-manufactured, purity certified. Request a quote from UE Chemicals." activePage="products">
+<BaseLayout title="Caluanie Muelear Oxidize for Sale | Red Mercury & Silver Mercury" description="Buy Caluanie Muelear Oxidize, Red Liquid Mercury & Silver Liquid Mercury for sale. 99.99% purity, manufactured in Bangkok, Thailand. Wholesale available. Request a quote from UE Chemicals." activePage="products" jsonLd={[productListSchema, breadcrumbSchema]}>
 
   <!-- ========== HERO ========== -->
   <section class="pr-hero">
     <div class="pr-hero-bg">
-      <img src="/images/industrial-worker-holding-plastic-cans-with-chemicals-production-plant.jpg" alt="Industrial chemicals for sale - Mercury and Caluanie Muelear Oxidize" />
+      <img src="/images/industrial-worker-holding-plastic-cans-with-chemicals-production-plant.jpg" alt="Caluanie Muelear Oxidize, Red Mercury and Silver Mercury for sale" />
       <div class="pr-hero-overlay"></div>
     </div>
     <div class="container pr-hero-inner">
       <div class="pr-hero-content">
         <div class="pr-hero-badge"><i class="fas fa-flask"></i> Our Premium Products</div>
-        <h1>Industrial-Grade<br />Chemical Products</h1>
-        <p class="pr-hero-sub">Welcome to UE Chemicals, a trusted manufacturer and supplier of premium chemical products in Bangkok, Thailand. Our commitment to quality, safety, and excellence is reflected in our diverse product lineup.</p>
+        <h1>Caluanie Muelear Oxidize, Red Mercury &amp; Silver Mercury for Sale</h1>
+        <p class="pr-hero-sub">Buy industrial chemicals from UE Chemicals — a trusted manufacturer and supplier in Bangkok, Thailand. Caluanie Muelear Oxidize, Red Liquid Mercury and Silver Liquid Mercury available for sale with purity certification and global shipping.</p>
         <div class="pr-hero-actions">
           <a href="/contact" class="btn btn-accent">Get a Quote <i class="fas fa-arrow-right"></i></a>
           <a href="/applications" class="btn btn-outline-white">View Applications <i class="fas fa-arrow-right"></i></a>
