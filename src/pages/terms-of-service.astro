@@ -4,93 +4,166 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="Terms of Service" description="Terms of Service for UE Chemicals. Read the terms and conditions governing your use of our website and services." activePage="">
 
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <div class="container">
-      <div class="section-label">Legal</div>
+  <!-- ========== HERO ========== -->
+  <section class="lg-hero">
+    <div class="lg-hero-bg"></div>
+    <div class="container lg-hero-inner">
+      <div class="lg-hero-badge"><i class="fas fa-file-contract"></i> Legal</div>
       <h1>Terms of Service</h1>
-      <p>Terms and conditions governing the use of our website and services.</p>
+      <p class="lg-hero-sub">Terms and conditions governing the use of our website and chemical supply services.</p>
+      <div class="lg-hero-meta">
+        <span><i class="fas fa-calendar"></i> Last Updated: July 2025</span>
+        <span><i class="fas fa-balance-scale"></i> German Law</span>
+      </div>
     </div>
   </section>
 
-  <!-- Terms Content -->
-  <section class="legal-content">
+  <!-- ========== CONTENT ========== -->
+  <section class="lg-content">
     <div class="container">
-      <div class="legal-inner">
+      <div class="lg-grid">
 
-        <p class="legal-updated">Last Updated: July 2025</p>
+        <!-- Sidebar TOC -->
+        <aside class="lg-sidebar">
+          <div class="lg-toc">
+            <h4>Table of Contents</h4>
+            <nav>
+              <a href="#acceptance">1. Acceptance of Terms</a>
+              <a href="#about">2. About UE Chemicals</a>
+              <a href="#products">3. Products &amp; Services</a>
+              <a href="#ordering">4. Ordering &amp; Payment</a>
+              <a href="#shipping">5. Shipping &amp; Delivery</a>
+              <a href="#regulatory">6. Regulatory Compliance</a>
+              <a href="#safety">7. Safety &amp; Handling</a>
+              <a href="#ip">8. Intellectual Property</a>
+              <a href="#liability">9. Limitation of Liability</a>
+              <a href="#indemnification">10. Indemnification</a>
+              <a href="#governing">11. Governing Law</a>
+              <a href="#modifications">12. Modifications</a>
+              <a href="#contact">13. Contact</a>
+            </nav>
+          </div>
+        </aside>
 
-        <h3>1. Acceptance of Terms</h3>
-        <p>By accessing or using the UE Chemicals website (useful-chemicals.com), you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you must not use our website or services.</p>
+        <!-- Main Content -->
+        <div class="lg-main">
 
-        <h3>2. About UE Chemicals</h3>
-        <p>UE Chemicals is a specialty chemical supplier based at 104 Essen, 45001, Germany. We supply industrial-grade chemicals including Caluanie Muelear Oxidize, Red Liquid Mercury, and Silver Liquid Mercury for legitimate industrial, research, and commercial applications.</p>
+          <div class="lg-section" id="acceptance">
+            <div class="lg-section-num">01</div>
+            <h3>Acceptance of Terms</h3>
+            <p>By accessing or using the UE Chemicals website (useful-chemicals.com), you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you must not use our website or services.</p>
+          </div>
 
-        <h3>3. Products and Services</h3>
-        <ul>
-          <li>All products are intended for lawful industrial, research, and commercial purposes only.</li>
-          <li>Product descriptions, specifications, and images are provided for informational purposes and may be subject to change without notice.</li>
-          <li>We reserve the right to refuse service or cancel orders at our discretion, particularly if we suspect misuse or non-compliance with applicable regulations.</li>
-        </ul>
+          <div class="lg-section" id="about">
+            <div class="lg-section-num">02</div>
+            <h3>About UE Chemicals</h3>
+            <p>UE Chemicals is a specialty chemical supplier based at 104 Essen, 45001, Germany. We supply industrial-grade chemicals including Caluanie Muelear Oxidize, Red Liquid Mercury, and Silver Liquid Mercury for legitimate industrial, research, and commercial applications.</p>
+          </div>
 
-        <h3>4. Ordering and Payment</h3>
-        <ul>
-          <li>All orders are subject to acceptance and availability.</li>
-          <li>Prices are quoted on a per-inquiry basis. A Proforma Invoice will be issued upon order confirmation.</li>
-          <li>Payment terms will be specified in the Proforma Invoice. Orders are processed once payment is confirmed.</li>
-          <li>We reserve the right to modify pricing at any time without prior notice.</li>
-        </ul>
+          <div class="lg-section" id="products">
+            <div class="lg-section-num">03</div>
+            <h3>Products &amp; Services</h3>
+            <ul>
+              <li>All products are intended for lawful industrial, research, and commercial purposes only.</li>
+              <li>Product descriptions, specifications, and images are provided for informational purposes and may be subject to change without notice.</li>
+              <li>We reserve the right to refuse service or cancel orders at our discretion, particularly if we suspect misuse or non-compliance with applicable regulations.</li>
+            </ul>
+          </div>
 
-        <h3>5. Shipping and Delivery</h3>
-        <ul>
-          <li>We ship internationally using licensed hazardous materials carriers in compliance with applicable transport regulations (ADR, IATA, IMDG).</li>
-          <li>Delivery timelines are estimates only and may vary based on destination, customs clearance, and carrier schedules.</li>
-          <li>Risk of loss and title for products passes to the buyer upon delivery to the carrier.</li>
-          <li>Please refer to our <a href="/shipping">Shipping Information</a> page for detailed logistics information.</li>
-        </ul>
+          <div class="lg-section" id="ordering">
+            <div class="lg-section-num">04</div>
+            <h3>Ordering &amp; Payment</h3>
+            <div class="lg-card">
+              <h4><i class="fas fa-file-invoice-dollar"></i> Order Terms</h4>
+              <ul>
+                <li>All orders are subject to acceptance and availability.</li>
+                <li>Prices are quoted on a per-inquiry basis. A Proforma Invoice will be issued upon order confirmation.</li>
+                <li>Payment terms will be specified in the Proforma Invoice. Orders are processed once payment is confirmed.</li>
+                <li>We reserve the right to modify pricing at any time without prior notice.</li>
+              </ul>
+            </div>
+          </div>
 
-        <h3>6. Regulatory Compliance</h3>
-        <ul>
-          <li>Buyers are responsible for ensuring compliance with all applicable local, national, and international laws and regulations regarding the purchase, import, handling, and use of chemical products.</li>
-          <li>Certain products may require permits, licenses, or end-use declarations. It is the buyer's responsibility to obtain these prior to ordering.</li>
-          <li>We comply with EU REACH Regulation (EC 1907/2006) and the EU Mercury Regulation (EU 2017/852) where applicable.</li>
-        </ul>
+          <div class="lg-section" id="shipping">
+            <div class="lg-section-num">05</div>
+            <h3>Shipping &amp; Delivery</h3>
+            <ul>
+              <li>We ship internationally using licensed hazardous materials carriers in compliance with applicable transport regulations (ADR, IATA, IMDG).</li>
+              <li>Delivery timelines are estimates only and may vary based on destination, customs clearance, and carrier schedules.</li>
+              <li>Risk of loss and title for products passes to the buyer upon delivery to the carrier.</li>
+              <li>Please refer to our <a href="/shipping">Shipping Information</a> page for detailed logistics information.</li>
+            </ul>
+          </div>
 
-        <h3>7. Safety and Handling</h3>
-        <ul>
-          <li>Safety Data Sheets (SDS) and Technical Data Sheets (TDS) are provided with all shipments.</li>
-          <li>Buyers must follow all safety guidelines, handling instructions, and storage requirements specified in the SDS.</li>
-          <li>UE Chemicals assumes no liability for injuries, damages, or losses resulting from improper handling, storage, or use of our products.</li>
-        </ul>
+          <div class="lg-section" id="regulatory">
+            <div class="lg-section-num">06</div>
+            <h3>Regulatory Compliance</h3>
+            <div class="lg-highlight">
+              <i class="fas fa-exclamation-triangle"></i>
+              <p>Buyers are responsible for ensuring compliance with all applicable local, national, and international laws and regulations regarding the purchase, import, handling, and use of chemical products.</p>
+            </div>
+            <ul>
+              <li>Certain products may require permits, licenses, or end-use declarations. It is the buyer's responsibility to obtain these prior to ordering.</li>
+              <li>We comply with EU REACH Regulation (EC 1907/2006) and the EU Mercury Regulation (EU 2017/852) where applicable.</li>
+            </ul>
+          </div>
 
-        <h3>8. Intellectual Property</h3>
-        <p>All content on this website, including text, images, logos, graphics, and design elements, is the property of UE Chemicals and is protected by applicable intellectual property laws. You may not reproduce, distribute, or use any content without our prior written consent.</p>
+          <div class="lg-section" id="safety">
+            <div class="lg-section-num">07</div>
+            <h3>Safety &amp; Handling</h3>
+            <ul>
+              <li>Safety Data Sheets (SDS) and Technical Data Sheets (TDS) are provided with all shipments.</li>
+              <li>Buyers must follow all safety guidelines, handling instructions, and storage requirements specified in the SDS.</li>
+              <li>UE Chemicals assumes no liability for injuries, damages, or losses resulting from improper handling, storage, or use of our products.</li>
+            </ul>
+          </div>
 
-        <h3>9. Limitation of Liability</h3>
-        <p>To the maximum extent permitted by law:</p>
-        <ul>
-          <li>UE Chemicals provides this website and its content on an "as is" basis without warranties of any kind.</li>
-          <li>We shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our website or products.</li>
-          <li>Our total liability for any claim shall not exceed the amount paid by you for the specific product or service in question.</li>
-        </ul>
+          <div class="lg-section" id="ip">
+            <div class="lg-section-num">08</div>
+            <h3>Intellectual Property</h3>
+            <p>All content on this website, including text, images, logos, graphics, and design elements, is the property of UE Chemicals and is protected by applicable intellectual property laws. You may not reproduce, distribute, or use any content without our prior written consent.</p>
+          </div>
 
-        <h3>10. Indemnification</h3>
-        <p>You agree to indemnify and hold harmless UE Chemicals, its officers, employees, and agents from any claims, damages, losses, or expenses arising from your use of our website or products, your violation of these terms, or your violation of any applicable laws or regulations.</p>
+          <div class="lg-section" id="liability">
+            <div class="lg-section-num">09</div>
+            <h3>Limitation of Liability</h3>
+            <p>To the maximum extent permitted by law:</p>
+            <ul>
+              <li>UE Chemicals provides this website and its content on an "as is" basis without warranties of any kind.</li>
+              <li>We shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our website or products.</li>
+              <li>Our total liability for any claim shall not exceed the amount paid by you for the specific product or service in question.</li>
+            </ul>
+          </div>
 
-        <h3>11. Governing Law</h3>
-        <p>These Terms of Service are governed by the laws of the Federal Republic of Germany. Any disputes arising from or related to these terms shall be subject to the exclusive jurisdiction of the courts in Essen, Germany.</p>
+          <div class="lg-section" id="indemnification">
+            <div class="lg-section-num">10</div>
+            <h3>Indemnification</h3>
+            <p>You agree to indemnify and hold harmless UE Chemicals, its officers, employees, and agents from any claims, damages, losses, or expenses arising from your use of our website or products, your violation of these terms, or your violation of any applicable laws or regulations.</p>
+          </div>
 
-        <h3>12. Modifications</h3>
-        <p>We reserve the right to update or modify these Terms of Service at any time. Changes take effect upon posting to this page. Your continued use of the website after changes are posted constitutes acceptance of the revised terms.</p>
+          <div class="lg-section" id="governing">
+            <div class="lg-section-num">11</div>
+            <h3>Governing Law</h3>
+            <p>These Terms of Service are governed by the laws of the Federal Republic of Germany. Any disputes arising from or related to these terms shall be subject to the exclusive jurisdiction of the courts in Essen, Germany.</p>
+          </div>
 
-        <h3>13. Contact</h3>
-        <p>For questions about these Terms of Service, contact us at:</p>
-        <ul>
-          <li><strong>Email:</strong> <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a></li>
-          <li><strong>Address:</strong> 104 Essen, 45001, Germany</li>
-          <li><strong>Phone:</strong> +1 (234) 567-890</li>
-        </ul>
+          <div class="lg-section" id="modifications">
+            <div class="lg-section-num">12</div>
+            <h3>Modifications</h3>
+            <p>We reserve the right to update or modify these Terms of Service at any time. Changes take effect upon posting to this page. Your continued use of the website after changes are posted constitutes acceptance of the revised terms.</p>
+          </div>
 
+          <div class="lg-section" id="contact">
+            <div class="lg-section-num">13</div>
+            <h3>Contact</h3>
+            <p>For questions about these Terms of Service, contact us at:</p>
+            <div class="lg-contact-card">
+              <div><i class="fas fa-envelope"></i> <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a></div>
+              <div><i class="fas fa-map-marker-alt"></i> 104 Essen, 45001, Germany</div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
@@ -98,14 +171,61 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
-  .legal-content { padding: 80px 0; }
-  .legal-inner { max-width: 800px; margin: 0 auto; }
-  .legal-updated { color: var(--primary); font-weight: 600; margin-bottom: 32px; font-size: 0.95rem; }
-  .legal-inner h3 { font-size: 1.35rem; color: var(--heading); margin: 40px 0 16px; padding-top: 16px; border-top: 1px solid var(--border-light); }
-  .legal-inner h3:first-of-type { border-top: none; padding-top: 0; margin-top: 0; }
-  .legal-inner h4 { font-size: 1.05rem; color: var(--heading); margin: 20px 0 10px; }
-  .legal-inner p { color: var(--body-text); line-height: 1.8; margin-bottom: 16px; }
-  .legal-inner ul { margin: 0 0 20px 24px; }
-  .legal-inner li { color: var(--body-text); line-height: 1.8; margin-bottom: 8px; }
-  .legal-inner a { color: var(--primary); text-decoration: underline; }
+  /* ===== Hero ===== */
+  .lg-hero { position: relative; padding: 130px 0 60px; overflow: hidden; }
+  .lg-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0f1e 0%, #1a1f2e 100%); }
+  .lg-hero-inner { position: relative; z-index: 1; max-width: 700px; }
+  .lg-hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 100px; font-size: .83rem; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+  .lg-hero h1 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; color: var(--white); margin-bottom: 14px; }
+  .lg-hero-sub { color: rgba(255,255,255,.65); font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px; }
+  .lg-hero-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+  .lg-hero-meta span { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,.45); font-size: .85rem; }
+  .lg-hero-meta i { color: var(--accent); font-size: .8rem; }
+
+  /* ===== Layout ===== */
+  .lg-content { padding: 70px 0 90px; background: var(--white); }
+  .lg-grid { display: grid; grid-template-columns: 250px 1fr; gap: 50px; }
+
+  /* Sidebar */
+  .lg-sidebar { position: sticky; top: 100px; align-self: start; }
+  .lg-toc { background: var(--light-bg); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+  .lg-toc h4 { font-size: .85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--dark); margin-bottom: 16px; }
+  .lg-toc nav { display: flex; flex-direction: column; }
+  .lg-toc nav a { display: block; padding: 8px 12px; font-size: .84rem; color: var(--body-text); text-decoration: none; border-radius: 6px; transition: var(--transition); border-left: 2px solid transparent; }
+  .lg-toc nav a:hover { background: var(--white); color: var(--accent); border-left-color: var(--accent); }
+
+  /* Sections */
+  .lg-section { padding: 30px 0; border-bottom: 1px solid var(--border); position: relative; }
+  .lg-section:last-child { border-bottom: none; }
+  .lg-section-num { font-size: 2rem; font-weight: 800; color: rgba(252,82,32,.12); position: absolute; top: 26px; right: 0; }
+  .lg-section h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 14px; color: var(--near-black); }
+  .lg-section p { color: var(--body-text); line-height: 1.8; margin-bottom: 14px; }
+  .lg-section ul { margin: 0 0 16px 20px; }
+  .lg-section li { color: var(--body-text); line-height: 1.8; margin-bottom: 8px; }
+  .lg-section a { color: var(--accent); text-decoration: underline; }
+
+  /* Card */
+  .lg-card { background: var(--light-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 16px; }
+  .lg-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .lg-card h4 i { color: var(--accent); font-size: .95rem; }
+  .lg-card ul { margin-bottom: 0; }
+
+  /* Highlight */
+  .lg-highlight { display: flex; gap: 14px; background: rgba(252,82,32,.05); border: 1px solid rgba(252,82,32,.15); border-radius: 10px; padding: 18px 20px; margin-bottom: 14px; }
+  .lg-highlight i { color: var(--accent); font-size: 1.1rem; flex-shrink: 0; margin-top: 3px; }
+  .lg-highlight p { margin: 0; font-size: .93rem; }
+
+  /* Contact card */
+  .lg-contact-card { background: var(--light-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+  .lg-contact-card div { display: flex; align-items: center; gap: 10px; font-size: .93rem; }
+  .lg-contact-card i { color: var(--accent); width: 18px; text-align: center; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .lg-grid { grid-template-columns: 1fr; }
+    .lg-sidebar { position: static; }
+  }
+  @media (max-width: 600px) {
+    .lg-section-num { display: none; }
+  }
 </style>

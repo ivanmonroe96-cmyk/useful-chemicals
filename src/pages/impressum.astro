@@ -4,71 +4,223 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout title="Impressum – Legal Notice" description="Impressum (Legal Notice) for UE Chemicals in Essen, Germany, as required by § 5 TMG. Company information, contact details, and regulatory disclosures." activePage="">
 
-  <!-- Page Hero -->
-  <section class="page-hero">
-    <div class="container">
-      <div class="section-label">Legal</div>
+  <!-- ========== HERO ========== -->
+  <section class="lg-hero">
+    <div class="lg-hero-bg"></div>
+    <div class="container lg-hero-inner">
+      <div class="lg-hero-badge"><i class="fas fa-building-columns"></i> Legal Notice</div>
       <h1>Impressum</h1>
-      <p>Legal notice as required by § 5 TMG (Telemediengesetz).</p>
+      <p class="lg-hero-sub">Legal notice as required by § 5 TMG (Telemediengesetz) — German Telemedia Act.</p>
+      <div class="lg-hero-meta">
+        <span><i class="fas fa-location-dot"></i> Essen, Germany</span>
+        <span><i class="fas fa-scale-balanced"></i> § 5 TMG</span>
+      </div>
     </div>
   </section>
 
-  <!-- Impressum Content -->
-  <section class="legal-content">
+  <!-- ========== CONTENT ========== -->
+  <section class="lg-content">
     <div class="container">
-      <div class="legal-inner">
+      <div class="lg-grid">
 
-        <h3>Company Information</h3>
-        <p>
-          <strong>UE Chemicals</strong><br />
-          104 Essen, 45001<br />
-          North Rhine-Westphalia, Germany
-        </p>
+        <!-- Sidebar -->
+        <aside class="lg-sidebar">
+          <div class="lg-toc">
+            <h4>Sections</h4>
+            <nav>
+              <a href="#company">Company Information</a>
+              <a href="#contact">Contact</a>
+              <a href="#represented">Represented by</a>
+              <a href="#responsible">Content Responsibility</a>
+              <a href="#dispute">EU Dispute Resolution</a>
+              <a href="#liability-content">Liability for Content</a>
+              <a href="#liability-links">Liability for Links</a>
+              <a href="#copyright">Copyright</a>
+              <a href="#regulatory">Regulatory Compliance</a>
+            </nav>
+          </div>
+        </aside>
 
-        <h3>Contact</h3>
-        <p>
-          <strong>Email:</strong> <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a><br />
-          <strong>Website:</strong> <a href="https://useful-chemicals.com">useful-chemicals.com</a>
-        </p>
+        <!-- Main Content -->
+        <div class="lg-main">
 
-        <h3>Represented by</h3>
-        <p>Managing Director: UE Chemicals Management</p>
+          <div class="lg-section" id="company">
+            <div class="lg-section-num">01</div>
+            <h3>Company Information</h3>
+            <div class="im-company-card">
+              <div class="im-company-logo"><i class="fas fa-flask"></i></div>
+              <div>
+                <strong>UE Chemicals</strong>
+                <p>104 Essen, 45001<br />North Rhine-Westphalia, Germany</p>
+              </div>
+            </div>
+          </div>
 
-        <h3>Responsible for Content (§ 18 Abs. 2 MStV)</h3>
-        <p>
-          UE Chemicals<br />
-          104 Essen, 45001, Germany
-        </p>
+          <div class="lg-section" id="contact">
+            <div class="lg-section-num">02</div>
+            <h3>Contact</h3>
+            <div class="im-contact-grid">
+              <div class="im-contact-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                  <span class="im-contact-label">Email</span>
+                  <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a>
+                </div>
+              </div>
+              <div class="im-contact-item">
+                <i class="fas fa-globe"></i>
+                <div>
+                  <span class="im-contact-label">Website</span>
+                  <a href="https://useful-chemicals.com">useful-chemicals.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <h3>EU Dispute Resolution</h3>
-        <p>The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a></p>
-        <p>We are neither obligated nor willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+          <div class="lg-section" id="represented">
+            <div class="lg-section-num">03</div>
+            <h3>Represented by</h3>
+            <p>Managing Director: UE Chemicals Management</p>
+          </div>
 
-        <h3>Liability for Content</h3>
-        <p>As a service provider, we are responsible for our own content on these pages in accordance with § 7 Abs. 1 TMG (German Telemedia Act). However, according to §§ 8 to 10 TMG, we are not obligated to monitor transmitted or stored external information or to investigate circumstances that indicate illegal activity.</p>
-        <p>Obligations to remove or block the use of information under general laws remain unaffected. However, liability in this regard is only possible from the time of knowledge of a concrete violation. Upon becoming aware of any such legal violations, we will remove the content immediately.</p>
+          <div class="lg-section" id="responsible">
+            <div class="lg-section-num">04</div>
+            <h3>Responsible for Content (§ 18 Abs. 2 MStV)</h3>
+            <p>UE Chemicals<br />104 Essen, 45001, Germany</p>
+          </div>
 
-        <h3>Liability for Links</h3>
-        <p>Our website may contain links to external third-party websites over whose content we have no influence. We therefore cannot accept any liability for this third-party content. The respective provider or operator of the linked pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. No illegal content was recognizable at the time of linking.</p>
-        <p>Permanent monitoring of the linked pages is unreasonable without concrete evidence of a legal violation. If we become aware of any infringements, we will remove the relevant links immediately.</p>
+          <div class="lg-section" id="dispute">
+            <div class="lg-section-num">05</div>
+            <h3>EU Dispute Resolution</h3>
+            <p>The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a></p>
+            <p>We are neither obligated nor willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+          </div>
 
-        <h3>Copyright</h3>
-        <p>The content and works on these pages created by the site operators are subject to German copyright law. Duplication, editing, distribution, and any kind of use beyond the limits of copyright law require the written consent of the respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use.</p>
-        <p>Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is marked as such. Should you nevertheless become aware of a copyright infringement, please notify us accordingly. If we become aware of any infringements, we will remove the relevant content immediately.</p>
+          <div class="lg-section" id="liability-content">
+            <div class="lg-section-num">06</div>
+            <h3>Liability for Content</h3>
+            <p>As a service provider, we are responsible for our own content on these pages in accordance with § 7 Abs. 1 TMG (German Telemedia Act). However, according to §§ 8 to 10 TMG, we are not obligated to monitor transmitted or stored external information or to investigate circumstances that indicate illegal activity.</p>
+            <p>Obligations to remove or block the use of information under general laws remain unaffected. However, liability in this regard is only possible from the time of knowledge of a concrete violation. Upon becoming aware of any such legal violations, we will remove the content immediately.</p>
+          </div>
 
-        <h3>Regulatory Compliance</h3>
-        <p>UE Chemicals operates in compliance with the following regulations:</p>
-        <ul>
-          <li><strong>EU REACH Regulation</strong> (EC 1907/2006) — Registration, Evaluation, Authorisation and Restriction of Chemicals</li>
-          <li><strong>EU Mercury Regulation</strong> (EU 2017/852) — Regulation on mercury and repealing Regulation (EC) No 1102/2008</li>
-          <li><strong>CLP Regulation</strong> (EC 1272/2008) — Classification, Labelling and Packaging of substances and mixtures</li>
-          <li><strong>ADR</strong> — European Agreement concerning the International Carriage of Dangerous Goods by Road</li>
-          <li><strong>IMDG Code</strong> — International Maritime Dangerous Goods Code for sea transport</li>
-          <li><strong>GDPR</strong> (EU 2016/679) — General Data Protection Regulation</li>
-        </ul>
+          <div class="lg-section" id="liability-links">
+            <div class="lg-section-num">07</div>
+            <h3>Liability for Links</h3>
+            <p>Our website may contain links to external third-party websites over whose content we have no influence. We therefore cannot accept any liability for this third-party content. The respective provider or operator of the linked pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. No illegal content was recognizable at the time of linking.</p>
+            <p>Permanent monitoring of the linked pages is unreasonable without concrete evidence of a legal violation. If we become aware of any infringements, we will remove the relevant links immediately.</p>
+          </div>
 
+          <div class="lg-section" id="copyright">
+            <div class="lg-section-num">08</div>
+            <h3>Copyright</h3>
+            <p>The content and works on these pages created by the site operators are subject to German copyright law. Duplication, editing, distribution, and any kind of use beyond the limits of copyright law require the written consent of the respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use.</p>
+            <p>Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is marked as such. Should you nevertheless become aware of a copyright infringement, please notify us accordingly. If we become aware of any infringements, we will remove the relevant content immediately.</p>
+          </div>
+
+          <div class="lg-section" id="regulatory">
+            <div class="lg-section-num">09</div>
+            <h3>Regulatory Compliance</h3>
+            <p>UE Chemicals operates in compliance with the following regulations:</p>
+            <div class="im-reg-grid">
+              <div class="im-reg-item">
+                <strong>EU REACH</strong>
+                <span>(EC 1907/2006) — Registration, Evaluation, Authorisation and Restriction of Chemicals</span>
+              </div>
+              <div class="im-reg-item">
+                <strong>Mercury Regulation</strong>
+                <span>(EU 2017/852) — Regulation on mercury and repealing Regulation (EC) No 1102/2008</span>
+              </div>
+              <div class="im-reg-item">
+                <strong>CLP Regulation</strong>
+                <span>(EC 1272/2008) — Classification, Labelling and Packaging of substances and mixtures</span>
+              </div>
+              <div class="im-reg-item">
+                <strong>ADR</strong>
+                <span>European Agreement concerning the International Carriage of Dangerous Goods by Road</span>
+              </div>
+              <div class="im-reg-item">
+                <strong>IMDG Code</strong>
+                <span>International Maritime Dangerous Goods Code for sea transport</span>
+              </div>
+              <div class="im-reg-item">
+                <strong>GDPR</strong>
+                <span>(EU 2016/679) — General Data Protection Regulation</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
   </section>
 
 </BaseLayout>
+
+<style>
+  /* ===== Hero ===== */
+  .lg-hero { position: relative; padding: 130px 0 60px; overflow: hidden; }
+  .lg-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0f1e 0%, #1a1f2e 100%); }
+  .lg-hero-inner { position: relative; z-index: 1; max-width: 700px; }
+  .lg-hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 100px; font-size: .83rem; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+  .lg-hero h1 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; color: var(--white); margin-bottom: 14px; }
+  .lg-hero-sub { color: rgba(255,255,255,.65); font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px; }
+  .lg-hero-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+  .lg-hero-meta span { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,.45); font-size: .85rem; }
+  .lg-hero-meta i { color: var(--accent); font-size: .8rem; }
+
+  /* ===== Layout ===== */
+  .lg-content { padding: 70px 0 90px; background: var(--white); }
+  .lg-grid { display: grid; grid-template-columns: 250px 1fr; gap: 50px; }
+
+  /* Sidebar */
+  .lg-sidebar { position: sticky; top: 100px; align-self: start; }
+  .lg-toc { background: var(--light-bg); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+  .lg-toc h4 { font-size: .85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--dark); margin-bottom: 16px; }
+  .lg-toc nav { display: flex; flex-direction: column; }
+  .lg-toc nav a { display: block; padding: 8px 12px; font-size: .84rem; color: var(--body-text); text-decoration: none; border-radius: 6px; transition: var(--transition); border-left: 2px solid transparent; }
+  .lg-toc nav a:hover { background: var(--white); color: var(--accent); border-left-color: var(--accent); }
+
+  /* Sections */
+  .lg-section { padding: 30px 0; border-bottom: 1px solid var(--border); position: relative; }
+  .lg-section:last-child { border-bottom: none; }
+  .lg-section-num { font-size: 2rem; font-weight: 800; color: rgba(252,82,32,.12); position: absolute; top: 26px; right: 0; }
+  .lg-section h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 14px; color: var(--near-black); }
+  .lg-section p { color: var(--body-text); line-height: 1.8; margin-bottom: 14px; }
+  .lg-section a { color: var(--accent); text-decoration: underline; }
+
+  /* Company card */
+  .im-company-card { display: flex; align-items: center; gap: 20px; background: var(--light-bg); border: 1px solid var(--border); border-radius: 14px; padding: 24px 28px; }
+  .im-company-logo { width: 56px; height: 56px; border-radius: 14px; background: var(--near-black); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1.4rem; flex-shrink: 0; }
+  .im-company-card strong { display: block; font-size: 1.15rem; margin-bottom: 4px; color: var(--near-black); }
+  .im-company-card p { margin: 0; font-size: .93rem; color: var(--body-text); line-height: 1.6; }
+
+  /* Contact grid */
+  .im-contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .im-contact-item { display: flex; align-items: center; gap: 14px; background: var(--light-bg); border: 1px solid var(--border); border-radius: 12px; padding: 18px 22px; }
+  .im-contact-item i { font-size: 1.1rem; color: var(--accent); }
+  .im-contact-label { display: block; font-size: .75rem; text-transform: uppercase; letter-spacing: .8px; color: var(--dark); opacity: .5; font-weight: 600; margin-bottom: 2px; }
+  .im-contact-item a { color: var(--near-black); font-weight: 600; font-size: .93rem; text-decoration: none; }
+  .im-contact-item a:hover { color: var(--accent); }
+
+  /* Regulation grid */
+  .im-reg-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 10px; }
+  .im-reg-item { background: var(--light-bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+  .im-reg-item strong { display: block; font-size: .95rem; margin-bottom: 4px; color: var(--near-black); }
+  .im-reg-item span { font-size: .84rem; color: var(--body-text); line-height: 1.5; }
+
+  /* Contact card */
+  .lg-contact-card { background: var(--light-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+  .lg-contact-card div { display: flex; align-items: center; gap: 10px; font-size: .93rem; }
+  .lg-contact-card i { color: var(--accent); width: 18px; text-align: center; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .lg-grid { grid-template-columns: 1fr; }
+    .lg-sidebar { position: static; }
+    .im-reg-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .lg-section-num { display: none; }
+    .im-contact-grid { grid-template-columns: 1fr; }
+  }
+</style>

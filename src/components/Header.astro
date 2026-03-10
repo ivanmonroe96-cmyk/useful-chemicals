@@ -13,8 +13,6 @@ const { activePage = '' } = Astro.props;
     <nav class="nav" id="nav">
       <a href="/" class:list={["nav-link", { active: activePage === 'home' }]}>Home</a>
       <a href="/about" class:list={["nav-link", { active: activePage === 'about' }]}>About</a>
-      <a href="/applications" class:list={["nav-link", { active: activePage === 'applications' }]}>Applications</a>
-      <a href="/safety" class:list={["nav-link", { active: activePage === 'safety' }]}>Safety Information</a>
       <div class="nav-dropdown">
         <a href="/products" class:list={["nav-link", { active: activePage === 'products' }]}>
           Our Products <i class="fas fa-chevron-down"></i>
@@ -25,8 +23,10 @@ const { activePage = '' } = Astro.props;
           <a href="/products/silver-mercury">Silver Mercury</a>
         </div>
       </div>
-      <a href="/ordering" class:list={["nav-link", { active: activePage === 'ordering' }]}>Ordering Information</a>
+      <a href="/faq" class:list={["nav-link", { active: activePage === 'faq' }]}>FAQs</a>
+      <a href="/wholesale" class:list={["nav-link", { active: activePage === 'wholesale' }]}>Wholesale</a>
       <a href="/contact" class:list={["nav-link", { active: activePage === 'contact' }]}>Contact Us</a>
+      <a href="/blog" class:list={["nav-link", { active: activePage === 'blog' }]}>Blog</a>
     </nav>
     <div class="header-actions">
       <button class="search-toggle" id="searchToggle" aria-label="Search">
