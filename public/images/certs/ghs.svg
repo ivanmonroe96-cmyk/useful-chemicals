@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" fill="none">
+  <rect x="2" y="2" width="76" height="76" rx="0" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" fill="none"/>
+  <text x="40" y="30" text-anchor="middle" font-family="Arial,sans-serif" font-weight="400" font-size="7" fill="rgba(255,255,255,0.5)">GLOBALLY HARMONIZED</text>
+  <text x="40" y="48" text-anchor="middle" font-family="Arial,sans-serif" font-weight="800" font-size="18" fill="white" letter-spacing="2">GHS</text>
+  <text x="40" y="64" text-anchor="middle" font-family="Arial,sans-serif" font-weight="400" font-size="7" fill="rgba(255,255,255,0.5)">COMPLIANT</text>
+</svg>

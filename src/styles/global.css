@@ -415,6 +415,11 @@ select.form-control { appearance: none; background-image: url('data:image/svg+xm
 .footer-col h5 { margin-bottom: 20px; font-size: 16px; text-transform: uppercase; color: var(--white); }
 .footer-col a { display: block; padding: 5px 0; font-size: 15px; color: rgba(255,255,255,0.5); }
 .footer-col a:hover { color: var(--accent); padding-left: 4px; }
+.footer-certs { display: flex; align-items: center; justify-content: flex-end; gap: 16px; margin-bottom: 30px; }
+.footer-certs-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1.5px; color: rgba(255,255,255,0.3); font-weight: 600; margin-right: 8px; }
+.footer-certs-row { display: flex; gap: 10px; align-items: center; }
+.footer-certs-row img { opacity: 0.5; transition: opacity 0.3s; }
+.footer-certs-row img:hover { opacity: 1; }
 .footer-bottom { border-top: 1px solid rgba(255,255,255,0.12); padding-top: 25px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
 .footer-bottom p { font-size: 14px; color: rgba(255,255,255,0.4); margin: 0; }
 .footer-bottom-links { display: flex; gap: 20px; }
