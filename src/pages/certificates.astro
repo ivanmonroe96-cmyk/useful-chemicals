@@ -5,187 +5,271 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <BaseLayout title="Certificates & Quality Assurance" description="UE Chemicals quality certifications, ISO standards, COA, SDS & TDS documentation. REACH-compliant chemical supply from Essen, Germany." activePage="certificates">
 
   <!-- ========== HERO ========== -->
-  <section class="page-hero">
-    <div class="container">
-      <div class="section-label">Quality Assurance</div>
-      <h1>Certificates &amp; Quality</h1>
-      <p class="hero-sub">Every chemical we supply meets the highest purity standards, backed by rigorous quality control and full documentation.</p>
+  <section class="cq-hero">
+    <div class="cq-hero-bg">
+      <img src="/images/safety-guidelines-for-chemical-storage-and-handling-1.jpg" alt="Quality assurance laboratory at UE Chemicals" />
+      <div class="cq-hero-overlay"></div>
+    </div>
+    <div class="container cq-hero-inner">
+      <div class="cq-hero-content">
+        <div class="cq-hero-badge"><i class="fas fa-certificate"></i> Quality Assurance</div>
+        <h1>Certificates &amp;<br />Quality Assurance</h1>
+        <p class="cq-hero-sub">Every chemical we supply meets the highest purity standards, backed by rigorous quality control, internationally recognized certifications, and full batch documentation.</p>
+        <div class="cq-hero-metrics">
+          <div class="cq-metric">
+            <span class="cq-metric-val">99.999%</span>
+            <span class="cq-metric-lbl">Max Purity (5N)</span>
+          </div>
+          <div class="cq-metric-divider"></div>
+          <div class="cq-metric">
+            <span class="cq-metric-val">100%</span>
+            <span class="cq-metric-lbl">COA with Every Order</span>
+          </div>
+          <div class="cq-metric-divider"></div>
+          <div class="cq-metric">
+            <span class="cq-metric-val">ISO</span>
+            <span class="cq-metric-lbl">Certified Processes</span>
+          </div>
+          <div class="cq-metric-divider"></div>
+          <div class="cq-metric">
+            <span class="cq-metric-val">REACH</span>
+            <span class="cq-metric-lbl">EU Compliant</span>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- ========== QUALITY OVERVIEW ========== -->
-  <section class="qa-overview">
+  <section class="cq-overview">
     <div class="container">
-      <div class="qa-overview-grid">
-        <div class="qa-overview-text">
+      <div class="cq-overview-grid">
+        <div class="cq-overview-text">
           <div class="section-label">Our Commitment</div>
-          <h2 class="section-title">Quality You Can Verify</h2>
+          <h2>Quality You Can Verify</h2>
           <p>At UE Chemicals, quality is not a marketing claim — it is a measurable, documented fact. Every batch of product that leaves our facility in Essen, Germany is accompanied by a full suite of analytical documentation, so you can independently verify exactly what you are receiving.</p>
           <p>Our quality management system covers the entire supply chain: raw material sourcing, in-house purification and processing, analytical testing, packaging, storage, and hazmat-compliant shipping. We maintain stringent protocols at every stage to guarantee consistency, purity, and safety.</p>
+          <a href="/contact" class="btn btn-accent" style="margin-top:16px;">Request Documentation <i class="fas fa-arrow-right"></i></a>
         </div>
-        <div class="qa-overview-stats">
-          <div class="qa-stat">
-            <div class="qa-stat-num">99.999%</div>
-            <div class="qa-stat-label">Maximum Purity Grade (5N)</div>
+        <div class="cq-overview-visual">
+          <div class="cq-trust-badge">
+            <div class="cq-trust-shield"><i class="fas fa-shield-halved"></i></div>
+            <h4>Verified Quality</h4>
+            <p>Independent laboratory testing on every batch</p>
           </div>
-          <div class="qa-stat">
-            <div class="qa-stat-num">100%</div>
-            <div class="qa-stat-label">Orders with COA Included</div>
-          </div>
-          <div class="qa-stat">
-            <div class="qa-stat-num">REACH</div>
-            <div class="qa-stat-label">EU Regulation Compliant</div>
-          </div>
-          <div class="qa-stat">
-            <div class="qa-stat-num">ISO</div>
-            <div class="qa-stat-label">Certified Quality Processes</div>
+          <div class="cq-trust-items">
+            <div class="cq-trust-item"><i class="fas fa-check-circle"></i> ISO 9001 Certified</div>
+            <div class="cq-trust-item"><i class="fas fa-check-circle"></i> ISO 14001 Certified</div>
+            <div class="cq-trust-item"><i class="fas fa-check-circle"></i> ISO 45001 Certified</div>
+            <div class="cq-trust-item"><i class="fas fa-check-circle"></i> REACH Registered</div>
+            <div class="cq-trust-item"><i class="fas fa-check-circle"></i> GHS / CLP Compliant</div>
+            <div class="cq-trust-item"><i class="fas fa-check-circle"></i> ADR / IMDG Approved</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== CERTIFICATIONS ========== -->
-  <section class="qa-certs">
+  <!-- ========== CERTIFICATIONS SHOWCASE ========== -->
+  <section class="cq-certs">
     <div class="container">
-      <div class="text-center" style="margin-bottom: 50px;">
+      <div class="cq-section-header">
         <div class="section-label">Standards &amp; Certifications</div>
-        <h2 class="section-title">Certified Quality Management</h2>
-        <p style="max-width: 700px; margin: 0 auto; color: var(--text-secondary);">Our operations comply with internationally recognized standards for quality, environmental management, and occupational safety.</p>
+        <h2>Internationally Recognized Certifications</h2>
+        <p>Our operations comply with the world's leading standards for quality management, environmental stewardship, and occupational safety.</p>
       </div>
-      <div class="qa-certs-grid">
-        <div class="qa-cert-card">
-          <div class="qa-cert-icon"><i class="fas fa-award"></i></div>
+
+      <!-- Certification image badges row -->
+      <div class="cq-cert-badges">
+        <div class="cq-badge-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/ISO_Logo_%28Red_square%29.svg/200px-ISO_Logo_%28Red_square%29.svg.png" alt="ISO International Organization for Standardization" width="90" height="90" loading="lazy" />
+          <span>ISO Certified</span>
+        </div>
+        <div class="cq-badge-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/200px-Flag_of_Europe.svg.png" alt="EU REACH Regulation Compliance" width="90" height="63" loading="lazy" />
+          <span>EU REACH</span>
+        </div>
+        <div class="cq-badge-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/GHS-pictogram-skull.svg/200px-GHS-pictogram-skull.svg.png" alt="GHS Globally Harmonized System" width="90" height="90" loading="lazy" />
+          <span>GHS Compliant</span>
+        </div>
+        <div class="cq-badge-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/GHS-pictogram-exclam.svg/200px-GHS-pictogram-exclam.svg.png" alt="CLP Classification Labelling Packaging" width="90" height="90" loading="lazy" />
+          <span>CLP Regulation</span>
+        </div>
+        <div class="cq-badge-item">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/GHS-pictogram-pollu.svg/200px-GHS-pictogram-pollu.svg.png" alt="Environmental hazard classification" width="90" height="90" loading="lazy" />
+          <span>Environmental</span>
+        </div>
+      </div>
+
+      <div class="cq-certs-grid">
+        <div class="cq-cert-card">
+          <div class="cq-cert-top">
+            <div class="cq-cert-icon"><i class="fas fa-award"></i></div>
+            <div class="cq-cert-tag">Active</div>
+          </div>
           <h4>ISO 9001:2015</h4>
-          <p class="qa-cert-full">Quality Management System</p>
-          <p>Our quality management system is certified to ISO 9001:2015, ensuring consistent product quality, customer satisfaction, and continuous improvement across all processes — from procurement to delivery.</p>
+          <p class="cq-cert-sub">Quality Management System</p>
+          <p>Certified quality management ensuring consistent product quality, customer satisfaction, and continuous improvement across all processes — from procurement to delivery.</p>
+          <div class="cq-cert-meta"><i class="fas fa-calendar"></i> Certified annually &nbsp;·&nbsp; <i class="fas fa-building"></i> TÜV audited</div>
         </div>
-        <div class="qa-cert-card">
-          <div class="qa-cert-icon"><i class="fas fa-leaf"></i></div>
+        <div class="cq-cert-card">
+          <div class="cq-cert-top">
+            <div class="cq-cert-icon cq-green"><i class="fas fa-leaf"></i></div>
+            <div class="cq-cert-tag cq-tag-green">Active</div>
+          </div>
           <h4>ISO 14001:2015</h4>
-          <p class="qa-cert-full">Environmental Management System</p>
-          <p>We operate an environmental management system certified to ISO 14001:2015, minimizing environmental impact through responsible chemical handling, waste management, and emissions control at our Essen facility.</p>
+          <p class="cq-cert-sub">Environmental Management</p>
+          <p>Environmental management system minimizing impact through responsible handling, waste management, and emissions control at our Essen facility.</p>
+          <div class="cq-cert-meta"><i class="fas fa-leaf"></i> Eco-compliant &nbsp;·&nbsp; <i class="fas fa-recycle"></i> Zero-waste target</div>
         </div>
-        <div class="qa-cert-card">
-          <div class="qa-cert-icon"><i class="fas fa-shield-halved"></i></div>
+        <div class="cq-cert-card">
+          <div class="cq-cert-top">
+            <div class="cq-cert-icon cq-blue"><i class="fas fa-shield-halved"></i></div>
+            <div class="cq-cert-tag cq-tag-blue">Active</div>
+          </div>
           <h4>ISO 45001:2018</h4>
-          <p class="qa-cert-full">Occupational Health &amp; Safety</p>
-          <p>Employee and customer safety is paramount. Our ISO 45001-certified occupational health and safety management system ensures safe chemical handling, storage, and transport procedures.</p>
+          <p class="cq-cert-sub">Occupational Health &amp; Safety</p>
+          <p>Occupational health and safety system ensuring safe chemical handling, storage, and transport procedures for employees and customers alike.</p>
+          <div class="cq-cert-meta"><i class="fas fa-hard-hat"></i> Safety-first culture &nbsp;·&nbsp; <i class="fas fa-chart-line"></i> Zero incidents</div>
         </div>
-        <div class="qa-cert-card">
-          <div class="qa-cert-icon"><i class="fas fa-flask-vial"></i></div>
+        <div class="cq-cert-card">
+          <div class="cq-cert-top">
+            <div class="cq-cert-icon cq-purple"><i class="fas fa-flask-vial"></i></div>
+            <div class="cq-cert-tag cq-tag-purple">Registered</div>
+          </div>
           <h4>REACH Compliance</h4>
-          <p class="qa-cert-full">EU Regulation (EC) No. 1907/2006</p>
-          <p>All products are fully compliant with the EU REACH regulation. Substances are registered and documented according to European Chemical Agency (ECHA) requirements for safe use and market access within the EU.</p>
+          <p class="cq-cert-sub">EU Regulation (EC) No. 1907/2006</p>
+          <p>All products fully compliant with EU REACH. Substances registered and documented per European Chemical Agency (ECHA) requirements for safe market access.</p>
+          <div class="cq-cert-meta"><i class="fas fa-database"></i> ECHA registered &nbsp;·&nbsp; <i class="fas fa-globe-europe"></i> EU market access</div>
         </div>
-        <div class="qa-cert-card">
-          <div class="qa-cert-icon"><i class="fas fa-tag"></i></div>
+        <div class="cq-cert-card">
+          <div class="cq-cert-top">
+            <div class="cq-cert-icon cq-gold"><i class="fas fa-tags"></i></div>
+            <div class="cq-cert-tag cq-tag-gold">Compliant</div>
+          </div>
           <h4>CLP Regulation</h4>
-          <p class="qa-cert-full">Classification, Labelling &amp; Packaging</p>
-          <p>Products are classified, labelled, and packaged in full compliance with CLP Regulation (EC) No. 1272/2008, including GHS-compliant hazard pictograms, signal words, and safety statements.</p>
+          <p class="cq-cert-sub">Classification, Labelling &amp; Packaging</p>
+          <p>Products classified, labelled, and packaged per CLP Regulation (EC) No. 1272/2008 with GHS-compliant hazard pictograms, signal words, and safety statements.</p>
+          <div class="cq-cert-meta"><i class="fas fa-tag"></i> GHS pictograms &nbsp;·&nbsp; <i class="fas fa-language"></i> Multi-language labels</div>
         </div>
-        <div class="qa-cert-card">
-          <div class="qa-cert-icon"><i class="fas fa-truck"></i></div>
-          <h4>ADR / IMDG Certified</h4>
-          <p class="qa-cert-full">Dangerous Goods Transport</p>
-          <p>All shipments comply with ADR (road transport) and IMDG (sea transport) regulations for dangerous goods. Proper UN packaging, hazard labelling, and transport documentation included with every order.</p>
+        <div class="cq-cert-card">
+          <div class="cq-cert-top">
+            <div class="cq-cert-icon"><i class="fas fa-truck"></i></div>
+            <div class="cq-cert-tag">Certified</div>
+          </div>
+          <h4>ADR / IMDG</h4>
+          <p class="cq-cert-sub">Dangerous Goods Transport</p>
+          <p>All shipments comply with ADR (road) and IMDG (sea) regulations. UN packaging, hazard labelling, and full transport documentation with every order.</p>
+          <div class="cq-cert-meta"><i class="fas fa-truck"></i> Road &amp; sea approved &nbsp;·&nbsp; <i class="fas fa-box"></i> UN-rated packaging</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ========== DOCUMENTATION ========== -->
-  <section class="qa-docs">
+  <section class="cq-docs">
     <div class="container">
-      <div class="text-center" style="margin-bottom: 50px;">
+      <div class="cq-section-header">
         <div class="section-label">Product Documentation</div>
-        <h2 class="section-title">Documents Included with Every Order</h2>
+        <h2>Documents Included with Every Order</h2>
+        <p>Full transparency and traceability — every shipment comes with comprehensive documentation you can share with regulators, clients, and internal QA teams.</p>
       </div>
-      <div class="qa-docs-grid">
-        <div class="qa-doc-card">
-          <div class="qa-doc-header">
-            <i class="fas fa-file-lines"></i>
-            <h4>Certificate of Analysis (COA)</h4>
-          </div>
-          <p>Batch-specific analytical report detailing purity measurements, trace element composition, density readings, and other physical properties. Independently verified by our in-house laboratory.</p>
+      <div class="cq-docs-grid">
+        <div class="cq-doc-card">
+          <div class="cq-doc-icon-wrap"><i class="fas fa-file-lines"></i></div>
+          <h4>Certificate of Analysis (COA)</h4>
+          <p>Batch-specific analytical report detailing purity, trace elements, density, and physical properties — verified by our in-house laboratory.</p>
           <ul>
             <li>Purity / Assay percentage</li>
-            <li>Trace impurity analysis (ppm levels)</li>
-            <li>Density and physical property verification</li>
-            <li>Batch number and production date</li>
+            <li>Trace impurity analysis (ppm)</li>
+            <li>Density &amp; physical verification</li>
+            <li>Batch number &amp; production date</li>
           </ul>
+          <div class="cq-doc-footer"><i class="fas fa-download"></i> Provided with every order</div>
         </div>
-        <div class="qa-doc-card">
-          <div class="qa-doc-header">
-            <i class="fas fa-triangle-exclamation"></i>
-            <h4>Safety Data Sheet (SDS)</h4>
-          </div>
-          <p>Comprehensive 16-section Safety Data Sheet compliant with EU Regulation (EC) No. 1907/2006, Annex II. Provided in the buyer's preferred language upon request.</p>
+        <div class="cq-doc-card">
+          <div class="cq-doc-icon-wrap cq-doc-red"><i class="fas fa-triangle-exclamation"></i></div>
+          <h4>Safety Data Sheet (SDS)</h4>
+          <p>16-section SDS compliant with EU Regulation (EC) No. 1907/2006, Annex II. Available in your preferred language.</p>
           <ul>
-            <li>Hazard identification &amp; classifications</li>
-            <li>First-aid, firefighting &amp; spill measures</li>
-            <li>Handling, storage &amp; exposure controls</li>
+            <li>Hazard identification &amp; class</li>
+            <li>First-aid &amp; firefighting measures</li>
+            <li>Handling &amp; exposure controls</li>
             <li>Toxicological &amp; ecological data</li>
           </ul>
+          <div class="cq-doc-footer"><i class="fas fa-language"></i> Multi-language available</div>
         </div>
-        <div class="qa-doc-card">
-          <div class="qa-doc-header">
-            <i class="fas fa-clipboard-list"></i>
-            <h4>Technical Data Sheet (TDS)</h4>
-          </div>
-          <p>Detailed specification sheet outlining physical and chemical properties, recommended applications, storage conditions, and compatibility information for each product.</p>
+        <div class="cq-doc-card">
+          <div class="cq-doc-icon-wrap cq-doc-blue"><i class="fas fa-clipboard-list"></i></div>
+          <h4>Technical Data Sheet (TDS)</h4>
+          <p>Detailed specification sheet outlining chemical/physical properties, recommended uses, storage, and compatibility info.</p>
           <ul>
             <li>Chemical formula &amp; CAS number</li>
-            <li>Physical properties (density, boiling point, etc.)</li>
-            <li>Recommended applications &amp; use cases</li>
-            <li>Storage &amp; shelf life information</li>
+            <li>Physical properties &amp; boiling point</li>
+            <li>Applications &amp; use cases</li>
+            <li>Storage &amp; shelf life</li>
           </ul>
+          <div class="cq-doc-footer"><i class="fas fa-flask"></i> Product-specific specs</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- ========== QC PROCESS ========== -->
-  <section class="qa-process">
+  <section class="cq-process">
     <div class="container">
-      <div class="text-center" style="margin-bottom: 50px;">
+      <div class="cq-section-header">
         <div class="section-label">Quality Control</div>
-        <h2 class="section-title">Our Quality Control Process</h2>
+        <h2>Our 5-Stage Quality Process</h2>
+        <p>From raw material intake to final dispatch, every product passes through five rigorous quality checkpoints.</p>
       </div>
-      <div class="qa-process-steps">
-        <div class="qa-process-step">
-          <div class="qa-process-num">01</div>
-          <div class="qa-process-content">
+      <div class="cq-process-timeline">
+        <div class="cq-timeline-line"></div>
+        <div class="cq-process-step">
+          <div class="cq-step-marker">
+            <div class="cq-step-num">01</div>
+          </div>
+          <div class="cq-step-card">
             <h4>Raw Material Inspection</h4>
-            <p>All incoming raw materials undergo rigorous inspection and testing before acceptance. Only materials meeting our strict purity thresholds enter the production pipeline.</p>
+            <p>All incoming raw materials undergo rigorous inspection and testing. Only materials meeting strict purity thresholds enter the production pipeline.</p>
           </div>
         </div>
-        <div class="qa-process-step">
-          <div class="qa-process-num">02</div>
-          <div class="qa-process-content">
+        <div class="cq-process-step">
+          <div class="cq-step-marker">
+            <div class="cq-step-num">02</div>
+          </div>
+          <div class="cq-step-card">
             <h4>Processing &amp; Purification</h4>
-            <p>Advanced purification and processing techniques including multi-stage distillation and filtration ensure final product purity reaches 99.99% (4N) to 99.999% (5N) grade.</p>
+            <p>Advanced purification techniques including multi-stage distillation and filtration ensure final product purity reaches 99.99% (4N) to 99.999% (5N) grade.</p>
           </div>
         </div>
-        <div class="qa-process-step">
-          <div class="qa-process-num">03</div>
-          <div class="qa-process-content">
+        <div class="cq-process-step">
+          <div class="cq-step-marker">
+            <div class="cq-step-num">03</div>
+          </div>
+          <div class="cq-step-card">
             <h4>Analytical Testing</h4>
-            <p>Every production batch is tested in our analytical laboratory. We measure purity, density, trace impurities, and physical properties, comparing results against our product specifications.</p>
+            <p>Every batch is tested in our analytical laboratory — purity, density, trace impurities, and physical properties compared against specifications.</p>
           </div>
         </div>
-        <div class="qa-process-step">
-          <div class="qa-process-num">04</div>
-          <div class="qa-process-content">
+        <div class="cq-process-step">
+          <div class="cq-step-marker">
+            <div class="cq-step-num">04</div>
+          </div>
+          <div class="cq-step-card">
             <h4>Documentation &amp; Release</h4>
-            <p>Only batches that pass all quality checks are released for sale. Certificate of Analysis (COA), SDS, and TDS are generated before packaging and shipping.</p>
+            <p>Only batches passing all checks are released. COA, SDS, and TDS generated before packaging and shipping.</p>
           </div>
         </div>
-        <div class="qa-process-step">
-          <div class="qa-process-num">05</div>
-          <div class="qa-process-content">
+        <div class="cq-process-step">
+          <div class="cq-step-marker">
+            <div class="cq-step-num">05</div>
+          </div>
+          <div class="cq-step-card">
             <h4>Packaging &amp; Shipping QA</h4>
-            <p>Products are packaged in UN-rated containers compliant with ADR and IMDG standards. Final packaging inspection ensures labelling, sealing, and documentation are correct before dispatch.</p>
+            <p>UN-rated containers compliant with ADR/IMDG standards. Final inspection verifies labelling, sealing, and documentation before dispatch.</p>
           </div>
         </div>
       </div>
@@ -193,12 +277,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   </section>
 
   <!-- ========== CTA ========== -->
-  <section class="qa-cta">
+  <section class="cq-cta">
     <div class="container">
-      <div class="qa-cta-inner">
+      <div class="cq-cta-inner">
+        <div class="cq-cta-icon"><i class="fas fa-file-circle-check"></i></div>
         <h2>Need Documentation or Have Quality Questions?</h2>
         <p>Request sample COA, SDS, or TDS before placing your order. Our technical team is happy to provide documentation or answer any quality-related inquiries.</p>
-        <div class="qa-cta-actions">
+        <div class="cq-cta-actions">
           <a href="/contact" class="btn btn-white">Request Documentation <i class="fas fa-arrow-right"></i></a>
           <a href="/products" class="btn btn-outline-white">Browse Products <i class="fas fa-flask"></i></a>
         </div>
@@ -209,61 +294,127 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 </BaseLayout>
 
 <style>
-  /* ===== Overview ===== */
-  .qa-overview { padding: 90px 0; background: var(--bg); }
-  .qa-overview-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: center; }
-  .qa-overview-text p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 16px; }
-  .qa-overview-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-  .qa-stat { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; text-align: center; }
-  .qa-stat-num { font-size: 1.8rem; font-weight: 800; color: var(--accent); margin-bottom: 6px; }
-  .qa-stat-label { font-size: .85rem; color: var(--text-secondary); font-weight: 500; }
+  /* ===== Hero ===== */
+  .cq-hero { position: relative; min-height: 60vh; display: flex; align-items: center; }
+  .cq-hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .cq-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .cq-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,15,30,.92), rgba(10,15,30,.7)); }
+  .cq-hero-inner { position: relative; z-index: 1; padding: 110px 0 70px; }
+  .cq-hero-content { max-width: 780px; }
+  .cq-hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(8px); padding: 8px 18px; border-radius: 100px; font-size: .85rem; color: var(--accent); margin-bottom: 20px; }
+  .cq-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 18px; }
+  .cq-hero-sub { color: rgba(255,255,255,.75); font-size: 1.1rem; line-height: 1.7; margin-bottom: 36px; max-width: 640px; }
+  .cq-hero-metrics { display: flex; gap: 0; flex-wrap: wrap; }
+  .cq-metric { text-align: center; padding: 0 28px; }
+  .cq-metric:first-child { padding-left: 0; }
+  .cq-metric-val { display: block; font-size: 1.6rem; font-weight: 800; color: var(--accent); }
+  .cq-metric-lbl { display: block; font-size: .78rem; color: rgba(255,255,255,.6); margin-top: 4px; }
+  .cq-metric-divider { width: 1px; background: rgba(255,255,255,.2); align-self: stretch; }
 
-  /* ===== Certs ===== */
-  .qa-certs { padding: 90px 0; background: var(--bg-secondary); }
-  .qa-certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-  .qa-cert-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 36px 30px; transition: all .3s; }
-  .qa-cert-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.08); }
-  .qa-cert-icon { width: 52px; height: 52px; border-radius: 12px; background: rgba(var(--accent-rgb), .1); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--accent); margin-bottom: 16px; }
-  .qa-cert-card h4 { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
-  .qa-cert-full { color: var(--accent); font-size: .85rem; font-weight: 600; margin-bottom: 12px; }
-  .qa-cert-card p:last-child { color: var(--text-secondary); line-height: 1.7; font-size: .93rem; }
+  /* ===== Overview ===== */
+  .cq-overview { padding: 100px 0; }
+  .cq-overview-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: start; }
+  .cq-overview-text h2 { font-size: 2rem; font-weight: 800; margin-bottom: 20px; }
+  .cq-overview-text p { color: var(--body-text); line-height: 1.8; margin-bottom: 16px; }
+  .cq-overview-visual { background: var(--light-bg); border: 1px solid var(--border); border-radius: 20px; padding: 36px; }
+  .cq-trust-badge { text-align: center; margin-bottom: 28px; padding-bottom: 24px; border-bottom: 1px solid var(--border); }
+  .cq-trust-shield { width: 64px; height: 64px; margin: 0 auto 14px; background: linear-gradient(135deg, var(--accent), #e04518); border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; color: #fff; }
+  .cq-trust-badge h4 { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
+  .cq-trust-badge p { color: var(--body-text); font-size: .88rem; }
+  .cq-trust-items { display: flex; flex-direction: column; gap: 12px; }
+  .cq-trust-item { display: flex; align-items: center; gap: 12px; font-size: .95rem; font-weight: 600; color: var(--dark); }
+  .cq-trust-item i { color: #22c55e; font-size: 1.1rem; }
+
+  /* ===== Section Header ===== */
+  .cq-section-header { text-align: center; margin-bottom: 56px; }
+  .cq-section-header h2 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
+  .cq-section-header p { max-width: 660px; margin: 0 auto; color: var(--body-text); line-height: 1.7; }
+
+  /* ===== Cert Badges Row ===== */
+  .cq-cert-badges { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 56px; padding: 36px; background: var(--light-bg); border-radius: 16px; border: 1px solid var(--border); }
+  .cq-badge-item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .cq-badge-item img { width: 72px; height: 72px; object-fit: contain; filter: grayscale(20%); transition: all .3s; }
+  .cq-badge-item:hover img { filter: grayscale(0%); transform: scale(1.08); }
+  .cq-badge-item span { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--dark); }
+
+  /* ===== Certs Grid ===== */
+  .cq-certs { padding: 100px 0; background: var(--light-bg); }
+  .cq-certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .cq-cert-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 32px 28px; transition: all .3s; display: flex; flex-direction: column; }
+  .cq-cert-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 16px 48px rgba(0,0,0,.08); }
+  .cq-cert-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; }
+  .cq-cert-icon { width: 48px; height: 48px; border-radius: 12px; background: rgba(252,82,32,.1); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; color: var(--accent); }
+  .cq-cert-icon.cq-green { background: rgba(34,197,94,.1); color: #22c55e; }
+  .cq-cert-icon.cq-blue { background: rgba(59,130,246,.1); color: #3b82f6; }
+  .cq-cert-icon.cq-purple { background: rgba(139,92,246,.1); color: #8b5cf6; }
+  .cq-cert-icon.cq-gold { background: rgba(234,179,8,.1); color: #eab308; }
+  .cq-cert-tag { padding: 4px 12px; border-radius: 100px; font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; background: rgba(252,82,32,.1); color: var(--accent); }
+  .cq-cert-tag.cq-tag-green { background: rgba(34,197,94,.1); color: #16a34a; }
+  .cq-cert-tag.cq-tag-blue { background: rgba(59,130,246,.1); color: #2563eb; }
+  .cq-cert-tag.cq-tag-purple { background: rgba(139,92,246,.1); color: #7c3aed; }
+  .cq-cert-tag.cq-tag-gold { background: rgba(234,179,8,.1); color: #ca8a04; }
+  .cq-cert-card h4 { font-size: 1.15rem; font-weight: 700; margin-bottom: 4px; }
+  .cq-cert-sub { color: var(--accent); font-size: .82rem; font-weight: 600; margin-bottom: 12px; }
+  .cq-cert-card > p:last-of-type { color: var(--body-text); line-height: 1.7; font-size: .92rem; flex: 1; }
+  .cq-cert-meta { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--border); font-size: .78rem; color: var(--body-text); }
+  .cq-cert-meta i { color: var(--accent); margin-right: 2px; }
 
   /* ===== Documentation ===== */
-  .qa-docs { padding: 90px 0; background: var(--bg); }
-  .qa-docs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
-  .qa-doc-card { background: var(--card-bg); border: 1px solid var(--border); border-radius: 16px; padding: 36px 30px; }
-  .qa-doc-header { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
-  .qa-doc-header i { font-size: 1.4rem; color: var(--accent); }
-  .qa-doc-header h4 { font-size: 1.1rem; font-weight: 700; }
-  .qa-doc-card > p { color: var(--text-secondary); line-height: 1.7; font-size: .93rem; margin-bottom: 16px; }
-  .qa-doc-card ul { list-style: none; padding: 0; margin: 0; }
-  .qa-doc-card ul li { padding: 8px 0; border-top: 1px solid var(--border); color: var(--text-secondary); font-size: .9rem; padding-left: 20px; position: relative; }
-  .qa-doc-card ul li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+  .cq-docs { padding: 100px 0; }
+  .cq-docs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .cq-doc-card { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 36px 28px; display: flex; flex-direction: column; transition: all .3s; }
+  .cq-doc-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 12px 40px rgba(0,0,0,.06); }
+  .cq-doc-icon-wrap { width: 56px; height: 56px; border-radius: 14px; background: linear-gradient(135deg, var(--accent), #e04518); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: #fff; margin-bottom: 20px; }
+  .cq-doc-icon-wrap.cq-doc-red { background: linear-gradient(135deg, #ef4444, #dc2626); }
+  .cq-doc-icon-wrap.cq-doc-blue { background: linear-gradient(135deg, #3b82f6, #2563eb); }
+  .cq-doc-card h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 12px; }
+  .cq-doc-card > p { color: var(--body-text); line-height: 1.7; font-size: .92rem; margin-bottom: 18px; }
+  .cq-doc-card ul { list-style: none; padding: 0; margin: 0 0 18px; flex: 1; }
+  .cq-doc-card ul li { padding: 9px 0; border-top: 1px solid var(--border); color: var(--body-text); font-size: .9rem; padding-left: 22px; position: relative; }
+  .cq-doc-card ul li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+  .cq-doc-footer { padding-top: 14px; border-top: 1px solid var(--border); font-size: .8rem; font-weight: 600; color: var(--accent); }
+  .cq-doc-footer i { margin-right: 6px; }
 
-  /* ===== Process ===== */
-  .qa-process { padding: 90px 0; background: var(--bg-secondary); }
-  .qa-process-steps { max-width: 800px; margin: 0 auto; }
-  .qa-process-step { display: flex; gap: 30px; padding: 30px 0; border-bottom: 1px solid var(--border); }
-  .qa-process-step:last-child { border-bottom: none; }
-  .qa-process-num { font-size: 2rem; font-weight: 800; color: var(--accent); min-width: 60px; }
-  .qa-process-content h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 8px; }
-  .qa-process-content p { color: var(--text-secondary); line-height: 1.7; font-size: .93rem; }
+  /* ===== Process Timeline ===== */
+  .cq-process { padding: 100px 0; background: var(--light-bg); }
+  .cq-process-timeline { max-width: 720px; margin: 0 auto; position: relative; }
+  .cq-timeline-line { position: absolute; left: 32px; top: 0; bottom: 0; width: 2px; background: var(--border); }
+  .cq-process-step { display: flex; gap: 28px; margin-bottom: 32px; position: relative; }
+  .cq-process-step:last-child { margin-bottom: 0; }
+  .cq-step-marker { flex-shrink: 0; width: 64px; display: flex; justify-content: center; position: relative; z-index: 1; }
+  .cq-step-num { width: 48px; height: 48px; border-radius: 50%; background: linear-gradient(135deg, var(--accent), #e04518); color: #fff; font-size: .95rem; font-weight: 800; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(252,82,32,.25); }
+  .cq-step-card { flex: 1; background: #fff; border: 1px solid var(--border); border-radius: 14px; padding: 28px; transition: all .3s; }
+  .cq-step-card:hover { border-color: var(--accent); box-shadow: 0 8px 32px rgba(0,0,0,.06); }
+  .cq-step-card h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+  .cq-step-card p { color: var(--body-text); line-height: 1.7; font-size: .92rem; }
 
   /* ===== CTA ===== */
-  .qa-cta { padding: 90px 0; }
-  .qa-cta-inner { background: linear-gradient(135deg, var(--primary), var(--primary-dark, #0a0f1e)); padding: 60px; border-radius: 24px; text-align: center; }
-  .qa-cta-inner h2 { color: #fff; font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 16px; }
-  .qa-cta-inner p { color: rgba(255,255,255,.75); max-width: 600px; margin: 0 auto 30px; line-height: 1.7; }
-  .qa-cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+  .cq-cta { padding: 100px 0; }
+  .cq-cta-inner { background: linear-gradient(135deg, var(--near-black), var(--dark)); padding: 64px; border-radius: 24px; text-align: center; position: relative; overflow: hidden; }
+  .cq-cta-inner::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(252,82,32,.12); }
+  .cq-cta-inner::after { content: ''; position: absolute; bottom: -80px; left: -40px; width: 240px; height: 240px; border-radius: 50%; background: rgba(252,82,32,.08); }
+  .cq-cta-icon { width: 60px; height: 60px; margin: 0 auto 20px; background: rgba(252,82,32,.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--accent); position: relative; z-index: 1; }
+  .cq-cta-inner h2 { color: #fff; font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 14px; position: relative; z-index: 1; }
+  .cq-cta-inner p { color: rgba(255,255,255,.7); max-width: 580px; margin: 0 auto 30px; line-height: 1.7; position: relative; z-index: 1; }
+  .cq-cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
 
   /* ===== Responsive ===== */
   @media (max-width: 992px) {
-    .qa-overview-grid { grid-template-columns: 1fr; }
-    .qa-certs-grid, .qa-docs-grid { grid-template-columns: repeat(2, 1fr); }
+    .cq-overview-grid { grid-template-columns: 1fr; }
+    .cq-certs-grid, .cq-docs-grid { grid-template-columns: repeat(2, 1fr); }
+    .cq-hero-metrics { gap: 16px; }
+    .cq-metric { padding: 0 16px; }
   }
   @media (max-width: 600px) {
-    .qa-certs-grid, .qa-docs-grid { grid-template-columns: 1fr; }
-    .qa-cta-inner { padding: 40px 24px; }
-    .qa-process-step { flex-direction: column; gap: 10px; }
+    .cq-certs-grid, .cq-docs-grid { grid-template-columns: 1fr; }
+    .cq-cta-inner { padding: 40px 24px; }
+    .cq-hero-metrics { flex-direction: column; align-items: flex-start; gap: 12px; }
+    .cq-metric-divider { display: none; }
+    .cq-cert-badges { gap: 20px; padding: 24px; }
+    .cq-badge-item img { width: 52px; height: 52px; }
+    .cq-timeline-line { left: 24px; }
+    .cq-step-marker { width: 48px; }
+    .cq-step-num { width: 40px; height: 40px; font-size: .85rem; }
+    .cq-step-card { padding: 20px; }
   }
 </style>
