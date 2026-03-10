@@ -463,6 +463,7 @@ const faqSchema = {
     document.querySelectorAll('.fq-question').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.closest('.fq-item');
+        if (!item) return;
         const wasActive = item.classList.contains('active');
         // Close all in same list
         item.closest('.fq-list')?.querySelectorAll('.fq-item.active').forEach(el => el.classList.remove('active'));
