@@ -23,3 +23,6 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 *.bak
+
+# data sheets source files / generators
+data_sheets/

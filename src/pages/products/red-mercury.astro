@@ -169,7 +169,7 @@ const breadcrumbSchema = {
             <h5>Technical Data Sheet (TDS)</h5>
             <p>Complete chemical specifications and physical properties.</p>
           </div>
-          <a href="/contact" class="btn btn-outline btn-sm">Request TDS <i class="fas fa-arrow-right"></i></a>
+          <a href="/contact" class="btn btn-outline btn-sm">Request TDS <i class="fas fa-download"></i></a>
         </div>
         <div class="pd-doc-card">
           <i class="fas fa-file-shield"></i>
@@ -177,7 +177,7 @@ const breadcrumbSchema = {
             <h5>Safety Data Sheet (SDS)</h5>
             <p>Hazard identification, handling, and emergency procedures.</p>
           </div>
-          <a href="/contact" class="btn btn-outline btn-sm">Request SDS <i class="fas fa-arrow-right"></i></a>
+          <a href="/contact" class="btn btn-outline btn-sm">Request SDS <i class="fas fa-download"></i></a>
         </div>
         <div class="pd-doc-card">
           <i class="fas fa-file-certificate"></i>
@@ -185,7 +185,7 @@ const breadcrumbSchema = {
             <h5>Certificate of Analysis (COA)</h5>
             <p>Batch-specific purity and quality verification.</p>
           </div>
-          <a href="/contact" class="btn btn-outline btn-sm">Request COA <i class="fas fa-arrow-right"></i></a>
+          <a href="/contact" class="btn btn-outline btn-sm">Request COA <i class="fas fa-download"></i></a>
         </div>
       </div>
     </div>
@@ -418,11 +418,12 @@ const breadcrumbSchema = {
   .pd-tech-table td:last-child { color: var(--body-text); }
   .pd-tech-table tr:last-child td { border-bottom: none; }
   .pd-docs-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-  .pd-doc-card { display: flex; align-items: center; gap: 16px; padding: 20px 24px; background: var(--surface); border: 1px solid var(--border-light); border-radius: 10px; }
+  .pd-doc-card { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 12px; padding: 28px 24px; background: var(--surface); border: 1px solid var(--border-light); border-radius: 10px; }
   .pd-doc-card i { font-size: 1.8rem; color: var(--primary); flex-shrink: 0; }
   .pd-doc-card div { flex: 1; }
   .pd-doc-card h5 { font-size: 0.9rem; margin-bottom: 4px; }
   .pd-doc-card p { font-size: 0.8rem; color: var(--body-text); margin: 0; }
+  .pd-doc-card .btn { margin-top: auto; }
   .btn-sm { padding: 8px 16px; font-size: 0.75rem; white-space: nowrap; }
 
   /* Applications */
