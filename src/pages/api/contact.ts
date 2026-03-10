@@ -7,6 +7,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     const runtime = (locals as any).runtime;
     const apiKey = runtime?.env?.RESEND_API_KEY;
     const contactEmail = runtime?.env?.CONTACT_EMAIL || 'info@useful-chemicals.com';
+    const fromEmail = runtime?.env?.FROM_EMAIL || 'UE Chemicals <noreply@useful-chemicals.com>';
 
     if (!apiKey) {
       console.error('RESEND_API_KEY is not configured');
@@ -33,7 +34,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        from: 'UE Chemicals <onboarding@resend.dev>',
+        from: fromEmail,
         to: contactEmail,
         subject: `New Contact Form Submission from ${name}`,
         html: `
