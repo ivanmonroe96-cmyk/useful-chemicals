@@ -1,13 +1,62 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Caluanie Muelear Oxidize",
+  "description": "Premium-quality Caluanie Muelear Oxidize for industrial metalworking, refining, and crushing applications. High-density formula manufactured in Germany.",
+  "brand": { "@type": "Brand", "name": "UE Chemicals" },
+  "manufacturer": { "@type": "Organization", "name": "UE Chemicals", "address": { "@type": "PostalAddress", "addressLocality": "Essen", "addressCountry": "DE" } },
+  "sku": "UEC-CMO-HQ",
+  "additionalProperty": [
+    { "@type": "PropertyValue", "name": "Type", "value": "Liquid Oxidizer" },
+    { "@type": "PropertyValue", "name": "Application", "value": "Metalworking & Refining" },
+    { "@type": "PropertyValue", "name": "Density", "value": "1.86 g/cm³" }
+  ],
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "priceCurrency": "USD",
+    "price": "0",
+    "priceValidUntil": "2026-12-31",
+    "url": "https://useful-chemicals.com/products/caluanie",
+    "seller": { "@type": "Organization", "name": "UE Chemicals" }
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is Caluanie Muelear Oxidize safe to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, when handled with the proper safety precautions, Caluanie Muelear Oxidize is safe for industrial use. Be sure to follow recommended safety guidelines for handling and storage." } },
+    { "@type": "Question", "name": "What industries use Caluanie Muelear Oxidize?", "acceptedAnswer": { "@type": "Answer", "text": "It is widely used in metalworking, mineral extraction, chemical manufacturing, and refining industries." } },
+    { "@type": "Question", "name": "Can you ship Caluanie internationally?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we offer international shipping services. Please contact our team for specific delivery options and estimated timelines for your region." } },
+    { "@type": "Question", "name": "How should Caluanie Muelear Oxidize be stored?", "acceptedAnswer": { "@type": "Answer", "text": "Store in a cool, dry place away from direct sunlight and incompatible materials. Keep the container tightly sealed when not in use." } },
+    { "@type": "Question", "name": "Does Caluanie require special handling?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, always wear appropriate PPE including gloves and eye protection. Handle in well-ventilated areas and follow local safety regulations." } },
+    { "@type": "Question", "name": "Do you offer bulk discounts for Caluanie?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we offer competitive pricing for bulk orders. Contact our sales team for custom quantities and special requirements." } },
+    { "@type": "Question", "name": "How quickly can I receive my Caluanie order?", "acceptedAnswer": { "@type": "Answer", "text": "Delivery times vary based on location and product availability. Estimated timelines will be provided when your order is confirmed." } },
+    { "@type": "Question", "name": "Do you provide a Certificate of Analysis for Caluanie?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, all our products come with detailed Certificates of Analysis to verify purity and quality standards." } }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://useful-chemicals.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://useful-chemicals.com/products" },
+    { "@type": "ListItem", "position": 3, "name": "Caluanie Muelear Oxidize", "item": "https://useful-chemicals.com/products/caluanie" }
+  ]
+};
 ---
 
-<BaseLayout title="Caluanie Muelear Oxidize" activePage="products">
+<BaseLayout title="Buy Caluanie Muelear Oxidize Online" description="Buy premium Caluanie Muelear Oxidize from UE Chemicals in Essen, Germany. High-density formula for metalworking & refining. Wholesale available, fast global shipping." activePage="products" jsonLd={[productSchema, faqSchema, breadcrumbSchema]}>
 
   <!-- ========== HERO ========== -->
   <section class="pd-hero">
     <div class="pd-hero-bg">
-      <img src="/images/buy-new-stock-caluanie-muelear-oxidize.jpg" alt="" />
+      <img src="/images/buy-new-stock-caluanie-muelear-oxidize.jpg" alt="Buy Caluanie Muelear Oxidize online from Germany" />
       <div class="pd-hero-overlay"></div>
     </div>
     <div class="container pd-hero-inner">

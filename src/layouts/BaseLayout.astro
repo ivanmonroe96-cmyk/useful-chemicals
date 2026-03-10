@@ -3,13 +3,50 @@ interface Props {
   title: string;
   description?: string;
   activePage?: string;
+  ogImage?: string;
+  canonicalPath?: string;
+  jsonLd?: object | object[];
 }
 
 const {
   title,
-  description = 'Leading supplier of specialty chemicals including Caluanie Muelear Oxidize, Red Mercury, and Silver Mercury for industrial and research applications.',
-  activePage = ''
+  description = 'Buy Caluanie Muelear Oxidize, Red Mercury & Silver Mercury from UE Chemicals in Essen, Germany. Purity certified, global shipping. Trusted chemical supplier.',
+  activePage = '',
+  ogImage = '/images/caluanie-muelear-oxidize-manufacturer-in-usa.webp',
+  canonicalPath,
+  jsonLd,
 } = Astro.props;
+
+const siteUrl = 'https://useful-chemicals.com';
+const canonical = canonicalPath ? `${siteUrl}${canonicalPath}` : `${siteUrl}${Astro.url.pathname}`;
+const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
+const fullTitle = `${title} | UE Chemicals`;
+
+const orgSchema = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "UE Chemicals",
+  "url": siteUrl,
+  "logo": `${siteUrl}/images/favicon.png`,
+  "description": "Industrial chemical manufacturer and supplier based in Essen, Germany. Specializing in Caluanie Muelear Oxidize, Red Liquid Mercury, and Silver Liquid Mercury.",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "104 Essen",
+    "addressLocality": "Essen",
+    "postalCode": "45001",
+    "addressCountry": "DE"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "sales",
+    "email": "info@useful-chemicals.com"
+  },
+  "sameAs": []
+};
+
+const allSchemas = jsonLd
+  ? Array.isArray(jsonLd) ? [orgSchema, ...jsonLd] : [orgSchema, jsonLd]
+  : [orgSchema];
 
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -23,14 +60,46 @@ import '../styles/global.css';
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title} | UE Chemicals</title>
+  <title>{fullTitle}</title>
   <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:image" content={fullOgImage} />
+  <meta property="og:site_name" content="UE Chemicals" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={fullOgImage} />
+
+  <!-- Geo Tags -->
+  <meta name="geo.region" content="DE-NW" />
+  <meta name="geo.placename" content="Essen" />
+  <meta name="geo.position" content="51.4556;7.0116" />
+  <meta name="ICBM" content="51.4556, 7.0116" />
+
+  <!-- Hreflang -->
+  <link rel="alternate" hreflang="en" href={canonical} />
+  <link rel="alternate" hreflang="x-default" href={canonical} />
+
   <link rel="icon" type="image/webp" href="/images/favicon.png" />
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Structured Data -->
+  {allSchemas.map(schema => (
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  ))}
 </head>
 <body>
   <Header activePage={activePage} />

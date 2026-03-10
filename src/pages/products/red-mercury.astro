@@ -1,13 +1,59 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Red Liquid Mercury 99.999% (5N Grade)",
+  "description": "High-purity Red Liquid Mercury (Sb₂O₇Hg₂) with 99.999% purity for industrial and research applications. Manufactured in Germany by UE Chemicals.",
+  "brand": { "@type": "Brand", "name": "UE Chemicals" },
+  "manufacturer": { "@type": "Organization", "name": "UE Chemicals", "address": { "@type": "PostalAddress", "addressLocality": "Essen", "addressCountry": "DE" } },
+  "sku": "UEC-RLM-5N",
+  "material": "Sb₂O₇Hg₂",
+  "additionalProperty": [
+    { "@type": "PropertyValue", "name": "Purity", "value": "99.999% (5N)" },
+    { "@type": "PropertyValue", "name": "Density", "value": "20.2 g/cm³" },
+    { "@type": "PropertyValue", "name": "Formula", "value": "Sb₂O₇Hg₂" }
+  ],
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "priceCurrency": "USD",
+    "price": "0",
+    "priceValidUntil": "2026-12-31",
+    "url": "https://useful-chemicals.com/products/red-mercury",
+    "seller": { "@type": "Organization", "name": "UE Chemicals" }
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Is it legal to buy red liquid mercury?", "acceptedAnswer": { "@type": "Answer", "text": "Depending on the state, there may be regulations for purchasing and handling. Check with your local authorities to confirm compliance." } },
+    { "@type": "Question", "name": "How can I ensure authenticity of red mercury?", "acceptedAnswer": { "@type": "Answer", "text": "Purchase from verified, reputable suppliers like UE Chemicals who provide detailed certification and quality documentation with every order." } },
+    { "@type": "Question", "name": "What safety precautions should I follow for red mercury?", "acceptedAnswer": { "@type": "Answer", "text": "Always wear appropriate PPE including gloves and eye protection. Store in a cool, dry area and follow EPA or local guidelines for disposal." } },
+    { "@type": "Question", "name": "Can I import red liquid mercury from overseas?", "acceptedAnswer": { "@type": "Answer", "text": "Import regulations vary by country and state. Contact our team for guidance on international shipping and compliance requirements." } }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://useful-chemicals.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://useful-chemicals.com/products" },
+    { "@type": "ListItem", "position": 3, "name": "Red Liquid Mercury", "item": "https://useful-chemicals.com/products/red-mercury" }
+  ]
+};
 ---
 
-<BaseLayout title="Red Liquid Mercury" activePage="products">
+<BaseLayout title="Buy Red Liquid Mercury 99.999% Pure" description="Buy pure Red Liquid Mercury (Sb₂O₇Hg₂) with 99.999% purity from UE Chemicals in Essen, Germany. Industrial grade, certified quality, worldwide shipping. Request a quote." activePage="products" jsonLd={[productSchema, faqSchema, breadcrumbSchema]}>
 
   <!-- ========== HERO ========== -->
   <section class="pd-hero">
     <div class="pd-hero-bg">
-      <img src="/images/buy-red-liquid-mercury-usa.jpg" alt="" />
+      <img src="/images/buy-red-liquid-mercury-usa.jpg" alt="Buy Red Liquid Mercury 99.999% pure from Germany" />
       <div class="pd-hero-overlay"></div>
     </div>
     <div class="container pd-hero-inner">

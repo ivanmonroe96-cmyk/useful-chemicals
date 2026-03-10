@@ -1,8 +1,23 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "What products does UE Chemicals sell?", "acceptedAnswer": { "@type": "Answer", "text": "We supply three core specialty chemicals: Caluanie Muelear Oxidize (industrial oxidizer for metalworking and refining), Red Liquid Mercury (Sb₂O₇Hg₂, for research and industrial applications), and Silver Liquid Mercury (99.99% purity, for gold extraction, manufacturing, and laboratory use)." } },
+    { "@type": "Question", "name": "What purity levels do your chemical products have?", "acceptedAnswer": { "@type": "Answer", "text": "Our Silver Liquid Mercury is certified at ≥99.99% purity (4N grade). Red Liquid Mercury purity is 99.999% (5N grade). Caluanie Muelear Oxidize is manufactured to premium industrial specifications. Certificates of Analysis (COA) are provided with every order." } },
+    { "@type": "Question", "name": "Do you ship chemicals internationally from Germany?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we ship worldwide from our facility in Essen, Germany. We deliver to Europe, Asia, Africa, North and South America, and Oceania using licensed hazardous materials carriers." } },
+    { "@type": "Question", "name": "How do I place an order for chemicals?", "acceptedAnswer": { "@type": "Answer", "text": "Submit a quote request through our contact form or email us at info@useful-chemicals.com. Include the product, quantity, and delivery destination. We'll respond with a Proforma Invoice within 24 hours." } },
+    { "@type": "Question", "name": "Do you provide Certificates of Analysis (COA)?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, a Certificate of Analysis (COA) is provided with every order, verifying product purity, composition, and batch-specific quality data." } },
+    { "@type": "Question", "name": "Are your chemicals REACH compliant?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we comply with EU REACH Regulation (EC 1907/2006) and the EU Mercury Regulation (EU 2017/852). All products meet applicable EU chemical safety and registration requirements." } },
+    { "@type": "Question", "name": "Do you offer bulk discounts on chemicals?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we offer competitive wholesale pricing for bulk orders. Contact our sales team with your quantity requirements for custom pricing." } },
+    { "@type": "Question", "name": "How long does chemical delivery take?", "acceptedAnswer": { "@type": "Answer", "text": "Delivery timelines vary by destination: Germany 1–3 days, EU 3–7 days, North America 7–14 days, Asia 10–21 days. Tracking is provided with every order." } }
+  ]
+};
 ---
 
-<BaseLayout title="Frequently Asked Questions" description="Find answers to common questions about UE Chemicals products, ordering, shipping, safety, and more." activePage="">
+<BaseLayout title="FAQ – Ordering, Shipping & Products" description="Frequently asked questions about ordering Caluanie, Red Mercury & Silver Mercury from UE Chemicals. Shipping, safety, pricing & product information answered." activePage="faq" jsonLd={faqSchema}>
 
   <!-- Page Hero -->
   <section class="page-hero">

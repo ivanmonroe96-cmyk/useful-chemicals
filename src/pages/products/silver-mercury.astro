@@ -1,13 +1,61 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const productSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Silver Liquid Mercury 99.99% (4N Grade)",
+  "description": "High-purity Silver Liquid Mercury (Hg) with 99.99% purity. CAS 7439-97-6. Virgin mercury for industrial, scientific, and extraction applications.",
+  "brand": { "@type": "Brand", "name": "UE Chemicals" },
+  "manufacturer": { "@type": "Organization", "name": "UE Chemicals", "address": { "@type": "PostalAddress", "addressLocality": "Essen", "addressCountry": "DE" } },
+  "sku": "UEC-SLM-4N",
+  "additionalProperty": [
+    { "@type": "PropertyValue", "name": "Purity", "value": "99.99% (4N)" },
+    { "@type": "PropertyValue", "name": "CAS Number", "value": "7439-97-6" },
+    { "@type": "PropertyValue", "name": "Density", "value": "13.534 g/cm³" },
+    { "@type": "PropertyValue", "name": "UN Number", "value": "UN2809" }
+  ],
+  "offers": {
+    "@type": "Offer",
+    "availability": "https://schema.org/InStock",
+    "priceCurrency": "USD",
+    "price": "0",
+    "priceValidUntil": "2026-12-31",
+    "url": "https://useful-chemicals.com/products/silver-mercury",
+    "seller": { "@type": "Organization", "name": "UE Chemicals" }
+  }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    { "@type": "Question", "name": "Can I purchase silver liquid mercury in bulk?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we offer bulk purchasing options to meet both small and large-scale needs. Contact our sales team for custom quantities or special requirements." } },
+    { "@type": "Question", "name": "How do I know if silver mercury is suitable for my industry?", "acceptedAnswer": { "@type": "Answer", "text": "Our team can help you determine if silver liquid mercury is suitable for your specific application. Contact us for a consultation." } },
+    { "@type": "Question", "name": "What purity level should I expect from silver liquid mercury?", "acceptedAnswer": { "@type": "Answer", "text": "Our silver liquid mercury is certified at 99.99% purity (4N grade), free from heavy metals, ensuring suitability for the most demanding precision tasks." } },
+    { "@type": "Question", "name": "Are there legal restrictions on buying mercury in Europe?", "acceptedAnswer": { "@type": "Answer", "text": "Mercury sales are regulated under EU REACH Regulation (EC 1907/2006) and the EU Mercury Regulation (EU 2017/852). We ensure full compliance with all applicable regulations." } },
+    { "@type": "Question", "name": "How is silver liquid mercury packaged for shipping?", "acceptedAnswer": { "@type": "Answer", "text": "All mercury is shipped in UN-approved 34.5 kg steel flasks that meet ADR (road) and IMDG (sea) transport regulations. Each flask is sealed and tested for leak-proof integrity." } },
+    { "@type": "Question", "name": "Do you provide a Certificate of Analysis for silver mercury?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, all orders include a batch-specific Certificate of Analysis (COA) verifying purity, composition, and compliance with quality standards." } }
+  ]
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://useful-chemicals.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://useful-chemicals.com/products" },
+    { "@type": "ListItem", "position": 3, "name": "Silver Liquid Mercury", "item": "https://useful-chemicals.com/products/silver-mercury" }
+  ]
+};
 ---
 
-<BaseLayout title="Silver Liquid Mercury" activePage="products">
+<BaseLayout title="Buy Silver Liquid Mercury 99.99% Pure" description="Buy high-purity Silver Liquid Mercury (99.99% 4N) from UE Chemicals, Essen, Germany. CAS 7439-97-6. Virgin mercury for industry & research. Global delivery." activePage="products" jsonLd={[productSchema, faqSchema, breadcrumbSchema]}>
 
   <!-- ========== HERO ========== -->
   <section class="pd-hero">
     <div class="pd-hero-bg">
-      <img src="/images/Buy-Silver-Liquid-Mercury.jpg" alt="" />
+      <img src="/images/Buy-Silver-Liquid-Mercury.jpg" alt="Buy Silver Liquid Mercury 99.99% pure from Germany" />
       <div class="pd-hero-overlay"></div>
     </div>
     <div class="container pd-hero-inner">
