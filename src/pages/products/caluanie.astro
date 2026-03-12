@@ -1,18 +1,65 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath } from '../../i18n/index';
+import { defaultLang } from '../../i18n/languages';
+
+const lang = defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+const techSpecs = [
+  [t(tr, 'caluanie.tech_name'), t(tr, 'caluanie.tech_name_val')],
+  [t(tr, 'caluanie.tech_type'), t(tr, 'caluanie.tech_type_val')],
+  [t(tr, 'caluanie.tech_appearance'), t(tr, 'caluanie.tech_appearance_val')],
+  [t(tr, 'caluanie.tech_application'), t(tr, 'caluanie.tech_application_val')],
+  [t(tr, 'caluanie.tech_power'), t(tr, 'caluanie.tech_power_val')],
+  [t(tr, 'caluanie.tech_density'), t(tr, 'caluanie.tech_density_val')],
+  [t(tr, 'caluanie.tech_ph'), t(tr, 'caluanie.tech_ph_val')],
+  [t(tr, 'caluanie.tech_solubility'), t(tr, 'caluanie.tech_solubility_val')],
+  [t(tr, 'caluanie.tech_shelf'), t(tr, 'caluanie.tech_shelf_val')],
+  [t(tr, 'caluanie.tech_packs'), t(tr, 'caluanie.tech_packs_val')],
+  [t(tr, 'caluanie.tech_storage'), t(tr, 'caluanie.tech_storage_val')],
+  [t(tr, 'caluanie.tech_origin'), t(tr, 'caluanie.tech_origin_val')],
+];
+const overviewFeatures = [
+  { title: t(tr, 'caluanie.overview_feat1_title'), description: t(tr, 'caluanie.overview_feat1_desc') },
+  { title: t(tr, 'caluanie.overview_feat2_title'), description: t(tr, 'caluanie.overview_feat2_desc') },
+  { title: t(tr, 'caluanie.overview_feat3_title'), description: t(tr, 'caluanie.overview_feat3_desc') },
+];
+const benefitItems = [
+  { title: t(tr, 'caluanie.ben1_title'), description: t(tr, 'caluanie.ben1_desc') },
+  { title: t(tr, 'caluanie.ben2_title'), description: t(tr, 'caluanie.ben2_desc') },
+  { title: t(tr, 'caluanie.ben3_title'), description: t(tr, 'caluanie.ben3_desc') },
+  { title: t(tr, 'caluanie.ben4_title'), description: t(tr, 'caluanie.ben4_desc') },
+];
+const safetyItems = [
+  t(tr, 'caluanie.safety1'),
+  t(tr, 'caluanie.safety2'),
+  t(tr, 'caluanie.safety3'),
+  t(tr, 'caluanie.safety4'),
+];
+const faqItems = [
+  { question: t(tr, 'caluanie.faq1_q'), answer: t(tr, 'caluanie.faq1_a') },
+  { question: t(tr, 'caluanie.faq2_q'), answer: t(tr, 'caluanie.faq2_a') },
+  { question: t(tr, 'caluanie.faq3_q'), answer: t(tr, 'caluanie.faq3_a') },
+  { question: t(tr, 'caluanie.faq4_q'), answer: t(tr, 'caluanie.faq4_a') },
+  { question: t(tr, 'caluanie.faq5_q'), answer: t(tr, 'caluanie.faq5_a') },
+  { question: t(tr, 'caluanie.faq6_q'), answer: t(tr, 'caluanie.faq6_a') },
+  { question: t(tr, 'caluanie.faq7_q'), answer: t(tr, 'caluanie.faq7_a') },
+  { question: t(tr, 'caluanie.faq8_q'), answer: t(tr, 'caluanie.faq8_a') },
+];
 
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "Caluanie Muelear Oxidize",
-  "description": "Premium-quality Caluanie Muelear Oxidize for industrial metalworking, refining, and crushing applications. High-density formula manufactured in Thailand.",
+  "name": t(tr, 'nav.caluanie'),
+  "description": t(tr, 'caluanie.meta_desc'),
   "brand": { "@type": "Brand", "name": "UE Chemicals" },
   "manufacturer": { "@type": "Organization", "name": "UE Chemicals", "address": { "@type": "PostalAddress", "addressLocality": "Bangkok", "addressCountry": "TH" } },
   "sku": "UEC-CMO-HQ",
   "additionalProperty": [
-    { "@type": "PropertyValue", "name": "Type", "value": "Liquid Oxidizer" },
-    { "@type": "PropertyValue", "name": "Application", "value": "Metalworking & Refining" },
-    { "@type": "PropertyValue", "name": "Density", "value": "1.86 g/cm³" }
+    { "@type": "PropertyValue", "name": t(tr, 'caluanie.spec_type_label'), "value": t(tr, 'caluanie.spec_type') },
+    { "@type": "PropertyValue", "name": t(tr, 'caluanie.spec_app_label'), "value": t(tr, 'caluanie.spec_app') },
+    { "@type": "PropertyValue", "name": t(tr, 'caluanie.tech_density'), "value": t(tr, 'caluanie.tech_density_val') }
   ],
   "offers": {
     "@type": "Offer",
@@ -20,7 +67,7 @@ const productSchema = {
     "priceCurrency": "USD",
     "price": "0",
     "priceValidUntil": "2026-12-31",
-    "url": "https://useful-chemicals.com/products/caluanie",
+    "url": `https://useful-chemicals.com${lp('/products/caluanie')}`,
     "seller": { "@type": "Organization", "name": "UE Chemicals" }
   }
 };
@@ -28,47 +75,41 @@ const productSchema = {
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "What is Caluanie Muelear Oxidize?", "acceptedAnswer": { "@type": "Answer", "text": "Caluanie Muelear Oxidize is an industrial liquid oxidizer used for metalworking, refining, mineral extraction, and chemical manufacturing. It is a high-density chemical compound that breaks down metal structures, making it essential for crushing and processing operations. UE Chemicals manufactures and supplies premium Caluanie Muelear Oxidize from Bangkok, Thailand." } },
-    { "@type": "Question", "name": "Is Caluanie Muelear Oxidize legal?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, Caluanie Muelear Oxidize is a legal industrial chemical when purchased for legitimate purposes such as metalworking, refining, and mineral extraction. Regulations may vary by country. UE Chemicals ensures full compliance with international chemical trade regulations." } },
-    { "@type": "Question", "name": "Is Caluanie Muelear Oxidize real or fake?", "acceptedAnswer": { "@type": "Answer", "text": "Caluanie Muelear Oxidize is a real industrial chemical compound. UE Chemicals supplies authentic, purity-certified Caluanie with Certificate of Analysis (COA) provided with every order. We are a verified manufacturer, not a reseller." } },
-    { "@type": "Question", "name": "Where can I buy Caluanie Muelear Oxidize?", "acceptedAnswer": { "@type": "Answer", "text": "You can buy Caluanie Muelear Oxidize from UE Chemicals at useful-chemicals.com. We offer wholesale and bulk pricing with fast global shipping from Bangkok, Thailand. Contact us for a quote." } },
-    { "@type": "Question", "name": "What is Caluanie Muelear Oxidize used for?", "acceptedAnswer": { "@type": "Answer", "text": "Caluanie Muelear Oxidize is used for metalworking and metal crushing, industrial refining processes, mineral extraction and processing, chemical manufacturing, and breaking down metal structures in recycling operations." } },
-    { "@type": "Question", "name": "Is Caluanie Muelear Oxidize safe to use?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, when handled with proper safety precautions including PPE (gloves, eye protection, protective clothing), Caluanie Muelear Oxidize is safe for industrial use. Always handle in well-ventilated areas and follow recommended safety guidelines." } },
-    { "@type": "Question", "name": "Can you ship Caluanie Muelear Oxidize internationally?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, UE Chemicals ships Caluanie Muelear Oxidize worldwide from Bangkok, Thailand using licensed hazardous materials carriers. We deliver to Europe, Asia, Africa, North America, South America, and Oceania." } },
-    { "@type": "Question", "name": "How should Caluanie Muelear Oxidize be stored?", "acceptedAnswer": { "@type": "Answer", "text": "Store in a cool, dry place away from direct sunlight and incompatible materials. Keep the container tightly sealed when not in use. Follow proper chemical storage guidelines for liquid oxidizers." } },
-    { "@type": "Question", "name": "What is the price of Caluanie Muelear Oxidize?", "acceptedAnswer": { "@type": "Answer", "text": "Caluanie Muelear Oxidize pricing varies based on quantity and shipping destination. UE Chemicals offers competitive wholesale pricing for bulk orders. Contact our sales team at info@useful-chemicals.com for a custom quote." } },
-    { "@type": "Question", "name": "Do you provide a Certificate of Analysis for Caluanie?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, all Caluanie Muelear Oxidize orders come with a detailed Certificate of Analysis (COA) to verify purity and quality standards." } }
-  ]
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": { "@type": "Answer", "text": item.answer }
+  }))
 };
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://useful-chemicals.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://useful-chemicals.com/products" },
-    { "@type": "ListItem", "position": 3, "name": "Caluanie Muelear Oxidize", "item": "https://useful-chemicals.com/products/caluanie" }
+    { "@type": "ListItem", "position": 1, "name": t(tr, 'nav.home'), "item": `https://useful-chemicals.com${lp('/')}` },
+    { "@type": "ListItem", "position": 2, "name": t(tr, 'nav.products'), "item": `https://useful-chemicals.com${lp('/products')}` },
+    { "@type": "ListItem", "position": 3, "name": t(tr, 'nav.caluanie'), "item": `https://useful-chemicals.com${lp('/products/caluanie')}` }
   ]
 };
 ---
 
-<BaseLayout title="Buy Caluanie Muelear Oxidize for Sale | Manufacturer in USA & Thailand" description="Buy Caluanie Muelear Oxidize online from UE Chemicals. Caluanie Muelear Oxidize manufacturer, wholesale supplier. High-density liquid oxidizer for metalworking & refining. Legal, purity certified, fast global shipping." activePage="products" jsonLd={[productSchema, faqSchema, breadcrumbSchema]}>
+
+<BaseLayout lang={lang} title={t(tr, "caluanie.meta_title")} description={t(tr, "caluanie.meta_desc")} activePage="products" jsonLd={[productSchema, faqSchema, breadcrumbSchema]}>
 
   <!-- ========== HERO ========== -->
   <section class="pd-hero">
     <div class="pd-hero-bg">
-      <img src="/images/buy-new-stock-caluanie-muelear-oxidize.jpg" alt="Buy Caluanie Muelear Oxidize for sale - manufacturer and supplier" />
+      <img src="/images/buy-new-stock-caluanie-muelear-oxidize.jpg" alt={t(tr, 'nav.caluanie')} />
       <div class="pd-hero-overlay"></div>
     </div>
     <div class="container pd-hero-inner">
       <div class="pd-hero-content">
-        <div class="pd-hero-badge"><i class="fas fa-vial"></i> Product Details</div>
-        <h1>Caluanie Muelear Oxidize for Sale</h1>
-        <p class="pd-hero-sub">Buy new stock Caluanie Muelear Oxidize — premium-quality liquid oxidizer for industrial metalworking, refining, and mineral extraction. Available wholesale with purity certification and fast global shipping.</p>
+        <div class="pd-hero-badge"><i class="fas fa-vial"></i> {t(tr, 'caluanie.hero_badge')}</div>
+        <h1>{t(tr, "caluanie.hero_title")}</h1>
+        <p class="pd-hero-sub">{t(tr, 'caluanie.hero_sub')}</p>
         <div class="pd-hero-actions">
-          <a href="/contact" class="btn btn-accent">Get a Quote <i class="fas fa-arrow-right"></i></a>
-          <a href="/safety" class="btn btn-outline-white">Safety Info <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact")} class="btn btn-accent">{t(tr, 'common.get_quote')} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/safety")} class="btn btn-outline-white">{t(tr, 'caluanie.safety_label')} <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -79,20 +120,20 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="pd-specs-row">
         <div class="pd-spec-item">
-          <span class="pd-spec-label">Type</span>
-          <span class="pd-spec-value">Liquid Oxidizer</span>
+          <span class="pd-spec-label">{t(tr, 'caluanie.spec_type_label')}</span>
+          <span class="pd-spec-value">{t(tr, "caluanie.spec_type")}</span>
         </div>
         <div class="pd-spec-item">
-          <span class="pd-spec-label">Application</span>
-          <span class="pd-spec-value">Metalworking &amp; Refining</span>
+          <span class="pd-spec-label">{t(tr, 'caluanie.spec_app_label')}</span>
+          <span class="pd-spec-value">{t(tr, "caluanie.spec_app")}</span>
         </div>
         <div class="pd-spec-item">
-          <span class="pd-spec-label">Pricing</span>
-          <span class="pd-spec-value">Request Quote</span>
+          <span class="pd-spec-label">{t(tr, 'caluanie.spec_price_label')}</span>
+          <span class="pd-spec-value">{t(tr, "caluanie.spec_price")}</span>
         </div>
         <div class="pd-spec-item">
-          <span class="pd-spec-label">Availability</span>
-          <span class="pd-spec-value">In Stock</span>
+          <span class="pd-spec-label">{t(tr, 'caluanie.spec_avail_label')}</span>
+          <span class="pd-spec-value">{t(tr, "caluanie.spec_avail")}</span>
         </div>
       </div>
     </div>
@@ -101,35 +142,23 @@ const breadcrumbSchema = {
   <!-- ========== OVERVIEW SPLIT ========== -->
   <section class="pd-overview">
     <div class="pd-overview-image">
-      <img src="/images/caluanie-muelear-oxidize-for-sale.jpg" alt="Caluanie Muelear Oxidize" />
+      <img src="/images/caluanie-muelear-oxidize-for-sale.jpg" alt={t(tr, 'nav.caluanie')} />
     </div>
     <div class="pd-overview-content">
-      <div class="section-label">Overview</div>
-      <h2>What Is Caluanie Muelear Oxidize?</h2>
-      <p>Caluanie Muelear Oxidize is a highly effective chemical used in the processing of metals and minerals. It is a key ingredient in various industrial applications, particularly in the extraction and refining of valuable metals.</p>
-      <p>With our new stock guarantee, you can trust that our product is fresh, reliable, and ready to meet your business needs. Our premium-quality formulation delivers excellent results for businesses across metalworking, chemical manufacturing, and mineral extraction sectors.</p>
+      <div class="section-label">{t(tr, "caluanie.overview_label")}</div>
+      <h2>{t(tr, "caluanie.overview_title")}</h2>
+      <p>{t(tr, 'caluanie.overview_desc1')}</p>
+      <p>{t(tr, 'caluanie.overview_desc2')}</p>
       <div class="pd-overview-features">
-        <div class="pd-overview-feat">
-          <div class="pd-overview-feat-icon"><i class="fas fa-check-circle"></i></div>
-          <div>
-            <h6>Fresh Stock, High Purity</h6>
-            <p>Newly manufactured product with guaranteed purity for optimum performance.</p>
+        {overviewFeatures.map(feature => (
+          <div class="pd-overview-feat">
+            <div class="pd-overview-feat-icon"><i class="fas fa-check-circle"></i></div>
+            <div>
+              <h6>{feature.title}</h6>
+              <p>{feature.description}</p>
+            </div>
           </div>
-        </div>
-        <div class="pd-overview-feat">
-          <div class="pd-overview-feat-icon"><i class="fas fa-check-circle"></i></div>
-          <div>
-            <h6>Reliable Supply</h6>
-            <p>Our stock is regularly replenished, ensuring continuous access to high-quality solutions.</p>
-          </div>
-        </div>
-        <div class="pd-overview-feat">
-          <div class="pd-overview-feat-icon"><i class="fas fa-check-circle"></i></div>
-          <div>
-            <h6>Trusted Supplier</h6>
-            <p>Years of experience in the industrial chemical market make us your reliable partner.</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -139,25 +168,16 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="pd-tech-grid">
         <div class="pd-tech-content">
-          <div class="section-label">Technical Data</div>
-          <h2>Product Specifications</h2>
-          <p>Detailed technical specifications for Caluanie Muelear Oxidize as verified by our quality control laboratory.</p>
+          <div class="section-label">{t(tr, "caluanie.tech_label")}</div>
+          <h2>{t(tr, "caluanie.tech_title")}</h2>
+          <p>{t(tr, 'caluanie.tech_desc')}</p>
         </div>
         <div class="pd-tech-table-wrap">
           <table class="pd-tech-table">
             <tbody>
-              <tr><td>Product Name</td><td>Caluanie Muelear Oxidize</td></tr>
-              <tr><td>Type</td><td>Heavy Water / Liquid Oxidizer</td></tr>
-              <tr><td>Appearance</td><td>Clear to slightly amber liquid</td></tr>
-              <tr><td>Application</td><td>Metalworking, Refining, Processing</td></tr>
-              <tr><td>Oxidizing Power</td><td>Premium Industrial Grade</td></tr>
-              <tr><td>Density</td><td>~1.2 g/cm³</td></tr>
-              <tr><td>pH</td><td>Acidic</td></tr>
-              <tr><td>Solubility</td><td>Miscible with water</td></tr>
-              <tr><td>Shelf Life</td><td>24 months from manufacture</td></tr>
-              <tr><td>Pack Sizes</td><td>1 L, 5 L, 10 L, 25 L, 200 L drums</td></tr>
-              <tr><td>Storage</td><td>Cool, dry, well-ventilated area</td></tr>
-              <tr><td>Origin</td><td>Bangkok, Thailand</td></tr>
+              {techSpecs.map(([label, value]) => (
+                <tr><td>{label}</td><td>{value}</td></tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -166,26 +186,26 @@ const breadcrumbSchema = {
         <div class="pd-doc-card">
           <i class="fas fa-file-pdf"></i>
           <div>
-            <h5>Technical Data Sheet (TDS)</h5>
-            <p>Complete product specifications and properties.</p>
+            <h5>{t(tr, 'caluanie.doc_tds_title')}</h5>
+            <p>{t(tr, 'caluanie.doc_tds_desc')}</p>
           </div>
-          <a href="/docs/caluanie/UE-Chemicals-Caluanie-Muelear-Oxidize-TDS.pdf" download class="btn btn-outline btn-sm">Download TDS <i class="fas fa-download"></i></a>
+          <a href="/docs/caluanie/UE-Chemicals-Caluanie-Muelear-Oxidize-TDS.pdf" download class="btn btn-outline btn-sm">{t(tr, 'caluanie.download_tds')} <i class="fas fa-download"></i></a>
         </div>
         <div class="pd-doc-card">
           <i class="fas fa-file-shield"></i>
           <div>
-            <h5>Safety Data Sheet (SDS)</h5>
-            <p>Hazard identification, handling, and emergency procedures.</p>
+            <h5>{t(tr, 'caluanie.doc_sds_title')}</h5>
+            <p>{t(tr, 'caluanie.doc_sds_desc')}</p>
           </div>
-          <a href="/docs/caluanie/UE-Chemicals-Caluanie-Muelear-Oxidize-SDS.pdf" download class="btn btn-outline btn-sm">Download SDS <i class="fas fa-download"></i></a>
+          <a href="/docs/caluanie/UE-Chemicals-Caluanie-Muelear-Oxidize-SDS.pdf" download class="btn btn-outline btn-sm">{t(tr, 'caluanie.download_sds')} <i class="fas fa-download"></i></a>
         </div>
         <div class="pd-doc-card">
           <i class="fas fa-file-certificate"></i>
           <div>
-            <h5>Certificate of Analysis (COA)</h5>
-            <p>Batch-specific purity and quality verification.</p>
+            <h5>{t(tr, 'caluanie.doc_coa_title')}</h5>
+            <p>{t(tr, 'caluanie.doc_coa_desc')}</p>
           </div>
-          <a href="/docs/caluanie/UE-Chemicals-Caluanie-Muelear-Oxidize-COA.pdf" download class="btn btn-outline btn-sm">Download COA <i class="fas fa-download"></i></a>
+          <a href="/docs/caluanie/UE-Chemicals-Caluanie-Muelear-Oxidize-COA.pdf" download class="btn btn-outline btn-sm">{t(tr, 'caluanie.download_coa')} <i class="fas fa-download"></i></a>
         </div>
       </div>
     </div>
@@ -195,24 +215,24 @@ const breadcrumbSchema = {
   <section class="pd-apps">
     <div class="container">
       <div class="text-center" style="margin-bottom:60px;">
-        <div class="section-label">Applications</div>
-        <h2>Industrial Applications</h2>
+        <div class="section-label">{t(tr, "caluanie.apps_label")}</div>
+        <h2>{t(tr, "caluanie.apps_title")}</h2>
       </div>
       <div class="pd-apps-grid">
         <div class="pd-app-card">
           <div class="pd-app-num">01</div>
-          <h5>Metalworking &amp; Refining</h5>
-          <p>Widely used to improve metalworking processes by breaking down metals efficiently, reducing labor and time costs. Its strong oxidation properties enable industries to refine metals with precision.</p>
+          <h5>{t(tr, "caluanie.app1_title")}</h5>
+          <p>{t(tr, 'caluanie.app1_desc')}</p>
         </div>
         <div class="pd-app-card">
           <div class="pd-app-num">02</div>
-          <h5>Chemical Manufacturing</h5>
-          <p>An essential component in chemical manufacturing processes, serving as a catalyst and processing agent for various industrial chemical reactions.</p>
+          <h5>{t(tr, "caluanie.app2_title")}</h5>
+          <p>{t(tr, 'caluanie.app2_desc')}</p>
         </div>
         <div class="pd-app-card">
           <div class="pd-app-num">03</div>
-          <h5>Mineral Extraction</h5>
-          <p>Plays a key role in mineral extraction and processing operations, helping to break down and separate valuable minerals from raw materials efficiently.</p>
+          <h5>{t(tr, "caluanie.app3_title")}</h5>
+          <p>{t(tr, 'caluanie.app3_desc')}</p>
         </div>
       </div>
     </div>
@@ -223,39 +243,20 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="pd-benefits-grid">
         <div class="pd-benefits-content">
-          <div class="section-label">Why Buy From Us</div>
-          <h2>Benefits of Choosing<br />UE Chemicals</h2>
-          <p>We combine premium quality with exceptional service to ensure your operations run smoothly and efficiently.</p>
+          <div class="section-label">{t(tr, "caluanie.benefits_label")}</div>
+          <h2>{t(tr, 'caluanie.benefits_title')}</h2>
+          <p>{t(tr, 'caluanie.benefits_desc')}</p>
         </div>
         <div class="pd-benefits-cards">
-          <div class="pd-benefit-card">
-            <div class="pd-benefit-num">01</div>
-            <div>
-              <h5>Fast &amp; Secure Shipping</h5>
-              <p>Order with confidence and have your chemicals delivered safely and on time to any destination worldwide.</p>
+          {benefitItems.map((item, index) => (
+            <div class="pd-benefit-card">
+              <div class="pd-benefit-num">{String(index + 1).padStart(2, '0')}</div>
+              <div>
+                <h5>{item.title}</h5>
+                <p>{item.description}</p>
+              </div>
             </div>
-          </div>
-          <div class="pd-benefit-card">
-            <div class="pd-benefit-num">02</div>
-            <div>
-              <h5>Expert Support</h5>
-              <p>Our team is ready to assist you with any questions or concerns regarding the use or handling of our products.</p>
-            </div>
-          </div>
-          <div class="pd-benefit-card">
-            <div class="pd-benefit-num">03</div>
-            <div>
-              <h5>Competitive Pricing</h5>
-              <p>Get the best value for your money with our reasonable pricing on premium stock products.</p>
-            </div>
-          </div>
-          <div class="pd-benefit-card">
-            <div class="pd-benefit-num">04</div>
-            <div>
-              <h5>Full Documentation</h5>
-              <p>Every order ships with Certificate of Analysis (COA) and Safety Data Sheets (SDS) for complete traceability.</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
@@ -266,27 +267,20 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="pd-safety-inner">
         <div class="pd-safety-text">
-          <div class="section-label">Safety &amp; Handling</div>
-          <h2>Handling Information</h2>
-          <p>Our product meets all the necessary legal and safety requirements. Follow these guidelines for safe use:</p>
+          <div class="section-label">{t(tr, "caluanie.safety_label")}</div>
+          <h2>{t(tr, "caluanie.safety_title")}</h2>
+          <p>{t(tr, 'caluanie.safety_desc')}</p>
         </div>
         <div class="pd-safety-items">
-          <div class="pd-safety-item">
-            <i class="fas fa-shield-halved"></i>
-            <span>Always wear protective gloves and eyewear when handling the chemical.</span>
-          </div>
-          <div class="pd-safety-item">
-            <i class="fas fa-box"></i>
-            <span>Store in a cool, dry place, away from direct sunlight and incompatible materials.</span>
-          </div>
-          <div class="pd-safety-item">
-            <i class="fas fa-wind"></i>
-            <span>Handle in a well-ventilated area to minimize the risk of inhaling fumes.</span>
-          </div>
-          <div class="pd-safety-item">
-            <i class="fas fa-file-lines"></i>
-            <span>Follow local regulations for safe storage and disposal of industrial chemicals.</span>
-          </div>
+          {safetyItems.map((item, index) => (
+            <div class="pd-safety-item">
+              <i class:list={[
+                'fas',
+                index === 0 ? 'fa-shield-halved' : index === 1 ? 'fa-box' : index === 2 ? 'fa-wind' : 'fa-file-lines'
+              ]}></i>
+              <span>{item}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -297,27 +291,27 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="pd-quote-grid">
         <div class="pd-quote-text">
-          <div class="section-label">Get Started</div>
-          <h2>Request a Quote</h2>
-          <p>Ready to order Caluanie Muelear Oxidize? Fill out the form and our team will respond with a customized quote within 24 hours.</p>
+          <div class="section-label">{t(tr, "caluanie.quote_label")}</div>
+          <h2>{t(tr, "caluanie.quote_title")}</h2>
+          <p>{t(tr, 'caluanie.quote_desc')}</p>
           <div class="pd-quote-badges">
-            <div class="pd-quote-badge"><i class="fas fa-clock"></i> 24hr Response</div>
-            <div class="pd-quote-badge"><i class="fas fa-lock"></i> Secure &amp; Private</div>
-            <div class="pd-quote-badge"><i class="fas fa-certificate"></i> COA Included</div>
+            <div class="pd-quote-badge"><i class="fas fa-clock"></i> {t(tr, 'caluanie.quote_badge1')}</div>
+            <div class="pd-quote-badge"><i class="fas fa-lock"></i> {t(tr, 'caluanie.quote_badge2')}</div>
+            <div class="pd-quote-badge"><i class="fas fa-certificate"></i> {t(tr, 'caluanie.quote_badge3')}</div>
           </div>
         </div>
         <div class="pd-quote-form-wrap">
           <form>
             <div class="form-group">
-              <label>Full Name</label>
-              <input type="text" name="name" class="form-control" placeholder="Your full name" required>
+              <label>{t(tr, 'caluanie.form_name')}</label>
+              <input type="text" name="name" class="form-control" placeholder={t(tr, 'caluanie.form_placeholder_name')} required>
             </div>
             <div class="form-group">
-              <label>Email Address</label>
-              <input type="email" name="email" class="form-control" placeholder="Your email address" required>
+              <label>{t(tr, 'caluanie.form_email')}</label>
+              <input type="email" name="email" class="form-control" placeholder={t(tr, 'caluanie.form_placeholder_email')} required>
             </div>
             <div class="form-group">
-              <label>Phone Number</label>
+              <label>{t(tr, 'caluanie.form_phone')}</label>
               <div class="phone-input">
                 <select class="form-control">
                   <option>+49 DE</option>
@@ -326,15 +320,15 @@ const breadcrumbSchema = {
                   <option>+61 AU</option>
                   <option>+33 FR</option>
                 </select>
-                <input type="tel" name="phone" class="form-control" placeholder="Phone number">
+                <input type="tel" name="phone" class="form-control" placeholder={t(tr, 'caluanie.form_placeholder_phone')}>
               </div>
             </div>
-            <input type="hidden" name="product" value="Caluanie Muelear Oxidize">
+            <input type="hidden" name="product" value={t(tr, 'nav.caluanie')}>
             <div class="form-group">
-              <label>Message</label>
-              <textarea name="message" class="form-control" placeholder="Tell us about your desired quantity, intended use, delivery location, or any special requirements..." rows="4"></textarea>
+              <label>{t(tr, 'caluanie.form_message')}</label>
+              <textarea name="message" class="form-control" placeholder={t(tr, 'caluanie.form_placeholder_message')} rows="4"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Request Quote <i class="fas fa-arrow-right"></i></button>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">{t(tr, 'caluanie.form_submit')} <i class="fas fa-arrow-right"></i></button>
           </form>
         </div>
       </div>
@@ -346,45 +340,19 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="faq-row">
         <div class="faq-content-col">
-          <div class="section-label">Common Questions</div>
-          <h2 class="section-title">Frequently Asked Questions</h2>
+          <div class="section-label">{t(tr, "caluanie.faq_label")}</div>
+          <h2 class="section-title">{t(tr, "caluanie.faq_title")}</h2>
           <div class="faq-list">
-            <div class="faq-item">
-              <div class="faq-question">Is Caluanie Muelear Oxidize safe to use? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">Yes, when handled with the proper safety precautions, Caluanie Muelear Oxidize is safe for industrial use. Be sure to follow recommended safety guidelines for handling and storage.</div></div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-question">What industries use this product? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">It is widely used in metalworking, mineral extraction, chemical manufacturing, and refining industries.</div></div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-question">Can you ship internationally? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">Yes, we offer international shipping services. Please contact our team for specific delivery options and estimated timelines for your region.</div></div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-question">How should it be stored? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">Store in a cool, dry place away from direct sunlight and incompatible materials. Keep the container tightly sealed when not in use.</div></div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-question">Does it require special handling? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">Yes, always wear appropriate PPE including gloves and eye protection. Handle in well-ventilated areas and follow local safety regulations.</div></div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-question">Do you offer bulk discounts? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">Yes, we offer competitive pricing for bulk orders. Contact our sales team for custom quantities and special requirements.</div></div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-question">How quickly can I receive my order? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">Delivery times vary based on location and product availability. Estimated timelines will be provided when your order is confirmed.</div></div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-question">Do you provide a Certificate of Analysis? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">Yes, all our products come with detailed Certificates of Analysis to verify purity and quality standards.</div></div>
-            </div>
+            {faqItems.map(item => (
+              <div class="faq-item">
+                <div class="faq-question">{item.question} <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer"><div class="faq-answer-inner">{item.answer}</div></div>
+              </div>
+            ))}
           </div>
         </div>
         <div class="faq-image-col">
-          <img src="/images/buy-new-stock-caluanie-muelear-oxidize-usa.png" alt="Caluanie Muelear Oxidize" />
+          <img src="/images/buy-new-stock-caluanie-muelear-oxidize-usa.png" alt={t(tr, 'nav.caluanie')} />
         </div>
       </div>
     </div>

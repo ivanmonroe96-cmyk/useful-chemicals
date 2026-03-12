@@ -1,19 +1,44 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations } from '../i18n/index';
+import { defaultLang } from '../i18n/languages';
+
+const lang = defaultLang;
+const tr = getTranslations(lang);
+const impressum = tr.impressum;
+const tocItems = [
+  { id: 'company', label: impressum.toc_company },
+  { id: 'contact', label: impressum.toc_contact },
+  { id: 'represented', label: impressum.toc_represented },
+  { id: 'responsible', label: impressum.toc_responsible },
+  { id: 'dispute', label: impressum.toc_dispute },
+  { id: 'liability-content', label: impressum.toc_liability_content },
+  { id: 'liability-links', label: impressum.toc_liability_links },
+  { id: 'copyright', label: impressum.toc_copyright },
+  { id: 'regulatory', label: impressum.toc_regulatory },
+];
+const regulatoryItems = [
+  { title: impressum.reg1_title, desc: impressum.reg1_desc },
+  { title: impressum.reg2_title, desc: impressum.reg2_desc },
+  { title: impressum.reg3_title, desc: impressum.reg3_desc },
+  { title: impressum.reg4_title, desc: impressum.reg4_desc },
+  { title: impressum.reg5_title, desc: impressum.reg5_desc },
+  { title: impressum.reg6_title, desc: impressum.reg6_desc },
+];
 ---
 
-<BaseLayout title="Impressum – Legal Notice" description="Impressum (Legal Notice) for UE Chemicals in Bangkok, Thailand, as required by § 5 TMG. Company information, contact details, and regulatory disclosures." activePage="">
+<BaseLayout lang={lang} title={impressum.meta_title} description={impressum.meta_desc} activePage="">
 
   <!-- ========== HERO ========== -->
   <section class="lg-hero">
     <div class="lg-hero-bg"></div>
     <div class="container lg-hero-inner">
-      <div class="lg-hero-badge"><i class="fas fa-building-columns"></i> Legal Notice</div>
-      <h1>Impressum</h1>
-      <p class="lg-hero-sub">Legal notice as required by § 5 TMG (Telemediengesetz) — German Telemedia Act.</p>
+      <div class="lg-hero-badge"><i class="fas fa-building-columns"></i> {impressum.hero_badge}</div>
+      <h1>{impressum.title}</h1>
+      <p class="lg-hero-sub">{impressum.hero_sub}</p>
       <div class="lg-hero-meta">
-        <span><i class="fas fa-location-dot"></i> Bangkok, Thailand</span>
-        <span><i class="fas fa-scale-balanced"></i> § 5 TMG</span>
+        <span><i class="fas fa-location-dot"></i> {impressum.location}</span>
+        <span><i class="fas fa-scale-balanced"></i> {impressum.tmg}</span>
       </div>
     </div>
   </section>
@@ -26,17 +51,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <!-- Sidebar -->
         <aside class="lg-sidebar">
           <div class="lg-toc">
-            <h4>Sections</h4>
+            <h4>{impressum.sections}</h4>
             <nav>
-              <a href="#company">Company Information</a>
-              <a href="#contact">Contact</a>
-              <a href="#represented">Represented by</a>
-              <a href="#responsible">Content Responsibility</a>
-              <a href="#dispute">EU Dispute Resolution</a>
-              <a href="#liability-content">Liability for Content</a>
-              <a href="#liability-links">Liability for Links</a>
-              <a href="#copyright">Copyright</a>
-              <a href="#regulatory">Regulatory Compliance</a>
+              {tocItems.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}
             </nav>
           </div>
         </aside>
@@ -46,31 +63,31 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <div class="lg-section" id="company">
             <div class="lg-section-num">01</div>
-            <h3>Company Information</h3>
+            <h3>{impressum.company_title}</h3>
             <div class="im-company-card">
               <div class="im-company-logo"><i class="fas fa-flask"></i></div>
               <div>
-                <strong>UE Chemicals</strong>
-                <p>Bangkok, 10110<br />Thailand</p>
+                <strong>{impressum.company_name}</strong>
+                <p>{impressum.company_address}<br />{impressum.company_country}</p>
               </div>
             </div>
           </div>
 
           <div class="lg-section" id="contact">
             <div class="lg-section-num">02</div>
-            <h3>Contact</h3>
+            <h3>{impressum.contact_title}</h3>
             <div class="im-contact-grid">
               <div class="im-contact-item">
                 <i class="fas fa-envelope"></i>
                 <div>
-                  <span class="im-contact-label">Email</span>
+                  <span class="im-contact-label">{impressum.email_label}</span>
                   <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a>
                 </div>
               </div>
               <div class="im-contact-item">
                 <i class="fas fa-globe"></i>
                 <div>
-                  <span class="im-contact-label">Website</span>
+                  <span class="im-contact-label">{impressum.website_label}</span>
                   <a href="https://useful-chemicals.com">useful-chemicals.com</a>
                 </div>
               </div>
@@ -79,73 +96,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <div class="lg-section" id="represented">
             <div class="lg-section-num">03</div>
-            <h3>Represented by</h3>
-            <p>Managing Director: UE Chemicals Management</p>
+            <h3>{impressum.represented_title}</h3>
+            <p>{impressum.represented_desc}</p>
           </div>
 
           <div class="lg-section" id="responsible">
             <div class="lg-section-num">04</div>
-            <h3>Responsible for Content (§ 18 Abs. 2 MStV)</h3>
-            <p>UE Chemicals<br />Bangkok, 10110, Thailand</p>
+            <h3>{impressum.responsible_title}</h3>
+            <p set:html={impressum.responsible_desc.replace(/\n/g, '<br />')}></p>
           </div>
 
           <div class="lg-section" id="dispute">
             <div class="lg-section-num">05</div>
-            <h3>EU Dispute Resolution</h3>
-            <p>The European Commission provides a platform for online dispute resolution (ODR): <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a></p>
-            <p>We are neither obligated nor willing to participate in dispute resolution proceedings before a consumer arbitration board.</p>
+            <h3>{impressum.dispute_title}</h3>
+            <p>{impressum.dispute_desc1} <a href="https://ec.europa.eu/consumers/odr" target="_blank" rel="noopener noreferrer">https://ec.europa.eu/consumers/odr</a></p>
+            <p>{impressum.dispute_desc2}</p>
           </div>
 
           <div class="lg-section" id="liability-content">
             <div class="lg-section-num">06</div>
-            <h3>Liability for Content</h3>
-            <p>As a service provider, we are responsible for our own content on these pages in accordance with § 7 Abs. 1 TMG (German Telemedia Act). However, according to §§ 8 to 10 TMG, we are not obligated to monitor transmitted or stored external information or to investigate circumstances that indicate illegal activity.</p>
-            <p>Obligations to remove or block the use of information under general laws remain unaffected. However, liability in this regard is only possible from the time of knowledge of a concrete violation. Upon becoming aware of any such legal violations, we will remove the content immediately.</p>
+            <h3>{impressum.liability_content_title}</h3>
+            <p>{impressum.liability_content_desc1}</p>
+            <p>{impressum.liability_content_desc2}</p>
           </div>
 
           <div class="lg-section" id="liability-links">
             <div class="lg-section-num">07</div>
-            <h3>Liability for Links</h3>
-            <p>Our website may contain links to external third-party websites over whose content we have no influence. We therefore cannot accept any liability for this third-party content. The respective provider or operator of the linked pages is always responsible for the content of the linked pages. The linked pages were checked for possible legal violations at the time of linking. No illegal content was recognizable at the time of linking.</p>
-            <p>Permanent monitoring of the linked pages is unreasonable without concrete evidence of a legal violation. If we become aware of any infringements, we will remove the relevant links immediately.</p>
+            <h3>{impressum.liability_links_title}</h3>
+            <p>{impressum.liability_links_desc1}</p>
+            <p>{impressum.liability_links_desc2}</p>
           </div>
 
           <div class="lg-section" id="copyright">
             <div class="lg-section-num">08</div>
-            <h3>Copyright</h3>
-            <p>The content and works on these pages created by the site operators are subject to German copyright law. Duplication, editing, distribution, and any kind of use beyond the limits of copyright law require the written consent of the respective author or creator. Downloads and copies of this site are only permitted for private, non-commercial use.</p>
-            <p>Insofar as the content on this site was not created by the operator, the copyrights of third parties are respected. In particular, third-party content is marked as such. Should you nevertheless become aware of a copyright infringement, please notify us accordingly. If we become aware of any infringements, we will remove the relevant content immediately.</p>
+            <h3>{impressum.copyright_title}</h3>
+            <p>{impressum.copyright_desc1}</p>
+            <p>{impressum.copyright_desc2}</p>
           </div>
 
           <div class="lg-section" id="regulatory">
             <div class="lg-section-num">09</div>
-            <h3>Regulatory Compliance</h3>
-            <p>UE Chemicals operates in compliance with the following regulations:</p>
+            <h3>{impressum.regulatory_title}</h3>
+            <p>{impressum.regulatory_intro}</p>
             <div class="im-reg-grid">
-              <div class="im-reg-item">
-                <strong>EU REACH</strong>
-                <span>(EC 1907/2006) — Registration, Evaluation, Authorisation and Restriction of Chemicals</span>
-              </div>
-              <div class="im-reg-item">
-                <strong>Mercury Regulation</strong>
-                <span>(EU 2017/852) — Regulation on mercury and repealing Regulation (EC) No 1102/2008</span>
-              </div>
-              <div class="im-reg-item">
-                <strong>CLP Regulation</strong>
-                <span>(EC 1272/2008) — Classification, Labelling and Packaging of substances and mixtures</span>
-              </div>
-              <div class="im-reg-item">
-                <strong>ADR</strong>
-                <span>European Agreement concerning the International Carriage of Dangerous Goods by Road</span>
-              </div>
-              <div class="im-reg-item">
-                <strong>IMDG Code</strong>
-                <span>International Maritime Dangerous Goods Code for sea transport</span>
-              </div>
-              <div class="im-reg-item">
-                <strong>GDPR</strong>
-                <span>(EU 2016/679) — General Data Protection Regulation</span>
-              </div>
+              {regulatoryItems.map((item) => (
+                <div class="im-reg-item">
+                  <strong>{item.title}</strong>
+                  <span>{item.desc}</span>
+                </div>
+              ))}
             </div>
           </div>
 

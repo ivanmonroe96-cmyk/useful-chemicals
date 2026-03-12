@@ -1,4 +1,7 @@
 ---
+import { languages, defaultLang } from '../i18n/languages';
+import { getTranslations, t, localizedPath } from '../i18n/index';
+
 interface Props {
   title: string;
   description?: string;
@@ -6,21 +9,58 @@ interface Props {
   ogImage?: string;
   canonicalPath?: string;
   jsonLd?: object | object[];
+  lang?: string;
 }
 
 const {
   title,
-  description = 'Buy Caluanie Muelear Oxidize, Red Mercury & Silver Mercury from UE Chemicals in Bangkok, Thailand. Purity certified, global shipping. Trusted chemical supplier.',
+  description,
   activePage = '',
   ogImage = '/images/caluanie-muelear-oxidize-manufacturer-in-usa.webp',
   canonicalPath,
   jsonLd,
+  lang = defaultLang,
 } = Astro.props;
 
+const tr = getTranslations(lang);
 const siteUrl = 'https://useful-chemicals.com';
-const canonical = canonicalPath ? `${siteUrl}${canonicalPath}` : `${siteUrl}${Astro.url.pathname}`;
+const pagePath = canonicalPath || Astro.url.pathname;
+const canonical = `${siteUrl}${pagePath}`;
 const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 const fullTitle = `${title} | UE Chemicals`;
+const metaDescription = description || t(tr, 'site.default_description');
+const currentLanguage = languages.find(language => language.code === lang);
+const ogLocales: Record<string, string> = {
+  en: 'en_US',
+  de: 'de_DE',
+  fr: 'fr_FR',
+  es: 'es_ES',
+  it: 'it_IT',
+  pt: 'pt_PT',
+  ru: 'ru_RU',
+  zh: 'zh_CN',
+  ja: 'ja_JP',
+  ko: 'ko_KR',
+  ar: 'ar_SA',
+  hi: 'hi_IN',
+  tr: 'tr_TR',
+  pl: 'pl_PL',
+  nl: 'nl_NL',
+  el: 'el_GR',
+  he: 'he_IL',
+  th: 'th_TH',
+  uk: 'uk_UA',
+};
+const uiLabels = {
+  formSending: t(tr, 'ui.form_sending'),
+  formSent: t(tr, 'ui.form_sent'),
+  formError: t(tr, 'ui.form_error'),
+};
+
+// Determine the "clean" path (without lang prefix) for hreflang generation
+const cleanPath = pagePath.replace(new RegExp(`^/(${languages.filter(l => l.code !== defaultLang).map(l => l.code).join('|')})/`), '/').replace(new RegExp(`^/(${languages.filter(l => l.code !== defaultLang).map(l => l.code).join('|')})$`), '/');
+
+const langDir = languages.find(l => l.code === lang)?.dir || 'ltr';
 
 const orgSchema = {
   "@context": "https://schema.org",
@@ -28,7 +68,7 @@ const orgSchema = {
   "name": "UE Chemicals",
   "url": siteUrl,
   "logo": `${siteUrl}/images/favicon.png`,
-  "description": "Industrial chemical manufacturer and supplier based in Bangkok, Thailand. Specializing in Caluanie Muelear Oxidize, Red Liquid Mercury, and Silver Liquid Mercury for metalworking, refining, research, and industrial applications.",
+  "description": t(tr, 'site.organization_description'),
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Bangkok",
@@ -40,7 +80,7 @@ const orgSchema = {
     "@type": "ContactPoint",
     "contactType": "sales",
     "email": "info@useful-chemicals.com",
-    "availableLanguage": "English"
+    "availableLanguage": currentLanguage?.name || 'English'
   },
   "sameAs": []
 };
@@ -50,10 +90,10 @@ const websiteSchema = {
   "@type": "WebSite",
   "name": "UE Chemicals",
   "url": siteUrl,
-  "description": "Buy Caluanie Muelear Oxidize, Red Liquid Mercury and Silver Liquid Mercury from UE Chemicals. Industrial chemical manufacturer and supplier in Bangkok, Thailand.",
+  "description": t(tr, 'site.website_description'),
   "potentialAction": {
     "@type": "SearchAction",
-    "target": `${siteUrl}/?s={search_term_string}`,
+    "target": `${siteUrl}${localizedPath('/', lang)}?s={search_term_string}`,
     "query-input": "required name=search_term_string"
   }
 };
@@ -70,27 +110,27 @@ import '../styles/global.css';
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang={lang} dir={langDir}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{fullTitle}</title>
-  <meta name="description" content={description} />
+  <meta name="description" content={metaDescription} />
   <link rel="canonical" href={canonical} />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content={fullTitle} />
-  <meta property="og:description" content={description} />
+  <meta property="og:description" content={metaDescription} />
   <meta property="og:url" content={canonical} />
   <meta property="og:image" content={fullOgImage} />
   <meta property="og:site_name" content="UE Chemicals" />
-  <meta property="og:locale" content="en_US" />
+  <meta property="og:locale" content={ogLocales[lang] || 'en_US'} />
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={fullTitle} />
-  <meta name="twitter:description" content={description} />
+  <meta name="twitter:description" content={metaDescription} />
   <meta name="twitter:image" content={fullOgImage} />
 
   <!-- Geo Tags -->
@@ -100,8 +140,10 @@ import '../styles/global.css';
   <meta name="ICBM" content="13.7563, 100.5018" />
 
   <!-- Hreflang -->
-  <link rel="alternate" hreflang="en" href={canonical} />
-  <link rel="alternate" hreflang="x-default" href={canonical} />
+  <link rel="alternate" hreflang="x-default" href={`${siteUrl}${cleanPath}`} />
+  {languages.map(l => (
+    <link rel="alternate" hreflang={l.code} href={`${siteUrl}${l.code === defaultLang ? cleanPath : `/${l.code}${cleanPath === '/' ? '' : cleanPath}`}`} />
+  ))}
 
   <link rel="icon" type="image/webp" href="/images/favicon.png" />
   <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
@@ -112,20 +154,20 @@ import '../styles/global.css';
 
   <!-- Structured Data -->
   {allSchemas.map(schema => (
-    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(schema)} />
   ))}
 </head>
-<body>
-  <Header activePage={activePage} />
+<body data-ui-labels={JSON.stringify(uiLabels)}>
+  <Header activePage={activePage} lang={lang} />
   <main>
     <slot />
   </main>
-  <Footer />
-  <CookieBanner />
-  <ScrollTop />
+  <Footer lang={lang} />
+  <CookieBanner lang={lang} />
+  <ScrollTop lang={lang} />
 
   <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/66951690848" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">
+  <a href="https://wa.me/66951690848" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label={t(tr, 'site.whatsapp_label')}>
     <i class="fab fa-whatsapp"></i>
   </a>
 

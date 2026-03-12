@@ -1,54 +1,63 @@
 ---
+import { getTranslations, t, localizedPath } from '../i18n/index';
+import { defaultLang } from '../i18n/languages';
+
+interface Props {
+  lang?: string;
+}
+const { lang = defaultLang } = Astro.props;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
 ---
 
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
-        <a href="/" class="logo">
+        <a href={lp("/")} class="logo">
           <img src="/images/logo-white.webp" alt="UE Chemicals" />
         </a>
-        <p>Leading supplier of specialty chemicals for industrial and research applications worldwide.</p>
+        <p>{t(tr, 'footer.brand_desc')}</p>
         <div class="footer-social">
-          <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-          <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          <a href="#" aria-label={t(tr, 'footer.social_facebook')}><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label={t(tr, 'footer.social_twitter')}><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label={t(tr, 'footer.social_linkedin')}><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label={t(tr, 'footer.social_instagram')}><i class="fab fa-instagram"></i></a>
         </div>
       </div>
       <div class="footer-col">
-        <h5>Quick Links</h5>
-        <a href="/about">About Us</a>
-        <a href="/applications">Applications</a>
-        <a href="/safety">Safety Information</a>
-        <a href="/shipping">Shipping & Logistics</a>
-        <a href="/faq">FAQ</a>
-        <a href="/blog">Blog</a>
-        <a href="/wholesale">Wholesale</a>
-        <a href="/certificates">Certificates & Quality</a>
-        <a href="/ordering">Ordering Info</a>
-        <a href="/contact">Contact Us</a>
+        <h5>{t(tr, 'footer.quick_links')}</h5>
+        <a href={lp("/about")}>{t(tr, 'footer.about')}</a>
+        <a href={lp("/applications")}>{t(tr, 'footer.applications')}</a>
+        <a href={lp("/safety")}>{t(tr, 'footer.safety')}</a>
+        <a href={lp("/shipping")}>{t(tr, 'footer.shipping')}</a>
+        <a href={lp("/faq")}>{t(tr, 'footer.faq')}</a>
+        <a href={lp("/blog")}>{t(tr, 'footer.blog')}</a>
+        <a href={lp("/wholesale")}>{t(tr, 'footer.wholesale')}</a>
+        <a href={lp("/certificates")}>{t(tr, 'footer.certificates')}</a>
+        <a href={lp("/ordering")}>{t(tr, 'footer.ordering')}</a>
+        <a href={lp("/contact")}>{t(tr, 'footer.contact')}</a>
       </div>
       <div class="footer-col">
-        <h5>Our Products</h5>
-        <a href="/products/caluanie">Caluanie Muelear Oxidize</a>
-        <a href="/products/red-mercury">Red Mercury</a>
-        <a href="/products/silver-mercury">Silver Mercury</a>
+        <h5>{t(tr, 'footer.our_products')}</h5>
+        <a href={lp("/products/caluanie")}>{t(tr, 'nav.caluanie')}</a>
+        <a href={lp("/products/red-mercury")}>{t(tr, 'nav.red_mercury')}</a>
+        <a href={lp("/products/silver-mercury")}>{t(tr, 'nav.silver_mercury')}</a>
       </div>
       <div class="footer-col">
-        <h5>Contact</h5>
+        <h5>{t(tr, 'footer.contact_heading')}</h5>
         <a href="mailto:info@useful-chemicals.com"><i class="fas fa-envelope"></i> info@useful-chemicals.com</a>
         <a href="https://wa.me/66951690848" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66 951 690 848</a>
-        <a href="#"><i class="fas fa-map-marker-alt"></i> Bangkok, 10110, Thailand</a>
+        <a href="#"><i class="fas fa-map-marker-alt"></i> {t(tr, 'contact.visit_value')}</a>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; {new Date().getFullYear()} UE Chemicals. All Rights Reserved.</p>
+      <p>&copy; {new Date().getFullYear()} {t(tr, 'footer.copyright')}</p>
       <div class="footer-bottom-links">
-        <a href="/privacy-policy">Privacy Policy</a>
-        <a href="/terms-of-service">Terms of Service</a>
-        <a href="/impressum">Impressum</a>
-        <a href="/disclaimer">Disclaimer</a>
+        <a href={lp("/privacy-policy")}>{t(tr, 'footer.privacy')}</a>
+        <a href={lp("/terms-of-service")}>{t(tr, 'footer.terms')}</a>
+        <a href={lp("/impressum")}>{t(tr, 'footer.impressum')}</a>
+        <a href={lp("/disclaimer")}>{t(tr, 'footer.disclaimer')}</a>
       </div>
     </div>
   </div>

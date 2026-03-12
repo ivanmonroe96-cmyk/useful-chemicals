@@ -1,35 +1,61 @@
 ---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import { getTranslations, t, localizedPath } from '../i18n/index';
+import { defaultLang } from '../i18n/languages';
+
 interface Props {
   activePage?: string;
+  lang?: string;
 }
-const { activePage = '' } = Astro.props;
+const { activePage = '', lang = defaultLang } = Astro.props;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+const searchPages = [
+  { title: t(tr, 'nav.home'), url: lp('/'), description: t(tr, 'home.meta_desc') },
+  { title: t(tr, 'nav.about'), url: lp('/about'), description: t(tr, 'about.meta_desc') },
+  { title: t(tr, 'footer.applications'), url: lp('/applications'), description: t(tr, 'applications.meta_desc') },
+  { title: t(tr, 'nav.products'), url: lp('/products'), description: t(tr, 'products.meta_desc') },
+  { title: t(tr, 'nav.caluanie'), url: lp('/products/caluanie'), description: t(tr, 'caluanie.meta_desc') },
+  { title: t(tr, 'nav.red_mercury'), url: lp('/products/red-mercury'), description: t(tr, 'red_mercury.meta_desc') },
+  { title: t(tr, 'nav.silver_mercury'), url: lp('/products/silver-mercury'), description: t(tr, 'silver_mercury.meta_desc') },
+  { title: t(tr, 'footer.ordering'), url: lp('/ordering'), description: t(tr, 'ordering.meta_desc') },
+  { title: t(tr, 'nav.contact'), url: lp('/contact'), description: t(tr, 'contact.meta_desc') },
+  { title: t(tr, 'footer.shipping'), url: lp('/shipping'), description: t(tr, 'shipping.meta_desc') },
+  { title: t(tr, 'nav.faq'), url: lp('/faq'), description: t(tr, 'faq.meta_desc') },
+  { title: t(tr, 'nav.blog'), url: lp('/blog'), description: t(tr, 'blog.meta_desc') },
+  { title: t(tr, 'footer.privacy'), url: lp('/privacy-policy'), description: t(tr, 'privacy.meta_desc') },
+  { title: t(tr, 'footer.terms'), url: lp('/terms-of-service'), description: t(tr, 'terms.meta_desc') },
+  { title: t(tr, 'footer.impressum'), url: lp('/impressum'), description: t(tr, 'impressum.meta_desc') },
+  { title: t(tr, 'footer.disclaimer'), url: lp('/disclaimer'), description: t(tr, 'disclaimer.meta_desc') },
+];
 ---
 
 <header class="header" id="header">
   <div class="container">
-    <a href="/" class="logo">
+    <a href={lp("/")} class="logo">
       <img src="/images/logo.webp" alt="UE Chemicals" />
     </a>
     <nav class="nav" id="nav">
-      <a href="/" class:list={["nav-link", { active: activePage === 'home' }]}>Home</a>
-      <a href="/about" class:list={["nav-link", { active: activePage === 'about' }]}>About</a>
+      <a href={lp("/")} class:list={["nav-link", { active: activePage === 'home' }]}>{t(tr, 'nav.home')}</a>
+      <a href={lp("/about")} class:list={["nav-link", { active: activePage === 'about' }]}>{t(tr, 'nav.about')}</a>
       <div class="nav-dropdown">
-        <a href="/products" class:list={["nav-link", { active: activePage === 'products' }]}>
-          Our Products <i class="fas fa-chevron-down"></i>
+        <a href={lp("/products")} class:list={["nav-link", { active: activePage === 'products' }]}>
+          {t(tr, 'nav.products')} <i class="fas fa-chevron-down"></i>
         </a>
         <div class="dropdown-menu">
-          <a href="/products/caluanie">Caluanie Muelear Oxidize</a>
-          <a href="/products/red-mercury">Red Mercury</a>
-          <a href="/products/silver-mercury">Silver Mercury</a>
+          <a href={lp("/products/caluanie")}>{t(tr, 'nav.caluanie')}</a>
+          <a href={lp("/products/red-mercury")}>{t(tr, 'nav.red_mercury')}</a>
+          <a href={lp("/products/silver-mercury")}>{t(tr, 'nav.silver_mercury')}</a>
         </div>
       </div>
-      <a href="/faq" class:list={["nav-link", { active: activePage === 'faq' }]}>FAQs</a>
-      <a href="/wholesale" class:list={["nav-link", { active: activePage === 'wholesale' }]}>Wholesale</a>
-      <a href="/contact" class:list={["nav-link", { active: activePage === 'contact' }]}>Contact Us</a>
-      <a href="/blog" class:list={["nav-link", { active: activePage === 'blog' }]}>Blog</a>
+      <a href={lp("/faq")} class:list={["nav-link", { active: activePage === 'faq' }]}>{t(tr, 'nav.faq')}</a>
+      <a href={lp("/wholesale")} class:list={["nav-link", { active: activePage === 'wholesale' }]}>{t(tr, 'nav.wholesale')}</a>
+      <a href={lp("/contact")} class:list={["nav-link", { active: activePage === 'contact' }]}>{t(tr, 'nav.contact')}</a>
+      <a href={lp("/blog")} class:list={["nav-link", { active: activePage === 'blog' }]}>{t(tr, 'nav.blog')}</a>
     </nav>
     <div class="header-actions">
-      <button class="search-toggle" id="searchToggle" aria-label="Search">
+      <LanguageSwitcher lang={lang} />
+      <button class="search-toggle" id="searchToggle" aria-label={t(tr, 'search.open')}>
         <i class="fas fa-search"></i>
       </button>
       <div class="menu-toggle" id="menuToggle">
@@ -42,12 +68,17 @@ const { activePage = '' } = Astro.props;
 </header>
 
 <!-- Search Overlay -->
-<div class="search-overlay" id="searchOverlay">
+<div
+  class="search-overlay"
+  id="searchOverlay"
+  data-search-pages={JSON.stringify(searchPages)}
+  data-no-results={t(tr, 'search.no_results')}
+>
   <div class="search-overlay-inner">
-    <button class="search-close" id="searchClose" aria-label="Close search"><i class="fas fa-times"></i></button>
+    <button class="search-close" id="searchClose" aria-label={t(tr, 'search.close')}><i class="fas fa-times"></i></button>
     <form class="search-form" id="searchForm">
-      <input type="text" class="search-input" id="searchInput" placeholder="Search products, pages..." autocomplete="off" />
-      <button type="submit" class="search-submit"><i class="fas fa-search"></i></button>
+      <input type="text" class="search-input" id="searchInput" placeholder={t(tr, 'search.placeholder')} autocomplete="off" />
+      <button type="submit" class="search-submit" aria-label={t(tr, 'search.submit')}><i class="fas fa-search"></i></button>
     </form>
     <div class="search-results" id="searchResults"></div>
   </div>

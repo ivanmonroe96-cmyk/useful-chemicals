@@ -1,0 +1,196 @@
+---
+import { languages, getLangFromUrl, getLocalizedPath } from '../i18n/languages';
+import { getTranslations, t } from '../i18n/index';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = getLangFromUrl(Astro.url.pathname) } = Astro.props;
+const currentLang = lang;
+const currentLanguage = languages.find(l => l.code === currentLang) || languages[0];
+const currentPath = `${Astro.url.pathname}${Astro.url.search}`;
+const tr = getTranslations(currentLang);
+---
+
+<div class="lang-switcher" id="langSwitcher">
+  <button class="lang-toggle" id="langToggle" aria-expanded="false" aria-label={t(tr, 'language.select')}>
+    <span class="lang-flag">{currentLanguage.flag}</span>
+    <span class="lang-name">{currentLanguage.name}</span>
+    <i class="fas fa-chevron-down lang-arrow"></i>
+  </button>
+  <div class="lang-dropdown" id="langDropdown">
+    {languages.map(lang => (
+      <a
+        href={getLocalizedPath(currentPath, lang.code)}
+        class:list={['lang-option', { active: lang.code === currentLang }]}
+        data-lang={lang.code}
+      >
+        <span class="lang-flag">{lang.flag}</span>
+        <span class="lang-name">{lang.name}</span>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .lang-switcher {
+    position: relative;
+  }
+
+  .lang-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    background: transparent;
+    border: 1px solid var(--border);
+    cursor: pointer;
+    font-family: 'Manrope', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--black);
+    transition: var(--transition);
+    white-space: nowrap;
+  }
+
+  .lang-toggle:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .lang-toggle .lang-flag {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  .lang-toggle .lang-arrow {
+    font-size: 0.6rem;
+    transition: transform 0.3s;
+  }
+
+  .lang-switcher.open .lang-toggle .lang-arrow {
+    transform: rotate(180deg);
+  }
+
+  .lang-dropdown {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    min-width: 200px;
+    max-height: 320px;
+    overflow-y: auto;
+    background: var(--white);
+    border: 1px solid var(--border);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: var(--transition);
+    z-index: 1100;
+  }
+
+  .lang-switcher.open .lang-dropdown {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .lang-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--body-text);
+    transition: var(--transition);
+  }
+
+  .lang-option:hover {
+    background: var(--light-bg);
+    color: var(--accent);
+    padding-left: 20px;
+  }
+
+  .lang-option.active {
+    background: var(--light-bg);
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .lang-option .lang-flag {
+    font-size: 18px;
+    line-height: 1;
+  }
+
+  /* Scrollbar for dropdown */
+  .lang-dropdown::-webkit-scrollbar {
+    width: 4px;
+  }
+  .lang-dropdown::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .lang-dropdown::-webkit-scrollbar-thumb {
+    background: var(--border);
+  }
+
+  /* Mobile */
+  @media (max-width: 768px) {
+    .lang-toggle .lang-name {
+      display: none;
+    }
+    .lang-toggle .lang-arrow {
+      display: none;
+    }
+    .lang-toggle {
+      padding: 6px 8px;
+    }
+    .lang-dropdown {
+      right: -12px;
+      min-width: 180px;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const switcher = document.getElementById('langSwitcher');
+    const toggle = document.getElementById('langToggle');
+    const options = switcher?.querySelectorAll('.lang-option');
+
+    if (!switcher || !toggle) return;
+
+    if (options && window.location.hash) {
+      options.forEach((option) => {
+        if (!(option instanceof HTMLAnchorElement)) {
+          return;
+        }
+
+        const url = new URL(option.href, window.location.origin);
+        url.hash = window.location.hash;
+        option.href = `${url.pathname}${url.search}${url.hash}`;
+      });
+    }
+
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = switcher.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!switcher.contains(e.target as Node)) {
+        switcher.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        switcher.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+</script>

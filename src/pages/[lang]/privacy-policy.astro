@@ -1,0 +1,265 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, t, getLangStaticPaths } from '../../i18n/index';
+import { defaultLang } from '../../i18n/languages';
+
+export const getStaticPaths = getLangStaticPaths;
+const lang = Astro.params.lang ?? defaultLang;
+const tr = getTranslations(lang);
+const privacy = tr.privacy;
+const tocItems = [
+  { id: 'introduction', label: privacy.toc_intro },
+  { id: 'info-collect', label: privacy.toc_info_collect },
+  { id: 'how-use', label: privacy.toc_how_use },
+  { id: 'legal-basis', label: privacy.toc_legal_basis },
+  { id: 'data-sharing', label: privacy.toc_data_sharing },
+  { id: 'data-retention', label: privacy.toc_data_retention },
+  { id: 'cookies', label: privacy.toc_cookies },
+  { id: 'your-rights', label: privacy.toc_your_rights },
+  { id: 'data-security', label: privacy.toc_data_security },
+  { id: 'intl-transfers', label: privacy.toc_intl_transfers },
+  { id: 'children', label: privacy.toc_children },
+  { id: 'changes', label: privacy.toc_changes },
+  { id: 'contact', label: privacy.toc_contact },
+];
+const providedDataItems = [privacy.provided_item1, privacy.provided_item2, privacy.provided_item3];
+const autoDataItems = [privacy.auto_item1, privacy.auto_item2];
+const howUseItems = [privacy.how_use_item1, privacy.how_use_item2, privacy.how_use_item3, privacy.how_use_item4, privacy.how_use_item5, privacy.how_use_item6];
+const basisItems = [
+  { title: privacy.basis1_title, desc: privacy.basis1_desc },
+  { title: privacy.basis2_title, desc: privacy.basis2_desc },
+  { title: privacy.basis3_title, desc: privacy.basis3_desc },
+  { title: privacy.basis4_title, desc: privacy.basis4_desc },
+];
+const sharingItems = [privacy.sharing_item1, privacy.sharing_item2, privacy.sharing_item3];
+const rightsItems = [
+  { icon: 'fa-eye', title: privacy.right1_title, desc: privacy.right1_desc },
+  { icon: 'fa-pen', title: privacy.right2_title, desc: privacy.right2_desc },
+  { icon: 'fa-trash', title: privacy.right3_title, desc: privacy.right3_desc },
+  { icon: 'fa-pause', title: privacy.right4_title, desc: privacy.right4_desc },
+  { icon: 'fa-download', title: privacy.right5_title, desc: privacy.right5_desc },
+  { icon: 'fa-hand', title: privacy.right6_title, desc: privacy.right6_desc },
+];
+---
+
+
+<BaseLayout lang={lang} title={privacy.meta_title} description={privacy.meta_desc} activePage="">
+
+  <!-- ========== HERO ========== -->
+  <section class="lg-hero">
+    <div class="lg-hero-bg"></div>
+    <div class="container lg-hero-inner">
+      <div class="lg-hero-badge"><i class="fas fa-shield-halved"></i> {privacy.hero_badge}</div>
+      <h1>{privacy.title}</h1>
+      <p class="lg-hero-sub">{privacy.hero_sub}</p>
+      <div class="lg-hero-meta">
+        <span><i class="fas fa-calendar"></i> {privacy.last_updated}</span>
+        <span><i class="fas fa-gavel"></i> {privacy.gdpr}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTENT ========== -->
+  <section class="lg-content">
+    <div class="container">
+      <div class="lg-grid">
+
+        <!-- Sidebar TOC -->
+        <aside class="lg-sidebar">
+          <div class="lg-toc">
+            <h4>{privacy.toc}</h4>
+            <nav>
+              {tocItems.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}
+            </nav>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="lg-main">
+
+          <div class="lg-section" id="introduction">
+            <div class="lg-section-num">01</div>
+            <h3>{privacy.intro_title}</h3>
+            <p>{privacy.intro_desc}</p>
+          </div>
+
+          <div class="lg-section" id="info-collect">
+            <div class="lg-section-num">02</div>
+            <h3>{privacy.info_title}</h3>
+            <div class="lg-card">
+              <h4><i class="fas fa-user"></i> {privacy.provided_title}</h4>
+              <ul>
+                {providedDataItems.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+            <div class="lg-card">
+              <h4><i class="fas fa-desktop"></i> {privacy.auto_title}</h4>
+              <ul>
+                {autoDataItems.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          </div>
+
+          <div class="lg-section" id="how-use">
+            <div class="lg-section-num">03</div>
+            <h3>{privacy.how_use_title}</h3>
+            <p>{privacy.how_use_intro}</p>
+            <ul>
+              {howUseItems.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+
+          <div class="lg-section" id="legal-basis">
+            <div class="lg-section-num">04</div>
+            <h3>{privacy.basis_title}</h3>
+            <p>{privacy.basis_intro}</p>
+            <div class="lg-basis-grid">
+              {basisItems.map((item) => (
+                <div class="lg-basis-item"><strong>{item.title}</strong><span>{item.desc}</span></div>
+              ))}
+            </div>
+          </div>
+
+          <div class="lg-section" id="data-sharing">
+            <div class="lg-section-num">05</div>
+            <h3>{privacy.sharing_title}</h3>
+            <p>{privacy.sharing_intro}</p>
+            <ul>
+              {sharingItems.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+
+          <div class="lg-section" id="data-retention">
+            <div class="lg-section-num">06</div>
+            <h3>{privacy.retention_title}</h3>
+            <p>{privacy.retention_desc}</p>
+          </div>
+
+          <div class="lg-section" id="cookies">
+            <div class="lg-section-num">07</div>
+            <h3>{privacy.cookies_title}</h3>
+            <p>{privacy.cookies_desc}</p>
+          </div>
+
+          <div class="lg-section" id="your-rights">
+            <div class="lg-section-num">08</div>
+            <h3>{privacy.rights_title}</h3>
+            <p>{privacy.rights_intro}</p>
+            <div class="lg-rights-grid">
+              {rightsItems.map((item) => (
+                <div class="lg-right"><i class:list={['fas', item.icon]}></i><strong>{item.title}</strong><span>{item.desc}</span></div>
+              ))}
+            </div>
+            <p style="margin-top: 16px;">{privacy.rights_contact} <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a>.</p>
+          </div>
+
+          <div class="lg-section" id="data-security">
+            <div class="lg-section-num">09</div>
+            <h3>{privacy.security_title}</h3>
+            <p>{privacy.security_desc}</p>
+          </div>
+
+          <div class="lg-section" id="intl-transfers">
+            <div class="lg-section-num">10</div>
+            <h3>{privacy.transfers_title}</h3>
+            <p>{privacy.transfers_desc}</p>
+          </div>
+
+          <div class="lg-section" id="children">
+            <div class="lg-section-num">11</div>
+            <h3>{privacy.children_title}</h3>
+            <p>{privacy.children_desc}</p>
+          </div>
+
+          <div class="lg-section" id="changes">
+            <div class="lg-section-num">12</div>
+            <h3>{privacy.changes_title}</h3>
+            <p>{privacy.changes_desc}</p>
+          </div>
+
+          <div class="lg-section" id="contact">
+            <div class="lg-section-num">13</div>
+            <h3>{privacy.contact_title}</h3>
+            <p>{privacy.contact_intro}</p>
+            <div class="lg-contact-card">
+              <div><i class="fas fa-envelope"></i> <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a></div>
+              <div><i class="fas fa-map-marker-alt"></i> {t(tr, 'contact.visit_value')}</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ===== Hero ===== */
+  .lg-hero { position: relative; padding: 130px 0 60px; overflow: hidden; }
+  .lg-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0f1e 0%, #1a1f2e 100%); }
+  .lg-hero-inner { position: relative; z-index: 1; max-width: 700px; }
+  .lg-hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 100px; font-size: .83rem; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+  .lg-hero h1 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; color: var(--white); margin-bottom: 14px; }
+  .lg-hero-sub { color: rgba(255,255,255,.65); font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px; }
+  .lg-hero-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+  .lg-hero-meta span { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,.45); font-size: .85rem; }
+  .lg-hero-meta i { color: var(--accent); font-size: .8rem; }
+
+  /* ===== Layout ===== */
+  .lg-content { padding: 70px 0 90px; background: var(--white); }
+  .lg-grid { display: grid; grid-template-columns: 250px 1fr; gap: 50px; }
+
+  /* Sidebar */
+  .lg-sidebar { position: sticky; top: 100px; align-self: start; }
+  .lg-toc { background: var(--light-bg); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+  .lg-toc h4 { font-size: .85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--dark); margin-bottom: 16px; }
+  .lg-toc nav { display: flex; flex-direction: column; gap: 0; }
+  .lg-toc nav a { display: block; padding: 8px 12px; font-size: .84rem; color: var(--body-text); text-decoration: none; border-radius: 6px; transition: var(--transition); border-left: 2px solid transparent; }
+  .lg-toc nav a:hover { background: var(--white); color: var(--accent); border-left-color: var(--accent); }
+
+  /* Sections */
+  .lg-section { padding: 30px 0; border-bottom: 1px solid var(--border); position: relative; }
+  .lg-section:last-child { border-bottom: none; }
+  .lg-section-num { font-size: 2rem; font-weight: 800; color: rgba(252,82,32,.12); position: absolute; top: 26px; right: 0; }
+  .lg-section h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 14px; color: var(--near-black); }
+  .lg-section p { color: var(--body-text); line-height: 1.8; margin-bottom: 14px; }
+  .lg-section ul { margin: 0 0 16px 20px; }
+  .lg-section li { color: var(--body-text); line-height: 1.8; margin-bottom: 8px; }
+  .lg-section a { color: var(--accent); text-decoration: underline; }
+
+  /* Cards inside sections */
+  .lg-card { background: var(--light-bg); border: 1px solid var(--border); border-radius: 12px; padding: 24px; margin-bottom: 16px; }
+  .lg-card h4 { font-size: 1rem; font-weight: 700; margin-bottom: 12px; display: flex; align-items: center; gap: 10px; }
+  .lg-card h4 i { color: var(--accent); font-size: .95rem; }
+  .lg-card ul { margin-bottom: 0; }
+
+  /* Basis grid */
+  .lg-basis-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 14px; }
+  .lg-basis-item { background: var(--light-bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px; }
+  .lg-basis-item strong { display: block; font-size: .95rem; margin-bottom: 4px; color: var(--near-black); }
+  .lg-basis-item span { font-size: .87rem; color: var(--body-text); line-height: 1.6; }
+
+  /* Rights grid */
+  .lg-rights-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 14px; }
+  .lg-right { background: var(--light-bg); border: 1px solid var(--border); border-radius: 10px; padding: 18px; text-align: center; }
+  .lg-right i { font-size: 1.2rem; color: var(--accent); margin-bottom: 8px; display: block; }
+  .lg-right strong { display: block; font-size: .9rem; margin-bottom: 4px; }
+  .lg-right span { font-size: .82rem; color: var(--body-text); line-height: 1.5; }
+
+  /* Contact card */
+  .lg-contact-card { background: var(--light-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+  .lg-contact-card div { display: flex; align-items: center; gap: 10px; font-size: .93rem; }
+  .lg-contact-card i { color: var(--accent); width: 18px; text-align: center; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .lg-grid { grid-template-columns: 1fr; }
+    .lg-sidebar { position: static; }
+    .lg-rights-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .lg-basis-grid, .lg-rights-grid { grid-template-columns: 1fr; }
+    .lg-section-num { display: none; }
+  }
+</style>

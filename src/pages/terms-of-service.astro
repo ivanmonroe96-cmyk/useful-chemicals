@@ -1,19 +1,48 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath } from '../i18n/index';
+import { defaultLang } from '../i18n/languages';
+
+const lang = defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+const terms = tr.terms;
+const tocItems = [
+  { id: 'acceptance', label: terms.toc_acceptance },
+  { id: 'about', label: terms.toc_about },
+  { id: 'products', label: terms.toc_products },
+  { id: 'ordering', label: terms.toc_ordering },
+  { id: 'shipping', label: terms.toc_shipping },
+  { id: 'regulatory', label: terms.toc_regulatory },
+  { id: 'safety', label: terms.toc_safety },
+  { id: 'ip', label: terms.toc_ip },
+  { id: 'liability', label: terms.toc_liability },
+  { id: 'indemnification', label: terms.toc_indemnification },
+  { id: 'governing', label: terms.toc_governing },
+  { id: 'modifications', label: terms.toc_modifications },
+  { id: 'contact', label: terms.toc_contact },
+];
+const productItems = [terms.products_item1, terms.products_item2, terms.products_item3];
+const orderingItems = [terms.ordering_item1, terms.ordering_item2, terms.ordering_item3, terms.ordering_item4];
+const shippingItems = [terms.shipping_item1, terms.shipping_item2, terms.shipping_item3];
+const regulatoryItems = [terms.regulatory_item1, terms.regulatory_item2];
+const safetyItems = [terms.safety_item1, terms.safety_item2, terms.safety_item3];
+const liabilityItems = [terms.liability_item1, terms.liability_item2, terms.liability_item3];
 ---
 
-<BaseLayout title="Terms of Service" description="Terms of Service for UE Chemicals. Read the terms and conditions governing your use of our website and services." activePage="">
+
+<BaseLayout lang={lang} title={terms.meta_title} description={terms.meta_desc} activePage="">
 
   <!-- ========== HERO ========== -->
   <section class="lg-hero">
     <div class="lg-hero-bg"></div>
     <div class="container lg-hero-inner">
-      <div class="lg-hero-badge"><i class="fas fa-file-contract"></i> Legal</div>
-      <h1>Terms of Service</h1>
-      <p class="lg-hero-sub">Terms and conditions governing the use of our website and chemical supply services.</p>
+      <div class="lg-hero-badge"><i class="fas fa-file-contract"></i> {terms.hero_badge}</div>
+      <h1>{terms.title}</h1>
+      <p class="lg-hero-sub">{terms.hero_sub}</p>
       <div class="lg-hero-meta">
-        <span><i class="fas fa-calendar"></i> Last Updated: July 2025</span>
-        <span><i class="fas fa-balance-scale"></i> German Law</span>
+        <span><i class="fas fa-calendar"></i> {terms.last_updated}</span>
+        <span><i class="fas fa-balance-scale"></i> {terms.german_law}</span>
       </div>
     </div>
   </section>
@@ -26,21 +55,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <!-- Sidebar TOC -->
         <aside class="lg-sidebar">
           <div class="lg-toc">
-            <h4>Table of Contents</h4>
+            <h4>{terms.toc}</h4>
             <nav>
-              <a href="#acceptance">1. Acceptance of Terms</a>
-              <a href="#about">2. About UE Chemicals</a>
-              <a href="#products">3. Products &amp; Services</a>
-              <a href="#ordering">4. Ordering &amp; Payment</a>
-              <a href="#shipping">5. Shipping &amp; Delivery</a>
-              <a href="#regulatory">6. Regulatory Compliance</a>
-              <a href="#safety">7. Safety &amp; Handling</a>
-              <a href="#ip">8. Intellectual Property</a>
-              <a href="#liability">9. Limitation of Liability</a>
-              <a href="#indemnification">10. Indemnification</a>
-              <a href="#governing">11. Governing Law</a>
-              <a href="#modifications">12. Modifications</a>
-              <a href="#contact">13. Contact</a>
+              {tocItems.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}
             </nav>
           </div>
         </aside>
@@ -50,116 +67,104 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <div class="lg-section" id="acceptance">
             <div class="lg-section-num">01</div>
-            <h3>Acceptance of Terms</h3>
-            <p>By accessing or using the UE Chemicals website (useful-chemicals.com), you agree to be bound by these Terms of Service. If you do not agree with any part of these terms, you must not use our website or services.</p>
+            <h3>{terms.acceptance_title}</h3>
+            <p>{terms.acceptance_desc}</p>
           </div>
 
           <div class="lg-section" id="about">
             <div class="lg-section-num">02</div>
-            <h3>About UE Chemicals</h3>
-            <p>UE Chemicals is a specialty chemical supplier based at Bangkok, 10110, Thailand. We supply industrial-grade chemicals including Caluanie Muelear Oxidize, Red Liquid Mercury, and Silver Liquid Mercury for legitimate industrial, research, and commercial applications.</p>
+            <h3>{terms.about_title}</h3>
+            <p>{terms.about_desc}</p>
           </div>
 
           <div class="lg-section" id="products">
             <div class="lg-section-num">03</div>
-            <h3>Products &amp; Services</h3>
+            <h3>{terms.products_title}</h3>
             <ul>
-              <li>All products are intended for lawful industrial, research, and commercial purposes only.</li>
-              <li>Product descriptions, specifications, and images are provided for informational purposes and may be subject to change without notice.</li>
-              <li>We reserve the right to refuse service or cancel orders at our discretion, particularly if we suspect misuse or non-compliance with applicable regulations.</li>
+              {productItems.map((item) => <li>{item}</li>)}
             </ul>
           </div>
 
           <div class="lg-section" id="ordering">
             <div class="lg-section-num">04</div>
-            <h3>Ordering &amp; Payment</h3>
+            <h3>{terms.ordering_title}</h3>
             <div class="lg-card">
-              <h4><i class="fas fa-file-invoice-dollar"></i> Order Terms</h4>
+              <h4><i class="fas fa-file-invoice-dollar"></i> {terms.order_terms_title}</h4>
               <ul>
-                <li>All orders are subject to acceptance and availability.</li>
-                <li>Prices are quoted on a per-inquiry basis. A Proforma Invoice will be issued upon order confirmation.</li>
-                <li>Payment terms will be specified in the Proforma Invoice. Orders are processed once payment is confirmed.</li>
-                <li>We reserve the right to modify pricing at any time without prior notice.</li>
+                {orderingItems.map((item) => <li>{item}</li>)}
               </ul>
             </div>
           </div>
 
           <div class="lg-section" id="shipping">
             <div class="lg-section-num">05</div>
-            <h3>Shipping &amp; Delivery</h3>
+            <h3>{terms.shipping_title}</h3>
             <ul>
-              <li>We ship internationally using licensed hazardous materials carriers in compliance with applicable transport regulations (ADR, IATA, IMDG).</li>
-              <li>Delivery timelines are estimates only and may vary based on destination, customs clearance, and carrier schedules.</li>
-              <li>Risk of loss and title for products passes to the buyer upon delivery to the carrier.</li>
-              <li>Please refer to our <a href="/shipping">Shipping Information</a> page for detailed logistics information.</li>
+              {shippingItems.map((item) => <li>{item}</li>)}
+              <li>{terms.shipping_item4_prefix} <a href={lp("/shipping")}>{terms.shipping_item4_link}</a> {terms.shipping_item4_suffix}</li>
             </ul>
           </div>
 
           <div class="lg-section" id="regulatory">
             <div class="lg-section-num">06</div>
-            <h3>Regulatory Compliance</h3>
+            <h3>{terms.regulatory_title}</h3>
             <div class="lg-highlight">
               <i class="fas fa-exclamation-triangle"></i>
-              <p>Buyers are responsible for ensuring compliance with all applicable local, national, and international laws and regulations regarding the purchase, import, handling, and use of chemical products.</p>
+              <p>{terms.regulatory_highlight}</p>
             </div>
             <ul>
-              <li>Certain products may require permits, licenses, or end-use declarations. It is the buyer's responsibility to obtain these prior to ordering.</li>
-              <li>We comply with EU REACH Regulation (EC 1907/2006) and the EU Mercury Regulation (EU 2017/852) where applicable.</li>
+              {regulatoryItems.map((item) => <li>{item}</li>)}
             </ul>
           </div>
 
           <div class="lg-section" id="safety">
             <div class="lg-section-num">07</div>
-            <h3>Safety &amp; Handling</h3>
+            <h3>{terms.safety_title}</h3>
             <ul>
-              <li>Safety Data Sheets (SDS) and Technical Data Sheets (TDS) are provided with all shipments.</li>
-              <li>Buyers must follow all safety guidelines, handling instructions, and storage requirements specified in the SDS.</li>
-              <li>UE Chemicals assumes no liability for injuries, damages, or losses resulting from improper handling, storage, or use of our products.</li>
+              {safetyItems.map((item) => <li>{item}</li>)}
             </ul>
           </div>
 
           <div class="lg-section" id="ip">
             <div class="lg-section-num">08</div>
-            <h3>Intellectual Property</h3>
-            <p>All content on this website, including text, images, logos, graphics, and design elements, is the property of UE Chemicals and is protected by applicable intellectual property laws. You may not reproduce, distribute, or use any content without our prior written consent.</p>
+            <h3>{terms.ip_title}</h3>
+            <p>{terms.ip_desc}</p>
           </div>
 
           <div class="lg-section" id="liability">
             <div class="lg-section-num">09</div>
-            <h3>Limitation of Liability</h3>
-            <p>To the maximum extent permitted by law:</p>
+            <h3>{terms.liability_title}</h3>
+            <p>{terms.liability_intro}</p>
             <ul>
-              <li>UE Chemicals provides this website and its content on an "as is" basis without warranties of any kind.</li>
-              <li>We shall not be liable for any indirect, incidental, special, or consequential damages arising from the use of our website or products.</li>
-              <li>Our total liability for any claim shall not exceed the amount paid by you for the specific product or service in question.</li>
+              {liabilityItems.map((item) => <li>{item}</li>)}
             </ul>
           </div>
 
           <div class="lg-section" id="indemnification">
             <div class="lg-section-num">10</div>
-            <h3>Indemnification</h3>
-            <p>You agree to indemnify and hold harmless UE Chemicals, its officers, employees, and agents from any claims, damages, losses, or expenses arising from your use of our website or products, your violation of these terms, or your violation of any applicable laws or regulations.</p>
+            <h3>{terms.indemnification_title}</h3>
+            <p>{terms.indemnification_desc}</p>
           </div>
 
           <div class="lg-section" id="governing">
             <div class="lg-section-num">11</div>
-            <h3>Governing Law</h3>
-            <p>These Terms of Service are governed by the laws of the Kingdom of Thailand. Any disputes arising from or related to these terms shall be subject to the exclusive jurisdiction of the courts in Bangkok, Thailand.</p>
+            <h3>{terms.governing_title}</h3>
+            <p>{terms.governing_desc}</p>
           </div>
 
           <div class="lg-section" id="modifications">
             <div class="lg-section-num">12</div>
-            <h3>Modifications</h3>
-            <p>We reserve the right to update or modify these Terms of Service at any time. Changes take effect upon posting to this page. Your continued use of the website after changes are posted constitutes acceptance of the revised terms.</p>
+            <h3>{terms.modifications_title}</h3>
+            <p>{terms.modifications_desc}</p>
           </div>
 
           <div class="lg-section" id="contact">
             <div class="lg-section-num">13</div>
-            <h3>Contact</h3>
-            <p>For questions about these Terms of Service, contact us at:</p>
+            <h3>{terms.contact_title}</h3>
+            <p>{terms.contact_intro}</p>
             <div class="lg-contact-card">
               <div><i class="fas fa-envelope"></i> <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a></div>
-              <div><i class="fas fa-map-marker-alt"></i> Bangkok, 10110, Thailand</div>
+              <div><i class="fas fa-map-marker-alt"></i> {t(tr, 'contact.visit_value')}</div>
             </div>
           </div>
 

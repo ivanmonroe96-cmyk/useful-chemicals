@@ -1,19 +1,67 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath } from '../../i18n/index';
+import { defaultLang } from '../../i18n/languages';
+
+const lang = defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+const techSpecs = [
+  [t(tr, 'silver_mercury.tech_name'), t(tr, 'silver_mercury.tech_name_val')],
+  [t(tr, 'silver_mercury.tech_formula'), t(tr, 'silver_mercury.tech_formula_val')],
+  [t(tr, 'silver_mercury.tech_cas'), t(tr, 'silver_mercury.tech_cas_val')],
+  [t(tr, 'silver_mercury.tech_appearance'), t(tr, 'silver_mercury.tech_appearance_val')],
+  [t(tr, 'silver_mercury.tech_purity'), t(tr, 'silver_mercury.tech_purity_val')],
+  [t(tr, 'silver_mercury.tech_density'), t(tr, 'silver_mercury.tech_density_val')],
+  [t(tr, 'silver_mercury.tech_molar'), t(tr, 'silver_mercury.tech_molar_val')],
+  [t(tr, 'silver_mercury.tech_melting'), t(tr, 'silver_mercury.tech_melting_val')],
+  [t(tr, 'silver_mercury.tech_boiling'), t(tr, 'silver_mercury.tech_boiling_val')],
+  [t(tr, 'silver_mercury.tech_vapor'), t(tr, 'silver_mercury.tech_vapor_val')],
+  [t(tr, 'silver_mercury.tech_solubility'), t(tr, 'silver_mercury.tech_solubility_val')],
+  [t(tr, 'silver_mercury.tech_un'), t(tr, 'silver_mercury.tech_un_val')],
+  [t(tr, 'silver_mercury.tech_hazard'), t(tr, 'silver_mercury.tech_hazard_val')],
+  [t(tr, 'silver_mercury.tech_packing'), t(tr, 'silver_mercury.tech_packing_val')],
+  [t(tr, 'silver_mercury.tech_packs'), t(tr, 'silver_mercury.tech_packs_val')],
+];
+const overviewFeatures = [
+  { title: t(tr, 'silver_mercury.overview_feat1_title'), description: t(tr, 'silver_mercury.overview_feat1_desc') },
+  { title: t(tr, 'silver_mercury.overview_feat2_title'), description: t(tr, 'silver_mercury.overview_feat2_desc') },
+  { title: t(tr, 'silver_mercury.overview_feat3_title'), description: t(tr, 'silver_mercury.overview_feat3_desc') },
+];
+const benefitItems = [
+  { title: t(tr, 'silver_mercury.ben1_title'), description: t(tr, 'silver_mercury.ben1_desc') },
+  { title: t(tr, 'silver_mercury.ben2_title'), description: t(tr, 'silver_mercury.ben2_desc') },
+  { title: t(tr, 'silver_mercury.ben3_title'), description: t(tr, 'silver_mercury.ben3_desc') },
+  { title: t(tr, 'silver_mercury.ben4_title'), description: t(tr, 'silver_mercury.ben4_desc') },
+];
+const safetyItems = [
+  t(tr, 'silver_mercury.safety1'),
+  t(tr, 'silver_mercury.safety2'),
+  t(tr, 'silver_mercury.safety3'),
+  t(tr, 'silver_mercury.safety4'),
+];
+const faqItems = [
+  { question: t(tr, 'silver_mercury.faq1_q'), answer: t(tr, 'silver_mercury.faq1_a') },
+  { question: t(tr, 'silver_mercury.faq2_q'), answer: t(tr, 'silver_mercury.faq2_a') },
+  { question: t(tr, 'silver_mercury.faq3_q'), answer: t(tr, 'silver_mercury.faq3_a') },
+  { question: t(tr, 'silver_mercury.faq4_q'), answer: t(tr, 'silver_mercury.faq4_a') },
+  { question: t(tr, 'silver_mercury.faq5_q'), answer: t(tr, 'silver_mercury.faq5_a') },
+  { question: t(tr, 'silver_mercury.faq6_q'), answer: t(tr, 'silver_mercury.faq6_a') },
+];
 
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "Silver Liquid Mercury 99.99% (4N Grade)",
-  "description": "High-purity Silver Liquid Mercury (Hg) with 99.99% purity. CAS 7439-97-6. Virgin mercury for industrial, scientific, and extraction applications.",
+  "name": t(tr, 'nav.silver_mercury'),
+  "description": t(tr, 'silver_mercury.meta_desc'),
   "brand": { "@type": "Brand", "name": "UE Chemicals" },
   "manufacturer": { "@type": "Organization", "name": "UE Chemicals", "address": { "@type": "PostalAddress", "addressLocality": "Bangkok", "addressCountry": "TH" } },
   "sku": "UEC-SLM-4N",
   "additionalProperty": [
-    { "@type": "PropertyValue", "name": "Purity", "value": "99.99% (4N)" },
-    { "@type": "PropertyValue", "name": "CAS Number", "value": "7439-97-6" },
-    { "@type": "PropertyValue", "name": "Density", "value": "13.534 g/cm³" },
-    { "@type": "PropertyValue", "name": "UN Number", "value": "UN2809" }
+    { "@type": "PropertyValue", "name": t(tr, 'silver_mercury.tech_purity'), "value": t(tr, 'silver_mercury.tech_purity_val') },
+    { "@type": "PropertyValue", "name": t(tr, 'silver_mercury.tech_cas'), "value": t(tr, 'silver_mercury.tech_cas_val') },
+    { "@type": "PropertyValue", "name": t(tr, 'silver_mercury.tech_density'), "value": t(tr, 'silver_mercury.tech_density_val') },
+    { "@type": "PropertyValue", "name": t(tr, 'silver_mercury.tech_un'), "value": t(tr, 'silver_mercury.tech_un_val') }
   ],
   "offers": {
     "@type": "Offer",
@@ -21,7 +69,7 @@ const productSchema = {
     "priceCurrency": "USD",
     "price": "0",
     "priceValidUntil": "2026-12-31",
-    "url": "https://useful-chemicals.com/products/silver-mercury",
+    "url": `https://useful-chemicals.com${lp('/products/silver-mercury')}`,
     "seller": { "@type": "Organization", "name": "UE Chemicals" }
   }
 };
@@ -29,45 +77,41 @@ const productSchema = {
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "Where can I buy silver liquid mercury?", "acceptedAnswer": { "@type": "Answer", "text": "You can buy Silver Liquid Mercury from UE Chemicals at useful-chemicals.com. We supply 99.99% purity (4N grade) elemental mercury with CAS number 7439-97-6of worldwide shipping from Bangkok, Thailand." } },
-    { "@type": "Question", "name": "Can I purchase silver liquid mercury in bulk?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we offer bulk purchasing options to meet both small and large-scale needs. Contact our sales team for custom quantities, wholesale pricing, or special requirements." } },
-    { "@type": "Question", "name": "What is liquid mercury used for?", "acceptedAnswer": { "@type": "Answer", "text": "Liquid mercury (silver mercury) is used in gold and precious metal extraction, scientific measurement instruments, electrical and electronic equipment manufacturing, chemical synthesis, laboratory research, and various industrial applications requiring a high-density liquid metal." } },
-    { "@type": "Question", "name": "What purity level should I expect from silver liquid mercury?", "acceptedAnswer": { "@type": "Answer", "text": "Our silver liquid mercury is certified at 99.99% purity (4N grade), free from heavy metals, making it suitable for the most demanding precision tasks in science and industry." } },
-    { "@type": "Question", "name": "Where to buy mercury metal?", "acceptedAnswer": { "@type": "Answer", "text": "You can buy mercury metal online from UE Chemicals. We supply high-purity Silver Liquid Mercury (99.99%) for sale with global delivery. Visit useful-chemicals.com/products/silver-mercury to request a quote." } },
-    { "@type": "Question", "name": "Are there legal restrictions on buying mercury?", "acceptedAnswer": { "@type": "Answer", "text": "Mercury sales are regulated under EU REACH Regulation (EC 1907/2006) and the EU Mercury Regulation (EU 2017/852). Regulations vary by country. UE Chemicals ensures full compliance with all applicable regulations." } },
-    { "@type": "Question", "name": "How is silver liquid mercury packaged for shipping?", "acceptedAnswer": { "@type": "Answer", "text": "All mercury is shipped in UN-approved 34.5 kg steel flasks that meet ADR (road) and IMDG (sea) transport regulations. Each flask is sealed and tested for leak-proof integrity." } },
-    { "@type": "Question", "name": "Do you provide a Certificate of Analysis for silver mercury?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, all orders include a batch-specific Certificate of Analysis (COA) verifying purity, composition, and compliance with quality standards." } }
-  ]
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": { "@type": "Answer", "text": item.answer }
+  }))
 };
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://useful-chemicals.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://useful-chemicals.com/products" },
-    { "@type": "ListItem", "position": 3, "name": "Silver Liquid Mercury", "item": "https://useful-chemicals.com/products/silver-mercury" }
+    { "@type": "ListItem", "position": 1, "name": t(tr, 'nav.home'), "item": `https://useful-chemicals.com${lp('/')}` },
+    { "@type": "ListItem", "position": 2, "name": t(tr, 'nav.products'), "item": `https://useful-chemicals.com${lp('/products')}` },
+    { "@type": "ListItem", "position": 3, "name": t(tr, 'nav.silver_mercury'), "item": `https://useful-chemicals.com${lp('/products/silver-mercury')}` }
   ]
 };
 ---
 
-<BaseLayout title="Buy Silver Liquid Mercury 99.99% | Mercury for Sale" description="Buy Silver Liquid Mercury (Hg) 99.99% purity from UE Chemicals. CAS 7439-97-6. Silver mercury for sale — liquid mercury for gold extraction, research & industry. Buy mercury metal online, global delivery." activePage="products" jsonLd={[productSchema, faqSchema, breadcrumbSchema]}>
+
+<BaseLayout lang={lang} title={t(tr, 'silver_mercury.meta_title')} description={t(tr, 'silver_mercury.meta_desc')} activePage="products" jsonLd={[productSchema, faqSchema, breadcrumbSchema]}>
 
   <!-- ========== HERO ========== -->
   <section class="pd-hero">
     <div class="pd-hero-bg">
-      <img src="/images/Buy-Silver-Liquid-Mercury.jpg" alt="Buy Silver Liquid Mercury for sale - 99.99% purity mercury metal" />
+      <img src="/images/Buy-Silver-Liquid-Mercury.jpg" alt={t(tr, 'nav.silver_mercury')} />
       <div class="pd-hero-overlay"></div>
     </div>
     <div class="container pd-hero-inner">
       <div class="pd-hero-content">
-        <div class="pd-hero-badge"><i class="fas fa-atom"></i> Product Details</div>
-        <h1>Silver Liquid Mercury for Sale</h1>
-        <p class="pd-hero-sub">Buy high-purity Silver Liquid Mercury certified at 99.99% (4N grade). Elemental mercury for gold extraction, scientific instruments, manufacturing, and laboratory research. Available in bulk with global shipping.</p>
+        <div class="pd-hero-badge"><i class="fas fa-atom"></i> {t(tr, 'silver_mercury.hero_badge')}</div>
+        <h1>{t(tr, "silver_mercury.hero_title")}</h1>
+        <p class="pd-hero-sub">{t(tr, 'silver_mercury.hero_sub')}</p>
         <div class="pd-hero-actions">
-          <a href="/contact" class="btn btn-accent">Get a Quote <i class="fas fa-arrow-right"></i></a>
-          <a href="/safety" class="btn btn-outline-white">Safety Info <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact")} class="btn btn-accent">{t(tr, 'common.get_quote')} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/safety")} class="btn btn-outline-white">{t(tr, 'silver_mercury.safety_label')} <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -78,20 +122,20 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="pd-specs-row">
         <div class="pd-spec-item">
-          <span class="pd-spec-label">Symbol</span>
-          <span class="pd-spec-value">Hg</span>
+          <span class="pd-spec-label">{t(tr, 'silver_mercury.tech_formula')}</span>
+          <span class="pd-spec-value">{t(tr, 'silver_mercury.tech_formula_val')}</span>
         </div>
         <div class="pd-spec-item">
-          <span class="pd-spec-label">Purity</span>
-          <span class="pd-spec-value">99.99% (4N)</span>
+          <span class="pd-spec-label">{t(tr, 'silver_mercury.tech_purity')}</span>
+          <span class="pd-spec-value">{t(tr, 'silver_mercury.tech_purity_val')}</span>
         </div>
         <div class="pd-spec-item">
-          <span class="pd-spec-label">Pricing</span>
-          <span class="pd-spec-value">Request Quote</span>
+          <span class="pd-spec-label">{t(tr, 'silver_mercury.spec_price_label')}</span>
+          <span class="pd-spec-value">{t(tr, 'silver_mercury.spec_price')}</span>
         </div>
         <div class="pd-spec-item">
-          <span class="pd-spec-label">Availability</span>
-          <span class="pd-spec-value">In Stock</span>
+          <span class="pd-spec-label">{t(tr, 'silver_mercury.spec_avail_label')}</span>
+          <span class="pd-spec-value">{t(tr, 'silver_mercury.spec_avail')}</span>
         </div>
       </div>
     </div>
@@ -100,35 +144,23 @@ const breadcrumbSchema = {
   <!-- ========== OVERVIEW SPLIT ========== -->
   <section class="pd-overview">
     <div class="pd-overview-image">
-      <img src="/images/silver-liquid-mercury-for-sale.png" alt="Silver Liquid Mercury" />
+      <img src="/images/silver-liquid-mercury-for-sale.png" alt={t(tr, 'nav.silver_mercury')} />
     </div>
     <div class="pd-overview-content">
-      <div class="section-label">Overview</div>
-      <h2>What Is Silver Liquid Mercury?</h2>
-      <p>Silver liquid mercury (Hg) is a naturally occurring element and the only metal that is liquid at standard temperature and pressure. Its unique physical and chemical properties make it indispensable across a wide range of industries.</p>
-      <p>Our mercury is certified at 99.99% purity (4N grade), free from heavy metal contaminants, ensuring it meets the highest standards for scientific, medical, and industrial applications.</p>
+      <div class="section-label">{t(tr, "silver_mercury.overview_label")}</div>
+      <h2>{t(tr, "silver_mercury.overview_title")}</h2>
+      <p>{t(tr, 'silver_mercury.overview_desc1')}</p>
+      <p>{t(tr, 'silver_mercury.overview_desc2')}</p>
       <div class="pd-overview-features">
-        <div class="pd-overview-feat">
-          <div class="pd-overview-feat-icon"><i class="fas fa-check-circle"></i></div>
-          <div>
-            <h6>Ultra-High Purity</h6>
-            <p>99.99% (4N grade) certified, free from heavy metal contaminants.</p>
+        {overviewFeatures.map(feature => (
+          <div class="pd-overview-feat">
+            <div class="pd-overview-feat-icon"><i class="fas fa-check-circle"></i></div>
+            <div>
+              <h6>{feature.title}</h6>
+              <p>{feature.description}</p>
+            </div>
           </div>
-        </div>
-        <div class="pd-overview-feat">
-          <div class="pd-overview-feat-icon"><i class="fas fa-check-circle"></i></div>
-          <div>
-            <h6>Full Certification</h6>
-            <p>Every shipment includes Certificate of Analysis and batch documentation.</p>
-          </div>
-        </div>
-        <div class="pd-overview-feat">
-          <div class="pd-overview-feat-icon"><i class="fas fa-check-circle"></i></div>
-          <div>
-            <h6>Compliant Packaging</h6>
-            <p>Shipped in UN-approved 34.5 kg steel flasks meeting ADR/IMDG regulations.</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -138,29 +170,16 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="pd-tech-grid">
         <div class="pd-tech-content">
-          <div class="section-label">Technical Data</div>
-          <h2>Chemical Specifications</h2>
-          <p>Detailed technical specifications for Silver Liquid Mercury as verified by our quality control laboratory.</p>
+          <div class="section-label">{t(tr, "silver_mercury.tech_label")}</div>
+          <h2>{t(tr, 'silver_mercury.tech_title')}</h2>
+          <p>{t(tr, 'silver_mercury.tech_desc')}</p>
         </div>
         <div class="pd-tech-table-wrap">
           <table class="pd-tech-table">
             <tbody>
-              <tr><td>Chemical Name</td><td>Mercury (Liquid Silver)</td></tr>
-              <tr><td>Chemical Symbol</td><td>Hg</td></tr>
-              <tr><td>CAS Number</td><td>7439-97-6</td></tr>
-              <tr><td>Purity</td><td>≥99.99% (4N Grade)</td></tr>
-              <tr><td>Appearance</td><td>Bright silver metallic liquid, odorless</td></tr>
-              <tr><td>Molecular Weight</td><td>200.59 g/mol</td></tr>
-              <tr><td>Density</td><td>13.534 g/cm³ at 25°C</td></tr>
-              <tr><td>Melting Point</td><td>-38.87°C</td></tr>
-              <tr><td>Boiling Point</td><td>357°C</td></tr>
-              <tr><td>Vapor Pressure</td><td>0.00185 mm Hg at 25°C</td></tr>
-              <tr><td>Solubility in Water</td><td>Insoluble</td></tr>
-              <tr><td>UN Number</td><td>UN2809</td></tr>
-              <tr><td>Hazard Classification</td><td>Class 8 (Corrosive) / 6.1 (Toxic)</td></tr>
-              <tr><td>Packing Group</td><td>III</td></tr>
-              <tr><td>Pack Sizes</td><td>34.5 kg (76 lbs) UN-approved steel flasks</td></tr>
-              <tr><td>Origin</td><td>Bangkok, Thailand</td></tr>
+              {techSpecs.map(([label, value]) => (
+                <tr><td>{label}</td><td>{value}</td></tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -169,26 +188,26 @@ const breadcrumbSchema = {
         <div class="pd-doc-card">
           <i class="fas fa-file-pdf"></i>
           <div>
-            <h5>Technical Data Sheet (TDS)</h5>
-            <p>Complete chemical specifications and physical properties.</p>
+            <h5>{t(tr, 'silver_mercury.doc_tds_title')}</h5>
+            <p>{t(tr, 'silver_mercury.doc_tds_desc')}</p>
           </div>
-          <a href="/contact" class="btn btn-outline btn-sm">Request TDS <i class="fas fa-download"></i></a>
+          <a href={lp("/contact")} class="btn btn-outline btn-sm">{t(tr, 'silver_mercury.request_tds')} <i class="fas fa-download"></i></a>
         </div>
         <div class="pd-doc-card">
           <i class="fas fa-file-shield"></i>
           <div>
-            <h5>Safety Data Sheet (SDS)</h5>
-            <p>Hazard identification, handling, and emergency procedures.</p>
+            <h5>{t(tr, 'silver_mercury.doc_sds_title')}</h5>
+            <p>{t(tr, 'silver_mercury.doc_sds_desc')}</p>
           </div>
-          <a href="/contact" class="btn btn-outline btn-sm">Request SDS <i class="fas fa-download"></i></a>
+          <a href={lp("/contact")} class="btn btn-outline btn-sm">{t(tr, 'silver_mercury.request_sds')} <i class="fas fa-download"></i></a>
         </div>
         <div class="pd-doc-card">
           <i class="fas fa-file-certificate"></i>
           <div>
-            <h5>Certificate of Analysis (COA)</h5>
-            <p>Batch-specific purity and quality verification.</p>
+            <h5>{t(tr, 'silver_mercury.doc_coa_title')}</h5>
+            <p>{t(tr, 'silver_mercury.doc_coa_desc')}</p>
           </div>
-          <a href="/contact" class="btn btn-outline btn-sm">Request COA <i class="fas fa-download"></i></a>
+          <a href={lp("/contact")} class="btn btn-outline btn-sm">{t(tr, 'silver_mercury.request_coa')} <i class="fas fa-download"></i></a>
         </div>
       </div>
     </div>
@@ -198,24 +217,24 @@ const breadcrumbSchema = {
   <section class="pd-apps">
     <div class="container">
       <div class="text-center" style="margin-bottom:60px;">
-        <div class="section-label">Applications</div>
-        <h2>Industrial &amp; Scientific Uses</h2>
+        <div class="section-label">{t(tr, "silver_mercury.apps_label")}</div>
+        <h2>{t(tr, 'silver_mercury.apps_title')}</h2>
       </div>
       <div class="pd-apps-grid">
         <div class="pd-app-card">
           <div class="pd-app-num">01</div>
-          <h5>Mining &amp; Extraction</h5>
-          <p>Widely used in artisanal and small-scale gold mining (ASGM) due to its ability to form amalgams with precious metals, enabling efficient extraction from ore.</p>
+          <h5>{t(tr, 'silver_mercury.app1_title')}</h5>
+          <p>{t(tr, 'silver_mercury.app1_desc')}</p>
         </div>
         <div class="pd-app-card">
           <div class="pd-app-num">02</div>
-          <h5>Scientific Research</h5>
-          <p>Essential for laboratories requiring high-purity materials for thermometers, barometers, manometers, and other precision measurement instruments.</p>
+          <h5>{t(tr, 'silver_mercury.app2_title')}</h5>
+          <p>{t(tr, 'silver_mercury.app2_desc')}</p>
         </div>
         <div class="pd-app-card">
           <div class="pd-app-num">03</div>
-          <h5>Manufacturing</h5>
-          <p>Employed in the production of industrial tools, electrical switches, fluorescent lighting, and various measurement devices requiring liquid metal properties.</p>
+          <h5>{t(tr, 'silver_mercury.app3_title')}</h5>
+          <p>{t(tr, 'silver_mercury.app3_desc')}</p>
         </div>
       </div>
     </div>
@@ -226,39 +245,20 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="pd-benefits-grid">
         <div class="pd-benefits-content">
-          <div class="section-label">Why Buy From Us</div>
-          <h2>Benefits of Choosing<br />UE Chemicals</h2>
-          <p>We deliver premium-grade mercury with full regulatory compliance and exceptional customer support.</p>
+          <div class="section-label">{t(tr, "silver_mercury.benefits_label")}</div>
+          <h2>{t(tr, 'silver_mercury.benefits_title')}</h2>
+          <p>{t(tr, 'silver_mercury.benefits_desc')}</p>
         </div>
         <div class="pd-benefits-cards">
-          <div class="pd-benefit-card">
-            <div class="pd-benefit-num">01</div>
-            <div>
-              <h5>Certified Purity</h5>
-              <p>Every batch undergoes rigorous testing. Certificate of Analysis included with every order to verify 99.99% purity.</p>
+          {benefitItems.map((item, index) => (
+            <div class="pd-benefit-card">
+              <div class="pd-benefit-num">{String(index + 1).padStart(2, '0')}</div>
+              <div>
+                <h5>{item.title}</h5>
+                <p>{item.description}</p>
+              </div>
             </div>
-          </div>
-          <div class="pd-benefit-card">
-            <div class="pd-benefit-num">02</div>
-            <div>
-              <h5>EU Regulatory Compliance</h5>
-              <p>Full compliance with REACH (EC 1907/2006) and EU Mercury Regulation (EU 2017/852). We handle all export documentation.</p>
-            </div>
-          </div>
-          <div class="pd-benefit-card">
-            <div class="pd-benefit-num">03</div>
-            <div>
-              <h5>Safe &amp; Secure Shipping</h5>
-              <p>UN-approved steel flasks shipped via ADR/IMDG compliant carriers. Full insurance and tracking on every shipment.</p>
-            </div>
-          </div>
-          <div class="pd-benefit-card">
-            <div class="pd-benefit-num">04</div>
-            <div>
-              <h5>Dedicated Support</h5>
-              <p>Our team provides expert guidance on handling, storage, and regulatory requirements for your specific region and application.</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
@@ -269,27 +269,20 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="pd-safety-inner">
         <div class="pd-safety-text">
-          <div class="section-label">Safety &amp; Handling</div>
-          <h2>Handling Information</h2>
-          <p>Silver mercury is a powerful substance that requires careful handling. Follow these essential safety guidelines at all times.</p>
+          <div class="section-label">{t(tr, "silver_mercury.safety_label")}</div>
+          <h2>{t(tr, "silver_mercury.safety_title")}</h2>
+          <p>{t(tr, 'silver_mercury.safety_desc')}</p>
         </div>
         <div class="pd-safety-items">
-          <div class="pd-safety-item">
-            <i class="fas fa-wind"></i>
-            <span><strong>Ventilation:</strong> Handle only in well-ventilated areas to minimize vapor exposure. Use fume hoods when possible.</span>
-          </div>
-          <div class="pd-safety-item">
-            <i class="fas fa-shield-halved"></i>
-            <span><strong>PPE Required:</strong> Wear chemical-resistant gloves, safety goggles, and protective clothing during handling.</span>
-          </div>
-          <div class="pd-safety-item">
-            <i class="fas fa-box"></i>
-            <span><strong>Storage:</strong> Store in cool, temperature-controlled environments in sealed containers to prevent leakage and evaporation.</span>
-          </div>
-          <div class="pd-safety-item">
-            <i class="fas fa-recycle"></i>
-            <span><strong>Disposal:</strong> Follow EU Waste Framework Directive and local hazardous waste regulations for proper disposal.</span>
-          </div>
+          {safetyItems.map((item, index) => (
+            <div class="pd-safety-item">
+              <i class:list={[
+                'fas',
+                index === 0 ? 'fa-wind' : index === 1 ? 'fa-shield-halved' : index === 2 ? 'fa-box' : 'fa-recycle'
+              ]}></i>
+              <span>{item}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -300,27 +293,27 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="pd-quote-grid">
         <div class="pd-quote-text">
-          <div class="section-label">Get Started</div>
-          <h2>Request a Quote</h2>
-          <p>Ready to order Silver Liquid Mercury? Fill out the form and our team will respond with a customized quote within 24 hours.</p>
+          <div class="section-label">{t(tr, "silver_mercury.quote_label")}</div>
+          <h2>{t(tr, "silver_mercury.quote_title")}</h2>
+          <p>{t(tr, 'silver_mercury.quote_desc')}</p>
           <div class="pd-quote-badges">
-            <div class="pd-quote-badge"><i class="fas fa-clock"></i> 24hr Response</div>
-            <div class="pd-quote-badge"><i class="fas fa-lock"></i> Secure &amp; Private</div>
-            <div class="pd-quote-badge"><i class="fas fa-certificate"></i> COA Included</div>
+            <div class="pd-quote-badge"><i class="fas fa-clock"></i> {t(tr, 'silver_mercury.quote_badge1')}</div>
+            <div class="pd-quote-badge"><i class="fas fa-lock"></i> {t(tr, 'silver_mercury.quote_badge2')}</div>
+            <div class="pd-quote-badge"><i class="fas fa-certificate"></i> {t(tr, 'silver_mercury.quote_badge3')}</div>
           </div>
         </div>
         <div class="pd-quote-form-wrap">
           <form>
             <div class="form-group">
-              <label>Full Name</label>
-              <input type="text" name="name" class="form-control" placeholder="Your full name" required>
+              <label>{t(tr, 'silver_mercury.form_name')}</label>
+              <input type="text" name="name" class="form-control" placeholder={t(tr, 'silver_mercury.form_placeholder_name')} required>
             </div>
             <div class="form-group">
-              <label>Email Address</label>
-              <input type="email" name="email" class="form-control" placeholder="Your email address" required>
+              <label>{t(tr, 'silver_mercury.form_email')}</label>
+              <input type="email" name="email" class="form-control" placeholder={t(tr, 'silver_mercury.form_placeholder_email')} required>
             </div>
             <div class="form-group">
-              <label>Phone Number</label>
+              <label>{t(tr, 'silver_mercury.form_phone')}</label>
               <div class="phone-input">
                 <select class="form-control">
                   <option>+49 DE</option>
@@ -329,15 +322,15 @@ const breadcrumbSchema = {
                   <option>+61 AU</option>
                   <option>+33 FR</option>
                 </select>
-                <input type="tel" name="phone" class="form-control" placeholder="Phone number">
+                <input type="tel" name="phone" class="form-control" placeholder={t(tr, 'silver_mercury.form_placeholder_phone')}>
               </div>
             </div>
-            <input type="hidden" name="product" value="Silver Liquid Mercury">
+            <input type="hidden" name="product" value={t(tr, 'nav.silver_mercury')}>
             <div class="form-group">
-              <label>Message</label>
-              <textarea name="message" class="form-control" placeholder="Tell us about your desired quantity, intended use, delivery location, or any special requirements..." rows="4"></textarea>
+              <label>{t(tr, 'silver_mercury.form_message')}</label>
+              <textarea name="message" class="form-control" placeholder={t(tr, 'silver_mercury.form_placeholder_message')} rows="4"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Request Quote <i class="fas fa-arrow-right"></i></button>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">{t(tr, 'silver_mercury.form_submit')} <i class="fas fa-arrow-right"></i></button>
           </form>
         </div>
       </div>
@@ -349,37 +342,19 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="faq-row">
         <div class="faq-content-col">
-          <div class="section-label">Common Questions</div>
-          <h2 class="section-title">Frequently Asked Questions</h2>
+          <div class="section-label">{t(tr, "silver_mercury.faq_label")}</div>
+          <h2 class="section-title">{t(tr, "silver_mercury.faq_title")}</h2>
           <div class="faq-list">
-            <div class="faq-item">
-              <div class="faq-question">Can I purchase in bulk? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">Yes, we offer bulk purchasing options to meet both small and large-scale needs. Contact our sales team for custom quantities or special requirements.</div></div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-question">How do I know if this mercury is suitable for my industry? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">Our team can help you determine if silver liquid mercury is suitable for your specific application. Contact us for a consultation.</div></div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-question">What purity level should I expect? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">Our silver liquid mercury is certified at 99.99% purity (4N grade), free from heavy metals, ensuring suitability for the most demanding precision tasks.</div></div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-question">Are there legal restrictions on buying mercury in Europe? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">Mercury sales are regulated under EU REACH Regulation (EC 1907/2006) and the EU Mercury Regulation (EU 2017/852). We ensure full compliance with all applicable regulations and can guide you through the requirements for your region.</div></div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-question">How is the mercury packaged for shipping? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">All mercury is shipped in UN-approved 34.5 kg steel flasks that meet ADR (road) and IMDG (sea) transport regulations. Each flask is sealed and tested for leak-proof integrity.</div></div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-question">Do you provide a Certificate of Analysis? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">Yes, all orders include a batch-specific Certificate of Analysis (COA) verifying purity, composition, and compliance with quality standards.</div></div>
-            </div>
+            {faqItems.map(item => (
+              <div class="faq-item">
+                <div class="faq-question">{item.question} <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer"><div class="faq-answer-inner">{item.answer}</div></div>
+              </div>
+            ))}
           </div>
         </div>
         <div class="faq-image-col">
-          <img src="/images/Buy-Silver-Liquid-Mercury.jpg" alt="Silver Liquid Mercury" />
+          <img src="/images/Buy-Silver-Liquid-Mercury.jpg" alt={t(tr, 'nav.silver_mercury')} />
         </div>
       </div>
     </div>

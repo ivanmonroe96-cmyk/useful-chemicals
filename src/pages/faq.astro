@@ -1,41 +1,150 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath } from '../i18n/index';
+import { defaultLang } from '../i18n/languages';
+
+const lang = defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+const faq = tr.faq;
+
+const faqStats = [
+  { icon: 'fa-flask', value: t(tr, 'faq.stat1'), label: t(tr, 'faq.stat1_label') },
+  { icon: 'fa-earth-europe', value: t(tr, 'faq.stat2'), label: t(tr, 'faq.stat2_label') },
+  { icon: 'fa-clock', value: t(tr, 'faq.stat3'), label: t(tr, 'faq.stat3_label') },
+  { icon: 'fa-file-lines', value: t(tr, 'faq.stat4'), label: t(tr, 'faq.stat4_label') },
+];
+
+const faqSections = [
+  {
+    id: 'general',
+    icon: 'fa-building',
+    iconClass: '',
+    navLabel: t(tr, 'faq.cat_general'),
+    title: t(tr, 'faq.general_title'),
+    description: t(tr, 'faq.general_desc'),
+    items: [
+      { question: t(tr, 'faq.gen1_q'), answer: t(tr, 'faq.gen1_a') },
+      { question: t(tr, 'faq.gen2_q'), answer: t(tr, 'faq.gen2_a') },
+      { question: t(tr, 'faq.gen3_q'), answer: t(tr, 'faq.gen3_a') },
+      { question: t(tr, 'faq.gen4_q'), answer: t(tr, 'faq.gen4_a') },
+      { question: t(tr, 'faq.gen5_q'), answer: t(tr, 'faq.gen5_a') },
+    ],
+  },
+  {
+    id: 'products',
+    icon: 'fa-flask',
+    iconClass: 'fq-icon-blue',
+    navLabel: t(tr, 'faq.cat_products'),
+    title: t(tr, 'faq.products_title'),
+    description: t(tr, 'faq.products_desc'),
+    items: [
+      { question: t(tr, 'faq.prod1_q'), answer: t(tr, 'faq.prod1_a') },
+      { question: t(tr, 'faq.prod2_q'), answer: t(tr, 'faq.prod2_a') },
+      { question: t(tr, 'faq.prod3_q'), answer: t(tr, 'faq.prod3_a') },
+      { question: t(tr, 'faq.prod4_q'), answer: t(tr, 'faq.prod4_a') },
+      { question: t(tr, 'faq.prod5_q'), answer: t(tr, 'faq.prod5_a') },
+    ],
+  },
+  {
+    id: 'ordering',
+    icon: 'fa-shopping-cart',
+    iconClass: 'fq-icon-green',
+    navLabel: t(tr, 'faq.cat_ordering'),
+    title: t(tr, 'faq.ordering_title'),
+    description: t(tr, 'faq.ordering_desc'),
+    items: [
+      { question: t(tr, 'faq.ord1_q'), answer: t(tr, 'faq.ord1_a') },
+      { question: t(tr, 'faq.ord2_q'), answer: t(tr, 'faq.ord2_a') },
+      { question: t(tr, 'faq.ord3_q'), answer: t(tr, 'faq.ord3_a') },
+      { question: t(tr, 'faq.ord4_q'), answer: t(tr, 'faq.ord4_a') },
+      { question: t(tr, 'faq.ord5_q'), answer: t(tr, 'faq.ord5_a') },
+    ],
+  },
+  {
+    id: 'shipping',
+    icon: 'fa-truck',
+    iconClass: 'fq-icon-purple',
+    navLabel: t(tr, 'faq.cat_shipping'),
+    title: t(tr, 'faq.shipping_title'),
+    description: t(tr, 'faq.shipping_desc'),
+    items: [
+      { question: t(tr, 'faq.ship1_q'), answer: t(tr, 'faq.ship1_a') },
+      { question: t(tr, 'faq.ship2_q'), answer: t(tr, 'faq.ship2_a') },
+      { question: t(tr, 'faq.ship3_q'), answer: t(tr, 'faq.ship3_a') },
+      { question: t(tr, 'faq.ship4_q'), answer: t(tr, 'faq.ship4_a') },
+      { question: t(tr, 'faq.ship5_q'), answer: t(tr, 'faq.ship5_a') },
+    ],
+  },
+  {
+    id: 'safety',
+    icon: 'fa-shield-halved',
+    iconClass: 'fq-icon-red',
+    navLabel: t(tr, 'faq.cat_safety'),
+    title: t(tr, 'faq.safety_title'),
+    description: t(tr, 'faq.safety_desc'),
+    items: [
+      { question: t(tr, 'faq.safe1_q'), answer: t(tr, 'faq.safe1_a') },
+      { question: t(tr, 'faq.safe2_q'), answer: t(tr, 'faq.safe2_a') },
+      { question: t(tr, 'faq.safe3_q'), answer: t(tr, 'faq.safe3_a') },
+      { question: t(tr, 'faq.safe4_q'), answer: t(tr, 'faq.safe4_a') },
+    ],
+  },
+  {
+    id: 'compliance',
+    icon: 'fa-file-lines',
+    iconClass: 'fq-icon-gold',
+    navLabel: t(tr, 'faq.cat_compliance'),
+    title: t(tr, 'faq.compliance_title'),
+    description: t(tr, 'faq.compliance_desc'),
+    items: [
+      { question: t(tr, 'faq.comp1_q'), answer: t(tr, 'faq.comp1_a') },
+      { question: t(tr, 'faq.comp2_q'), answer: t(tr, 'faq.comp2_a') },
+      { question: t(tr, 'faq.comp3_q'), answer: t(tr, 'faq.comp3_a') },
+      { question: t(tr, 'faq.comp4_q'), answer: t(tr, 'faq.comp4_a') },
+      { question: t(tr, 'faq.comp5_q'), answer: t(tr, 'faq.comp5_a') },
+    ],
+  },
+];
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "What products does UE Chemicals sell?", "acceptedAnswer": { "@type": "Answer", "text": "We supply three core specialty chemicals: Caluanie Muelear Oxidize (industrial oxidizer for metalworking and refining), Red Liquid Mercury (Sb₂O₇Hg₂, for research and industrial applications), and Silver Liquid Mercury (99.99% purity, for gold extraction, manufacturing, and laboratory use)." } },
-    { "@type": "Question", "name": "What purity levels do your chemical products have?", "acceptedAnswer": { "@type": "Answer", "text": "Our Silver Liquid Mercury is certified at ≥99.99% purity (4N grade). Red Liquid Mercury purity is 99.999% (5N grade). Caluanie Muelear Oxidize is manufactured to premium industrial specifications. Certificates of Analysis (COA) are provided with every order." } },
-    { "@type": "Question", "name": "Do you ship chemicals internationally from Thailand?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we ship worldwide from our facility in Bangkok, Thailand. We deliver to Europe, Asia, Africa, North and South America, and Oceania using licensed hazardous materials carriers." } },
-    { "@type": "Question", "name": "How do I place an order for chemicals?", "acceptedAnswer": { "@type": "Answer", "text": "Submit a quote request through our contact form or email us at info@useful-chemicals.com. Include the product, quantity, and delivery destination. We'll respond with a Proforma Invoice within 24 hours." } },
-    { "@type": "Question", "name": "Do you provide Certificates of Analysis (COA)?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, a Certificate of Analysis (COA) is provided with every order, verifying product purity, composition, and batch-specific quality data." } },
-    { "@type": "Question", "name": "Are your chemicals REACH compliant?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we comply with EU REACH Regulation (EC 1907/2006) and the EU Mercury Regulation (EU 2017/852). All products meet applicable EU chemical safety and registration requirements." } },
-    { "@type": "Question", "name": "Do you offer bulk discounts on chemicals?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, we offer competitive wholesale pricing for bulk orders. Contact our sales team with your quantity requirements for custom pricing." } },
-    { "@type": "Question", "name": "How long does chemical delivery take?", "acceptedAnswer": { "@type": "Answer", "text": "Delivery timelines vary by destination: Thailand 1–3 days, Southeast Asia 3–7 days, North America 7–14 days, Europe 10–21 days. Tracking is provided with every order." } }
-  ]
+  "mainEntity": faqSections.flatMap((section) =>
+    section.items.map((item) => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer,
+      },
+    }))
+  )
 };
 ---
 
-<BaseLayout title="FAQ – What Is Caluanie Muelear Oxidize? Red Mercury Uses & More" description="What is Caluanie Muelear Oxidize? What is red mercury used for? Is Caluanie legal? FAQ about buying Caluanie Muelear Oxidize, Red Mercury & Silver Mercury. Shipping, safety, pricing answered." activePage="faq" jsonLd={faqSchema}>
+
+<BaseLayout lang={lang} title={faq.meta_title} description={faq.meta_desc} activePage="faq" jsonLd={faqSchema}>
 
   <!-- ========== HERO ========== -->
   <section class="fq-hero">
     <div class="fq-hero-bg">
-      <img src="/images/pexels-los-muertos-crew-10041264.jpg" alt="FAQ - UE Chemicals support" />
+      <img src="/images/pexels-los-muertos-crew-10041264.jpg" alt={faq.hero_title} />
       <div class="fq-hero-overlay"></div>
     </div>
     <div class="container fq-hero-inner">
       <div class="fq-hero-content">
-        <div class="fq-hero-badge"><i class="fas fa-circle-question"></i> Help Center</div>
-        <h1>Frequently Asked<br />Questions</h1>
-        <p class="fq-hero-sub">Find answers to common questions about our products, ordering process, shipping, safety guidelines, and compliance documentation.</p>
+        <div class="fq-hero-badge"><i class="fas fa-circle-question"></i> {faq.hero_badge}</div>
+        <h1>{faq.hero_title}</h1>
+        <p class="fq-hero-sub">{faq.hero_sub}</p>
       </div>
       <div class="fq-hero-stats">
-        <div class="fq-stat-pill"><i class="fas fa-flask"></i> 3 Core Products</div>
-        <div class="fq-stat-pill"><i class="fas fa-earth-europe"></i> Global Shipping</div>
-        <div class="fq-stat-pill"><i class="fas fa-clock"></i> 24h Response</div>
-        <div class="fq-stat-pill"><i class="fas fa-file-lines"></i> Full Documentation</div>
+        {faqStats.map((stat) => (
+          <div class="fq-stat-pill">
+            <i class={`fas ${stat.icon}`}></i>
+            <span>{stat.value} {stat.label}</span>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -48,305 +157,48 @@ const faqSchema = {
         <!-- Sidebar -->
         <aside class="fq-sidebar">
           <div class="fq-sidebar-inner">
-            <h5><i class="fas fa-layer-group"></i> Categories</h5>
+            <h5><i class="fas fa-layer-group"></i> {faq.categories}</h5>
             <nav class="fq-nav">
-              <a href="#general" class="fq-nav-link active" data-cat="general"><span class="fq-nav-icon"><i class="fas fa-building"></i></span> General <span class="fq-nav-count">4</span></a>
-              <a href="#products" class="fq-nav-link" data-cat="products"><span class="fq-nav-icon"><i class="fas fa-flask"></i></span> Products <span class="fq-nav-count">7</span></a>
-              <a href="#ordering" class="fq-nav-link" data-cat="ordering"><span class="fq-nav-icon"><i class="fas fa-shopping-cart"></i></span> Ordering <span class="fq-nav-count">4</span></a>
-              <a href="#shipping" class="fq-nav-link" data-cat="shipping"><span class="fq-nav-icon"><i class="fas fa-truck"></i></span> Shipping <span class="fq-nav-count">5</span></a>
-              <a href="#safety" class="fq-nav-link" data-cat="safety"><span class="fq-nav-icon"><i class="fas fa-shield-halved"></i></span> Safety <span class="fq-nav-count">4</span></a>
-              <a href="#compliance" class="fq-nav-link" data-cat="compliance"><span class="fq-nav-icon"><i class="fas fa-file-lines"></i></span> Compliance <span class="fq-nav-count">5</span></a>
+              {faqSections.map((section, index) => (
+                <a href={`#${section.id}`} class={`fq-nav-link ${index === 0 ? 'active' : ''}`} data-cat={section.id}>
+                  <span class="fq-nav-icon"><i class={`fas ${section.icon}`}></i></span>
+                  {section.navLabel}
+                  <span class="fq-nav-count">{section.items.length}</span>
+                </a>
+              ))}
             </nav>
             <div class="fq-sidebar-cta">
-              <p>Can't find your answer?</p>
-              <a href="/contact" class="btn btn-accent" style="width:100%;text-align:center;font-size:.88rem;padding:12px;">Contact Us <i class="fas fa-arrow-right"></i></a>
+              <p>{faq.cant_find}</p>
+              <p>{faq.cant_find_desc}</p>
+              <a href={lp("/contact")} class="btn btn-accent" style="width:100%;text-align:center;font-size:.88rem;padding:12px;">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
             </div>
           </div>
         </aside>
 
         <!-- Main FAQ -->
         <div class="fq-main">
-
-          <!-- General -->
-          <div class="fq-category" id="general">
-            <div class="fq-cat-header">
-              <div class="fq-cat-icon"><i class="fas fa-building"></i></div>
-              <div>
-                <h3>General</h3>
-                <p>About UE Chemicals and our operations</p>
+          {faqSections.map((section) => (
+            <div class="fq-category" id={section.id}>
+              <div class="fq-cat-header">
+                <div class={`fq-cat-icon ${section.iconClass}`.trim()}><i class={`fas ${section.icon}`}></i></div>
+                <div>
+                  <h3>{section.title}</h3>
+                  <p>{section.description}</p>
+                </div>
+              </div>
+              <div class="fq-list">
+                {section.items.map((item) => (
+                  <div class="fq-item">
+                    <button class="fq-question" aria-expanded="false">
+                      <span>{item.question}</span>
+                      <div class="fq-toggle"><i class="fas fa-plus"></i></div>
+                    </button>
+                    <div class="fq-answer"><div class="fq-answer-inner">{item.answer}</div></div>
+                  </div>
+                ))}
               </div>
             </div>
-            <div class="fq-list">
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>Who is UE Chemicals?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">UE Chemicals is a specialty chemical supplier based in Bangkok, Thailand. We supply industrial-grade chemicals including Caluanie Muelear Oxidize, Red Liquid Mercury, and Silver Liquid Mercury for legitimate industrial, research, and commercial applications worldwide.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>Where are you located?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Our facility and offices are located at Bangkok, 10110, Thailand. We ship internationally to destinations across Europe, Asia, Africa, the Americas, and Oceania.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>How long have you been in business?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">UE Chemicals has been serving industrial and research clients with premium specialty chemicals, building a reputation for reliability, quality, and safety compliance.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>Do you offer customer support?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Yes, our team is available to assist you with product questions, ordering, safety guidance, and technical support. Contact us via email at info@useful-chemicals.com or through our <a href="/contact">contact form</a>.</div></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Products -->
-          <div class="fq-category" id="products">
-            <div class="fq-cat-header">
-              <div class="fq-cat-icon fq-icon-blue"><i class="fas fa-flask"></i></div>
-              <div>
-                <h3>Products</h3>
-                <p>Product details, purity, and specifications</p>
-              </div>
-            </div>
-            <div class="fq-list">
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>What products do you sell?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">We supply three core specialty chemicals: <strong>Caluanie Muelear Oxidize</strong> (industrial oxidizer for metalworking and refining), <strong>Red Liquid Mercury</strong> (Sb₂O₇Hg₂, for research and industrial applications), and <strong>Silver Liquid Mercury</strong> (99.99% purity, for gold extraction, manufacturing, and laboratory use).</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>What purity levels do your products have?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Our Silver Liquid Mercury is certified at ≥99.99% purity (4N grade). Red Liquid Mercury purity is 99.999% (5N grade). Caluanie Muelear Oxidize is manufactured to premium industrial specifications. Certificates of Analysis (COA) are provided with every order.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>What is Caluanie Muelear Oxidize used for?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Caluanie Muelear Oxidize is primarily used in metalworking, mineral extraction, chemical manufacturing, and industrial refining. It's a highly effective oxidizing agent that breaks down metals efficiently, reducing labor and processing time.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>Is Red Liquid Mercury real?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Red Liquid Mercury (Sb₂O₇Hg₂ — antimony mercury oxide) is a rare compound with unique properties. Our product is sourced from verified suppliers and comes with full certification and documentation to verify authenticity.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>What is Silver Mercury used for?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Silver Liquid Mercury is widely used in gold mining and extraction, dental amalgams, medical devices, manufacturing of industrial instruments, thermometers, barometers, and scientific laboratory research.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>Do you provide product samples?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Sample orders may be available depending on the product. Minimum order quantities apply. Please contact us with your specific requirements for sample pricing and availability.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>Do you offer bulk discounts?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Yes, we offer competitive wholesale pricing for bulk orders. Contact our sales team with your quantity requirements for custom pricing. Visit our <a href="/wholesale">wholesale page</a> for more details.</div></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Ordering -->
-          <div class="fq-category" id="ordering">
-            <div class="fq-cat-header">
-              <div class="fq-cat-icon fq-icon-green"><i class="fas fa-shopping-cart"></i></div>
-              <div>
-                <h3>Ordering &amp; Payment</h3>
-                <p>How to place orders and payment methods</p>
-              </div>
-            </div>
-            <div class="fq-list">
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>How do I place an order?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Submit a quote request through our <a href="/contact">contact form</a> or email us at info@useful-chemicals.com. Include the product, quantity, and delivery destination. We'll respond with a Proforma Invoice within 24 hours.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>What payment methods do you accept?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">We accept bank wire transfers and cryptocurrency (Bitcoin). Payment details are provided on the Proforma Invoice. Bank transfers may take up to 5 business days to process.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>What is a Proforma Invoice?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">A Proforma Invoice is a preliminary invoice sent before the sale is finalized. It includes product details, pricing, shipping costs, payment instructions, and estimated delivery timeline. It serves as a formal quote and order confirmation.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>Can I cancel my order?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Orders may be canceled before shipment. Once the product has been dispatched, cancellation is no longer possible. Please contact us as soon as possible if you need to modify or cancel an order.</div></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Shipping -->
-          <div class="fq-category" id="shipping">
-            <div class="fq-cat-header">
-              <div class="fq-cat-icon fq-icon-purple"><i class="fas fa-truck"></i></div>
-              <div>
-                <h3>Shipping &amp; Delivery</h3>
-                <p>International shipping and tracking</p>
-              </div>
-            </div>
-            <div class="fq-list">
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>Do you ship internationally?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Yes, we ship worldwide from our facility in Bangkok, Thailand. We deliver to Europe, Asia, Africa, North and South America, and Oceania using licensed hazardous materials carriers.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>How long does delivery take?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Delivery timelines vary by destination: Thailand 1–3 days, Southeast Asia 3–7 days, North America 7–14 days, Europe 10–21 days. Full details are on our <a href="/shipping">Shipping page</a>. Tracking is provided with every order.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>Is the packaging discreet?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">All products are shipped in UN-approved packaging with proper hazmat labeling as required by international transport regulations. We also offer specialized discreet packaging solutions — contact us for details.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>Do you provide tracking information?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Yes, tracking details are provided for all shipments. You'll receive tracking information via email once your order has been dispatched.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>What happens if my shipment is delayed by customs?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Customs processing times are outside our control, but we provide comprehensive documentation (SDS, COA, TDS, customs declarations) to facilitate smooth clearance. Our team can assist with any customs-related inquiries.</div></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Safety -->
-          <div class="fq-category" id="safety">
-            <div class="fq-cat-header">
-              <div class="fq-cat-icon fq-icon-red"><i class="fas fa-shield-halved"></i></div>
-              <div>
-                <h3>Safety &amp; Handling</h3>
-                <p>Safe handling, PPE, and storage guidelines</p>
-              </div>
-            </div>
-            <div class="fq-list">
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>Are your products safe to handle?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Our products are safe when handled according to the Safety Data Sheet (SDS) guidelines provided with every order. Proper personal protective equipment (PPE), ventilation, and storage conditions must be maintained at all times.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>What PPE is required?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">At minimum, protective gloves, safety goggles, and a lab coat or protective clothing are required. For mercury products, work in well-ventilated areas or use respiratory protection to avoid vapor inhalation. Full PPE requirements are detailed in each product's SDS.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>How should chemicals be stored?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Store in a cool, dry, well-ventilated area away from direct sunlight and incompatible materials. Keep containers tightly sealed when not in use. Follow all storage guidelines in the product's Safety Data Sheet.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>What should I do in case of a spill?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Evacuate the area and ventilate. Do not touch or walk through spilled material. Use appropriate spill kits for containment. For mercury spills, use mercury spill kits and avoid vacuuming. Refer to the SDS for detailed emergency procedures and contact local hazardous waste authorities if necessary.</div></div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Compliance -->
-          <div class="fq-category" id="compliance">
-            <div class="fq-cat-header">
-              <div class="fq-cat-icon fq-icon-gold"><i class="fas fa-file-lines"></i></div>
-              <div>
-                <h3>Compliance &amp; Documentation</h3>
-                <p>Regulatory compliance and certifications</p>
-              </div>
-            </div>
-            <div class="fq-list">
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>Do you provide Certificates of Analysis (COA)?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Yes, a Certificate of Analysis (COA) is provided with every order, verifying product purity, composition, and batch-specific quality data.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>Do you provide Safety Data Sheets (SDS)?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Yes, Safety Data Sheets compliant with GHS and EU REACH regulations are provided with all shipments. SDS documents include hazard identification, first aid measures, handling and storage instructions, and disposal considerations.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>Are you REACH compliant?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Yes, we comply with EU REACH Regulation (EC 1907/2006) and the EU Mercury Regulation (EU 2017/852). All products meet applicable EU chemical safety and registration requirements.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>Do I need a license to purchase your products?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Requirements vary by country and product. Some jurisdictions require permits or end-use declarations for mercury products. Our team can help you understand the requirements for your specific location and intended use.</div></div>
-              </div>
-              <div class="fq-item">
-                <button class="fq-question" aria-expanded="false">
-                  <span>Do you provide Technical Data Sheets (TDS)?</span>
-                  <div class="fq-toggle"><i class="fas fa-plus"></i></div>
-                </button>
-                <div class="fq-answer"><div class="fq-answer-inner">Yes, Technical Data Sheets with detailed chemical specifications, physical properties, and application guidelines are available for all products. Contact us or visit individual product pages for TDS information.</div></div>
-              </div>
-            </div>
-          </div>
+          ))}
 
         </div>
       </div>
@@ -358,11 +210,11 @@ const faqSchema = {
     <div class="container">
       <div class="fq-cta-inner">
         <div class="fq-cta-icon"><i class="fas fa-comments"></i></div>
-        <h2>Still Have Questions?</h2>
-        <p>Our team is ready to help with any product, ordering, or technical questions. We respond within 24 hours.</p>
+        <h2>{faq.cta_title}</h2>
+        <p>{faq.cta_desc}</p>
         <div class="fq-cta-actions">
-          <a href="/contact" class="btn btn-white">Contact Us <i class="fas fa-arrow-right"></i></a>
-          <a href="/products" class="btn btn-outline-white">Browse Products <i class="fas fa-flask"></i></a>
+          <a href={lp("/contact")} class="btn btn-white">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "common.browse_products")} <i class="fas fa-flask"></i></a>
         </div>
       </div>
     </div>

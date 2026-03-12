@@ -1,40 +1,181 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath } from '../i18n/index';
+import { defaultLang } from '../i18n/languages';
+
+const lang = defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+const certs = tr.certificates;
+
+const metrics = [
+  { value: t(tr, 'certificates.metric1_val'), label: t(tr, 'certificates.metric1_label') },
+  { value: t(tr, 'certificates.metric2_val'), label: t(tr, 'certificates.metric2_label') },
+  { value: t(tr, 'certificates.metric3_val'), label: t(tr, 'certificates.metric3_label') },
+  { value: t(tr, 'certificates.metric4_val'), label: t(tr, 'certificates.metric4_label') },
+];
+
+const trustItems = [
+  t(tr, 'certificates.trust_iso9001'),
+  t(tr, 'certificates.trust_iso14001'),
+  t(tr, 'certificates.trust_iso45001'),
+  t(tr, 'certificates.trust_reach'),
+  t(tr, 'certificates.trust_ghs'),
+  t(tr, 'certificates.trust_adr'),
+];
+
+const certificationBadges = [
+  {
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/ISO_Logo_%28Red_square%29.svg/200px-ISO_Logo_%28Red_square%29.svg.png',
+    label: t(tr, 'certificates.trust_iso9001'),
+  },
+  {
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/200px-Flag_of_Europe.svg.png',
+    label: t(tr, 'certificates.trust_reach'),
+  },
+  {
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/GHS-pictogram-skull.svg/200px-GHS-pictogram-skull.svg.png',
+    label: t(tr, 'certificates.trust_ghs'),
+  },
+  {
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/GHS-pictogram-exclam.svg/200px-GHS-pictogram-exclam.svg.png',
+    label: t(tr, 'certificates.clp_sub'),
+  },
+  {
+    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/GHS-pictogram-pollu.svg/200px-GHS-pictogram-pollu.svg.png',
+    label: t(tr, 'certificates.trust_adr'),
+  },
+];
+
+const certificationCards = [
+  {
+    icon: 'fa-award',
+    iconClass: '',
+    title: 'ISO 9001:2015',
+    subtitle: t(tr, 'certificates.iso9001_sub'),
+    description: t(tr, 'certificates.iso9001_desc'),
+    meta: t(tr, 'certificates.iso9001_meta'),
+  },
+  {
+    icon: 'fa-leaf',
+    iconClass: 'cq-green',
+    title: 'ISO 14001:2015',
+    subtitle: t(tr, 'certificates.iso14001_sub'),
+    description: t(tr, 'certificates.iso14001_desc'),
+    meta: t(tr, 'certificates.iso14001_meta'),
+  },
+  {
+    icon: 'fa-shield-halved',
+    iconClass: 'cq-blue',
+    title: 'ISO 45001:2018',
+    subtitle: t(tr, 'certificates.iso45001_sub'),
+    description: t(tr, 'certificates.iso45001_desc'),
+    meta: t(tr, 'certificates.iso45001_meta'),
+  },
+  {
+    icon: 'fa-flask-vial',
+    iconClass: 'cq-purple',
+    title: 'REACH',
+    subtitle: t(tr, 'certificates.reach_sub'),
+    description: t(tr, 'certificates.reach_desc'),
+    meta: t(tr, 'certificates.reach_meta'),
+  },
+  {
+    icon: 'fa-tags',
+    iconClass: 'cq-gold',
+    title: 'CLP',
+    subtitle: t(tr, 'certificates.clp_sub'),
+    description: t(tr, 'certificates.clp_desc'),
+    meta: t(tr, 'certificates.clp_meta'),
+  },
+  {
+    icon: 'fa-truck',
+    iconClass: '',
+    title: 'ADR / IMDG',
+    subtitle: t(tr, 'certificates.adr_sub'),
+    description: t(tr, 'certificates.adr_desc'),
+    meta: t(tr, 'certificates.adr_meta'),
+  },
+];
+
+const documentationCards = [
+  {
+    icon: 'fa-file-lines',
+    iconClass: '',
+    title: t(tr, 'certificates.coa_title'),
+    description: t(tr, 'certificates.coa_desc'),
+    items: [
+      t(tr, 'certificates.coa_item1'),
+      t(tr, 'certificates.coa_item2'),
+      t(tr, 'certificates.coa_item3'),
+      t(tr, 'certificates.coa_item4'),
+    ],
+    footerIcon: 'fa-download',
+    footer: t(tr, 'certificates.coa_footer'),
+  },
+  {
+    icon: 'fa-triangle-exclamation',
+    iconClass: 'cq-doc-red',
+    title: t(tr, 'certificates.sds_title'),
+    description: t(tr, 'certificates.sds_desc'),
+    items: [
+      t(tr, 'certificates.sds_item1'),
+      t(tr, 'certificates.sds_item2'),
+      t(tr, 'certificates.sds_item3'),
+      t(tr, 'certificates.sds_item4'),
+    ],
+    footerIcon: 'fa-language',
+    footer: t(tr, 'certificates.sds_footer'),
+  },
+  {
+    icon: 'fa-clipboard-list',
+    iconClass: 'cq-doc-blue',
+    title: t(tr, 'certificates.tds_title'),
+    description: t(tr, 'certificates.tds_desc'),
+    items: [
+      t(tr, 'certificates.tds_item1'),
+      t(tr, 'certificates.tds_item2'),
+      t(tr, 'certificates.tds_item3'),
+      t(tr, 'certificates.tds_item4'),
+    ],
+    footerIcon: 'fa-flask',
+    footer: t(tr, 'certificates.tds_footer'),
+  },
+];
+
+const processSteps = [
+  { title: t(tr, 'certificates.qc1_title'), description: t(tr, 'certificates.qc1_desc') },
+  { title: t(tr, 'certificates.qc2_title'), description: t(tr, 'certificates.qc2_desc') },
+  { title: t(tr, 'certificates.qc3_title'), description: t(tr, 'certificates.qc3_desc') },
+  { title: t(tr, 'certificates.qc4_title'), description: t(tr, 'certificates.qc4_desc') },
+  { title: t(tr, 'certificates.qc5_title'), description: t(tr, 'certificates.qc5_desc') },
+];
 ---
 
-<BaseLayout title="Certificates & Quality Assurance" description="UE Chemicals quality certifications, ISO standards, COA, SDS & TDS documentation. REACH-compliant chemical supply from Bangkok, Thailand." activePage="certificates">
+
+<BaseLayout lang={lang} title={certs.meta_title} description={certs.meta_desc} activePage="certificates">
 
   <!-- ========== HERO ========== -->
   <section class="cq-hero">
     <div class="cq-hero-bg">
-      <img src="/images/safety-guidelines-for-chemical-storage-and-handling-1.jpg" alt="Quality assurance laboratory at UE Chemicals" />
+      <img src="/images/safety-guidelines-for-chemical-storage-and-handling-1.jpg" alt={certs.hero_title} />
       <div class="cq-hero-overlay"></div>
     </div>
     <div class="container cq-hero-inner">
       <div class="cq-hero-content">
-        <div class="cq-hero-badge"><i class="fas fa-certificate"></i> Quality Assurance</div>
-        <h1>Certificates &amp;<br />Quality Assurance</h1>
-        <p class="cq-hero-sub">Every chemical we supply meets the highest purity standards, backed by rigorous quality control, internationally recognized certifications, and full batch documentation.</p>
+        <div class="cq-hero-badge"><i class="fas fa-certificate"></i> {certs.hero_badge}</div>
+        <h1>{certs.hero_title}</h1>
+        <p class="cq-hero-sub">{certs.hero_sub}</p>
         <div class="cq-hero-metrics">
-          <div class="cq-metric">
-            <span class="cq-metric-val">99.999%</span>
-            <span class="cq-metric-lbl">Max Purity (5N)</span>
-          </div>
-          <div class="cq-metric-divider"></div>
-          <div class="cq-metric">
-            <span class="cq-metric-val">100%</span>
-            <span class="cq-metric-lbl">COA with Every Order</span>
-          </div>
-          <div class="cq-metric-divider"></div>
-          <div class="cq-metric">
-            <span class="cq-metric-val">ISO</span>
-            <span class="cq-metric-lbl">Certified Processes</span>
-          </div>
-          <div class="cq-metric-divider"></div>
-          <div class="cq-metric">
-            <span class="cq-metric-val">REACH</span>
-            <span class="cq-metric-lbl">EU Compliant</span>
-          </div>
+          {metrics.map((metric, index) => (
+            <>
+              <div class="cq-metric">
+                <span class="cq-metric-val">{metric.value}</span>
+                <span class="cq-metric-lbl">{metric.label}</span>
+              </div>
+              {index < metrics.length - 1 && <div class="cq-metric-divider"></div>}
+            </>
+          ))}
         </div>
       </div>
     </div>
@@ -45,25 +186,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="cq-overview-grid">
         <div class="cq-overview-text">
-          <div class="section-label">Our Commitment</div>
-          <h2>Quality You Can Verify</h2>
-          <p>At UE Chemicals, quality is not a marketing claim — it is a measurable, documented fact. Every batch of product that leaves our facility in Bangkok, Thailand is accompanied by a full suite of analytical documentation, so you can independently verify exactly what you are receiving.</p>
-          <p>Our quality management system covers the entire supply chain: raw material sourcing, in-house purification and processing, analytical testing, packaging, storage, and hazmat-compliant shipping. We maintain stringent protocols at every stage to guarantee consistency, purity, and safety.</p>
-          <a href="/contact" class="btn btn-accent" style="margin-top:16px;">Request Documentation <i class="fas fa-arrow-right"></i></a>
+          <div class="section-label">{certs.overview_label}</div>
+          <h2>{certs.overview_title}</h2>
+          <p>{certs.overview_desc1}</p>
+          <p>{certs.overview_desc2}</p>
+          <a href={lp("/contact")} class="btn btn-accent" style="margin-top:16px;">{t(tr, "common.request_documentation")} <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="cq-overview-visual">
           <div class="cq-trust-badge">
             <div class="cq-trust-shield"><i class="fas fa-shield-halved"></i></div>
-            <h4>Verified Quality</h4>
-            <p>Independent laboratory testing on every batch</p>
+            <h4>{certs.trust_title}</h4>
+            <p>{certs.trust_desc}</p>
           </div>
           <div class="cq-trust-items">
-            <div class="cq-trust-item"><i class="fas fa-check-circle"></i> ISO 9001 Certified</div>
-            <div class="cq-trust-item"><i class="fas fa-check-circle"></i> ISO 14001 Certified</div>
-            <div class="cq-trust-item"><i class="fas fa-check-circle"></i> ISO 45001 Certified</div>
-            <div class="cq-trust-item"><i class="fas fa-check-circle"></i> REACH Registered</div>
-            <div class="cq-trust-item"><i class="fas fa-check-circle"></i> GHS / CLP Compliant</div>
-            <div class="cq-trust-item"><i class="fas fa-check-circle"></i> ADR / IMDG Approved</div>
+            {trustItems.map((item) => (
+              <div class="cq-trust-item"><i class="fas fa-check-circle"></i> {item}</div>
+            ))}
           </div>
         </div>
       </div>
@@ -74,96 +212,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="cq-certs">
     <div class="container">
       <div class="cq-section-header">
-        <div class="section-label">Standards &amp; Certifications</div>
-        <h2>Internationally Recognized Certifications</h2>
-        <p>Our operations comply with the world's leading standards for quality management, environmental stewardship, and occupational safety.</p>
+        <div class="section-label">{certs.certs_label}</div>
+        <h2>{certs.certs_title}</h2>
+        <p>{certs.certs_desc}</p>
       </div>
 
       <!-- Certification image badges row -->
       <div class="cq-cert-badges">
-        <div class="cq-badge-item">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/ISO_Logo_%28Red_square%29.svg/200px-ISO_Logo_%28Red_square%29.svg.png" alt="ISO International Organization for Standardization" width="90" height="90" loading="lazy" />
-          <span>ISO Certified</span>
-        </div>
-        <div class="cq-badge-item">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/200px-Flag_of_Europe.svg.png" alt="EU REACH Regulation Compliance" width="90" height="63" loading="lazy" />
-          <span>EU REACH</span>
-        </div>
-        <div class="cq-badge-item">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/GHS-pictogram-skull.svg/200px-GHS-pictogram-skull.svg.png" alt="GHS Globally Harmonized System" width="90" height="90" loading="lazy" />
-          <span>GHS Compliant</span>
-        </div>
-        <div class="cq-badge-item">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/GHS-pictogram-exclam.svg/200px-GHS-pictogram-exclam.svg.png" alt="CLP Classification Labelling Packaging" width="90" height="90" loading="lazy" />
-          <span>CLP Regulation</span>
-        </div>
-        <div class="cq-badge-item">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/GHS-pictogram-pollu.svg/200px-GHS-pictogram-pollu.svg.png" alt="Environmental hazard classification" width="90" height="90" loading="lazy" />
-          <span>Environmental</span>
-        </div>
+        {certificationBadges.map((badge) => (
+          <div class="cq-badge-item">
+            <img src={badge.image} alt={badge.label} width="90" height="90" loading="lazy" />
+            <span>{badge.label}</span>
+          </div>
+        ))}
       </div>
 
       <div class="cq-certs-grid">
-        <div class="cq-cert-card">
-          <div class="cq-cert-top">
-            <div class="cq-cert-icon"><i class="fas fa-award"></i></div>
-            <div class="cq-cert-tag">Active</div>
+        {certificationCards.map((card) => (
+          <div class="cq-cert-card">
+            <div class="cq-cert-top">
+              <div class={`cq-cert-icon ${card.iconClass}`.trim()}><i class={`fas ${card.icon}`}></i></div>
+            </div>
+            <h4>{card.title}</h4>
+            <p class="cq-cert-sub">{card.subtitle}</p>
+            <p>{card.description}</p>
+            <div class="cq-cert-meta">{card.meta}</div>
           </div>
-          <h4>ISO 9001:2015</h4>
-          <p class="cq-cert-sub">Quality Management System</p>
-          <p>Certified quality management ensuring consistent product quality, customer satisfaction, and continuous improvement across all processes — from procurement to delivery.</p>
-          <div class="cq-cert-meta"><i class="fas fa-calendar"></i> Certified annually &nbsp;·&nbsp; <i class="fas fa-building"></i> TÜV audited</div>
-        </div>
-        <div class="cq-cert-card">
-          <div class="cq-cert-top">
-            <div class="cq-cert-icon cq-green"><i class="fas fa-leaf"></i></div>
-            <div class="cq-cert-tag cq-tag-green">Active</div>
-          </div>
-          <h4>ISO 14001:2015</h4>
-          <p class="cq-cert-sub">Environmental Management</p>
-          <p>Environmental management system minimizing impact through responsible handling, waste management, and emissions control at our Bangkok facility.</p>
-          <div class="cq-cert-meta"><i class="fas fa-leaf"></i> Eco-compliant &nbsp;·&nbsp; <i class="fas fa-recycle"></i> Zero-waste target</div>
-        </div>
-        <div class="cq-cert-card">
-          <div class="cq-cert-top">
-            <div class="cq-cert-icon cq-blue"><i class="fas fa-shield-halved"></i></div>
-            <div class="cq-cert-tag cq-tag-blue">Active</div>
-          </div>
-          <h4>ISO 45001:2018</h4>
-          <p class="cq-cert-sub">Occupational Health &amp; Safety</p>
-          <p>Occupational health and safety system ensuring safe chemical handling, storage, and transport procedures for employees and customers alike.</p>
-          <div class="cq-cert-meta"><i class="fas fa-hard-hat"></i> Safety-first culture &nbsp;·&nbsp; <i class="fas fa-chart-line"></i> Zero incidents</div>
-        </div>
-        <div class="cq-cert-card">
-          <div class="cq-cert-top">
-            <div class="cq-cert-icon cq-purple"><i class="fas fa-flask-vial"></i></div>
-            <div class="cq-cert-tag cq-tag-purple">Registered</div>
-          </div>
-          <h4>REACH Compliance</h4>
-          <p class="cq-cert-sub">EU Regulation (EC) No. 1907/2006</p>
-          <p>All products fully compliant with EU REACH. Substances registered and documented per European Chemical Agency (ECHA) requirements for safe market access.</p>
-          <div class="cq-cert-meta"><i class="fas fa-database"></i> ECHA registered &nbsp;·&nbsp; <i class="fas fa-globe-europe"></i> EU market access</div>
-        </div>
-        <div class="cq-cert-card">
-          <div class="cq-cert-top">
-            <div class="cq-cert-icon cq-gold"><i class="fas fa-tags"></i></div>
-            <div class="cq-cert-tag cq-tag-gold">Compliant</div>
-          </div>
-          <h4>CLP Regulation</h4>
-          <p class="cq-cert-sub">Classification, Labelling &amp; Packaging</p>
-          <p>Products classified, labelled, and packaged per CLP Regulation (EC) No. 1272/2008 with GHS-compliant hazard pictograms, signal words, and safety statements.</p>
-          <div class="cq-cert-meta"><i class="fas fa-tag"></i> GHS pictograms &nbsp;·&nbsp; <i class="fas fa-language"></i> Multi-language labels</div>
-        </div>
-        <div class="cq-cert-card">
-          <div class="cq-cert-top">
-            <div class="cq-cert-icon"><i class="fas fa-truck"></i></div>
-            <div class="cq-cert-tag">Certified</div>
-          </div>
-          <h4>ADR / IMDG</h4>
-          <p class="cq-cert-sub">Dangerous Goods Transport</p>
-          <p>All shipments comply with ADR (road) and IMDG (sea) regulations. UN packaging, hazard labelling, and full transport documentation with every order.</p>
-          <div class="cq-cert-meta"><i class="fas fa-truck"></i> Road &amp; sea approved &nbsp;·&nbsp; <i class="fas fa-box"></i> UN-rated packaging</div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -172,47 +247,22 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="cq-docs">
     <div class="container">
       <div class="cq-section-header">
-        <div class="section-label">Product Documentation</div>
-        <h2>Documents Included with Every Order</h2>
-        <p>Full transparency and traceability — every shipment comes with comprehensive documentation you can share with regulators, clients, and internal QA teams.</p>
+        <div class="section-label">{certs.docs_label}</div>
+        <h2>{certs.docs_title}</h2>
+        <p>{certs.docs_desc}</p>
       </div>
       <div class="cq-docs-grid">
-        <div class="cq-doc-card">
-          <div class="cq-doc-icon-wrap"><i class="fas fa-file-lines"></i></div>
-          <h4>Certificate of Analysis (COA)</h4>
-          <p>Batch-specific analytical report detailing purity, trace elements, density, and physical properties — verified by our in-house laboratory.</p>
-          <ul>
-            <li>Purity / Assay percentage</li>
-            <li>Trace impurity analysis (ppm)</li>
-            <li>Density &amp; physical verification</li>
-            <li>Batch number &amp; production date</li>
-          </ul>
-          <div class="cq-doc-footer"><i class="fas fa-download"></i> Provided with every order</div>
-        </div>
-        <div class="cq-doc-card">
-          <div class="cq-doc-icon-wrap cq-doc-red"><i class="fas fa-triangle-exclamation"></i></div>
-          <h4>Safety Data Sheet (SDS)</h4>
-          <p>16-section SDS compliant with EU Regulation (EC) No. 1907/2006, Annex II. Available in your preferred language.</p>
-          <ul>
-            <li>Hazard identification &amp; class</li>
-            <li>First-aid &amp; firefighting measures</li>
-            <li>Handling &amp; exposure controls</li>
-            <li>Toxicological &amp; ecological data</li>
-          </ul>
-          <div class="cq-doc-footer"><i class="fas fa-language"></i> Multi-language available</div>
-        </div>
-        <div class="cq-doc-card">
-          <div class="cq-doc-icon-wrap cq-doc-blue"><i class="fas fa-clipboard-list"></i></div>
-          <h4>Technical Data Sheet (TDS)</h4>
-          <p>Detailed specification sheet outlining chemical/physical properties, recommended uses, storage, and compatibility info.</p>
-          <ul>
-            <li>Chemical formula &amp; CAS number</li>
-            <li>Physical properties &amp; boiling point</li>
-            <li>Applications &amp; use cases</li>
-            <li>Storage &amp; shelf life</li>
-          </ul>
-          <div class="cq-doc-footer"><i class="fas fa-flask"></i> Product-specific specs</div>
-        </div>
+        {documentationCards.map((card) => (
+          <div class="cq-doc-card">
+            <div class={`cq-doc-icon-wrap ${card.iconClass}`.trim()}><i class={`fas ${card.icon}`}></i></div>
+            <h4>{card.title}</h4>
+            <p>{card.description}</p>
+            <ul>
+              {card.items.map((item) => <li>{item}</li>)}
+            </ul>
+            <div class="cq-doc-footer"><i class={`fas ${card.footerIcon}`}></i> {card.footer}</div>
+          </div>
+        ))}
       </div>
     </div>
   </section>
@@ -221,57 +271,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="cq-process">
     <div class="container">
       <div class="cq-section-header">
-        <div class="section-label">Quality Control</div>
-        <h2>Our 5-Stage Quality Process</h2>
-        <p>From raw material intake to final dispatch, every product passes through five rigorous quality checkpoints.</p>
+        <div class="section-label">{certs.qc_label}</div>
+        <h2>{certs.qc_title}</h2>
+        <p>{certs.qc_desc}</p>
       </div>
       <div class="cq-process-timeline">
         <div class="cq-timeline-line"></div>
-        <div class="cq-process-step">
-          <div class="cq-step-marker">
-            <div class="cq-step-num">01</div>
+        {processSteps.map((step, index) => (
+          <div class="cq-process-step">
+            <div class="cq-step-marker">
+              <div class="cq-step-num">{String(index + 1).padStart(2, '0')}</div>
+            </div>
+            <div class="cq-step-card">
+              <h4>{step.title}</h4>
+              <p>{step.description}</p>
+            </div>
           </div>
-          <div class="cq-step-card">
-            <h4>Raw Material Inspection</h4>
-            <p>All incoming raw materials undergo rigorous inspection and testing. Only materials meeting strict purity thresholds enter the production pipeline.</p>
-          </div>
-        </div>
-        <div class="cq-process-step">
-          <div class="cq-step-marker">
-            <div class="cq-step-num">02</div>
-          </div>
-          <div class="cq-step-card">
-            <h4>Processing &amp; Purification</h4>
-            <p>Advanced purification techniques including multi-stage distillation and filtration ensure final product purity reaches 99.99% (4N) to 99.999% (5N) grade.</p>
-          </div>
-        </div>
-        <div class="cq-process-step">
-          <div class="cq-step-marker">
-            <div class="cq-step-num">03</div>
-          </div>
-          <div class="cq-step-card">
-            <h4>Analytical Testing</h4>
-            <p>Every batch is tested in our analytical laboratory — purity, density, trace impurities, and physical properties compared against specifications.</p>
-          </div>
-        </div>
-        <div class="cq-process-step">
-          <div class="cq-step-marker">
-            <div class="cq-step-num">04</div>
-          </div>
-          <div class="cq-step-card">
-            <h4>Documentation &amp; Release</h4>
-            <p>Only batches passing all checks are released. COA, SDS, and TDS generated before packaging and shipping.</p>
-          </div>
-        </div>
-        <div class="cq-process-step">
-          <div class="cq-step-marker">
-            <div class="cq-step-num">05</div>
-          </div>
-          <div class="cq-step-card">
-            <h4>Packaging &amp; Shipping QA</h4>
-            <p>UN-rated containers compliant with ADR/IMDG standards. Final inspection verifies labelling, sealing, and documentation before dispatch.</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -281,11 +297,11 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="cq-cta-inner">
         <div class="cq-cta-icon"><i class="fas fa-file-circle-check"></i></div>
-        <h2>Need Documentation or Have Quality Questions?</h2>
-        <p>Request sample COA, SDS, or TDS before placing your order. Our technical team is happy to provide documentation or answer any quality-related inquiries.</p>
+        <h2>{certs.cta_title}</h2>
+        <p>{certs.cta_desc}</p>
         <div class="cq-cta-actions">
-          <a href="/contact" class="btn btn-white">Request Documentation <i class="fas fa-arrow-right"></i></a>
-          <a href="/products" class="btn btn-outline-white">Browse Products <i class="fas fa-flask"></i></a>
+          <a href={lp("/contact")} class="btn btn-white">{t(tr, "common.request_documentation")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "common.browse_products")} <i class="fas fa-flask"></i></a>
         </div>
       </div>
     </div>

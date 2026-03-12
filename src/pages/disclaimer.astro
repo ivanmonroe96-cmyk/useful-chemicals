@@ -1,19 +1,58 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations, t } from '../i18n/index';
+import { defaultLang } from '../i18n/languages';
+
+const lang = defaultLang;
+const tr = getTranslations(lang);
+const disclaimer = tr.disclaimer;
+const tocItems = [
+  { id: 'general', label: disclaimer.toc_general },
+  { id: 'product-use', label: disclaimer.toc_product_use },
+  { id: 'limitation', label: disclaimer.toc_limitation },
+  { id: 'professional', label: disclaimer.toc_professional },
+  { id: 'regulatory', label: disclaimer.toc_regulatory },
+  { id: 'no-guarantee', label: disclaimer.toc_no_guarantee },
+  { id: 'third-party', label: disclaimer.toc_third_party },
+  { id: 'ip', label: disclaimer.toc_ip },
+  { id: 'indemnification', label: disclaimer.toc_indemnification },
+  { id: 'changes', label: disclaimer.toc_changes },
+  { id: 'governing', label: disclaimer.toc_governing },
+  { id: 'contact', label: disclaimer.toc_contact },
+];
+const productUseItems = [
+  disclaimer.product_use_item1,
+  disclaimer.product_use_item2,
+  disclaimer.product_use_item3,
+  disclaimer.product_use_item4,
+];
+const limitationItems = [
+  disclaimer.limitation_item1,
+  disclaimer.limitation_item2,
+  disclaimer.limitation_item3,
+  disclaimer.limitation_item4,
+];
+const professionalItems = [
+  { icon: 'fa-hard-hat', text: disclaimer.professional_item1 },
+  { icon: 'fa-wind', text: disclaimer.professional_item2 },
+  { icon: 'fa-clipboard-check', text: disclaimer.professional_item3 },
+  { icon: 'fa-kit-medical', text: disclaimer.professional_item4 },
+  { icon: 'fa-tags', text: disclaimer.professional_item5 },
+];
 ---
 
-<BaseLayout title="Disclaimer – Liability & Usage Notice" description="Disclaimer for UE Chemicals. Liability limitations, product usage responsibilities, and legal notices for our industrial chemical products and website content." activePage="">
+<BaseLayout lang={lang} title={disclaimer.meta_title} description={disclaimer.meta_desc} activePage="">
 
   <!-- ========== HERO ========== -->
   <section class="lg-hero">
     <div class="lg-hero-bg"></div>
     <div class="container lg-hero-inner">
-      <div class="lg-hero-badge"><i class="fas fa-triangle-exclamation"></i> Legal</div>
-      <h1>Disclaimer</h1>
-      <p class="lg-hero-sub">Liability limitations, product usage responsibilities, and legal notices for our industrial chemical products.</p>
+      <div class="lg-hero-badge"><i class="fas fa-triangle-exclamation"></i> {disclaimer.hero_badge}</div>
+      <h1>{disclaimer.title}</h1>
+      <p class="lg-hero-sub">{disclaimer.hero_sub}</p>
       <div class="lg-hero-meta">
-        <span><i class="fas fa-calendar"></i> Last Updated: March 2026</span>
-        <span><i class="fas fa-gavel"></i> German Law</span>
+        <span><i class="fas fa-calendar"></i> {disclaimer.last_updated}</span>
+        <span><i class="fas fa-gavel"></i> {disclaimer.german_law}</span>
       </div>
     </div>
   </section>
@@ -26,20 +65,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <!-- Sidebar TOC -->
         <aside class="lg-sidebar">
           <div class="lg-toc">
-            <h4>Table of Contents</h4>
+            <h4>{disclaimer.toc}</h4>
             <nav>
-              <a href="#general">1. General Disclaimer</a>
-              <a href="#product-use">2. Product Use Disclaimer</a>
-              <a href="#limitation">3. Limitation of Liability</a>
-              <a href="#professional">4. Professional Responsibility</a>
-              <a href="#regulatory">5. Regulatory Compliance</a>
-              <a href="#no-guarantee">6. No Guarantee of Results</a>
-              <a href="#third-party">7. Third-Party Links</a>
-              <a href="#ip">8. Intellectual Property</a>
-              <a href="#indemnification">9. Indemnification</a>
-              <a href="#changes">10. Changes</a>
-              <a href="#governing">11. Governing Law</a>
-              <a href="#contact">12. Contact</a>
+              {tocItems.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}
             </nav>
           </div>
         </aside>
@@ -49,100 +77,92 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <div class="lg-section" id="general">
             <div class="lg-section-num">01</div>
-            <h3>General Disclaimer</h3>
-            <p>The information provided on this website (useful-chemicals.com) is for general informational purposes only. While UE Chemicals strives to keep the information up to date and accurate, we make no representations or warranties of any kind, express or implied, about the completeness, accuracy, reliability, suitability, or availability of the information, products, services, or related graphics contained on this website.</p>
+            <h3>{disclaimer.general_title}</h3>
+            <p>{disclaimer.general_desc}</p>
           </div>
 
           <div class="lg-section" id="product-use">
             <div class="lg-section-num">02</div>
-            <h3>Product Use Disclaimer</h3>
+            <h3>{disclaimer.product_use_title}</h3>
             <div class="lg-highlight">
               <i class="fas fa-exclamation-triangle"></i>
-              <p>All chemical products supplied by UE Chemicals are intended strictly for legitimate industrial, research, scientific, and commercial purposes.</p>
+              <p>{disclaimer.product_use_highlight}</p>
             </div>
-            <p>By purchasing or requesting a quote for any of our products — including Caluanie Muelear Oxidize, Red Liquid Mercury, and Silver Liquid Mercury — you acknowledge and agree that:</p>
+            <p>{disclaimer.product_use_intro}</p>
             <ul>
-              <li>You will use the products solely for lawful purposes and in compliance with all applicable local, national, and international laws and regulations.</li>
-              <li>You are responsible for obtaining all necessary permits, licenses, and authorizations required in your jurisdiction.</li>
-              <li>You will handle all products in accordance with the Safety Data Sheet (SDS) and technical documentation provided with your order.</li>
-              <li>You accept full responsibility for the safe handling, storage, transport, use, and disposal of all products purchased.</li>
+              {productUseItems.map((item) => <li>{item}</li>)}
             </ul>
           </div>
 
           <div class="lg-section" id="limitation">
             <div class="lg-section-num">03</div>
-            <h3>Limitation of Liability</h3>
-            <p>To the fullest extent permitted by applicable law, UE Chemicals shall not be liable for any direct, indirect, incidental, special, consequential, or punitive damages arising from:</p>
+            <h3>{disclaimer.limitation_title}</h3>
+            <p>{disclaimer.limitation_intro}</p>
             <ul>
-              <li>The use or inability to use our products, including damages from improper handling, storage, or application.</li>
-              <li>The use of or reliance on any information provided on this website.</li>
-              <li>Any errors, omissions, or inaccuracies in product descriptions or technical specifications.</li>
-              <li>Personal injury, property damage, or environmental damage caused by misuse or failure to follow safety guidelines.</li>
+              {limitationItems.map((item) => <li>{item}</li>)}
             </ul>
           </div>
 
           <div class="lg-section" id="professional">
             <div class="lg-section-num">04</div>
-            <h3>Professional Responsibility</h3>
-            <p>Our products are designed for use by trained professionals with appropriate knowledge and experience in handling hazardous chemicals. Users must:</p>
+            <h3>{disclaimer.professional_title}</h3>
+            <p>{disclaimer.professional_intro}</p>
             <div class="dc-req-grid">
-              <div class="dc-req-item"><i class="fas fa-hard-hat"></i><span>Employ appropriate personal protective equipment (PPE) at all times.</span></div>
-              <div class="dc-req-item"><i class="fas fa-wind"></i><span>Ensure adequate ventilation and containment measures.</span></div>
-              <div class="dc-req-item"><i class="fas fa-clipboard-check"></i><span>Follow all workplace health &amp; safety regulations (EU Directive 89/391/EEC).</span></div>
-              <div class="dc-req-item"><i class="fas fa-kit-medical"></i><span>Maintain proper emergency response and spill containment plans.</span></div>
-              <div class="dc-req-item"><i class="fas fa-tags"></i><span>Comply with CLP Regulation (EC 1272/2008) for hazard communication.</span></div>
+              {professionalItems.map((item) => (
+                <div class="dc-req-item"><i class:list={['fas', item.icon]}></i><span>{item.text}</span></div>
+              ))}
             </div>
           </div>
 
           <div class="lg-section" id="regulatory">
             <div class="lg-section-num">05</div>
-            <h3>Regulatory Compliance</h3>
-            <p>UE Chemicals operates in compliance with EU REACH Regulation (EC 1907/2006), EU Mercury Regulation (EU 2017/852), and all applicable German and EU chemical safety laws. However, it is the buyer's sole responsibility to ensure that the purchase, import, use, and disposal of our products comply with all laws and regulations applicable in their jurisdiction.</p>
+            <h3>{disclaimer.regulatory_title}</h3>
+            <p>{disclaimer.regulatory_desc}</p>
           </div>
 
           <div class="lg-section" id="no-guarantee">
             <div class="lg-section-num">06</div>
-            <h3>No Guarantee of Results</h3>
-            <p>While our products are manufactured to the highest quality standards with certified purity levels, UE Chemicals does not guarantee specific results from the use of our products. Product performance may vary depending on application conditions, user expertise, and environmental factors.</p>
+            <h3>{disclaimer.no_guarantee_title}</h3>
+            <p>{disclaimer.no_guarantee_desc}</p>
           </div>
 
           <div class="lg-section" id="third-party">
             <div class="lg-section-num">07</div>
-            <h3>Third-Party Links</h3>
-            <p>This website may contain links to third-party websites. These links are provided for convenience only and do not imply endorsement by UE Chemicals. We have no control over and accept no responsibility for the content, privacy policies, or practices of any third-party websites.</p>
+            <h3>{disclaimer.third_party_title}</h3>
+            <p>{disclaimer.third_party_desc}</p>
           </div>
 
           <div class="lg-section" id="ip">
             <div class="lg-section-num">08</div>
-            <h3>Intellectual Property</h3>
-            <p>All content on this website, including text, images, logos, product descriptions, and technical data, is the intellectual property of UE Chemicals and is protected by German copyright law (Urheberrechtsgesetz). Unauthorized reproduction, distribution, or use of any content is prohibited without prior written consent.</p>
+            <h3>{disclaimer.ip_title}</h3>
+            <p>{disclaimer.ip_desc}</p>
           </div>
 
           <div class="lg-section" id="indemnification">
             <div class="lg-section-num">09</div>
-            <h3>Indemnification</h3>
-            <p>By using our website or purchasing our products, you agree to indemnify and hold harmless UE Chemicals, its directors, employees, and agents from and against any claims, damages, expenses, or liabilities arising from your use of our products or violation of this disclaimer.</p>
+            <h3>{disclaimer.indemnification_title}</h3>
+            <p>{disclaimer.indemnification_desc}</p>
           </div>
 
           <div class="lg-section" id="changes">
             <div class="lg-section-num">10</div>
-            <h3>Changes to This Disclaimer</h3>
-            <p>UE Chemicals reserves the right to update or modify this disclaimer at any time without prior notice. Changes become effective upon publication on this website. We encourage you to review this page periodically.</p>
+            <h3>{disclaimer.changes_title}</h3>
+            <p>{disclaimer.changes_desc}</p>
           </div>
 
           <div class="lg-section" id="governing">
             <div class="lg-section-num">11</div>
-            <h3>Governing Law</h3>
-            <p>This disclaimer is governed by and construed in accordance with the laws of the Kingdom of Thailand. Any disputes arising from or in connection with this disclaimer shall be subject to the exclusive jurisdiction of the courts of Bangkok, Thailand.</p>
+            <h3>{disclaimer.governing_title}</h3>
+            <p>{disclaimer.governing_desc}</p>
           </div>
 
           <div class="lg-section" id="contact">
             <div class="lg-section-num">12</div>
-            <h3>Contact Information</h3>
-            <p>For any questions regarding this disclaimer, please contact us:</p>
+            <h3>{disclaimer.contact_title}</h3>
+            <p>{disclaimer.contact_intro}</p>
             <div class="lg-contact-card">
               <div><i class="fas fa-building"></i> <strong>UE Chemicals</strong></div>
-              <div><i class="fas fa-map-marker-alt"></i> Bangkok, 10110, Thailand</div>
+              <div><i class="fas fa-map-marker-alt"></i> {t(tr, 'contact.visit_value')}</div>
               <div><i class="fas fa-envelope"></i> <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a></div>
             </div>
           </div>

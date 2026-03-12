@@ -1,19 +1,59 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations, t } from '../i18n/index';
+import { defaultLang } from '../i18n/languages';
+
+const lang = defaultLang;
+const tr = getTranslations(lang);
+const privacy = tr.privacy;
+const tocItems = [
+  { id: 'introduction', label: privacy.toc_intro },
+  { id: 'info-collect', label: privacy.toc_info_collect },
+  { id: 'how-use', label: privacy.toc_how_use },
+  { id: 'legal-basis', label: privacy.toc_legal_basis },
+  { id: 'data-sharing', label: privacy.toc_data_sharing },
+  { id: 'data-retention', label: privacy.toc_data_retention },
+  { id: 'cookies', label: privacy.toc_cookies },
+  { id: 'your-rights', label: privacy.toc_your_rights },
+  { id: 'data-security', label: privacy.toc_data_security },
+  { id: 'intl-transfers', label: privacy.toc_intl_transfers },
+  { id: 'children', label: privacy.toc_children },
+  { id: 'changes', label: privacy.toc_changes },
+  { id: 'contact', label: privacy.toc_contact },
+];
+const providedDataItems = [privacy.provided_item1, privacy.provided_item2, privacy.provided_item3];
+const autoDataItems = [privacy.auto_item1, privacy.auto_item2];
+const howUseItems = [privacy.how_use_item1, privacy.how_use_item2, privacy.how_use_item3, privacy.how_use_item4, privacy.how_use_item5, privacy.how_use_item6];
+const basisItems = [
+  { title: privacy.basis1_title, desc: privacy.basis1_desc },
+  { title: privacy.basis2_title, desc: privacy.basis2_desc },
+  { title: privacy.basis3_title, desc: privacy.basis3_desc },
+  { title: privacy.basis4_title, desc: privacy.basis4_desc },
+];
+const sharingItems = [privacy.sharing_item1, privacy.sharing_item2, privacy.sharing_item3];
+const rightsItems = [
+  { icon: 'fa-eye', title: privacy.right1_title, desc: privacy.right1_desc },
+  { icon: 'fa-pen', title: privacy.right2_title, desc: privacy.right2_desc },
+  { icon: 'fa-trash', title: privacy.right3_title, desc: privacy.right3_desc },
+  { icon: 'fa-pause', title: privacy.right4_title, desc: privacy.right4_desc },
+  { icon: 'fa-download', title: privacy.right5_title, desc: privacy.right5_desc },
+  { icon: 'fa-hand', title: privacy.right6_title, desc: privacy.right6_desc },
+];
 ---
 
-<BaseLayout title="Privacy Policy" description="Privacy Policy for UE Chemicals. Learn how we collect, use, and protect your personal information." activePage="">
+
+<BaseLayout lang={lang} title={privacy.meta_title} description={privacy.meta_desc} activePage="">
 
   <!-- ========== HERO ========== -->
   <section class="lg-hero">
     <div class="lg-hero-bg"></div>
     <div class="container lg-hero-inner">
-      <div class="lg-hero-badge"><i class="fas fa-shield-halved"></i> Legal</div>
-      <h1>Privacy Policy</h1>
-      <p class="lg-hero-sub">How we collect, use, and protect your personal information in compliance with the GDPR.</p>
+      <div class="lg-hero-badge"><i class="fas fa-shield-halved"></i> {privacy.hero_badge}</div>
+      <h1>{privacy.title}</h1>
+      <p class="lg-hero-sub">{privacy.hero_sub}</p>
       <div class="lg-hero-meta">
-        <span><i class="fas fa-calendar"></i> Last Updated: July 2025</span>
-        <span><i class="fas fa-gavel"></i> GDPR Compliant</span>
+        <span><i class="fas fa-calendar"></i> {privacy.last_updated}</span>
+        <span><i class="fas fa-gavel"></i> {privacy.gdpr}</span>
       </div>
     </div>
   </section>
@@ -26,21 +66,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <!-- Sidebar TOC -->
         <aside class="lg-sidebar">
           <div class="lg-toc">
-            <h4>Table of Contents</h4>
+            <h4>{privacy.toc}</h4>
             <nav>
-              <a href="#introduction">1. Introduction</a>
-              <a href="#info-collect">2. Information We Collect</a>
-              <a href="#how-use">3. How We Use Your Information</a>
-              <a href="#legal-basis">4. Legal Basis for Processing</a>
-              <a href="#data-sharing">5. Data Sharing &amp; Disclosure</a>
-              <a href="#data-retention">6. Data Retention</a>
-              <a href="#cookies">7. Cookies</a>
-              <a href="#your-rights">8. Your Rights</a>
-              <a href="#data-security">9. Data Security</a>
-              <a href="#intl-transfers">10. International Transfers</a>
-              <a href="#children">11. Children's Privacy</a>
-              <a href="#changes">12. Changes to This Policy</a>
-              <a href="#contact">13. Contact Us</a>
+              {tocItems.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}
             </nav>
           </div>
         </aside>
@@ -50,125 +78,111 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
           <div class="lg-section" id="introduction">
             <div class="lg-section-num">01</div>
-            <h3>Introduction</h3>
-            <p>UE Chemicals ("we," "our," or "us"), located at Bangkok, 10110, Thailand, is committed to protecting your personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website useful-chemicals.com or interact with our services.</p>
+            <h3>{privacy.intro_title}</h3>
+            <p>{privacy.intro_desc}</p>
           </div>
 
           <div class="lg-section" id="info-collect">
             <div class="lg-section-num">02</div>
-            <h3>Information We Collect</h3>
+            <h3>{privacy.info_title}</h3>
             <div class="lg-card">
-              <h4><i class="fas fa-user"></i> Personal Data You Provide</h4>
+              <h4><i class="fas fa-user"></i> {privacy.provided_title}</h4>
               <ul>
-                <li><strong>Contact Information:</strong> Name, email address, phone number, and company name when you submit a quote request or contact form.</li>
-                <li><strong>Order Information:</strong> Product inquiries, quantity requirements, and shipping details.</li>
-                <li><strong>Communication Data:</strong> Any messages or correspondence you send to us.</li>
+                {providedDataItems.map((item) => <li>{item}</li>)}
               </ul>
             </div>
             <div class="lg-card">
-              <h4><i class="fas fa-desktop"></i> Automatically Collected Data</h4>
+              <h4><i class="fas fa-desktop"></i> {privacy.auto_title}</h4>
               <ul>
-                <li><strong>Usage Data:</strong> IP address, browser type, operating system, referring URLs, pages visited, and time spent on our site.</li>
-                <li><strong>Cookies:</strong> We use essential cookies to ensure proper website functionality. See Section 7 for details.</li>
+                {autoDataItems.map((item) => <li>{item}</li>)}
               </ul>
             </div>
           </div>
 
           <div class="lg-section" id="how-use">
             <div class="lg-section-num">03</div>
-            <h3>How We Use Your Information</h3>
-            <p>We use your personal data for the following purposes:</p>
+            <h3>{privacy.how_use_title}</h3>
+            <p>{privacy.how_use_intro}</p>
             <ul>
-              <li>Responding to your inquiries and quote requests.</li>
-              <li>Processing and fulfilling orders.</li>
-              <li>Sending order confirmations and shipping notifications.</li>
-              <li>Improving our website, products, and customer experience.</li>
-              <li>Complying with legal obligations and regulatory requirements.</li>
-              <li>Communicating about product updates, safety information, or changes to our terms.</li>
+              {howUseItems.map((item) => <li>{item}</li>)}
             </ul>
           </div>
 
           <div class="lg-section" id="legal-basis">
             <div class="lg-section-num">04</div>
-            <h3>Legal Basis for Processing (GDPR)</h3>
-            <p>Under the General Data Protection Regulation (GDPR), we process your data based on:</p>
+            <h3>{privacy.basis_title}</h3>
+            <p>{privacy.basis_intro}</p>
             <div class="lg-basis-grid">
-              <div class="lg-basis-item"><strong>Consent</strong><span>When you voluntarily submit a contact or quote form.</span></div>
-              <div class="lg-basis-item"><strong>Contractual Necessity</strong><span>To process your orders and provide our services.</span></div>
-              <div class="lg-basis-item"><strong>Legitimate Interest</strong><span>To improve our services and ensure website security.</span></div>
-              <div class="lg-basis-item"><strong>Legal Obligation</strong><span>To comply with applicable laws and regulations.</span></div>
+              {basisItems.map((item) => (
+                <div class="lg-basis-item"><strong>{item.title}</strong><span>{item.desc}</span></div>
+              ))}
             </div>
           </div>
 
           <div class="lg-section" id="data-sharing">
             <div class="lg-section-num">05</div>
-            <h3>Data Sharing &amp; Disclosure</h3>
-            <p>We do not sell, rent, or trade your personal information to third parties. We may share your data with:</p>
+            <h3>{privacy.sharing_title}</h3>
+            <p>{privacy.sharing_intro}</p>
             <ul>
-              <li><strong>Service Providers:</strong> Trusted third-party services that assist with email delivery, hosting, and analytics, bound by confidentiality agreements.</li>
-              <li><strong>Legal Authorities:</strong> When required by law, regulation, or legal process.</li>
-              <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets.</li>
+              {sharingItems.map((item) => <li>{item}</li>)}
             </ul>
           </div>
 
           <div class="lg-section" id="data-retention">
             <div class="lg-section-num">06</div>
-            <h3>Data Retention</h3>
-            <p>We retain your personal data only for as long as necessary to fulfill the purposes outlined in this policy, or as required by law. Quote requests and contact form submissions are retained for up to 24 months unless you request earlier deletion.</p>
+            <h3>{privacy.retention_title}</h3>
+            <p>{privacy.retention_desc}</p>
           </div>
 
           <div class="lg-section" id="cookies">
             <div class="lg-section-num">07</div>
-            <h3>Cookies</h3>
-            <p>Our website uses essential cookies to ensure basic functionality (e.g., remembering your cookie consent preference). We do not use tracking or advertising cookies. You can control cookies through your browser settings.</p>
+            <h3>{privacy.cookies_title}</h3>
+            <p>{privacy.cookies_desc}</p>
           </div>
 
           <div class="lg-section" id="your-rights">
             <div class="lg-section-num">08</div>
-            <h3>Your Rights</h3>
-            <p>Under the GDPR, you have the right to:</p>
+            <h3>{privacy.rights_title}</h3>
+            <p>{privacy.rights_intro}</p>
             <div class="lg-rights-grid">
-              <div class="lg-right"><i class="fas fa-eye"></i><strong>Access</strong><span>Request a copy of your personal data.</span></div>
-              <div class="lg-right"><i class="fas fa-pen"></i><strong>Rectification</strong><span>Request correction of inaccurate data.</span></div>
-              <div class="lg-right"><i class="fas fa-trash"></i><strong>Erasure</strong><span>Request deletion ("right to be forgotten").</span></div>
-              <div class="lg-right"><i class="fas fa-pause"></i><strong>Restriction</strong><span>Limit processing of your data.</span></div>
-              <div class="lg-right"><i class="fas fa-download"></i><strong>Portability</strong><span>Transfer your data to another controller.</span></div>
-              <div class="lg-right"><i class="fas fa-hand"></i><strong>Objection</strong><span>Object to processing based on legitimate interest.</span></div>
+              {rightsItems.map((item) => (
+                <div class="lg-right"><i class:list={['fas', item.icon]}></i><strong>{item.title}</strong><span>{item.desc}</span></div>
+              ))}
             </div>
-            <p style="margin-top: 16px;">To exercise any of these rights, contact us at <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a>.</p>
+            <p style="margin-top: 16px;">{privacy.rights_contact} <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a>.</p>
           </div>
 
           <div class="lg-section" id="data-security">
             <div class="lg-section-num">09</div>
-            <h3>Data Security</h3>
-            <p>We implement appropriate technical and organizational measures to protect your personal data against unauthorized access, alteration, disclosure, or destruction. This includes encrypted data transmission (SSL/TLS) and secure hosting infrastructure.</p>
+            <h3>{privacy.security_title}</h3>
+            <p>{privacy.security_desc}</p>
           </div>
 
           <div class="lg-section" id="intl-transfers">
             <div class="lg-section-num">10</div>
-            <h3>International Transfers</h3>
-            <p>Your data may be processed outside the European Economic Area (EEA) by our service providers. In such cases, we ensure appropriate safeguards are in place, such as Standard Contractual Clauses approved by the European Commission.</p>
+            <h3>{privacy.transfers_title}</h3>
+            <p>{privacy.transfers_desc}</p>
           </div>
 
           <div class="lg-section" id="children">
             <div class="lg-section-num">11</div>
-            <h3>Children's Privacy</h3>
-            <p>Our services are not directed to individuals under the age of 18. We do not knowingly collect personal data from minors.</p>
+            <h3>{privacy.children_title}</h3>
+            <p>{privacy.children_desc}</p>
           </div>
 
           <div class="lg-section" id="changes">
             <div class="lg-section-num">12</div>
-            <h3>Changes to This Policy</h3>
-            <p>We may update this Privacy Policy from time to time. Changes will be posted on this page with an updated revision date. We encourage you to review this page periodically.</p>
+            <h3>{privacy.changes_title}</h3>
+            <p>{privacy.changes_desc}</p>
           </div>
 
           <div class="lg-section" id="contact">
             <div class="lg-section-num">13</div>
-            <h3>Contact Us</h3>
-            <p>If you have questions about this Privacy Policy or wish to exercise your data rights, contact us at:</p>
+            <h3>{privacy.contact_title}</h3>
+            <p>{privacy.contact_intro}</p>
             <div class="lg-contact-card">
               <div><i class="fas fa-envelope"></i> <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a></div>
-              <div><i class="fas fa-map-marker-alt"></i> Bangkok, 10110, Thailand</div>
+              <div><i class="fas fa-map-marker-alt"></i> {t(tr, 'contact.visit_value')}</div>
             </div>
           </div>
 

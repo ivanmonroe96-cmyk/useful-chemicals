@@ -1,66 +1,78 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath } from '../i18n/index';
+import { defaultLang } from '../i18n/languages';
+
+const lang = defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+const blog = tr.blog;
+const blogDate = new Intl.DateTimeFormat(lang, {
+  month: 'long',
+  year: 'numeric',
+}).format(new Date(Date.UTC(2025, 6, 1)));
 
 const posts = [
   {
-    title: "How to Safely Handle and Store Mercury Products",
-    excerpt: "A comprehensive guide to best practices for handling, storing, and transporting liquid mercury in industrial and laboratory settings.",
-    date: "July 2025",
-    category: "Safety",
+    title: blog.post1_title,
+    excerpt: blog.post1_excerpt,
+    date: blogDate,
+    category: blog.cat_safety,
     image: "/images/Buy-Silver-Liquid-Mercury.jpg",
     slug: "#"
   },
   {
-    title: "Understanding Caluanie Muelear Oxidize: Applications & Benefits",
-    excerpt: "Discover the industrial applications of Caluanie Muelear Oxidize, from metalworking and mineral extraction to chemical refining processes.",
-    date: "July 2025",
-    category: "Products",
+    title: blog.post2_title,
+    excerpt: blog.post2_excerpt,
+    date: blogDate,
+    category: blog.cat_products,
     image: "/images/caluanie-muelear-oxidize-for-sale.jpg",
     slug: "#"
   },
   {
-    title: "EU REACH Compliance for Chemical Imports: What You Need to Know",
-    excerpt: "An overview of EU REACH regulations, mercury handling restrictions, and compliance requirements for chemical importers and distributors.",
-    date: "July 2025",
-    category: "Compliance",
+    title: blog.post3_title,
+    excerpt: blog.post3_excerpt,
+    date: blogDate,
+    category: blog.cat_compliance,
     image: "/images/buy-new-stock-caluanie-muelear-oxidize.jpg",
     slug: "#"
   },
   {
-    title: "Red Mercury: Properties, Uses, and Sourcing Guide",
-    excerpt: "Learn about the unique properties of Red Liquid Mercury (Sb₂O₇Hg₂), its verified industrial applications, and how to source authentic product.",
-    date: "July 2025",
-    category: "Products",
+    title: blog.post4_title,
+    excerpt: blog.post4_excerpt,
+    date: blogDate,
+    category: blog.cat_products,
     image: "/images/buy-red-liquid-mercury-usa.jpg",
     slug: "#"
   },
   {
-    title: "International Shipping of Hazardous Chemicals: ADR, IMDG & IATA",
-    excerpt: "Understanding the regulatory frameworks for transporting dangerous goods by road, sea, and air — and how to ensure full compliance.",
-    date: "July 2025",
-    category: "Logistics",
+    title: blog.post5_title,
+    excerpt: blog.post5_excerpt,
+    date: blogDate,
+    category: blog.cat_logistics,
     image: "/images/red-liquid-mercury-for-sale-usa.png",
     slug: "#"
   },
   {
-    title: "Gold Mining with Mercury: Methods, Safety, and Alternatives",
-    excerpt: "An exploration of mercury amalgamation in gold extraction, safety protocols, environmental considerations, and modern alternatives.",
-    date: "July 2025",
-    category: "Industry",
+    title: blog.post6_title,
+    excerpt: blog.post6_excerpt,
+    date: blogDate,
+    category: blog.cat_industry,
     image: "/images/caluanie-muelear-oxidize-manufacturer-in-usa.webp",
     slug: "#"
   }
 ];
 ---
 
-<BaseLayout title="Chemical Industry Blog & Insights" description="Latest insights on industrial chemicals, safety guidelines, regulatory compliance & shipping logistics from UE Chemicals, Thailand." activePage="blog">
+
+<BaseLayout lang={lang} title={t(tr, "blog.meta_title")} description={t(tr, "blog.meta_desc")} activePage="blog">
 
   <!-- Page Hero -->
   <section class="page-hero">
     <div class="container">
-      <div class="section-label">Insights</div>
-      <h1>Blog</h1>
-      <p>Chemical industry insights, product guides, safety best practices, and regulatory updates.</p>
+      <div class="section-label">{t(tr, "blog.hero_label")}</div>
+      <h1>{t(tr, "blog.hero_title")}</h1>
+      <p>{t(tr, "blog.hero_sub")}</p>
     </div>
   </section>
 
@@ -78,14 +90,14 @@ const posts = [
               <span class="blog-card-date"><i class="fas fa-calendar"></i> {post.date}</span>
               <h3>{post.title}</h3>
               <p>{post.excerpt}</p>
-              <span class="blog-card-link">Coming Soon <i class="fas fa-arrow-right"></i></span>
+              <span class="blog-card-link">{t(tr, "common.coming_soon")} <i class="fas fa-arrow-right"></i></span>
             </div>
           </article>
         ))}
       </div>
 
       <div class="blog-cta">
-        <p>More articles coming soon. Subscribe to stay updated on chemical industry insights and product news.</p>
+        <p>{t(tr, "blog.more_coming")}</p>
       </div>
     </div>
   </section>
@@ -93,11 +105,11 @@ const posts = [
   <!-- CTA -->
   <section class="cta-section">
     <div class="container text-center">
-      <h2>Have Questions About Our Products?</h2>
-      <p>Our expert team is ready to assist with product information, safety guidance, and technical support.</p>
+      <h2>{t(tr, "blog.cta_title")}</h2>
+      <p>{t(tr, "blog.cta_desc")}</p>
       <div class="cta-actions">
-        <a href="/contact" class="btn btn-accent">Contact Us <i class="fas fa-arrow-right"></i></a>
-        <a href="/faq" class="btn btn-outline">View FAQ <i class="fas fa-arrow-right"></i></a>
+        <a href={lp("/contact")} class="btn btn-accent">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+        <a href={lp("/faq")} class="btn btn-outline">{t(tr, "common.view_faq")} <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </section>

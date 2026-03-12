@@ -7,6 +7,13 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://useful-chemicals.com',
   output: 'static',
-  adapter: cloudflare(),
+  adapter: cloudflare({ imageService: 'compile' }),
   integrations: [sitemap()],
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'ar', 'bn', 'zh', 'cs', 'nl', 'fr', 'de', 'id', 'it', 'ko', 'fa', 'pl', 'pt', 'ro', 'ru', 'es', 'tr', 'vi'],
+    routing: {
+      prefixDefaultLocale: false,
+    },
+  },
 });

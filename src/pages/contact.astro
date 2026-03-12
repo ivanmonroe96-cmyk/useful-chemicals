@@ -1,48 +1,61 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations, t } from '../i18n/index';
+import { defaultLang } from '../i18n/languages';
+
+const lang = defaultLang;
+const tr = getTranslations(lang);
+const contactMessages = {
+  sending: t(tr, "contact.sending"),
+  success: t(tr, "contact.success"),
+  error: t(tr, "contact.error"),
+  networkError: t(tr, "contact.network_error"),
+  submit: t(tr, "contact.submit"),
+};
 ---
 
-<BaseLayout title="Contact UE Chemicals – Buy Caluanie Muelear Oxidize & Mercury" description="Contact UE Chemicals to buy Caluanie Muelear Oxidize, Red Liquid Mercury & Silver Liquid Mercury. Get a quote for bulk or wholesale orders. Global chemical supplier in Bangkok, Thailand." activePage="contact">
+
+<BaseLayout lang={lang} title={t(tr, "contact.meta_title")} description={t(tr, "contact.meta_desc")} activePage="contact">
 
   <!-- ========== HERO ========== -->
   <section class="ct-hero">
     <div class="ct-hero-bg">
-      <img src="/images/industrial-worker-holding-plastic-cans-with-chemicals-production-plant.jpg" alt="Contact UE Chemicals" />
+      <img src="/images/industrial-worker-holding-plastic-cans-with-chemicals-production-plant.jpg" alt={t(tr, "contact.hero_title")} />
       <div class="ct-hero-overlay"></div>
     </div>
     <div class="container ct-hero-inner">
       <div class="ct-hero-content">
-        <div class="ct-hero-badge"><i class="fas fa-headset"></i> Get in Touch</div>
-        <h1>Contact Our<br />Chemical Experts</h1>
-        <p class="ct-hero-sub">Product inquiries, bulk quotes, technical support — our team in Bangkok, Thailand responds within 24 hours.</p>
+        <div class="ct-hero-badge"><i class="fas fa-headset"></i> {t(tr, "contact.hero_badge")}</div>
+        <h1>{t(tr, "contact.hero_title").split(' ').slice(0, 2).join(' ')}<br />{t(tr, "contact.hero_title").split(' ').slice(2).join(' ')}</h1>
+        <p class="ct-hero-sub">{t(tr, "contact.hero_sub")}</p>
       </div>
       <div class="ct-hero-cards">
         <div class="ct-info-card">
           <div class="ct-info-icon"><i class="fas fa-envelope"></i></div>
           <div>
-            <span class="ct-info-label">Email Us</span>
+            <span class="ct-info-label">{t(tr, "contact.email_label")}</span>
             <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a>
           </div>
         </div>
         <div class="ct-info-card">
           <div class="ct-info-icon"><i class="fab fa-whatsapp"></i></div>
           <div>
-            <span class="ct-info-label">WhatsApp</span>
+            <span class="ct-info-label">{t(tr, "contact.whatsapp_label")}</span>
             <a href="https://wa.me/66951690848" target="_blank" rel="noopener noreferrer">+66 951 690 848</a>
           </div>
         </div>
         <div class="ct-info-card">
           <div class="ct-info-icon"><i class="fas fa-map-marker-alt"></i></div>
           <div>
-            <span class="ct-info-label">Visit Us</span>
-            <span>Bangkok, 10110, Thailand</span>
+            <span class="ct-info-label">{t(tr, "contact.visit_label")}</span>
+            <span>{t(tr, "contact.visit_value")}</span>
           </div>
         </div>
         <div class="ct-info-card">
           <div class="ct-info-icon"><i class="fas fa-clock"></i></div>
           <div>
-            <span class="ct-info-label">Business Hours</span>
-            <span>Mon – Fri: 8:00 – 18:00 ICT</span>
+            <span class="ct-info-label">{t(tr, "contact.hours_label")}</span>
+            <span>{t(tr, "contact.hours_value")}</span>
           </div>
         </div>
       </div>
@@ -56,30 +69,30 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <!-- Left: Info + Map -->
         <div class="ct-form-info">
-          <div class="section-label">Send a Message</div>
-          <h2>Let's Start a Conversation</h2>
-          <p>Whether you need a quote for bulk chemicals, technical specifications, or have questions about regulatory compliance — we're here to help.</p>
+          <div class="section-label">{t(tr, "contact.form_label")}</div>
+          <h2>{t(tr, "contact.form_title")}</h2>
+          <p>{t(tr, "contact.form_desc")}</p>
 
           <div class="ct-feature-list">
             <div class="ct-feature">
               <div class="ct-feature-icon"><i class="fas fa-reply"></i></div>
               <div>
-                <strong>Fast Response</strong>
-                <p>We reply to all inquiries within 24 hours on business days.</p>
+                <strong>{t(tr, "contact.feat1_title")}</strong>
+                <p>{t(tr, "contact.feat1_desc")}</p>
               </div>
             </div>
             <div class="ct-feature">
               <div class="ct-feature-icon"><i class="fas fa-file-lines"></i></div>
               <div>
-                <strong>Detailed Quotes</strong>
-                <p>Receive Proforma Invoices with pricing, shipping costs, and delivery estimates.</p>
+                <strong>{t(tr, "contact.feat2_title")}</strong>
+                <p>{t(tr, "contact.feat2_desc")}</p>
               </div>
             </div>
             <div class="ct-feature">
               <div class="ct-feature-icon"><i class="fas fa-flask-vial"></i></div>
               <div>
-                <strong>Technical Support</strong>
-                <p>Get SDS, COA, TDS, and expert handling guidance for any product.</p>
+                <strong>{t(tr, "contact.feat3_title")}</strong>
+                <p>{t(tr, "contact.feat3_desc")}</p>
               </div>
             </div>
           </div>
@@ -89,29 +102,36 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.8865388!2d100.3529!3d13.7563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d6032280d61f3%3A0x10100b25de24820!2sBangkok%2C%20Thailand!5e0!3m2!1sen!2sth!4v1700000000000!5m2!1sen!2sth"
               width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-              title="UE Chemicals location in Bangkok, Thailand">
+              title={t(tr, 'contact.map_title')}>
             </iframe>
           </div>
         </div>
 
         <!-- Right: Form -->
         <div class="ct-form-card">
-          <h3>Request a Quote or Ask a Question</h3>
+          <h3>{t(tr, "contact.form_heading")}</h3>
           <div id="formStatus" class="ct-form-status"></div>
-          <form id="contactForm">
+          <form
+            id="contactForm"
+            data-sending={contactMessages.sending}
+            data-success={contactMessages.success}
+            data-error={contactMessages.error}
+            data-network-error={contactMessages.networkError}
+            data-submit={contactMessages.submit}
+          >
             <div class="ct-form-row">
               <div class="ct-form-group">
-                <label for="ct-name">Full Name <span>*</span></label>
-                <input type="text" id="ct-name" name="name" placeholder="Your full name" required />
+                <label for="ct-name">{t(tr, "contact.label_name")} <span>*</span></label>
+                <input type="text" id="ct-name" name="name" placeholder={t(tr, "contact.placeholder_name")} required />
               </div>
               <div class="ct-form-group">
-                <label for="ct-email">Email Address <span>*</span></label>
-                <input type="email" id="ct-email" name="email" placeholder="you@company.com" required />
+                <label for="ct-email">{t(tr, "contact.label_email")} <span>*</span></label>
+                <input type="email" id="ct-email" name="email" placeholder={t(tr, "contact.placeholder_email")} required />
               </div>
             </div>
             <div class="ct-form-row">
               <div class="ct-form-group">
-                <label for="ct-phone">Phone Number</label>
+                <label for="ct-phone">{t(tr, "contact.label_phone")}</label>
                 <div class="ct-phone-wrap">
                   <select name="phoneCode" class="ct-phone-code">
                     <option>+49</option>
@@ -121,26 +141,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                     <option>+33</option>
                     <option>+237</option>
                   </select>
-                  <input type="tel" id="ct-phone" name="phone" placeholder="Phone number" />
+                  <input type="tel" id="ct-phone" name="phone" placeholder={t(tr, "contact.placeholder_phone")} />
                 </div>
               </div>
               <div class="ct-form-group">
-                <label for="ct-product">Product of Interest</label>
+                <label for="ct-product">{t(tr, "contact.label_product")}</label>
                 <select id="ct-product" name="product">
-                  <option value="">Select a product</option>
-                  <option>Caluanie Muelear Oxidize</option>
-                  <option>Red Liquid Mercury</option>
-                  <option>Silver Liquid Mercury</option>
-                  <option>Multiple Products</option>
+                  <option value="">{t(tr, "contact.placeholder_product")}</option>
+                  <option>{t(tr, "contact.product_caluanie")}</option>
+                  <option>{t(tr, "contact.product_red")}</option>
+                  <option>{t(tr, "contact.product_silver")}</option>
+                  <option>{t(tr, "contact.product_multiple")}</option>
                 </select>
               </div>
             </div>
             <div class="ct-form-group">
-              <label for="ct-message">Message <span>*</span></label>
-              <textarea id="ct-message" name="message" placeholder="Tell us about your requirements — product, quantity, destination..." rows="5" required></textarea>
+              <label for="ct-message">{t(tr, "contact.label_message")} <span>*</span></label>
+              <textarea id="ct-message" name="message" placeholder={t(tr, "contact.placeholder_message")} rows="5" required></textarea>
             </div>
             <button type="submit" id="submitBtn" class="btn btn-accent ct-submit-btn">
-              <span>Send Message</span> <i class="fas fa-paper-plane"></i>
+              <span>{t(tr, "contact.submit")}</span> <i class="fas fa-paper-plane"></i>
             </button>
           </form>
         </div>
@@ -153,44 +173,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="ct-faq">
     <div class="container">
       <div class="text-center" style="margin-bottom: 50px;">
-        <div class="section-label">Common Questions</div>
-        <h2 class="section-title">Before You Reach Out</h2>
+        <div class="section-label">{t(tr, "contact.faq_label")}</div>
+        <h2 class="section-title">{t(tr, "contact.faq_title")}</h2>
       </div>
       <div class="ct-faq-grid">
         <div class="ct-faq-item">
-          <h4><i class="fas fa-clock"></i> How fast will I get a response?</h4>
-          <p>We respond to all inquiries within 24 hours on business days. Urgent orders are prioritized.</p>
+          <h4><i class="fas fa-clock"></i> {t(tr, "contact.faq1_q")}</h4>
+          <p>{t(tr, "contact.faq1_a")}</p>
         </div>
         <div class="ct-faq-item">
-          <h4><i class="fas fa-file-invoice"></i> How do I get a quote?</h4>
-          <p>Submit the form above with product name, quantity, and shipping destination. We'll send a Proforma Invoice.</p>
+          <h4><i class="fas fa-file-invoice"></i> {t(tr, "contact.faq2_q")}</h4>
+          <p>{t(tr, "contact.faq2_a")}</p>
         </div>
         <div class="ct-faq-item">
-          <h4><i class="fas fa-earth-europe"></i> Do you ship internationally?</h4>
-          <p>Yes — we ship worldwide with licensed hazmat carriers. EU, Americas, Asia, Africa, and Oceania.</p>
+          <h4><i class="fas fa-earth-europe"></i> {t(tr, "contact.faq3_q")}</h4>
+          <p>{t(tr, "contact.faq3_a")}</p>
         </div>
         <div class="ct-faq-item">
-          <h4><i class="fas fa-credit-card"></i> What payment methods do you accept?</h4>
-          <p>Bank wire transfer and cryptocurrency. Payment details included in the Proforma Invoice.</p>
+          <h4><i class="fas fa-credit-card"></i> {t(tr, "contact.faq4_q")}</h4>
+          <p>{t(tr, "contact.faq4_a")}</p>
         </div>
       </div>
     </div>
   </section>
 
   <script>
-    const form = document.getElementById('contactForm') as HTMLFormElement;
-    const status = document.getElementById('formStatus') as HTMLDivElement;
-    const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement;
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement | null;
+    const messages = {
+      sending: form?.dataset.sending || '',
+      success: form?.dataset.success || '',
+      error: form?.dataset.error || '',
+      networkError: form?.dataset.networkError || '',
+      submit: form?.dataset.submit || '',
+    };
 
     form?.addEventListener('submit', async (e) => {
       e.preventDefault();
+      if (!status || !submitBtn || !(form instanceof HTMLFormElement)) {
+        return;
+      }
+
       submitBtn.disabled = true;
-      submitBtn.innerHTML = '<span>Sending...</span> <i class="fas fa-spinner fa-spin"></i>';
+      submitBtn.innerHTML = `<span>${messages.sending}</span> <i class="fas fa-spinner fa-spin"></i>`;
       status.style.display = 'none';
 
       const formData = new FormData(form);
-      const phoneCode = formData.get('phoneCode') as string || '';
-      const phoneNum = formData.get('phone') as string || '';
+      const phoneCode = String(formData.get('phoneCode') || '');
+      const phoneNum = String(formData.get('phone') || '');
 
       const body = {
         name: formData.get('name'),
@@ -212,20 +243,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         if (res.ok) {
           status.className = 'ct-form-status ct-form-success';
           status.style.display = 'flex';
-          status.innerHTML = '<i class="fas fa-check-circle"></i> Message sent successfully! We will get back to you within 24 hours.';
+          status.innerHTML = `<i class="fas fa-check-circle"></i> ${messages.success}`;
           form.reset();
         } else {
           status.className = 'ct-form-status ct-form-error';
           status.style.display = 'flex';
-          status.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + (result.error || 'Something went wrong. Please try again.');
+          status.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + (result.error || messages.error);
         }
       } catch {
         status.className = 'ct-form-status ct-form-error';
         status.style.display = 'flex';
-        status.innerHTML = '<i class="fas fa-exclamation-circle"></i> Network error. Please check your connection and try again.';
+        status.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${messages.networkError}`;
       } finally {
         submitBtn.disabled = false;
-        submitBtn.innerHTML = '<span>Send Message</span> <i class="fas fa-paper-plane"></i>';
+        submitBtn.innerHTML = `<span>${messages.submit}</span> <i class="fas fa-paper-plane"></i>`;
       }
     });
   </script>

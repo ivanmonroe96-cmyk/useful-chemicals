@@ -1,0 +1,742 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath, getLangStaticPaths } from '../../i18n/index';
+import { defaultLang } from '../../i18n/languages';
+
+export const getStaticPaths = getLangStaticPaths;
+const lang = Astro.params.lang ?? defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+---
+
+
+<BaseLayout lang={lang} title={t(tr, "safety.meta_title")} description={t(tr, "safety.meta_desc")} activePage="safety">
+
+  <!-- ========== HERO ========== -->
+  <section class="sf-hero">
+    <div class="sf-hero-bg">
+      <img src="/images/safety-guidelines-for-chemical-storage-and-handling-1.jpg" alt={t(tr, "safety.hero_title")} />
+      <div class="sf-hero-overlay"></div>
+    </div>
+    <div class="container sf-hero-inner">
+      <div class="sf-hero-content">
+        <div class="sf-hero-badge"><i class="fas fa-shield-halved"></i> {t(tr, "safety.hero_badge")}</div>
+        <h1>{t(tr, "safety.hero_title")}</h1>
+        <p class="sf-hero-sub">{t(tr, "safety.hero_sub")}</p>
+        <div class="sf-hero-actions">
+          <a href={lp("/contact")} class="btn btn-accent">{t(tr, "safety.request_sds")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "common.view_products")} <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="sf-hero-stats">
+        <div class="sf-hero-stat">
+          <span class="sf-hero-stat-num">3</span>
+          <span class="sf-hero-stat-label">{t(tr, "safety.hero_stat1_label")}</span>
+        </div>
+        <div class="sf-hero-stat-divider"></div>
+        <div class="sf-hero-stat">
+          <span class="sf-hero-stat-num">100%</span>
+          <span class="sf-hero-stat-label">{t(tr, "safety.hero_stat2_label")}</span>
+        </div>
+        <div class="sf-hero-stat-divider"></div>
+        <div class="sf-hero-stat">
+          <span class="sf-hero-stat-num">PPE</span>
+          <span class="sf-hero-stat-label">{t(tr, "safety.hero_stat3_label")}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SAFETY PILLARS ========== -->
+  <section class="sf-pillars">
+    <div class="container">
+      <div class="sf-pillars-grid">
+        <div class="sf-pillar">
+          <div class="sf-pillar-icon"><i class="fas fa-shield-halved"></i></div>
+          <h5>{t(tr, "safety.pillar1_title")}</h5>
+          <p>{t(tr, "safety.pillar1_desc")}</p>
+        </div>
+        <div class="sf-pillar">
+          <div class="sf-pillar-icon"><i class="fas fa-box"></i></div>
+          <h5>{t(tr, "safety.pillar2_title")}</h5>
+          <p>{t(tr, "safety.pillar2_desc")}</p>
+        </div>
+        <div class="sf-pillar">
+          <div class="sf-pillar-icon"><i class="fas fa-triangle-exclamation"></i></div>
+          <h5>{t(tr, "safety.pillar3_title")}</h5>
+          <p>{t(tr, "safety.pillar3_desc")}</p>
+        </div>
+        <div class="sf-pillar">
+          <div class="sf-pillar-icon"><i class="fas fa-file-lines"></i></div>
+          <h5>{t(tr, "safety.pillar4_title")}</h5>
+          <p>{t(tr, "safety.pillar4_desc")}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CALUANIE SAFETY ========== -->
+  <section class="sf-chem" id="caluanie">
+    <div class="sf-chem-header">
+      <div class="container">
+        <div class="sf-chem-header-inner">
+          <div class="sf-chem-num">01</div>
+          <div>
+            <div class="sf-chem-tag">{t(tr, "safety.safety_protocol")}</div>
+            <h2>{t(tr, "safety.cal_title")}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="sf-chem-grid">
+        <div class="sf-chem-card">
+          <div class="sf-chem-card-header">
+            <div class="sf-chem-card-icon"><i class="fas fa-shield-halved"></i></div>
+            <h4>{t(tr, "safety.general_precautions")}</h4>
+          </div>
+          <ul class="sf-chem-list">
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.cal_prec1")}</span>
+            </li>
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.cal_prec2")}</span>
+            </li>
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.cal_prec3")}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="sf-chem-card">
+          <div class="sf-chem-card-header">
+            <div class="sf-chem-card-icon"><i class="fas fa-box"></i></div>
+            <h4>{t(tr, "safety.storage_guidelines")}</h4>
+          </div>
+          <ul class="sf-chem-list">
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.cal_stor1")}</span>
+            </li>
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.cal_stor2")}</span>
+            </li>
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.cal_stor3")}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="sf-chem-card">
+          <div class="sf-chem-card-header">
+            <div class="sf-chem-card-icon"><i class="fas fa-triangle-exclamation"></i></div>
+            <h4>{t(tr, "safety.emergency_measures")}</h4>
+          </div>
+          <ul class="sf-chem-list">
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.cal_emrg1")}</span>
+            </li>
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.cal_emrg2")}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RED MERCURY SAFETY ========== -->
+  <section class="sf-chem sf-chem--alt" id="red-mercury">
+    <div class="sf-chem-header">
+      <div class="container">
+        <div class="sf-chem-header-inner">
+          <div class="sf-chem-num">02</div>
+          <div>
+            <div class="sf-chem-tag">{t(tr, "safety.safety_protocol")}</div>
+            <h2>{t(tr, "safety.red_title")}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="sf-chem-grid">
+        <div class="sf-chem-card">
+          <div class="sf-chem-card-header">
+            <div class="sf-chem-card-icon"><i class="fas fa-shield-halved"></i></div>
+            <h4>{t(tr, "safety.general_precautions")}</h4>
+          </div>
+          <ul class="sf-chem-list">
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.red_prec1")}</span>
+            </li>
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.red_prec2")}</span>
+            </li>
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.red_prec3")}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="sf-chem-card">
+          <div class="sf-chem-card-header">
+            <div class="sf-chem-card-icon"><i class="fas fa-box"></i></div>
+            <h4>{t(tr, "safety.storage_guidelines")}</h4>
+          </div>
+          <ul class="sf-chem-list">
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.red_stor1")}</span>
+            </li>
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.red_stor2")}</span>
+            </li>
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.red_stor3")}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="sf-chem-card">
+          <div class="sf-chem-card-header">
+            <div class="sf-chem-card-icon"><i class="fas fa-triangle-exclamation"></i></div>
+            <h4>{t(tr, "safety.emergency_measures")}</h4>
+          </div>
+          <ul class="sf-chem-list">
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.red_emrg1")}</span>
+            </li>
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.red_emrg2")}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SILVER MERCURY SAFETY ========== -->
+  <section class="sf-chem" id="silver-mercury">
+    <div class="sf-chem-header">
+      <div class="container">
+        <div class="sf-chem-header-inner">
+          <div class="sf-chem-num">03</div>
+          <div>
+            <div class="sf-chem-tag">{t(tr, "safety.safety_protocol")}</div>
+            <h2>{t(tr, "safety.silver_title")}</h2>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="sf-chem-grid">
+        <div class="sf-chem-card">
+          <div class="sf-chem-card-header">
+            <div class="sf-chem-card-icon"><i class="fas fa-shield-halved"></i></div>
+            <h4>{t(tr, "safety.general_precautions")}</h4>
+          </div>
+          <ul class="sf-chem-list">
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.silver_prec1")}</span>
+            </li>
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.silver_prec2")}</span>
+            </li>
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.silver_prec3")}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="sf-chem-card">
+          <div class="sf-chem-card-header">
+            <div class="sf-chem-card-icon"><i class="fas fa-box"></i></div>
+            <h4>{t(tr, "safety.storage_guidelines")}</h4>
+          </div>
+          <ul class="sf-chem-list">
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.silver_stor1")}</span>
+            </li>
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.silver_stor2")}</span>
+            </li>
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.silver_stor3")}</span>
+            </li>
+          </ul>
+        </div>
+        <div class="sf-chem-card">
+          <div class="sf-chem-card-header">
+            <div class="sf-chem-card-icon"><i class="fas fa-triangle-exclamation"></i></div>
+            <h4>{t(tr, "safety.emergency_measures")}</h4>
+          </div>
+          <ul class="sf-chem-list">
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.silver_emrg1")}</span>
+            </li>
+            <li>
+              <span class="sf-chem-list-bullet"></span>
+              <span>{t(tr, "safety.silver_emrg2")}</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== COMMITMENT SPLIT ========== -->
+  <section class="sf-commitment">
+    <div class="sf-commitment-image">
+      <img src="/images/pexels-los-muertos-crew-10041264.jpg" alt={t(tr, "safety.commitment_title")} />
+    </div>
+    <div class="sf-commitment-content">
+      <div class="section-label">{t(tr, "safety.commitment_label")}</div>
+      <h2>{t(tr, "safety.commitment_title")}</h2>
+      <p>{t(tr, "safety.commitment_desc")}</p>
+      <div class="sf-commitment-badges">
+        <div class="sf-commitment-badge">
+          <i class="fas fa-file-lines"></i>
+          <span>{t(tr, "safety.commitment_badge2")}</span>
+        </div>
+        <div class="sf-commitment-badge">
+          <i class="fas fa-certificate"></i>
+          <span>{t(tr, "home.trust_coa")}</span>
+        </div>
+        <div class="sf-commitment-badge">
+          <i class="fas fa-headset"></i>
+          <span>{t(tr, "home.trust_support")}</span>
+        </div>
+      </div>
+      <a href={lp("/contact")} class="btn btn-primary">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="sf-cta">
+    <div class="container">
+      <div class="sf-cta-inner">
+        <div class="sf-cta-content">
+          <h2>{t(tr, "safety.cta_title")}</h2>
+          <p>{t(tr, "safety.cta_desc")}</p>
+        </div>
+        <div class="sf-cta-actions">
+          <a href={lp("/contact")} class="btn btn-white">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "common.view_products")} <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ========================================
+     SAFETY PAGE STYLES
+     ======================================== */
+
+  /* Hero */
+  .sf-hero {
+    position: relative;
+    min-height: 85vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .sf-hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .sf-hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .sf-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(25,24,23,0.94) 0%, rgba(25,24,23,0.78) 50%, rgba(25,24,23,0.6) 100%);
+  }
+  .sf-hero-inner {
+    position: relative;
+    z-index: 1;
+    padding-top: 140px;
+    padding-bottom: 100px;
+  }
+  .sf-hero-content { max-width: 680px; }
+  .sf-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 24px;
+  }
+  .sf-hero-badge i {
+    color: var(--accent);
+    font-size: 13px;
+  }
+  .sf-hero h1 {
+    color: var(--white);
+    font-size: clamp(38px, 5.5vw, 72px);
+    line-height: 1.05;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+  }
+  .sf-hero-sub {
+    color: rgba(255,255,255,0.65);
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 540px;
+    margin-bottom: 40px;
+  }
+  .sf-hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-outline-white {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+  .btn-outline-white:hover {
+    background: var(--white);
+    color: var(--near-black);
+    border-color: var(--white);
+  }
+
+  /* Hero Stats */
+  .sf-hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .sf-hero-stat-num {
+    display: block;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+  .sf-hero-stat-label {
+    display: block;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+  .sf-hero-stat-divider {
+    width: 1px;
+    height: 50px;
+    background: rgba(255,255,255,0.12);
+  }
+
+  /* Safety Pillars */
+  .sf-pillars {
+    padding: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+  }
+  .sf-pillars-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+  }
+  .sf-pillar {
+    padding: 50px 30px;
+    border-left: 1px solid var(--border);
+    text-align: center;
+    transition: var(--transition);
+  }
+  .sf-pillar:last-child { border-right: 1px solid var(--border); }
+  .sf-pillar:hover { background: var(--light-bg); }
+  .sf-pillar-icon {
+    width: 56px;
+    height: 56px;
+    margin: 0 auto 20px;
+    background: var(--near-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    font-size: 20px;
+  }
+  .sf-pillar h5 {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+  }
+  .sf-pillar p {
+    font-size: 14px;
+    color: var(--body-text);
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Chemical Section */
+  .sf-chem {
+    padding: 0;
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+  }
+  .sf-chem--alt {
+    background: var(--light-bg);
+  }
+  .sf-chem-header {
+    padding: 60px 0 0;
+  }
+  .sf-chem-header-inner {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sf-chem--alt .sf-chem-header-inner {
+    border-bottom-color: rgba(0,0,0,0.08);
+  }
+  .sf-chem-num {
+    font-size: 48px;
+    font-weight: 800;
+    color: var(--near-black);
+    line-height: 1;
+    letter-spacing: -2px;
+    opacity: 0.12;
+    flex-shrink: 0;
+  }
+  .sf-chem-tag {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--accent);
+    margin-bottom: 6px;
+  }
+  .sf-chem-header h2 {
+    font-size: clamp(24px, 3vw, 38px);
+    line-height: 1.15;
+  }
+
+  /* Chemical Cards Grid */
+  .sf-chem-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    padding: 50px 0 60px;
+  }
+  .sf-chem-card {
+    padding: 0 35px;
+    border-left: 1px solid var(--border);
+  }
+  .sf-chem--alt .sf-chem-card {
+    border-left-color: rgba(0,0,0,0.08);
+  }
+  .sf-chem-card:first-child { padding-left: 0; border-left: none; }
+  .sf-chem-card:last-child { padding-right: 0; }
+
+  .sf-chem-card-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 24px;
+  }
+  .sf-chem-card-icon {
+    width: 42px;
+    height: 42px;
+    background: rgba(252,82,32,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .sf-chem-card-header h4 {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    line-height: 1.3;
+  }
+
+  /* Safety List */
+  .sf-chem-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .sf-chem-list li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 14px 0;
+    border-top: 1px solid var(--border);
+    font-size: 15px;
+    color: var(--body-text);
+    line-height: 1.6;
+  }
+  .sf-chem--alt .sf-chem-list li {
+    border-top-color: rgba(0,0,0,0.08);
+  }
+  .sf-chem-list li:first-child { border-top: none; padding-top: 0; }
+  .sf-chem-list-bullet {
+    width: 6px;
+    height: 6px;
+    background: var(--near-black);
+    flex-shrink: 0;
+    margin-top: 9px;
+  }
+  .sf-chem-list li strong {
+    color: var(--near-black);
+  }
+
+  /* Commitment Split */
+  .sf-commitment {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 560px;
+  }
+  .sf-commitment-image { overflow: hidden; }
+  .sf-commitment-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .sf-commitment-content {
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--near-black);
+  }
+  .sf-commitment-content .section-label {
+    color: rgba(255,255,255,0.6);
+  }
+  .sf-commitment-content .section-label::before { background: var(--accent); }
+  .sf-commitment-content h2 {
+    color: var(--white);
+    font-size: clamp(24px, 3vw, 38px);
+    margin-bottom: 20px;
+    line-height: 1.15;
+  }
+  .sf-commitment-content > p {
+    color: rgba(255,255,255,0.55);
+    max-width: 480px;
+    line-height: 1.7;
+  }
+  .sf-commitment-badges {
+    display: flex;
+    gap: 16px;
+    margin: 30px 0 35px;
+    flex-wrap: wrap;
+  }
+  .sf-commitment-badge {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    border: 1px solid rgba(255,255,255,0.12);
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: rgba(255,255,255,0.7);
+  }
+  .sf-commitment-badge i {
+    color: var(--accent);
+    font-size: 15px;
+  }
+  .sf-commitment .btn-primary {
+    align-self: flex-start;
+  }
+
+  /* CTA Section */
+  .sf-cta {
+    padding: 100px 0;
+    background: var(--accent);
+  }
+  .sf-cta-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+  }
+  .sf-cta-content h2 {
+    color: var(--white);
+    font-size: clamp(28px, 3.5vw, 46px);
+    margin-bottom: 12px;
+  }
+  .sf-cta-content p {
+    color: rgba(255,255,255,0.85);
+    max-width: 500px;
+    margin: 0;
+  }
+  .sf-cta-actions {
+    display: flex;
+    gap: 16px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+  .sf-cta .btn-white { border-color: var(--white); }
+  .sf-cta .btn-white:hover {
+    background: var(--near-black);
+    color: var(--white);
+    border-color: var(--near-black);
+  }
+  .sf-cta .btn-outline-white { border-color: rgba(255,255,255,0.4); }
+  .sf-cta .btn-outline-white:hover {
+    background: var(--white);
+    color: var(--accent);
+    border-color: var(--white);
+  }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1024px) {
+    .sf-pillars-grid { grid-template-columns: 1fr 1fr; }
+    .sf-pillar { border-bottom: 1px solid var(--border); }
+    .sf-pillar:nth-child(2) { border-right: 1px solid var(--border); }
+    .sf-chem-grid { grid-template-columns: 1fr; gap: 40px; }
+    .sf-chem-card { padding: 0; border-left: none; }
+    .sf-chem-card:first-child { padding-left: 0; }
+    .sf-commitment { grid-template-columns: 1fr; }
+    .sf-commitment-image { height: 400px; }
+    .sf-commitment-content { padding: 60px 24px; }
+    .sf-cta-inner { flex-direction: column; text-align: center; }
+    .sf-cta-actions { justify-content: center; }
+  }
+
+  @media (max-width: 768px) {
+    .sf-hero { min-height: 75vh; }
+    .sf-hero h1 { font-size: clamp(30px, 8vw, 50px); }
+    .sf-hero-sub { font-size: 16px; }
+    .sf-hero-stats { flex-direction: column; gap: 20px; align-items: flex-start; }
+    .sf-hero-stat-divider { width: 100%; height: 1px; }
+    .sf-pillars-grid { grid-template-columns: 1fr; }
+    .sf-pillar { border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .sf-chem-grid { padding: 30px 0 40px; }
+    .sf-cta { padding: 60px 0; }
+  }
+</style>

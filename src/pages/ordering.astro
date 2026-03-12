@@ -1,15 +1,22 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath } from '../i18n/index';
+import { defaultLang } from '../i18n/languages';
+
+const lang = defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
 ---
 
-<BaseLayout title="How to Buy Caluanie Muelear Oxidize & Mercury Online" description="How to order Caluanie Muelear Oxidize, Red Mercury & Silver Mercury online. Simple ordering process, worldwide shipping from Bangkok, Thailand. Buy mercury metal and Caluanie for sale." activePage="ordering">
+
+<BaseLayout lang={lang} title={t(tr, "ordering.meta_title")} description={t(tr, "ordering.meta_desc")} activePage="ordering">
 
   <!-- Page Hero -->
   <section class="page-hero">
     <div class="container">
-      <div class="section-label">How to Order</div>
-      <h1>Ordering Information for Industrial Chemicals</h1>
-      <p>Follow our simple ordering process to get the chemicals you need, delivered safely and on time.</p>
+      <div class="section-label">{t(tr, "ordering.hero_label")}</div>
+      <h1>{t(tr, "ordering.hero_title")}</h1>
+      <p>{t(tr, "ordering.hero_desc")}</p>
     </div>
   </section>
 
@@ -17,34 +24,34 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="steps-section">
     <div class="container">
       <div class="text-center">
-        <div class="section-label">Step by Step</div>
-        <h2 class="section-title">How to Place Your Order</h2>
+        <div class="section-label">{t(tr, "ordering.steps_label")}</div>
+        <h2 class="section-title">{t(tr, "ordering.steps_title")}</h2>
       </div>
       <div class="steps-grid">
         <div class="step-card">
           <div class="step-number">1</div>
-          <h4>Contact Our Sales Team</h4>
-          <p>Reach out to our dedicated sales team via WhatsApp or email to discuss your specific requirements. Our experts will provide detailed product information, pricing, and availability.</p>
+          <h4>{t(tr, "ordering.step1_title")}</h4>
+          <p>{t(tr, "ordering.step1_desc")}</p>
         </div>
         <div class="step-card">
           <div class="step-number">2</div>
-          <h4>Request a Quote</h4>
-          <p>Submit a request for a quote by filling out our online order form or contacting our sales team. Be sure to include all relevant details such as product type, quantity, and shipping preferences.</p>
+          <h4>{t(tr, "ordering.step2_title")}</h4>
+          <p>{t(tr, "ordering.step2_desc")}</p>
         </div>
         <div class="step-card">
           <div class="step-number">3</div>
-          <h4>Confirm Your Order</h4>
-          <p>Once you receive a comprehensive quote, confirm your order by responding to the quote or providing a purchase order (PO). Our team will process your order and provide an estimated delivery timeline.</p>
+          <h4>{t(tr, "ordering.step3_title")}</h4>
+          <p>{t(tr, "ordering.step3_desc")}</p>
         </div>
         <div class="step-card">
           <div class="step-number">4</div>
-          <h4>Payment Options</h4>
-          <p>We offer flexible payment methods, including bank transfers, credit card payments, and other secure options. Payment terms will be discussed during the ordering process.</p>
+          <h4>{t(tr, "ordering.step4_title")}</h4>
+          <p>{t(tr, "ordering.step4_desc")}</p>
         </div>
         <div class="step-card">
           <div class="step-number">5</div>
-          <h4>Order Tracking and Updates</h4>
-          <p>After placing your order, you will receive tracking information and updates on the status of your shipment to ensure full transparency and peace of mind.</p>
+          <h4>{t(tr, "ordering.step5_title")}</h4>
+          <p>{t(tr, "ordering.step5_desc")}</p>
         </div>
       </div>
     </div>
@@ -55,21 +62,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="two-col">
         <div class="two-col-text">
-          <div class="section-label">Delivery</div>
-          <h2 class="section-title">Reliable and Timely Shipping</h2>
-          <p>We understand the importance of timely delivery for your operations. UE Chemicals partners with reputable shipping companies to guarantee safe and prompt delivery of all orders, both domestically and internationally.</p>
+          <div class="section-label">{t(tr, "ordering.shipping_label")}</div>
+          <h2 class="section-title">{t(tr, "ordering.shipping_title")}</h2>
+          <p>{t(tr, "ordering.shipping_desc")}</p>
           
-          <h5 style="margin-top:25px;margin-bottom:10px;color:var(--accent);text-transform:uppercase;letter-spacing:1px;font-size:0.9rem;">Shipping Methods</h5>
+          <h5 style="margin-top:25px;margin-bottom:10px;color:var(--accent);text-transform:uppercase;letter-spacing:1px;font-size:0.9rem;">{t(tr, "ordering.shipping_methods")}</h5>
           <ul style="list-style:disc;padding-left:20px;">
-            <li style="color:var(--body-text);margin-bottom:8px;">Standard Ground Shipping (Europe / ADR)</li>
-            <li style="color:var(--body-text);margin-bottom:8px;">Expedited Shipping Options</li>
-            <li style="color:var(--body-text);margin-bottom:8px;">International Freight Services</li>
+            <li style="color:var(--body-text);margin-bottom:8px;">{t(tr, "ordering.shipping_method1")}</li>
+            <li style="color:var(--body-text);margin-bottom:8px;">{t(tr, "ordering.shipping_method2")}</li>
+            <li style="color:var(--body-text);margin-bottom:8px;">{t(tr, "ordering.shipping_method3")}</li>
           </ul>
 
-          <p style="margin-top:15px;"><strong style="color:var(--black);">Estimated Delivery Times:</strong> Delivery times may vary based on location and product availability. Estimated timelines will be provided when your order is confirmed.</p>
+          <p style="margin-top:15px;"><strong style="color:var(--black);">{t(tr, "ordering.shipping_estimate")}</strong> {t(tr, "ordering.shipping_estimate_desc")}</p>
         </div>
         <div class="two-col-image">
-          <img src="/images/Applications-of-Our-Industrial-Chemicals.jpg" alt="Shipping & Delivery" style="height:400px;object-fit:cover;width:100%;">
+          <img src="/images/Applications-of-Our-Industrial-Chemicals.jpg" alt={t(tr, "ordering.shipping_title")} style="height:400px;object-fit:cover;width:100%;">
         </div>
       </div>
     </div>
@@ -80,16 +87,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="features-grid">
         <div class="feature-card">
-          <h5>Shipping Safety</h5>
-          <p>All products are packaged according to industry safety standards to prevent any damage or contamination during transit.</p>
+          <h5>{t(tr, "ordering.safety1_title")}</h5>
+          <p>{t(tr, "ordering.safety1_desc")}</p>
         </div>
         <div class="feature-card">
-          <h5>Safety and Compliance</h5>
-          <p>We ensure that all our products meet stringent safety and compliance standards for storage, transportation, and usage. Safety Data Sheets (SDS) are provided with your order.</p>
+          <h5>{t(tr, "ordering.safety2_title")}</h5>
+          <p>{t(tr, "ordering.safety2_desc")}</p>
         </div>
         <div class="feature-card">
-          <h5>Need Assistance?</h5>
-          <p>Our dedicated team is here to help you every step of the way. For questions, assistance with your order, or further information, please <a href="/contact" style="color:var(--accent);">contact us</a>.</p>
+          <h5>{t(tr, "ordering.safety3_title")}</h5>
+          <p>{t(tr, "ordering.safety3_desc")} <a href={lp("/contact")} style="color:var(--accent);">{t(tr, "common.contact_us")}</a>.</p>
         </div>
       </div>
     </div>
@@ -98,9 +105,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- CTA -->
   <section class="cta-banner">
     <div class="container">
-      <h2>Ready to Place Your Order?</h2>
-      <p>Contact our sales team today to get started with your chemical order.</p>
-      <a href="/contact" class="btn btn-accent">Contact Us <i class="fas fa-arrow-right"></i></a>
+      <h2>{t(tr, "ordering.cta_title")}</h2>
+      <p>{t(tr, "ordering.cta_desc")}</p>
+      <a href={lp("/contact")} class="btn btn-accent">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
     </div>
   </section>
 

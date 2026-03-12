@@ -1,0 +1,115 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath, getLangStaticPaths } from '../../i18n/index';
+import { defaultLang } from '../../i18n/languages';
+
+export const getStaticPaths = getLangStaticPaths;
+const lang = Astro.params.lang ?? defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+---
+
+
+<BaseLayout lang={lang} title={t(tr, "ordering.meta_title")} description={t(tr, "ordering.meta_desc")} activePage="ordering">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="section-label">{t(tr, "ordering.hero_label")}</div>
+      <h1>{t(tr, "ordering.hero_title")}</h1>
+      <p>{t(tr, "ordering.hero_desc")}</p>
+    </div>
+  </section>
+
+  <!-- Ordering Steps -->
+  <section class="steps-section">
+    <div class="container">
+      <div class="text-center">
+        <div class="section-label">{t(tr, "ordering.steps_label")}</div>
+        <h2 class="section-title">{t(tr, "ordering.steps_title")}</h2>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h4>{t(tr, "ordering.step1_title")}</h4>
+          <p>{t(tr, "ordering.step1_desc")}</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h4>{t(tr, "ordering.step2_title")}</h4>
+          <p>{t(tr, "ordering.step2_desc")}</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h4>{t(tr, "ordering.step3_title")}</h4>
+          <p>{t(tr, "ordering.step3_desc")}</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h4>{t(tr, "ordering.step4_title")}</h4>
+          <p>{t(tr, "ordering.step4_desc")}</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">5</div>
+          <h4>{t(tr, "ordering.step5_title")}</h4>
+          <p>{t(tr, "ordering.step5_desc")}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Shipping Info -->
+  <section class="about-section">
+    <div class="container">
+      <div class="two-col">
+        <div class="two-col-text">
+          <div class="section-label">{t(tr, "ordering.shipping_label")}</div>
+          <h2 class="section-title">{t(tr, "ordering.shipping_title")}</h2>
+          <p>{t(tr, "ordering.shipping_desc")}</p>
+          
+          <h5 style="margin-top:25px;margin-bottom:10px;color:var(--accent);text-transform:uppercase;letter-spacing:1px;font-size:0.9rem;">{t(tr, "ordering.shipping_methods")}</h5>
+          <ul style="list-style:disc;padding-left:20px;">
+            <li style="color:var(--body-text);margin-bottom:8px;">{t(tr, "ordering.shipping_method1")}</li>
+            <li style="color:var(--body-text);margin-bottom:8px;">{t(tr, "ordering.shipping_method2")}</li>
+            <li style="color:var(--body-text);margin-bottom:8px;">{t(tr, "ordering.shipping_method3")}</li>
+          </ul>
+
+          <p style="margin-top:15px;"><strong style="color:var(--black);">{t(tr, "ordering.shipping_estimate")}</strong> {t(tr, "ordering.shipping_estimate_desc")}</p>
+        </div>
+        <div class="two-col-image">
+          <img src="/images/Applications-of-Our-Industrial-Chemicals.jpg" alt={t(tr, "ordering.shipping_title")} style="height:400px;object-fit:cover;width:100%;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Safety & Compliance -->
+  <section class="features-section">
+    <div class="container">
+      <div class="features-grid">
+        <div class="feature-card">
+          <h5>{t(tr, "ordering.safety1_title")}</h5>
+          <p>{t(tr, "ordering.safety1_desc")}</p>
+        </div>
+        <div class="feature-card">
+          <h5>{t(tr, "ordering.safety2_title")}</h5>
+          <p>{t(tr, "ordering.safety2_desc")}</p>
+        </div>
+        <div class="feature-card">
+          <h5>{t(tr, "ordering.safety3_title")}</h5>
+          <p>{t(tr, "ordering.safety3_desc")} <a href={lp("/contact")} style="color:var(--accent);">{t(tr, "common.contact_us")}</a>.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>{t(tr, "ordering.cta_title")}</h2>
+      <p>{t(tr, "ordering.cta_desc")}</p>
+      <a href={lp("/contact")} class="btn btn-accent">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+</BaseLayout>

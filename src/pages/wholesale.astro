@@ -1,30 +1,37 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath } from '../i18n/index';
+import { defaultLang } from '../i18n/languages';
+
+const lang = defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
 ---
 
-<BaseLayout title="Wholesale Caluanie Muelear Oxidize & Mercury | Bulk Chemical Supply" description="Wholesale Caluanie Muelear Oxidize, Silver Mercury & Red Mercury in bulk. Competitive pricing from UE Chemicals, Bangkok, Thailand. Buy new stock Caluanie Muelear Oxidize wholesale." activePage="wholesale">
+
+<BaseLayout lang={lang} title={t(tr, "wholesale.meta_title")} description={t(tr, "wholesale.meta_desc")} activePage="wholesale">
 
   <!-- ========== HERO ========== -->
   <section class="wh-hero">
     <div class="wh-hero-bg">
-      <img src="/images/industrial-worker-holding-plastic-cans-with-chemicals-production-plant.jpg" alt="Wholesale industrial chemicals from UE Chemicals Thailand" />
+      <img src="/images/industrial-worker-holding-plastic-cans-with-chemicals-production-plant.jpg" alt={t(tr, "wholesale.hero_title")} />
       <div class="wh-hero-overlay"></div>
     </div>
     <div class="container wh-hero-inner">
       <div class="wh-hero-content">
-        <div class="wh-hero-badge"><i class="fas fa-boxes-stacked"></i> Wholesale Program</div>
-        <h1>Wholesale Industrial<br />Chemical Supply</h1>
-        <p class="wh-hero-sub">Competitive bulk pricing for Caluanie Muelear Oxidize, Red Liquid Mercury, and Silver Liquid Mercury. Direct from our facility in Bangkok, Thailand.</p>
+        <div class="wh-hero-badge"><i class="fas fa-boxes-stacked"></i> {t(tr, "wholesale.hero_badge")}</div>
+        <h1>{t(tr, "wholesale.hero_title").split(' ').slice(0, 2).join(' ')}<br />{t(tr, "wholesale.hero_title").split(' ').slice(2).join(' ')}</h1>
+        <p class="wh-hero-sub">{t(tr, "wholesale.hero_sub")}</p>
         <div class="wh-hero-actions">
-          <a href="/contact" class="btn btn-accent">Request Wholesale Quote <i class="fas fa-arrow-right"></i></a>
-          <a href="/products" class="btn btn-outline-white">View Products <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact")} class="btn btn-accent">{t(tr, "wholesale.request_quote")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "wholesale.view_products")} <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
       <div class="wh-hero-highlights">
-        <div class="wh-highlight"><i class="fas fa-percent"></i><span>Volume Discounts</span></div>
-        <div class="wh-highlight"><i class="fas fa-truck-fast"></i><span>Priority Shipping</span></div>
-        <div class="wh-highlight"><i class="fas fa-headset"></i><span>Dedicated Manager</span></div>
-        <div class="wh-highlight"><i class="fas fa-earth-europe"></i><span>Global Delivery</span></div>
+        <div class="wh-highlight"><i class="fas fa-percent"></i><span>{t(tr, "wholesale.highlight_discount")}</span></div>
+        <div class="wh-highlight"><i class="fas fa-truck-fast"></i><span>{t(tr, "wholesale.highlight_shipping")}</span></div>
+        <div class="wh-highlight"><i class="fas fa-headset"></i><span>{t(tr, "wholesale.highlight_manager")}</span></div>
+        <div class="wh-highlight"><i class="fas fa-earth-europe"></i><span>{t(tr, "wholesale.highlight_global")}</span></div>
       </div>
     </div>
   </section>
@@ -33,46 +40,46 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="wh-benefits">
     <div class="container">
       <div class="wh-section-header">
-        <div class="section-label">Why Order Wholesale</div>
-        <h2>Benefits of Bulk Purchasing</h2>
-        <p>Whether you're a distributor, manufacturer, or large-scale operation, our wholesale program saves you money while guaranteeing consistent supply.</p>
+        <div class="section-label">{t(tr, "wholesale.benefits_label")}</div>
+        <h2>{t(tr, "wholesale.benefits_title")}</h2>
+        <p>{t(tr, "wholesale.benefits_desc")}</p>
       </div>
       <div class="wh-benefits-grid">
         <div class="wh-benefit-card">
           <div class="wh-benefit-num">01</div>
           <div class="wh-benefit-icon"><i class="fas fa-percent"></i></div>
-          <h4>Volume Discounts</h4>
-          <p>Significant price reductions on bulk orders. The more you order, the more you save. Custom quotes for repeat buyers.</p>
+          <h4>{t(tr, "wholesale.ben1_title")}</h4>
+          <p>{t(tr, "wholesale.ben1_desc")}</p>
         </div>
         <div class="wh-benefit-card">
           <div class="wh-benefit-num">02</div>
           <div class="wh-benefit-icon"><i class="fas fa-handshake"></i></div>
-          <h4>Dedicated Account Manager</h4>
-          <p>Personal account manager for priority support, order tracking, and streamlined reordering.</p>
+          <h4>{t(tr, "wholesale.ben2_title")}</h4>
+          <p>{t(tr, "wholesale.ben2_desc")}</p>
         </div>
         <div class="wh-benefit-card">
           <div class="wh-benefit-num">03</div>
           <div class="wh-benefit-icon"><i class="fas fa-truck-fast"></i></div>
-          <h4>Priority Shipping</h4>
-          <p>Priority processing and expedited shipping. Scheduled recurring deliveries for production continuity.</p>
+          <h4>{t(tr, "wholesale.ben3_title")}</h4>
+          <p>{t(tr, "wholesale.ben3_desc")}</p>
         </div>
         <div class="wh-benefit-card">
           <div class="wh-benefit-num">04</div>
           <div class="wh-benefit-icon"><i class="fas fa-file-certificate"></i></div>
-          <h4>Full Documentation</h4>
-          <p>Every order includes COA, SDS, TDS, and customs documentation for regulatory compliance.</p>
+          <h4>{t(tr, "wholesale.ben4_title")}</h4>
+          <p>{t(tr, "wholesale.ben4_desc")}</p>
         </div>
         <div class="wh-benefit-card">
           <div class="wh-benefit-num">05</div>
           <div class="wh-benefit-icon"><i class="fas fa-boxes-stacked"></i></div>
-          <h4>Flexible Pack Sizes</h4>
-          <p>Customized quantities from small bulk to full container loads. Steel flasks and custom packaging.</p>
+          <h4>{t(tr, "wholesale.ben5_title")}</h4>
+          <p>{t(tr, "wholesale.ben5_desc")}</p>
         </div>
         <div class="wh-benefit-card">
           <div class="wh-benefit-num">06</div>
           <div class="wh-benefit-icon"><i class="fas fa-earth-europe"></i></div>
-          <h4>Worldwide Delivery</h4>
-          <p>Licensed hazmat carriers for safe international delivery. EU, Americas, Asia, Africa. Full ADR/IMDG compliance.</p>
+          <h4>{t(tr, "wholesale.ben6_title")}</h4>
+          <p>{t(tr, "wholesale.ben6_desc")}</p>
         </div>
       </div>
     </div>
@@ -82,59 +89,59 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="wh-products">
     <div class="container">
       <div class="wh-section-header">
-        <div class="section-label">Wholesale Products</div>
-        <h2>Available for Bulk Purchase</h2>
+        <div class="section-label">{t(tr, "wholesale.products_label")}</div>
+        <h2>{t(tr, "wholesale.products_title")}</h2>
       </div>
       <div class="wh-products-grid">
         <div class="wh-product-card">
           <div class="wh-product-accent"></div>
           <div class="wh-product-inner">
             <div class="wh-product-head">
-              <h3>Caluanie Muelear Oxidize</h3>
-              <span class="wh-product-badge">Liquid Oxidizer</span>
+              <h3>{t(tr, "nav.caluanie")}</h3>
+              <span class="wh-product-badge">{t(tr, "wholesale.cal_badge")}</span>
             </div>
             <ul class="wh-product-specs">
-              <li><span class="wh-spec-label">Application</span><span>Metalworking, Refining, Crushing</span></li>
-              <li><span class="wh-spec-label">Density</span><span>1.86 g/cm³</span></li>
-              <li><span class="wh-spec-label">Pack Sizes</span><span>1L, 5L, 10L, 20L, 50L, 100L</span></li>
-              <li><span class="wh-spec-label">MOQ</span><span>5 Liters</span></li>
-              <li class="wh-spec-stock"><i class="fas fa-circle-check"></i> In Stock — Year-Round Supply</li>
+              <li><span class="wh-spec-label">{t(tr, "products.caluanie_spec1_label")}</span><span>{t(tr, "wholesale.cal_app")}</span></li>
+              <li><span class="wh-spec-label">{t(tr, "caluanie.tech_density")}</span><span>{t(tr, "wholesale.cal_density")}</span></li>
+              <li><span class="wh-spec-label">{t(tr, "caluanie.tech_packs")}</span><span>{t(tr, "wholesale.cal_packs")}</span></li>
+              <li><span class="wh-spec-label">{t(tr, "common.moq")}</span><span>{t(tr, "wholesale.cal_moq")}</span></li>
+              <li class="wh-spec-stock"><i class="fas fa-circle-check"></i> {t(tr, "wholesale.cal_stock")}</li>
             </ul>
-            <a href="/products/caluanie" class="wh-product-btn">View Details <i class="fas fa-arrow-right"></i></a>
+            <a href={lp("/products/caluanie")} class="wh-product-btn">{t(tr, "wholesale.view_details")} <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
         <div class="wh-product-card">
           <div class="wh-product-accent wh-accent-red"></div>
           <div class="wh-product-inner">
             <div class="wh-product-head">
-              <h3>Red Liquid Mercury</h3>
-              <span class="wh-product-badge wh-badge-red">Sb₂O₇Hg₂</span>
+              <h3>{t(tr, "nav.red_mercury")}</h3>
+              <span class="wh-product-badge wh-badge-red">{t(tr, "red_mercury.tech_formula_val")}</span>
             </div>
             <ul class="wh-product-specs">
-              <li><span class="wh-spec-label">Purity</span><span>99.999% (5N Grade)</span></li>
-              <li><span class="wh-spec-label">Density</span><span>20.2 g/cm³</span></li>
-              <li><span class="wh-spec-label">Formula</span><span>Sb₂O₇Hg₂</span></li>
-              <li><span class="wh-spec-label">Pack Sizes</span><span>1 kg, 5 kg, 17.5 kg, 34.5 kg</span></li>
-              <li class="wh-spec-stock"><i class="fas fa-circle-check"></i> In Stock</li>
+              <li><span class="wh-spec-label">{t(tr, "red_mercury.tech_purity")}</span><span>{t(tr, "wholesale.red_purity")}</span></li>
+              <li><span class="wh-spec-label">{t(tr, "red_mercury.tech_density")}</span><span>{t(tr, "wholesale.red_density")}</span></li>
+              <li><span class="wh-spec-label">{t(tr, "red_mercury.tech_formula")}</span><span>{t(tr, "wholesale.red_badge")}</span></li>
+              <li><span class="wh-spec-label">{t(tr, "red_mercury.tech_packs")}</span><span>{t(tr, "wholesale.red_packs")}</span></li>
+              <li class="wh-spec-stock"><i class="fas fa-circle-check"></i> {t(tr, "wholesale.red_stock")}</li>
             </ul>
-            <a href="/products/red-mercury" class="wh-product-btn">View Details <i class="fas fa-arrow-right"></i></a>
+            <a href={lp("/products/red-mercury")} class="wh-product-btn">{t(tr, "wholesale.view_details")} <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
         <div class="wh-product-card">
           <div class="wh-product-accent wh-accent-silver"></div>
           <div class="wh-product-inner">
             <div class="wh-product-head">
-              <h3>Silver Liquid Mercury</h3>
-              <span class="wh-product-badge wh-badge-silver">CAS 7439-97-6</span>
+              <h3>{t(tr, "nav.silver_mercury")}</h3>
+              <span class="wh-product-badge wh-badge-silver">{t(tr, "silver_mercury.tech_cas_val")}</span>
             </div>
             <ul class="wh-product-specs">
-              <li><span class="wh-spec-label">Purity</span><span>99.99% (4N Grade)</span></li>
-              <li><span class="wh-spec-label">Density</span><span>13.534 g/cm³</span></li>
-              <li><span class="wh-spec-label">Pack Sizes</span><span>34.5 kg Flask, 76 lb, 2204 lb</span></li>
-              <li><span class="wh-spec-label">MOQ</span><span>1 × 34.5 kg Flask</span></li>
-              <li class="wh-spec-stock"><i class="fas fa-circle-check"></i> In Stock — Continuous Production</li>
+              <li><span class="wh-spec-label">{t(tr, "silver_mercury.tech_purity")}</span><span>{t(tr, "wholesale.silver_purity")}</span></li>
+              <li><span class="wh-spec-label">{t(tr, "silver_mercury.tech_density")}</span><span>{t(tr, "wholesale.silver_density")}</span></li>
+              <li><span class="wh-spec-label">{t(tr, "silver_mercury.tech_packs")}</span><span>{t(tr, "wholesale.silver_packs")}</span></li>
+              <li><span class="wh-spec-label">{t(tr, "common.moq")}</span><span>{t(tr, "wholesale.silver_moq")}</span></li>
+              <li class="wh-spec-stock"><i class="fas fa-circle-check"></i> {t(tr, "wholesale.silver_stock")}</li>
             </ul>
-            <a href="/products/silver-mercury" class="wh-product-btn">View Details <i class="fas fa-arrow-right"></i></a>
+            <a href={lp("/products/silver-mercury")} class="wh-product-btn">{t(tr, "wholesale.view_details")} <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -145,8 +152,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="wh-process">
     <div class="container">
       <div class="wh-section-header">
-        <div class="section-label">Simple Process</div>
-        <h2>How Wholesale Ordering Works</h2>
+        <div class="section-label">{t(tr, "wholesale.process_label")}</div>
+        <h2>{t(tr, "wholesale.process_title")}</h2>
       </div>
       <div class="wh-process-track">
         <div class="wh-process-line"></div>
@@ -154,29 +161,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div class="wh-process-step">
             <div class="wh-step-dot"><span>1</span></div>
             <div class="wh-step-content">
-              <h4>Submit Your Inquiry</h4>
-              <p>Contact us with product, quantity, and destination. Our wholesale team responds within 24 hours.</p>
+              <h4>{t(tr, "wholesale.proc1_title")}</h4>
+              <p>{t(tr, "wholesale.proc1_desc")}</p>
             </div>
           </div>
           <div class="wh-process-step">
             <div class="wh-step-dot"><span>2</span></div>
             <div class="wh-step-content">
-              <h4>Receive Proforma Invoice</h4>
-              <p>Detailed invoice with wholesale pricing, shipping costs, payment instructions, and delivery timeline.</p>
+              <h4>{t(tr, "wholesale.proc2_title")}</h4>
+              <p>{t(tr, "wholesale.proc2_desc")}</p>
             </div>
           </div>
           <div class="wh-process-step">
             <div class="wh-step-dot"><span>3</span></div>
             <div class="wh-step-content">
-              <h4>Confirm &amp; Pay</h4>
-              <p>Review and confirm. We accept bank wire transfers and cryptocurrency. Processing takes 1–5 business days.</p>
+              <h4>{t(tr, "wholesale.proc3_title")}</h4>
+              <p>{t(tr, "wholesale.proc3_desc")}</p>
             </div>
           </div>
           <div class="wh-process-step">
             <div class="wh-step-dot"><span>4</span></div>
             <div class="wh-step-content">
-              <h4>Receive Your Order</h4>
-              <p>Ships with full documentation (COA, SDS, TDS) and tracking. EU 3–7 days, worldwide 7–21 days.</p>
+              <h4>{t(tr, "wholesale.proc4_title")}</h4>
+              <p>{t(tr, "wholesale.proc4_desc")}</p>
             </div>
           </div>
         </div>
@@ -188,49 +195,49 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="wh-industries">
     <div class="container">
       <div class="wh-section-header">
-        <div class="section-label">Who We Serve</div>
-        <h2>Industries We Supply</h2>
+        <div class="section-label">{t(tr, "wholesale.industries_label")}</div>
+        <h2>{t(tr, "wholesale.industries_title")}</h2>
       </div>
       <div class="wh-industries-grid">
         <div class="wh-industry-card">
           <div class="wh-industry-icon"><i class="fas fa-gears"></i></div>
-          <h4>Metal Processing</h4>
-          <p>Plants &amp; foundries</p>
+          <h4>{t(tr, "wholesale.ind1_title")}</h4>
+          <p>{t(tr, "wholesale.ind1_desc")}</p>
         </div>
         <div class="wh-industry-card">
           <div class="wh-industry-icon"><i class="fas fa-gem"></i></div>
-          <h4>Mining &amp; Extraction</h4>
-          <p>Operations worldwide</p>
+          <h4>{t(tr, "wholesale.ind2_title")}</h4>
+          <p>{t(tr, "wholesale.ind2_desc")}</p>
         </div>
         <div class="wh-industry-card">
           <div class="wh-industry-icon"><i class="fas fa-flask"></i></div>
-          <h4>Chemical Mfg.</h4>
-          <p>Manufacturers &amp; formulators</p>
+          <h4>{t(tr, "wholesale.ind3_title")}</h4>
+          <p>{t(tr, "wholesale.ind3_desc")}</p>
         </div>
         <div class="wh-industry-card">
           <div class="wh-industry-icon"><i class="fas fa-microscope"></i></div>
-          <h4>Research Labs</h4>
-          <p>Universities &amp; institutes</p>
+          <h4>{t(tr, "wholesale.ind4_title")}</h4>
+          <p>{t(tr, "wholesale.ind4_desc")}</p>
         </div>
         <div class="wh-industry-card">
           <div class="wh-industry-icon"><i class="fas fa-building"></i></div>
-          <h4>Industrial Distributors</h4>
-          <p>Bulk resellers</p>
+          <h4>{t(tr, "wholesale.ind5_title")}</h4>
+          <p>{t(tr, "wholesale.ind5_desc")}</p>
         </div>
         <div class="wh-industry-card">
           <div class="wh-industry-icon"><i class="fas fa-tooth"></i></div>
-          <h4>Dental &amp; Medical</h4>
-          <p>Suppliers &amp; clinics</p>
+          <h4>{t(tr, "wholesale.ind6_title")}</h4>
+          <p>{t(tr, "wholesale.ind6_desc")}</p>
         </div>
         <div class="wh-industry-card">
           <div class="wh-industry-icon"><i class="fas fa-microchip"></i></div>
-          <h4>Electronics</h4>
-          <p>Semiconductor &amp; PCB mfg.</p>
+          <h4>{t(tr, "wholesale.ind7_title")}</h4>
+          <p>{t(tr, "wholesale.ind7_desc")}</p>
         </div>
         <div class="wh-industry-card">
           <div class="wh-industry-icon"><i class="fas fa-gauge-high"></i></div>
-          <h4>Instruments</h4>
-          <p>Thermometers &amp; barometers</p>
+          <h4>{t(tr, "wholesale.ind8_title")}</h4>
+          <p>{t(tr, "wholesale.ind8_desc")}</p>
         </div>
       </div>
     </div>
@@ -241,11 +248,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="wh-cta-inner">
         <div class="wh-cta-icon"><i class="fas fa-boxes-stacked"></i></div>
-        <h2>Start Your Wholesale Order Today</h2>
-        <p>Contact our wholesale team for competitive bulk pricing, volume discounts, and dedicated support. Custom quote within 24 hours.</p>
+        <h2>{t(tr, "wholesale.cta_title")}</h2>
+        <p>{t(tr, "wholesale.cta_desc")}</p>
         <div class="wh-cta-actions">
-          <a href="/contact" class="btn btn-white">Request Wholesale Quote <i class="fas fa-arrow-right"></i></a>
-          <a href="mailto:info@useful-chemicals.com" class="btn btn-outline-white">Email Us Directly <i class="fas fa-envelope"></i></a>
+          <a href={lp("/contact")} class="btn btn-white">{t(tr, "wholesale.cta_quote")}
+            <i class="fas fa-arrow-right"></i></a>
+          <a href="mailto:info@useful-chemicals.com" class="btn btn-outline-white">{t(tr, "wholesale.cta_email")} <i class="fas fa-envelope"></i></a>
         </div>
       </div>
     </div>

@@ -1,0 +1,392 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath, getLangStaticPaths } from '../../i18n/index';
+import { defaultLang } from '../../i18n/languages';
+
+export const getStaticPaths = getLangStaticPaths;
+const lang = Astro.params.lang ?? defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+---
+
+
+<BaseLayout lang={lang} title={t(tr, "about.meta_title")} description={t(tr, "about.meta_desc")} activePage="about">
+
+  <!-- ========== HERO ========== -->
+  <section class="ab-hero">
+    <div class="ab-hero-bg">
+      <img src="/images/caluanie-muelear-oxidize-manufacturer-in-usa.webp" alt={t(tr, "about.hero_title")} />
+      <div class="ab-hero-overlay"></div>
+    </div>
+    <div class="container ab-hero-inner">
+      <div class="ab-hero-content">
+        <div class="ab-hero-badge"><i class="fas fa-building"></i> {t(tr, "about.hero_badge")}</div>
+        <h1>{t(tr, "about.hero_title")}</h1>
+        <p class="ab-hero-sub">{t(tr, "about.hero_sub")}</p>
+        <div class="ab-hero-actions">
+          <a href={lp("/products")} class="btn btn-accent">{t(tr, "about.hero_explore")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact")} class="btn btn-outline-white">{t(tr, "about.hero_contact")} <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="ab-hero-stats">
+        <div class="ab-hero-stat">
+          <span class="ab-hero-stat-num">{t(tr, "about.hero_stat1")}</span>
+          <span class="ab-hero-stat-label">{t(tr, "about.hero_stat1_label")}</span>
+        </div>
+        <div class="ab-hero-stat-divider"></div>
+        <div class="ab-hero-stat">
+          <span class="ab-hero-stat-num">{t(tr, "about.hero_stat2")}</span>
+          <span class="ab-hero-stat-label">{t(tr, "about.hero_stat2_label")}</span>
+        </div>
+        <div class="ab-hero-stat-divider"></div>
+        <div class="ab-hero-stat">
+          <span class="ab-hero-stat-num">{t(tr, "about.hero_stat3")}</span>
+          <span class="ab-hero-stat-label">{t(tr, "about.hero_stat3_label")}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== MISSION SPLIT ========== -->
+  <section class="ab-mission">
+    <div class="ab-mission-image">
+      <img src="/images/pexels-los-muertos-crew-10041264.jpg" alt={t(tr, "about.mission_title")} />
+    </div>
+    <div class="ab-mission-content">
+      <div class="section-label">{t(tr, "about.mission_label")}</div>
+      <h2>{t(tr, "about.mission_title")}</h2>
+      <p>{t(tr, "about.mission_desc1")}</p>
+      <p>{t(tr, "about.mission_desc2")}</p>
+      <div class="ab-mission-features">
+        <div class="ab-mission-feat">
+          <div class="ab-mission-feat-icon"><i class="fas fa-flask"></i></div>
+          <div>
+            <h6>{t(tr, "about.mission_feat1_title")}</h6>
+            <p>{t(tr, "about.mission_feat1_desc")}</p>
+          </div>
+        </div>
+        <div class="ab-mission-feat">
+          <div class="ab-mission-feat-icon"><i class="fas fa-earth-americas"></i></div>
+          <div>
+            <h6>{t(tr, "about.mission_feat2_title")}</h6>
+            <p>{t(tr, "about.mission_feat2_desc")}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CORE PRODUCTS ========== -->
+  <section class="ab-products">
+    <div class="container">
+      <div class="ab-section-header">
+        <div>
+          <div class="section-label">{t(tr, "about.products_label")}</div>
+          <h2>{t(tr, "about.products_title")}</h2>
+        </div>
+        <a href={lp("/products")} class="btn btn-outline">{t(tr, "common.view_all_products")} <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="ab-products-grid">
+        <a href={lp("/products/caluanie")} class="ab-prod-card">
+          <div class="ab-prod-img">
+            <img src="/images/caluanie-muelear-oxidize-for-sale.jpg" alt={t(tr, "about.prod1_name")} />
+            <div class="ab-prod-num">01</div>
+          </div>
+          <div class="ab-prod-body">
+            <h3>{t(tr, "about.prod1_name")}</h3>
+            <p>{t(tr, "about.prod1_desc")}</p>
+            <span class="ab-prod-link">{t(tr, "common.learn_more")} <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+        <a href={lp("/products/red-mercury")} class="ab-prod-card">
+          <div class="ab-prod-img">
+            <img src="/images/red-liquid-mercury-for-sale-usa.png" alt={t(tr, "about.prod2_name")} />
+            <div class="ab-prod-num">02</div>
+          </div>
+          <div class="ab-prod-body">
+            <h3>{t(tr, "about.prod2_name")}</h3>
+            <p>{t(tr, "about.prod2_desc")}</p>
+            <span class="ab-prod-link">{t(tr, "common.learn_more")} <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+        <a href={lp("/products/silver-mercury")} class="ab-prod-card">
+          <div class="ab-prod-img">
+            <img src="/images/silver-liquid-mercury-for-sale.png" alt={t(tr, "about.prod3_name")} />
+            <div class="ab-prod-num">03</div>
+          </div>
+          <div class="ab-prod-body">
+            <h3>{t(tr, "about.prod3_name")}</h3>
+            <p>{t(tr, "about.prod3_desc")}</p>
+            <span class="ab-prod-link">{t(tr, "common.learn_more")} <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY CHOOSE US (DARK) ========== -->
+  <section class="ab-why">
+    <div class="container">
+      <div class="ab-why-grid">
+        <div class="ab-why-content">
+          <div class="section-label">{t(tr, "about.why_label")}</div>
+          <h2>{t(tr, "about.why_title")}</h2>
+          <p>{t(tr, "about.why_desc")}</p>
+        </div>
+        <div class="ab-why-cards">
+          <div class="ab-why-card">
+            <div class="ab-why-card-num">01</div>
+            <div>
+              <h5>{t(tr, "about.why1_title")}</h5>
+              <p>{t(tr, "about.why1_desc")}</p>
+            </div>
+          </div>
+          <div class="ab-why-card">
+            <div class="ab-why-card-num">02</div>
+            <div>
+              <h5>{t(tr, "about.why2_title")}</h5>
+              <p>{t(tr, "about.why2_desc")}</p>
+            </div>
+          </div>
+          <div class="ab-why-card">
+            <div class="ab-why-card-num">03</div>
+            <div>
+              <h5>{t(tr, "about.why3_title")}</h5>
+              <p>{t(tr, "about.why3_desc")}</p>
+            </div>
+          </div>
+          <div class="ab-why-card">
+            <div class="ab-why-card-num">04</div>
+            <div>
+              <h5>{t(tr, "about.why4_title")}</h5>
+              <p>{t(tr, "about.why4_desc")}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FACILITY SPLIT (REVERSED) ========== -->
+  <section class="ab-facility">
+    <div class="ab-facility-content">
+      <div class="section-label">{t(tr, "about.facility_label")}</div>
+      <h2>{t(tr, "about.facility_title")}</h2>
+      <p>{t(tr, "about.facility_desc1")}</p>
+      <p>{t(tr, "about.facility_desc2")}</p>
+      <a href={lp("/products")} class="btn btn-primary">{t(tr, "about.facility_explore")} <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="ab-facility-image">
+      <img src="/images/useful-chemical-industry.jpg" alt={t(tr, "about.facility_title")} />
+    </div>
+  </section>
+
+  <!-- ========== SAFETY COMMITMENT ========== -->
+  <section class="ab-safety">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:60px;">
+        <div class="section-label">{t(tr, "about.safety_label")}</div>
+        <h2>{t(tr, "about.safety_title")}</h2>
+      </div>
+      <div class="ab-safety-grid">
+        <div class="ab-safety-card">
+          <div class="ab-safety-icon"><i class="fas fa-flask"></i></div>
+          <h5>{t(tr, "about.safety1_title")}</h5>
+          <p>{t(tr, "about.safety1_desc")}</p>
+        </div>
+        <div class="ab-safety-card">
+          <div class="ab-safety-icon"><i class="fas fa-box"></i></div>
+          <h5>{t(tr, "about.safety2_title")}</h5>
+          <p>{t(tr, "about.safety2_desc")}</p>
+        </div>
+        <div class="ab-safety-card">
+          <div class="ab-safety-icon"><i class="fas fa-truck-fast"></i></div>
+          <h5>{t(tr, "about.safety3_title")}</h5>
+          <p>{t(tr, "about.safety3_desc")}</p>
+        </div>
+        <div class="ab-safety-card">
+          <div class="ab-safety-icon"><i class="fas fa-file-lines"></i></div>
+          <h5>{t(tr, "about.safety4_title")}</h5>
+          <p>{t(tr, "about.safety4_desc")}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TEAM ========== -->
+  <section class="ab-team">
+    <div class="container">
+      <div class="ab-team-inner">
+        <div class="ab-team-text">
+          <div class="section-label">{t(tr, "about.team_label")}</div>
+          <h2>{t(tr, "about.team_title")}</h2>
+          <p>{t(tr, "about.team_desc")}</p>
+        </div>
+        <div class="ab-team-card">
+          <div class="ab-team-avatar"><i class="fas fa-user"></i></div>
+          <div class="ab-team-info">
+            <h4>{t(tr, "about.team_name")}</h4>
+            <span class="ab-team-role">{t(tr, "about.team_role")}</span>
+            <p>{t(tr, "about.team_bio")}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="ab-cta">
+    <div class="container">
+      <div class="ab-cta-inner">
+        <div class="ab-cta-content">
+          <h2>{t(tr, "about.cta_title")}</h2>
+          <p>{t(tr, "about.cta_desc")}</p>
+        </div>
+        <div class="ab-cta-actions">
+          <a href={lp("/contact")} class="btn btn-white">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/ordering")} class="btn btn-outline-white">{t(tr, "common.how_to_order")} <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* Hero */
+  .ab-hero { position: relative; min-height: 85vh; display: flex; align-items: center; overflow: hidden; }
+  .ab-hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .ab-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .ab-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(25,24,23,0.93) 0%, rgba(25,24,23,0.75) 50%, rgba(252,82,32,0.12) 100%); }
+  .ab-hero-inner { position: relative; z-index: 1; padding-top: 140px; padding-bottom: 100px; }
+  .ab-hero-content { max-width: 680px; }
+  .ab-hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px; border: 1px solid rgba(255,255,255,0.2); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.8); margin-bottom: 24px; }
+  .ab-hero-badge i { color: var(--accent); font-size: 13px; }
+  .ab-hero h1 { color: var(--white); font-size: clamp(38px, 5.5vw, 72px); line-height: 1.05; margin-bottom: 24px; letter-spacing: -1px; }
+  .ab-hero-sub { color: rgba(255,255,255,0.65); font-size: 18px; line-height: 1.7; max-width: 540px; margin-bottom: 40px; }
+  .ab-hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-outline-white { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
+  .btn-outline-white:hover { background: var(--white); color: var(--near-black); border-color: var(--white); }
+  .ab-hero-stats { display: flex; align-items: center; gap: 40px; margin-top: 80px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.12); }
+  .ab-hero-stat-num { display: block; font-size: 28px; font-weight: 800; color: var(--white); letter-spacing: -0.5px; }
+  .ab-hero-stat-label { display: block; font-size: 13px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+  .ab-hero-stat-divider { width: 1px; height: 50px; background: rgba(255,255,255,0.12); }
+
+  /* Mission Split */
+  .ab-mission { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
+  .ab-mission-image { overflow: hidden; }
+  .ab-mission-image img { width: 100%; height: 100%; object-fit: cover; }
+  .ab-mission-content { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; background: var(--light-bg); }
+  .ab-mission-content h2 { font-size: clamp(24px, 3vw, 40px); margin-bottom: 20px; line-height: 1.15; }
+  .ab-mission-content > p { max-width: 480px; }
+  .ab-mission-features { margin: 30px 0 0; display: flex; flex-direction: column; gap: 24px; }
+  .ab-mission-feat { display: flex; gap: 16px; align-items: flex-start; }
+  .ab-mission-feat-icon { width: 48px; height: 48px; background: var(--near-black); display: flex; align-items: center; justify-content: center; color: var(--white); flex-shrink: 0; font-size: 18px; }
+  .ab-mission-feat h6 { font-size: 15px; margin-bottom: 4px; }
+  .ab-mission-feat p { font-size: 14px; margin: 0; color: var(--body-text); }
+
+  /* Products Grid */
+  .ab-products { padding: 120px 0; background: var(--white); }
+  .ab-section-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; margin-bottom: 60px; }
+  .ab-section-header h2 { font-size: clamp(28px, 3.5vw, 50px); line-height: 1.15; }
+  .ab-products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .ab-prod-card { display: block; border-left: 1px solid var(--border); overflow: hidden; transition: var(--transition); color: var(--body-text); }
+  .ab-prod-card:last-child { border-right: 1px solid var(--border); }
+  .ab-prod-img { position: relative; height: 300px; overflow: hidden; }
+  .ab-prod-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+  .ab-prod-card:hover .ab-prod-img img { transform: scale(1.08); }
+  .ab-prod-num { position: absolute; top: 20px; left: 20px; font-size: 13px; font-weight: 800; color: var(--white); background: var(--near-black); padding: 6px 14px; letter-spacing: 1px; }
+  .ab-prod-body { padding: 30px; }
+  .ab-prod-body h3 { font-size: 20px; margin-bottom: 10px; transition: color 0.3s; }
+  .ab-prod-card:hover .ab-prod-body h3 { color: var(--accent); }
+  .ab-prod-body p { font-size: 15px; margin-bottom: 20px; }
+  .ab-prod-link { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); display: inline-flex; align-items: center; gap: 8px; }
+  .ab-prod-link i { font-size: 11px; transition: transform 0.3s; }
+  .ab-prod-card:hover .ab-prod-link i { transform: translateX(6px); }
+
+  /* Why Section (Dark) */
+  .ab-why { padding: 120px 0; background: var(--near-black); }
+  .ab-why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .ab-why-content .section-label { color: rgba(255,255,255,0.6); }
+  .ab-why-content .section-label::before { background: var(--accent); }
+  .ab-why-content h2 { color: var(--white); font-size: clamp(24px, 3vw, 42px); margin-bottom: 20px; line-height: 1.15; }
+  .ab-why-content p { color: rgba(255,255,255,0.5); max-width: 440px; }
+  .ab-why-cards { display: flex; flex-direction: column; }
+  .ab-why-card { display: flex; gap: 24px; padding: 30px 0; border-bottom: 1px solid rgba(255,255,255,0.1); align-items: flex-start; }
+  .ab-why-card:first-child { padding-top: 0; }
+  .ab-why-card-num { font-size: 14px; font-weight: 800; color: var(--accent); letter-spacing: 1px; flex-shrink: 0; padding-top: 2px; }
+  .ab-why-card h5 { color: var(--white); font-size: 16px; margin-bottom: 6px; text-transform: uppercase; }
+  .ab-why-card p { color: rgba(255,255,255,0.45); font-size: 14px; margin: 0; }
+
+  /* Facility Split */
+  .ab-facility { display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; }
+  .ab-facility-content { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; background: var(--white); }
+  .ab-facility-content h2 { font-size: clamp(24px, 3vw, 40px); margin-bottom: 20px; line-height: 1.15; }
+  .ab-facility-content > p { max-width: 480px; }
+  .ab-facility-content .btn { margin-top: 30px; align-self: flex-start; }
+  .ab-facility-image { overflow: hidden; }
+  .ab-facility-image img { width: 100%; height: 100%; object-fit: cover; }
+
+  /* Safety Grid */
+  .ab-safety { padding: 120px 0; background: var(--light-bg); border-top: 1px solid var(--border); }
+  .ab-safety h2 { font-size: clamp(28px, 3.5vw, 50px); line-height: 1.15; }
+  .ab-safety-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .ab-safety-card { padding: 45px 30px; border-left: 1px solid var(--border); transition: var(--transition); }
+  .ab-safety-card:last-child { border-right: 1px solid var(--border); }
+  .ab-safety-card:hover { background: var(--white); }
+  .ab-safety-icon { width: 52px; height: 52px; background: var(--near-black); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 20px; margin-bottom: 22px; }
+  .ab-safety-card h5 { font-size: 16px; text-transform: uppercase; margin-bottom: 10px; }
+  .ab-safety-card p { font-size: 14px; color: var(--body-text); margin: 0; line-height: 1.6; }
+
+  /* Team */
+  .ab-team { padding: 100px 0; background: var(--white); border-top: 1px solid var(--border); }
+  .ab-team-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .ab-team-text h2 { font-size: clamp(24px, 3vw, 42px); margin-bottom: 16px; line-height: 1.15; }
+  .ab-team-text p { max-width: 440px; }
+  .ab-team-card { display: flex; gap: 24px; align-items: center; padding: 40px; border: 1px solid var(--border); }
+  .ab-team-avatar { width: 80px; height: 80px; background: var(--near-black); display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--white); flex-shrink: 0; border-radius: 50%; }
+  .ab-team-info h4 { font-size: 20px; margin-bottom: 4px; }
+  .ab-team-role { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); display: block; margin-bottom: 10px; }
+  .ab-team-info p { font-size: 14px; color: var(--body-text); margin: 0; }
+
+  /* CTA */
+  .ab-cta { padding: 100px 0; background: var(--accent); }
+  .ab-cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+  .ab-cta-content h2 { color: var(--white); font-size: clamp(28px, 3.5vw, 46px); margin-bottom: 12px; }
+  .ab-cta-content p { color: rgba(255,255,255,0.85); max-width: 500px; margin: 0; }
+  .ab-cta-actions { display: flex; gap: 16px; flex-shrink: 0; flex-wrap: wrap; }
+  .ab-cta .btn-white { border-color: var(--white); }
+  .ab-cta .btn-white:hover { background: var(--near-black); color: var(--white); border-color: var(--near-black); }
+  .ab-cta .btn-outline-white { border-color: rgba(255,255,255,0.4); }
+  .ab-cta .btn-outline-white:hover { background: var(--white); color: var(--accent); border-color: var(--white); }
+
+  /* Responsive */
+  @media (max-width: 1024px) {
+    .ab-mission { grid-template-columns: 1fr; }
+    .ab-mission-image { height: 400px; }
+    .ab-mission-content { padding: 60px 24px; }
+    .ab-products-grid { grid-template-columns: 1fr; }
+    .ab-prod-card { border-left: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .ab-prod-card:first-child { border-top: 1px solid var(--border); }
+    .ab-section-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .ab-why-grid { grid-template-columns: 1fr; gap: 50px; }
+    .ab-facility { grid-template-columns: 1fr; }
+    .ab-facility-image { height: 400px; order: -1; }
+    .ab-facility-content { padding: 60px 24px; }
+    .ab-safety-grid { grid-template-columns: 1fr 1fr; }
+    .ab-safety-card { border-bottom: 1px solid var(--border); }
+    .ab-team-inner { grid-template-columns: 1fr; }
+    .ab-cta-inner { flex-direction: column; text-align: center; }
+    .ab-cta-actions { justify-content: center; }
+  }
+  @media (max-width: 768px) {
+    .ab-hero { min-height: 75vh; }
+    .ab-hero h1 { font-size: clamp(30px, 8vw, 50px); }
+    .ab-hero-stats { flex-direction: column; gap: 20px; align-items: flex-start; }
+    .ab-hero-stat-divider { width: 100%; height: 1px; }
+    .ab-safety-grid { grid-template-columns: 1fr; }
+    .ab-safety-card { border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .ab-products, .ab-why, .ab-safety { padding: 80px 0; }
+    .ab-cta { padding: 60px 0; }
+  }
+</style>

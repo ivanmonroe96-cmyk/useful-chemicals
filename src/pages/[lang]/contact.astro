@@ -1,0 +1,350 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, t, getLangStaticPaths } from '../../i18n/index';
+import { defaultLang } from '../../i18n/languages';
+
+export const getStaticPaths = getLangStaticPaths;
+const lang = Astro.params.lang ?? defaultLang;
+const tr = getTranslations(lang);
+const contactMessages = {
+  sending: t(tr, "contact.sending"),
+  success: t(tr, "contact.success"),
+  error: t(tr, "contact.error"),
+  networkError: t(tr, "contact.network_error"),
+  submit: t(tr, "contact.submit"),
+};
+---
+
+
+<BaseLayout lang={lang} title={t(tr, "contact.meta_title")} description={t(tr, "contact.meta_desc")} activePage="contact">
+
+  <!-- ========== HERO ========== -->
+  <section class="ct-hero">
+    <div class="ct-hero-bg">
+      <img src="/images/industrial-worker-holding-plastic-cans-with-chemicals-production-plant.jpg" alt={t(tr, "contact.hero_title")} />
+      <div class="ct-hero-overlay"></div>
+    </div>
+    <div class="container ct-hero-inner">
+      <div class="ct-hero-content">
+        <div class="ct-hero-badge"><i class="fas fa-headset"></i> {t(tr, "contact.hero_badge")}</div>
+        <h1>{t(tr, "contact.hero_title").split(' ').slice(0, 2).join(' ')}<br />{t(tr, "contact.hero_title").split(' ').slice(2).join(' ')}</h1>
+        <p class="ct-hero-sub">{t(tr, "contact.hero_sub")}</p>
+      </div>
+      <div class="ct-hero-cards">
+        <div class="ct-info-card">
+          <div class="ct-info-icon"><i class="fas fa-envelope"></i></div>
+          <div>
+            <span class="ct-info-label">{t(tr, "contact.email_label")}</span>
+            <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a>
+          </div>
+        </div>
+        <div class="ct-info-card">
+          <div class="ct-info-icon"><i class="fab fa-whatsapp"></i></div>
+          <div>
+            <span class="ct-info-label">{t(tr, "contact.whatsapp_label")}</span>
+            <a href="https://wa.me/66951690848" target="_blank" rel="noopener noreferrer">+66 951 690 848</a>
+          </div>
+        </div>
+        <div class="ct-info-card">
+          <div class="ct-info-icon"><i class="fas fa-map-marker-alt"></i></div>
+          <div>
+            <span class="ct-info-label">{t(tr, "contact.visit_label")}</span>
+            <span>{t(tr, "contact.visit_value")}</span>
+          </div>
+        </div>
+        <div class="ct-info-card">
+          <div class="ct-info-icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <span class="ct-info-label">{t(tr, "contact.hours_label")}</span>
+            <span>{t(tr, "contact.hours_value")}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FORM SECTION ========== -->
+  <section class="ct-form-section">
+    <div class="container">
+      <div class="ct-form-grid">
+
+        <!-- Left: Info + Map -->
+        <div class="ct-form-info">
+          <div class="section-label">{t(tr, "contact.form_label")}</div>
+          <h2>{t(tr, "contact.form_title")}</h2>
+          <p>{t(tr, "contact.form_desc")}</p>
+
+          <div class="ct-feature-list">
+            <div class="ct-feature">
+              <div class="ct-feature-icon"><i class="fas fa-reply"></i></div>
+              <div>
+                <strong>{t(tr, "contact.feat1_title")}</strong>
+                <p>{t(tr, "contact.feat1_desc")}</p>
+              </div>
+            </div>
+            <div class="ct-feature">
+              <div class="ct-feature-icon"><i class="fas fa-file-lines"></i></div>
+              <div>
+                <strong>{t(tr, "contact.feat2_title")}</strong>
+                <p>{t(tr, "contact.feat2_desc")}</p>
+              </div>
+            </div>
+            <div class="ct-feature">
+              <div class="ct-feature-icon"><i class="fas fa-flask-vial"></i></div>
+              <div>
+                <strong>{t(tr, "contact.feat3_title")}</strong>
+                <p>{t(tr, "contact.feat3_desc")}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map -->
+          <div class="ct-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d248849.8865388!2d100.3529!3d13.7563!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311d6032280d61f3%3A0x10100b25de24820!2sBangkok%2C%20Thailand!5e0!3m2!1sen!2sth!4v1700000000000!5m2!1sen!2sth"
+              width="100%" height="220" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+              title={t(tr, 'contact.map_title')}>
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="ct-form-card">
+          <h3>{t(tr, "contact.form_heading")}</h3>
+          <div id="formStatus" class="ct-form-status"></div>
+          <form
+            id="contactForm"
+            data-sending={contactMessages.sending}
+            data-success={contactMessages.success}
+            data-error={contactMessages.error}
+            data-network-error={contactMessages.networkError}
+            data-submit={contactMessages.submit}
+          >
+            <div class="ct-form-row">
+              <div class="ct-form-group">
+                <label for="ct-name">{t(tr, "contact.label_name")} <span>*</span></label>
+                <input type="text" id="ct-name" name="name" placeholder={t(tr, "contact.placeholder_name")} required />
+              </div>
+              <div class="ct-form-group">
+                <label for="ct-email">{t(tr, "contact.label_email")} <span>*</span></label>
+                <input type="email" id="ct-email" name="email" placeholder={t(tr, "contact.placeholder_email")} required />
+              </div>
+            </div>
+            <div class="ct-form-row">
+              <div class="ct-form-group">
+                <label for="ct-phone">{t(tr, "contact.label_phone")}</label>
+                <div class="ct-phone-wrap">
+                  <select name="phoneCode" class="ct-phone-code">
+                    <option>+49</option>
+                    <option>+1</option>
+                    <option>+44</option>
+                    <option>+61</option>
+                    <option>+33</option>
+                    <option>+237</option>
+                  </select>
+                  <input type="tel" id="ct-phone" name="phone" placeholder={t(tr, "contact.placeholder_phone")} />
+                </div>
+              </div>
+              <div class="ct-form-group">
+                <label for="ct-product">{t(tr, "contact.label_product")}</label>
+                <select id="ct-product" name="product">
+                  <option value="">{t(tr, "contact.placeholder_product")}</option>
+                  <option>{t(tr, "contact.product_caluanie")}</option>
+                  <option>{t(tr, "contact.product_red")}</option>
+                  <option>{t(tr, "contact.product_silver")}</option>
+                  <option>{t(tr, "contact.product_multiple")}</option>
+                </select>
+              </div>
+            </div>
+            <div class="ct-form-group">
+              <label for="ct-message">{t(tr, "contact.label_message")} <span>*</span></label>
+              <textarea id="ct-message" name="message" placeholder={t(tr, "contact.placeholder_message")} rows="5" required></textarea>
+            </div>
+            <button type="submit" id="submitBtn" class="btn btn-accent ct-submit-btn">
+              <span>{t(tr, "contact.submit")}</span> <i class="fas fa-paper-plane"></i>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ MINI ========== -->
+  <section class="ct-faq">
+    <div class="container">
+      <div class="text-center" style="margin-bottom: 50px;">
+        <div class="section-label">{t(tr, "contact.faq_label")}</div>
+        <h2 class="section-title">{t(tr, "contact.faq_title")}</h2>
+      </div>
+      <div class="ct-faq-grid">
+        <div class="ct-faq-item">
+          <h4><i class="fas fa-clock"></i> {t(tr, "contact.faq1_q")}</h4>
+          <p>{t(tr, "contact.faq1_a")}</p>
+        </div>
+        <div class="ct-faq-item">
+          <h4><i class="fas fa-file-invoice"></i> {t(tr, "contact.faq2_q")}</h4>
+          <p>{t(tr, "contact.faq2_a")}</p>
+        </div>
+        <div class="ct-faq-item">
+          <h4><i class="fas fa-earth-europe"></i> {t(tr, "contact.faq3_q")}</h4>
+          <p>{t(tr, "contact.faq3_a")}</p>
+        </div>
+        <div class="ct-faq-item">
+          <h4><i class="fas fa-credit-card"></i> {t(tr, "contact.faq4_q")}</h4>
+          <p>{t(tr, "contact.faq4_a")}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('contactForm');
+    const status = document.getElementById('formStatus');
+    const submitBtn = document.getElementById('submitBtn') as HTMLButtonElement | null;
+    const messages = {
+      sending: form?.dataset.sending || '',
+      success: form?.dataset.success || '',
+      error: form?.dataset.error || '',
+      networkError: form?.dataset.networkError || '',
+      submit: form?.dataset.submit || '',
+    };
+
+    form?.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!status || !submitBtn || !(form instanceof HTMLFormElement)) {
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = `<span>${messages.sending}</span> <i class="fas fa-spinner fa-spin"></i>`;
+      status.style.display = 'none';
+
+      const formData = new FormData(form);
+      const phoneCode = String(formData.get('phoneCode') || '');
+      const phoneNum = String(formData.get('phone') || '');
+
+      const body = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        phone: phoneNum ? `${phoneCode} ${phoneNum}` : '',
+        product: formData.get('product'),
+        message: formData.get('message'),
+      };
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body),
+        });
+
+        const result = await res.json();
+
+        if (res.ok) {
+          status.className = 'ct-form-status ct-form-success';
+          status.style.display = 'flex';
+          status.innerHTML = `<i class="fas fa-check-circle"></i> ${messages.success}`;
+          form.reset();
+        } else {
+          status.className = 'ct-form-status ct-form-error';
+          status.style.display = 'flex';
+          status.innerHTML = '<i class="fas fa-exclamation-circle"></i> ' + (result.error || messages.error);
+        }
+      } catch {
+        status.className = 'ct-form-status ct-form-error';
+        status.style.display = 'flex';
+        status.innerHTML = `<i class="fas fa-exclamation-circle"></i> ${messages.networkError}`;
+      } finally {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = `<span>${messages.submit}</span> <i class="fas fa-paper-plane"></i>`;
+      }
+    });
+  </script>
+
+</BaseLayout>
+
+<style>
+  /* ===== Hero ===== */
+  .ct-hero { position: relative; min-height: 50vh; display: flex; align-items: center; }
+  .ct-hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .ct-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .ct-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,15,30,.9), rgba(10,15,30,.7)); }
+  .ct-hero-inner { position: relative; z-index: 1; padding: 110px 0 60px; }
+  .ct-hero-content { max-width: 600px; margin-bottom: 40px; }
+  .ct-hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(8px); padding: 8px 18px; border-radius: 100px; font-size: .85rem; color: var(--accent); margin-bottom: 20px; }
+  .ct-hero h1 { font-size: clamp(2rem, 5vw, 3rem); font-weight: 800; color: var(--white); line-height: 1.12; margin-bottom: 16px; }
+  .ct-hero-sub { color: rgba(255,255,255,.7); font-size: 1.08rem; line-height: 1.7; }
+
+  /* Hero contact cards */
+  .ct-hero-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .ct-info-card { display: flex; align-items: center; gap: 14px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(8px); padding: 18px 22px; border-radius: 14px; }
+  .ct-info-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(252,82,32,.15); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1.1rem; flex-shrink: 0; }
+  .ct-info-label { display: block; font-size: .75rem; text-transform: uppercase; letter-spacing: 1px; color: rgba(255,255,255,.5); margin-bottom: 2px; font-weight: 600; }
+  .ct-info-card a, .ct-info-card span { color: var(--white); font-size: .93rem; font-weight: 500; text-decoration: none; }
+  .ct-info-card a:hover { color: var(--accent); }
+
+  /* ===== Form Section ===== */
+  .ct-form-section { padding: 90px 0; background: var(--light-bg); }
+  .ct-form-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 50px; align-items: start; }
+  .ct-form-info h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 14px; line-height: 1.2; }
+  .ct-form-info > p { color: var(--body-text); line-height: 1.8; margin-bottom: 30px; }
+
+  /* Features */
+  .ct-feature-list { display: flex; flex-direction: column; gap: 20px; margin-bottom: 30px; }
+  .ct-feature { display: flex; gap: 16px; }
+  .ct-feature-icon { width: 44px; height: 44px; border-radius: 10px; background: var(--near-black); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1rem; flex-shrink: 0; }
+  .ct-feature strong { display: block; font-size: .95rem; margin-bottom: 4px; }
+  .ct-feature p { color: var(--body-text); font-size: .88rem; line-height: 1.6; margin: 0; }
+
+  /* Map */
+  .ct-map { border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+
+  /* Form Card */
+  .ct-form-card { background: var(--white); border: 1px solid var(--border); border-radius: 20px; padding: 40px 36px; box-shadow: 0 8px 40px rgba(0,0,0,.06); }
+  .ct-form-card h3 { font-size: 1.25rem; font-weight: 700; margin-bottom: 24px; }
+
+  /* Status */
+  .ct-form-status { display: none; align-items: center; gap: 10px; padding: 14px 18px; border-radius: 10px; font-size: .93rem; margin-bottom: 20px; font-weight: 500; }
+  .ct-form-success { background: #d4edda; color: #155724; }
+  .ct-form-error { background: #f8d7da; color: #721c24; }
+
+  /* Form fields */
+  .ct-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .ct-form-group { margin-bottom: 18px; }
+  .ct-form-group label { display: block; font-size: .85rem; font-weight: 600; margin-bottom: 7px; color: var(--dark); }
+  .ct-form-group label span { color: var(--accent); }
+  .ct-form-group input,
+  .ct-form-group select,
+  .ct-form-group textarea { width: 100%; padding: 12px 16px; border: 1px solid var(--border); border-radius: 10px; font-size: .93rem; background: var(--light-bg); transition: var(--transition); font-family: inherit; color: var(--dark); }
+  .ct-form-group input:focus,
+  .ct-form-group select:focus,
+  .ct-form-group textarea:focus { outline: none; border-color: var(--accent); background: var(--white); box-shadow: 0 0 0 3px rgba(252,82,32,.08); }
+  .ct-form-group textarea { resize: vertical; min-height: 120px; }
+
+  /* Phone */
+  .ct-phone-wrap { display: grid; grid-template-columns: 80px 1fr; gap: 8px; }
+  .ct-phone-code { text-align: center; padding: 12px 6px; }
+
+  /* Submit */
+  .ct-submit-btn { width: 100%; justify-content: center; gap: 10px; padding: 14px; font-size: 1rem; border-radius: 10px; }
+
+  /* ===== FAQ ===== */
+  .ct-faq { padding: 90px 0; background: var(--white); }
+  .ct-faq-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .ct-faq-item { background: var(--light-bg); border: 1px solid var(--border); border-radius: 14px; padding: 28px; }
+  .ct-faq-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
+  .ct-faq-item h4 i { color: var(--accent); font-size: .95rem; }
+  .ct-faq-item p { color: var(--body-text); line-height: 1.7; font-size: .9rem; margin: 0; }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 992px) {
+    .ct-hero-cards { grid-template-columns: 1fr; }
+    .ct-form-grid { grid-template-columns: 1fr; }
+  }
+  @media (max-width: 600px) {
+    .ct-form-row { grid-template-columns: 1fr; }
+    .ct-faq-grid { grid-template-columns: 1fr; }
+    .ct-form-card { padding: 28px 20px; }
+  }
+</style>

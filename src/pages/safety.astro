@@ -1,39 +1,46 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath } from '../i18n/index';
+import { defaultLang } from '../i18n/languages';
+
+const lang = defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
 ---
 
-<BaseLayout title="How to Handle Red Mercury & Caluanie Muelear Oxidize Safely" description="Safety guidelines for storing and handling Caluanie Muelear Oxidize, Red Mercury & Silver Mercury. SDS documents, PPE requirements, chemical storage guidelines and proper chemical storage protocols." activePage="safety">
+
+<BaseLayout lang={lang} title={t(tr, "safety.meta_title")} description={t(tr, "safety.meta_desc")} activePage="safety">
 
   <!-- ========== HERO ========== -->
   <section class="sf-hero">
     <div class="sf-hero-bg">
-      <img src="/images/safety-guidelines-for-chemical-storage-and-handling-1.jpg" alt="How to handle red mercury and Caluanie Muelear Oxidize safely - chemical storage guidelines" />
+      <img src="/images/safety-guidelines-for-chemical-storage-and-handling-1.jpg" alt={t(tr, "safety.hero_title")} />
       <div class="sf-hero-overlay"></div>
     </div>
     <div class="container sf-hero-inner">
       <div class="sf-hero-content">
-        <div class="sf-hero-badge"><i class="fas fa-shield-halved"></i> Safety First</div>
-        <h1>Safety Guidelines for<br />Chemical Handling</h1>
-        <p class="sf-hero-sub">At UE Chemicals, we prioritize safety in the production, handling, and usage of our products. Ensuring the well-being of workers and maintaining safe operational standards are core to our mission.</p>
+        <div class="sf-hero-badge"><i class="fas fa-shield-halved"></i> {t(tr, "safety.hero_badge")}</div>
+        <h1>{t(tr, "safety.hero_title")}</h1>
+        <p class="sf-hero-sub">{t(tr, "safety.hero_sub")}</p>
         <div class="sf-hero-actions">
-          <a href="/contact" class="btn btn-accent">Request SDS Documents <i class="fas fa-arrow-right"></i></a>
-          <a href="/products" class="btn btn-outline-white">View Products <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact")} class="btn btn-accent">{t(tr, "safety.request_sds")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "common.view_products")} <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
       <div class="sf-hero-stats">
         <div class="sf-hero-stat">
           <span class="sf-hero-stat-num">3</span>
-          <span class="sf-hero-stat-label">Chemical Products</span>
+          <span class="sf-hero-stat-label">{t(tr, "safety.hero_stat1_label")}</span>
         </div>
         <div class="sf-hero-stat-divider"></div>
         <div class="sf-hero-stat">
           <span class="sf-hero-stat-num">100%</span>
-          <span class="sf-hero-stat-label">SDS Compliant</span>
+          <span class="sf-hero-stat-label">{t(tr, "safety.hero_stat2_label")}</span>
         </div>
         <div class="sf-hero-stat-divider"></div>
         <div class="sf-hero-stat">
           <span class="sf-hero-stat-num">PPE</span>
-          <span class="sf-hero-stat-label">Always Required</span>
+          <span class="sf-hero-stat-label">{t(tr, "safety.hero_stat3_label")}</span>
         </div>
       </div>
     </div>
@@ -45,23 +52,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <div class="sf-pillars-grid">
         <div class="sf-pillar">
           <div class="sf-pillar-icon"><i class="fas fa-shield-halved"></i></div>
-          <h5>Precautions</h5>
-          <p>Comprehensive PPE requirements and handling protocols for every product.</p>
+          <h5>{t(tr, "safety.pillar1_title")}</h5>
+          <p>{t(tr, "safety.pillar1_desc")}</p>
         </div>
         <div class="sf-pillar">
           <div class="sf-pillar-icon"><i class="fas fa-box"></i></div>
-          <h5>Storage</h5>
-          <p>Proper containment, temperature control, and environmental safeguards.</p>
+          <h5>{t(tr, "safety.pillar2_title")}</h5>
+          <p>{t(tr, "safety.pillar2_desc")}</p>
         </div>
         <div class="sf-pillar">
           <div class="sf-pillar-icon"><i class="fas fa-triangle-exclamation"></i></div>
-          <h5>Emergency</h5>
-          <p>Spill response procedures and first aid measures for every scenario.</p>
+          <h5>{t(tr, "safety.pillar3_title")}</h5>
+          <p>{t(tr, "safety.pillar3_desc")}</p>
         </div>
         <div class="sf-pillar">
           <div class="sf-pillar-icon"><i class="fas fa-file-lines"></i></div>
-          <h5>Documentation</h5>
-          <p>Full Safety Data Sheets and Certificates of Analysis with every order.</p>
+          <h5>{t(tr, "safety.pillar4_title")}</h5>
+          <p>{t(tr, "safety.pillar4_desc")}</p>
         </div>
       </div>
     </div>
@@ -74,8 +81,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="sf-chem-header-inner">
           <div class="sf-chem-num">01</div>
           <div>
-            <div class="sf-chem-tag">Safety Protocol</div>
-            <h2>Caluanie Muelear Oxidize</h2>
+            <div class="sf-chem-tag">{t(tr, "safety.safety_protocol")}</div>
+            <h2>{t(tr, "safety.cal_title")}</h2>
           </div>
         </div>
       </div>
@@ -85,56 +92,56 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="sf-chem-card">
           <div class="sf-chem-card-header">
             <div class="sf-chem-card-icon"><i class="fas fa-shield-halved"></i></div>
-            <h4>General Safety Precautions</h4>
+            <h4>{t(tr, "safety.general_precautions")}</h4>
           </div>
           <ul class="sf-chem-list">
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Always wear appropriate personal protective equipment (PPE), including gloves, goggles, and a lab coat.</span>
+              <span>{t(tr, "safety.cal_prec1")}</span>
             </li>
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Handle in a well-ventilated area to minimize the risk of inhaling fumes.</span>
+              <span>{t(tr, "safety.cal_prec2")}</span>
             </li>
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Avoid direct contact with skin and eyes; in case of contact, rinse immediately with plenty of water and seek medical attention if irritation persists.</span>
+              <span>{t(tr, "safety.cal_prec3")}</span>
             </li>
           </ul>
         </div>
         <div class="sf-chem-card">
           <div class="sf-chem-card-header">
             <div class="sf-chem-card-icon"><i class="fas fa-box"></i></div>
-            <h4>Storage Guidelines</h4>
+            <h4>{t(tr, "safety.storage_guidelines")}</h4>
           </div>
           <ul class="sf-chem-list">
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Store in a cool, dry place, away from direct sunlight and heat sources.</span>
+              <span>{t(tr, "safety.cal_stor1")}</span>
             </li>
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Keep the container tightly sealed when not in use.</span>
+              <span>{t(tr, "safety.cal_stor2")}</span>
             </li>
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Ensure the storage area is equipped with spill containment measures.</span>
+              <span>{t(tr, "safety.cal_stor3")}</span>
             </li>
           </ul>
         </div>
         <div class="sf-chem-card">
           <div class="sf-chem-card-header">
             <div class="sf-chem-card-icon"><i class="fas fa-triangle-exclamation"></i></div>
-            <h4>Emergency Measures</h4>
+            <h4>{t(tr, "safety.emergency_measures")}</h4>
           </div>
           <ul class="sf-chem-list">
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span><strong>Spill Response:</strong> Contain spills with absorbent material and dispose of it following local hazardous waste regulations.</span>
+              <span>{t(tr, "safety.cal_emrg1")}</span>
             </li>
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span><strong>First Aid:</strong> If inhaled, move the affected person to fresh air immediately. If ingested, do not induce vomiting; seek medical attention promptly.</span>
+              <span>{t(tr, "safety.cal_emrg2")}</span>
             </li>
           </ul>
         </div>
@@ -149,8 +156,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="sf-chem-header-inner">
           <div class="sf-chem-num">02</div>
           <div>
-            <div class="sf-chem-tag">Safety Protocol</div>
-            <h2>Red Liquid Mercury</h2>
+            <div class="sf-chem-tag">{t(tr, "safety.safety_protocol")}</div>
+            <h2>{t(tr, "safety.red_title")}</h2>
           </div>
         </div>
       </div>
@@ -160,56 +167,56 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="sf-chem-card">
           <div class="sf-chem-card-header">
             <div class="sf-chem-card-icon"><i class="fas fa-shield-halved"></i></div>
-            <h4>General Safety Precautions</h4>
+            <h4>{t(tr, "safety.general_precautions")}</h4>
           </div>
           <ul class="sf-chem-list">
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Use in a controlled environment with adequate ventilation, preferably under a fume hood.</span>
+              <span>{t(tr, "safety.red_prec1")}</span>
             </li>
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Always wear appropriate PPE, including protective gloves and eyewear.</span>
+              <span>{t(tr, "safety.red_prec2")}</span>
             </li>
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Do not ingest or inhale the substance; it is toxic and can be hazardous if improperly handled.</span>
+              <span>{t(tr, "safety.red_prec3")}</span>
             </li>
           </ul>
         </div>
         <div class="sf-chem-card">
           <div class="sf-chem-card-header">
             <div class="sf-chem-card-icon"><i class="fas fa-box"></i></div>
-            <h4>Storage Guidelines</h4>
+            <h4>{t(tr, "safety.storage_guidelines")}</h4>
           </div>
           <ul class="sf-chem-list">
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Store in a secure, temperature-controlled environment.</span>
+              <span>{t(tr, "safety.red_stor1")}</span>
             </li>
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Keep out of reach of unauthorized personnel and ensure the container is leak-proof.</span>
+              <span>{t(tr, "safety.red_stor2")}</span>
             </li>
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Maintain records for inventory and usage in compliance with regulatory requirements.</span>
+              <span>{t(tr, "safety.red_stor3")}</span>
             </li>
           </ul>
         </div>
         <div class="sf-chem-card">
           <div class="sf-chem-card-header">
             <div class="sf-chem-card-icon"><i class="fas fa-triangle-exclamation"></i></div>
-            <h4>Emergency Measures</h4>
+            <h4>{t(tr, "safety.emergency_measures")}</h4>
           </div>
           <ul class="sf-chem-list">
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span><strong>Spill Response:</strong> Isolate the area, ventilate, and use specialized mercury spill kits to clean up. Never use a vacuum cleaner.</span>
+              <span>{t(tr, "safety.red_emrg1")}</span>
             </li>
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span><strong>First Aid:</strong> For skin contact, wash thoroughly with soap and water. If inhaled, move to fresh air and seek medical assistance.</span>
+              <span>{t(tr, "safety.red_emrg2")}</span>
             </li>
           </ul>
         </div>
@@ -224,8 +231,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="sf-chem-header-inner">
           <div class="sf-chem-num">03</div>
           <div>
-            <div class="sf-chem-tag">Safety Protocol</div>
-            <h2>Liquid Silver Mercury</h2>
+            <div class="sf-chem-tag">{t(tr, "safety.safety_protocol")}</div>
+            <h2>{t(tr, "safety.silver_title")}</h2>
           </div>
         </div>
       </div>
@@ -235,56 +242,56 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="sf-chem-card">
           <div class="sf-chem-card-header">
             <div class="sf-chem-card-icon"><i class="fas fa-shield-halved"></i></div>
-            <h4>General Safety Precautions</h4>
+            <h4>{t(tr, "safety.general_precautions")}</h4>
           </div>
           <ul class="sf-chem-list">
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Always wear proper PPE, including gloves, eye protection, and respiratory masks if necessary.</span>
+              <span>{t(tr, "safety.silver_prec1")}</span>
             </li>
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Avoid handling mercury with bare hands or near open flames.</span>
+              <span>{t(tr, "safety.silver_prec2")}</span>
             </li>
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Keep the chemical away from food and beverages.</span>
+              <span>{t(tr, "safety.silver_prec3")}</span>
             </li>
           </ul>
         </div>
         <div class="sf-chem-card">
           <div class="sf-chem-card-header">
             <div class="sf-chem-card-icon"><i class="fas fa-box"></i></div>
-            <h4>Storage Guidelines</h4>
+            <h4>{t(tr, "safety.storage_guidelines")}</h4>
           </div>
           <ul class="sf-chem-list">
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Store in non-reactive, sealed containers within secure, locked areas.</span>
+              <span>{t(tr, "safety.silver_stor1")}</span>
             </li>
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Ensure containers are labeled clearly and kept upright to prevent leakage.</span>
+              <span>{t(tr, "safety.silver_stor2")}</span>
             </li>
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span>Maintain low temperatures to prevent vaporization.</span>
+              <span>{t(tr, "safety.silver_stor3")}</span>
             </li>
           </ul>
         </div>
         <div class="sf-chem-card">
           <div class="sf-chem-card-header">
             <div class="sf-chem-card-icon"><i class="fas fa-triangle-exclamation"></i></div>
-            <h4>Emergency Measures</h4>
+            <h4>{t(tr, "safety.emergency_measures")}</h4>
           </div>
           <ul class="sf-chem-list">
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span><strong>Spill Response:</strong> Use specialized mercury spill kits for cleanup, ensuring proper ventilation and avoiding vacuuming the spill.</span>
+              <span>{t(tr, "safety.silver_emrg1")}</span>
             </li>
             <li>
               <span class="sf-chem-list-bullet"></span>
-              <span><strong>First Aid:</strong> Rinse any skin contact thoroughly and get medical attention for exposure symptoms.</span>
+              <span>{t(tr, "safety.silver_emrg2")}</span>
             </li>
           </ul>
         </div>
@@ -295,27 +302,27 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- ========== COMMITMENT SPLIT ========== -->
   <section class="sf-commitment">
     <div class="sf-commitment-image">
-      <img src="/images/pexels-los-muertos-crew-10041264.jpg" alt="Safety in our laboratory" />
+      <img src="/images/pexels-los-muertos-crew-10041264.jpg" alt={t(tr, "safety.commitment_title")} />
     </div>
     <div class="sf-commitment-content">
-      <div class="section-label">Our Commitment</div>
-      <h2>Safety Is Not Optional &mdash; It&rsquo;s Our Standard</h2>
-      <p>Every product we ship includes complete Safety Data Sheets (SDS) and Certificates of Analysis. Our team is available to provide handling guidance, training materials, and emergency support for all chemical products.</p>
+      <div class="section-label">{t(tr, "safety.commitment_label")}</div>
+      <h2>{t(tr, "safety.commitment_title")}</h2>
+      <p>{t(tr, "safety.commitment_desc")}</p>
       <div class="sf-commitment-badges">
         <div class="sf-commitment-badge">
           <i class="fas fa-file-lines"></i>
-          <span>SDS Included</span>
+          <span>{t(tr, "safety.commitment_badge2")}</span>
         </div>
         <div class="sf-commitment-badge">
           <i class="fas fa-certificate"></i>
-          <span>COA Provided</span>
+          <span>{t(tr, "home.trust_coa")}</span>
         </div>
         <div class="sf-commitment-badge">
           <i class="fas fa-headset"></i>
-          <span>Expert Support</span>
+          <span>{t(tr, "home.trust_support")}</span>
         </div>
       </div>
-      <a href="/contact" class="btn btn-primary">Contact Our Team <i class="fas fa-arrow-right"></i></a>
+      <a href={lp("/contact")} class="btn btn-primary">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
     </div>
   </section>
 
@@ -324,12 +331,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="sf-cta-inner">
         <div class="sf-cta-content">
-          <h2>Need More Safety Information?</h2>
-          <p>Contact our team for detailed Safety Data Sheets, handling guidelines, and personalized safety consultations for any of our products.</p>
+          <h2>{t(tr, "safety.cta_title")}</h2>
+          <p>{t(tr, "safety.cta_desc")}</p>
         </div>
         <div class="sf-cta-actions">
-          <a href="/contact" class="btn btn-white">Contact Us <i class="fas fa-arrow-right"></i></a>
-          <a href="/products" class="btn btn-outline-white">View Products <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact")} class="btn btn-white">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "common.view_products")} <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>

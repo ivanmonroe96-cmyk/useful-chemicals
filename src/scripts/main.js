@@ -1,4 +1,16 @@
 // Header scroll effect
+const uiLabels = (() => {
+  try {
+    return JSON.parse(document.body.dataset.uiLabels || '{}');
+  } catch {
+    return {};
+  }
+})();
+
+const sendingLabel = uiLabels.formSending || 'Sending...';
+const sentLabel = uiLabels.formSent || 'Sent!';
+const errorLabel = uiLabels.formError || 'Error - try again';
+
 const header = document.getElementById('header');
 if (header) {
   window.addEventListener('scroll', () => {
@@ -92,37 +104,37 @@ document.querySelectorAll('form:not(#contactForm)').forEach(form => {
     const btn = form.querySelector('button[type="submit"]');
     if (!btn) return;
     const orig = btn.textContent;
-    btn.textContent = 'Sending...';
+    btn.textContent = sendingLabel;
     btn.setAttribute('disabled', 'true');
 
-    const inputs = form.querySelectorAll('input, select, textarea');
-    const data = {};
-    inputs.forEach(el => {
-      const name = el.getAttribute('name') || el.getAttribute('placeholder') || el.tagName;
-      data[name] = el.value;
-    });
+    const getFieldValue = (fieldName) => {
+      const field = form.querySelector(`[name="${fieldName}"]`);
+      return field instanceof HTMLInputElement || field instanceof HTMLSelectElement || field instanceof HTMLTextAreaElement
+        ? field.value
+        : '';
+    };
 
     try {
       const res = await fetch('/api/contact', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: data['name'] || data['Full Name'] || data['Your full name'] || '',
-          email: data['email'] || data['Email Address'] || data['Your email address'] || '',
-          phone: data['phone'] || data['Phone number'] || data['Phone Number'] || '',
-          product: data['product'] || data['SELECT'] || '',
-          message: data['message'] || data['Message'] || data['Tell us about your requirements...'] || '',
+          name: getFieldValue('name'),
+          email: getFieldValue('email'),
+          phone: getFieldValue('phone'),
+          product: getFieldValue('product'),
+          message: getFieldValue('message'),
         }),
       });
       if (res.ok) {
-        btn.textContent = 'Sent!';
+        btn.textContent = sentLabel;
         setTimeout(() => { btn.textContent = orig; btn.removeAttribute('disabled'); form.reset(); }, 2000);
       } else {
-        btn.textContent = 'Error — try again';
+        btn.textContent = errorLabel;
         setTimeout(() => { btn.textContent = orig; btn.removeAttribute('disabled'); }, 2000);
       }
     } catch {
-      btn.textContent = 'Error — try again';
+      btn.textContent = errorLabel;
       setTimeout(() => { btn.textContent = orig; btn.removeAttribute('disabled'); }, 2000);
     }
   });
@@ -135,24 +147,14 @@ const searchClose = document.getElementById('searchClose');
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
 const searchForm = document.getElementById('searchForm');
-
-const sitePages = [
-  { title: 'Home', url: '/', description: 'Industrial-grade chemical solutions — Caluanie, Red Mercury, Silver Mercury' },
-  { title: 'About Us', url: '/about', description: 'Learn about UE Chemicals, our mission, and quality commitment' },
-  { title: 'Applications', url: '/applications', description: 'Industrial applications — metalworking, refining, research, electronics' },
-  { title: 'Safety Information', url: '/safety', description: 'Chemical safety guidelines, storage, handling, and compliance' },
-  { title: 'Products', url: '/products', description: 'Browse our full range of specialty industrial chemicals' },
-  { title: 'Caluanie Muelear Oxidize', url: '/products/caluanie', description: 'Powerful oxidizing agent for metalworking and mineral processing' },
-  { title: 'Red Liquid Mercury', url: '/products/red-mercury', description: 'Rare compound for laboratory research and chemical synthesis — Sb₂O₇Hg₂' },
-  { title: 'Silver Liquid Mercury', url: '/products/silver-mercury', description: '99.99% purity mercury for scientific instrumentation and electronics' },
-  { title: 'Ordering Information', url: '/ordering', description: 'How to place orders, shipping, payment, and delivery details' },
-  { title: 'Contact Us', url: '/contact', description: 'Get in touch — quotes, support, and product inquiries' },
-  { title: 'Shipping & Logistics', url: '/shipping', description: 'Worldwide delivery, ADR/IMDG/IATA compliance, packaging, and timelines' },
-  { title: 'FAQ', url: '/faq', description: 'Frequently asked questions about products, ordering, shipping, and safety' },
-  { title: 'Blog', url: '/blog', description: 'Chemical industry insights, product guides, and regulatory updates' },
-  { title: 'Privacy Policy', url: '/privacy-policy', description: 'How we collect, use, and protect your personal data — GDPR compliant' },
-  { title: 'Terms of Service', url: '/terms-of-service', description: 'Terms and conditions for using our website and services' },
-];
+const sitePages = (() => {
+  try {
+    return JSON.parse(searchOverlay?.dataset.searchPages || '[]');
+  } catch {
+    return [];
+  }
+})();
+const noResultsLabel = searchOverlay?.dataset.noResults || 'No results found.';
 
 function openSearch() {
   searchOverlay?.classList.add('active');
@@ -186,7 +188,7 @@ searchInput?.addEventListener('input', () => {
   );
 
   if (matches.length === 0) {
-    searchResults.innerHTML = '<p class="search-no-results">No results found.</p>';
+    searchResults.innerHTML = `<p class="search-no-results">${noResultsLabel}</p>`;
   } else {
     searchResults.innerHTML = matches.map(p =>
       `<a href="${p.url}" class="search-result-item"><h4>${p.title}</h4><p>${p.description}</p></a>`

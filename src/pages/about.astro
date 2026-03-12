@@ -1,39 +1,46 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath } from '../i18n/index';
+import { defaultLang } from '../i18n/languages';
+
+const lang = defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
 ---
 
-<BaseLayout title="About UE Chemicals – Caluanie Muelear Oxidize Manufacturer" description="UE Chemicals is a trusted Caluanie Muelear Oxidize manufacturer and industrial chemical supplier in Bangkok, Thailand. Buy Red Mercury, Silver Mercury and Caluanie for metalworking, refining and research." activePage="about">
+
+<BaseLayout lang={lang} title={t(tr, "about.meta_title")} description={t(tr, "about.meta_desc")} activePage="about">
 
   <!-- ========== HERO ========== -->
   <section class="ab-hero">
     <div class="ab-hero-bg">
-      <img src="/images/caluanie-muelear-oxidize-manufacturer-in-usa.webp" alt="UE Chemicals - Chemical supplier and manufacturer in Bangkok, Thailand" />
+      <img src="/images/caluanie-muelear-oxidize-manufacturer-in-usa.webp" alt={t(tr, "about.hero_title")} />
       <div class="ab-hero-overlay"></div>
     </div>
     <div class="container ab-hero-inner">
       <div class="ab-hero-content">
-        <div class="ab-hero-badge"><i class="fas fa-building"></i> About UE Chemicals</div>
-        <h1>Your Trusted Source<br />for Industrial Chemicals</h1>
-        <p class="ab-hero-sub">Based in Bangkok, Thailand, we manufacture and supply high-quality, industry-standard chemicals to power industrial processes, research, and specialized applications across the globe.</p>
+        <div class="ab-hero-badge"><i class="fas fa-building"></i> {t(tr, "about.hero_badge")}</div>
+        <h1>{t(tr, "about.hero_title")}</h1>
+        <p class="ab-hero-sub">{t(tr, "about.hero_sub")}</p>
         <div class="ab-hero-actions">
-          <a href="/products" class="btn btn-accent">Explore Products <i class="fas fa-arrow-right"></i></a>
-          <a href="/contact" class="btn btn-outline-white">Get in Touch <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products")} class="btn btn-accent">{t(tr, "about.hero_explore")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact")} class="btn btn-outline-white">{t(tr, "about.hero_contact")} <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
       <div class="ab-hero-stats">
         <div class="ab-hero-stat">
-          <span class="ab-hero-stat-num">Bangkok, TH</span>
-          <span class="ab-hero-stat-label">Headquarters</span>
+          <span class="ab-hero-stat-num">{t(tr, "about.hero_stat1")}</span>
+          <span class="ab-hero-stat-label">{t(tr, "about.hero_stat1_label")}</span>
         </div>
         <div class="ab-hero-stat-divider"></div>
         <div class="ab-hero-stat">
-          <span class="ab-hero-stat-num">3</span>
-          <span class="ab-hero-stat-label">Core Products</span>
+          <span class="ab-hero-stat-num">{t(tr, "about.hero_stat2")}</span>
+          <span class="ab-hero-stat-label">{t(tr, "about.hero_stat2_label")}</span>
         </div>
         <div class="ab-hero-stat-divider"></div>
         <div class="ab-hero-stat">
-          <span class="ab-hero-stat-num">Global</span>
-          <span class="ab-hero-stat-label">Delivery Network</span>
+          <span class="ab-hero-stat-num">{t(tr, "about.hero_stat3")}</span>
+          <span class="ab-hero-stat-label">{t(tr, "about.hero_stat3_label")}</span>
         </div>
       </div>
     </div>
@@ -42,26 +49,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- ========== MISSION SPLIT ========== -->
   <section class="ab-mission">
     <div class="ab-mission-image">
-      <img src="/images/pexels-los-muertos-crew-10041264.jpg" alt="Our Mission" />
+      <img src="/images/pexels-los-muertos-crew-10041264.jpg" alt={t(tr, "about.mission_title")} />
     </div>
     <div class="ab-mission-content">
-      <div class="section-label">Our Mission</div>
-      <h2>Delivering Top-Quality Industrial Chemicals</h2>
-      <p>Our mission at UE Chemicals is to produce and deliver top-quality industrial chemicals that meet the highest standards of purity, safety, and reliability. We understand that each industry has unique requirements, and we aim to support our clients' diverse needs with premium products and expert guidance.</p>
-      <p>From chemical processing to precision manufacturing, our products empower professionals to achieve efficient and effective results.</p>
+      <div class="section-label">{t(tr, "about.mission_label")}</div>
+      <h2>{t(tr, "about.mission_title")}</h2>
+      <p>{t(tr, "about.mission_desc1")}</p>
+      <p>{t(tr, "about.mission_desc2")}</p>
       <div class="ab-mission-features">
         <div class="ab-mission-feat">
           <div class="ab-mission-feat-icon"><i class="fas fa-flask"></i></div>
           <div>
-            <h6>Premium Purity</h6>
-            <p>Every product meets the strictest purity standards for demanding applications.</p>
+            <h6>{t(tr, "about.mission_feat1_title")}</h6>
+            <p>{t(tr, "about.mission_feat1_desc")}</p>
           </div>
         </div>
         <div class="ab-mission-feat">
           <div class="ab-mission-feat-icon"><i class="fas fa-earth-americas"></i></div>
           <div>
-            <h6>Global Reach</h6>
-            <p>Reliable international shipping with full compliance documentation.</p>
+            <h6>{t(tr, "about.mission_feat2_title")}</h6>
+            <p>{t(tr, "about.mission_feat2_desc")}</p>
           </div>
         </div>
       </div>
@@ -73,43 +80,43 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="ab-section-header">
         <div>
-          <div class="section-label">Our Products</div>
-          <h2>Three Specialty Chemicals.<br />Endless Applications.</h2>
+          <div class="section-label">{t(tr, "about.products_label")}</div>
+          <h2>{t(tr, "about.products_title")}</h2>
         </div>
-        <a href="/products" class="btn btn-outline">View All Products <i class="fas fa-arrow-right"></i></a>
+        <a href={lp("/products")} class="btn btn-outline">{t(tr, "common.view_all_products")} <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="ab-products-grid">
-        <a href="/products/caluanie" class="ab-prod-card">
+        <a href={lp("/products/caluanie")} class="ab-prod-card">
           <div class="ab-prod-img">
-            <img src="/images/caluanie-muelear-oxidize-for-sale.jpg" alt="Caluanie Muelear Oxidize" />
+            <img src="/images/caluanie-muelear-oxidize-for-sale.jpg" alt={t(tr, "about.prod1_name")} />
             <div class="ab-prod-num">01</div>
           </div>
           <div class="ab-prod-body">
-            <h3>Caluanie Muelear Oxidize</h3>
-            <p>A highly effective chemical used in the processing of metals and minerals, essential for industrial applications.</p>
-            <span class="ab-prod-link">Learn More <i class="fas fa-arrow-right"></i></span>
+            <h3>{t(tr, "about.prod1_name")}</h3>
+            <p>{t(tr, "about.prod1_desc")}</p>
+            <span class="ab-prod-link">{t(tr, "common.learn_more")} <i class="fas fa-arrow-right"></i></span>
           </div>
         </a>
-        <a href="/products/red-mercury" class="ab-prod-card">
+        <a href={lp("/products/red-mercury")} class="ab-prod-card">
           <div class="ab-prod-img">
-            <img src="/images/red-liquid-mercury-for-sale-usa.png" alt="Red Liquid Mercury" />
+            <img src="/images/red-liquid-mercury-for-sale-usa.png" alt={t(tr, "about.prod2_name")} />
             <div class="ab-prod-num">02</div>
           </div>
           <div class="ab-prod-body">
-            <h3>Red Liquid Mercury</h3>
-            <p>Used in laboratory research and chemical synthesis for controlled reactions and experiments.</p>
-            <span class="ab-prod-link">Learn More <i class="fas fa-arrow-right"></i></span>
+            <h3>{t(tr, "about.prod2_name")}</h3>
+            <p>{t(tr, "about.prod2_desc")}</p>
+            <span class="ab-prod-link">{t(tr, "common.learn_more")} <i class="fas fa-arrow-right"></i></span>
           </div>
         </a>
-        <a href="/products/silver-mercury" class="ab-prod-card">
+        <a href={lp("/products/silver-mercury")} class="ab-prod-card">
           <div class="ab-prod-img">
-            <img src="/images/silver-liquid-mercury-for-sale.png" alt="Liquid Silver Mercury" />
+            <img src="/images/silver-liquid-mercury-for-sale.png" alt={t(tr, "about.prod3_name")} />
             <div class="ab-prod-num">03</div>
           </div>
           <div class="ab-prod-body">
-            <h3>Liquid Silver Mercury</h3>
-            <p>Essential in the manufacture of scientific measuring instruments and precision devices.</p>
-            <span class="ab-prod-link">Learn More <i class="fas fa-arrow-right"></i></span>
+            <h3>{t(tr, "about.prod3_name")}</h3>
+            <p>{t(tr, "about.prod3_desc")}</p>
+            <span class="ab-prod-link">{t(tr, "common.learn_more")} <i class="fas fa-arrow-right"></i></span>
           </div>
         </a>
       </div>
@@ -121,37 +128,37 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="ab-why-grid">
         <div class="ab-why-content">
-          <div class="section-label">Why UE Chemicals</div>
-          <h2>Built on Quality.<br />Driven by Safety.</h2>
-          <p>As a leader in chemical manufacturing, UE Chemicals combines technical expertise with a relentless focus on quality control and safety compliance.</p>
+          <div class="section-label">{t(tr, "about.why_label")}</div>
+          <h2>{t(tr, "about.why_title")}</h2>
+          <p>{t(tr, "about.why_desc")}</p>
         </div>
         <div class="ab-why-cards">
           <div class="ab-why-card">
             <div class="ab-why-card-num">01</div>
             <div>
-              <h5>Quality Assurance</h5>
-              <p>Every batch undergoes strict quality testing to guarantee performance and consistency across all products.</p>
+              <h5>{t(tr, "about.why1_title")}</h5>
+              <p>{t(tr, "about.why1_desc")}</p>
             </div>
           </div>
           <div class="ab-why-card">
             <div class="ab-why-card-num">02</div>
             <div>
-              <h5>Safety Compliance</h5>
-              <p>We follow industry regulations and best practices for safe handling and distribution of all chemicals.</p>
+              <h5>{t(tr, "about.why2_title")}</h5>
+              <p>{t(tr, "about.why2_desc")}</p>
             </div>
           </div>
           <div class="ab-why-card">
             <div class="ab-why-card-num">03</div>
             <div>
-              <h5>Customer Support</h5>
-              <p>Our team of professionals is ready to assist with product inquiries, order details, and technical support.</p>
+              <h5>{t(tr, "about.why3_title")}</h5>
+              <p>{t(tr, "about.why3_desc")}</p>
             </div>
           </div>
           <div class="ab-why-card">
             <div class="ab-why-card-num">04</div>
             <div>
-              <h5>Global Delivery</h5>
-              <p>Partnered with leading freight companies for safe, timely delivery to any destination worldwide.</p>
+              <h5>{t(tr, "about.why4_title")}</h5>
+              <p>{t(tr, "about.why4_desc")}</p>
             </div>
           </div>
         </div>
@@ -162,14 +169,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <!-- ========== FACILITY SPLIT (REVERSED) ========== -->
   <section class="ab-facility">
     <div class="ab-facility-content">
-      <div class="section-label">Our Facility</div>
-      <h2>Manufacturing Excellence in Bangkok</h2>
-      <p>Located in Bangkok, Thailand, our manufacturing facility is designed to produce chemicals of the highest purity. With advanced equipment, dedicated testing labs, and a skilled team of technicians, our facility allows us to produce all our products with exceptional consistency and reliability.</p>
-      <p>By adhering to stringent environmental and safety protocols, we deliver products that align with industry requirements and exceed client expectations.</p>
-      <a href="/products" class="btn btn-primary">Explore Our Products <i class="fas fa-arrow-right"></i></a>
+      <div class="section-label">{t(tr, "about.facility_label")}</div>
+      <h2>{t(tr, "about.facility_title")}</h2>
+      <p>{t(tr, "about.facility_desc1")}</p>
+      <p>{t(tr, "about.facility_desc2")}</p>
+      <a href={lp("/products")} class="btn btn-primary">{t(tr, "about.facility_explore")} <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="ab-facility-image">
-      <img src="/images/useful-chemical-industry.jpg" alt="Manufacturing Facility" />
+      <img src="/images/useful-chemical-industry.jpg" alt={t(tr, "about.facility_title")} />
     </div>
   </section>
 
@@ -177,29 +184,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <section class="ab-safety">
     <div class="container">
       <div class="text-center" style="margin-bottom:60px;">
-        <div class="section-label">Our Commitment</div>
-        <h2>Safety at the Core<br />of Our Operations</h2>
+        <div class="section-label">{t(tr, "about.safety_label")}</div>
+        <h2>{t(tr, "about.safety_title")}</h2>
       </div>
       <div class="ab-safety-grid">
         <div class="ab-safety-card">
           <div class="ab-safety-icon"><i class="fas fa-flask"></i></div>
-          <h5>Safe Production</h5>
-          <p>Every product is manufactured under strict safety protocols with multi-stage quality controls at every step of the process.</p>
+          <h5>{t(tr, "about.safety1_title")}</h5>
+          <p>{t(tr, "about.safety1_desc")}</p>
         </div>
         <div class="ab-safety-card">
           <div class="ab-safety-icon"><i class="fas fa-box"></i></div>
-          <h5>Safe Packaging</h5>
-          <p>Industry-standard packaging with tamper-resistant seals and leak-proof containers ensures product integrity during transit.</p>
+          <h5>{t(tr, "about.safety2_title")}</h5>
+          <p>{t(tr, "about.safety2_desc")}</p>
         </div>
         <div class="ab-safety-card">
           <div class="ab-safety-icon"><i class="fas fa-truck-fast"></i></div>
-          <h5>Safe Distribution</h5>
-          <p>We partner with certified freight carriers experienced in hazardous material handling for reliable, compliant delivery.</p>
+          <h5>{t(tr, "about.safety3_title")}</h5>
+          <p>{t(tr, "about.safety3_desc")}</p>
         </div>
         <div class="ab-safety-card">
           <div class="ab-safety-icon"><i class="fas fa-file-lines"></i></div>
-          <h5>Full Documentation</h5>
-          <p>Each product comes with detailed Safety Data Sheets and Certificates of Analysis, empowering responsible handling.</p>
+          <h5>{t(tr, "about.safety4_title")}</h5>
+          <p>{t(tr, "about.safety4_desc")}</p>
         </div>
       </div>
     </div>
@@ -210,16 +217,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="ab-team-inner">
         <div class="ab-team-text">
-          <div class="section-label">Leadership</div>
-          <h2>Meet Our Team</h2>
-          <p>UE Chemicals is led by experienced professionals who bring deep expertise in chemical manufacturing, safety compliance, and global logistics.</p>
+          <div class="section-label">{t(tr, "about.team_label")}</div>
+          <h2>{t(tr, "about.team_title")}</h2>
+          <p>{t(tr, "about.team_desc")}</p>
         </div>
         <div class="ab-team-card">
           <div class="ab-team-avatar"><i class="fas fa-user"></i></div>
           <div class="ab-team-info">
-            <h4>Luke S.</h4>
-            <span class="ab-team-role">CEO of UE Chemicals</span>
-            <p>Leading UE Chemicals' mission to deliver premium industrial chemical solutions with an unwavering focus on quality, safety, and customer satisfaction.</p>
+            <h4>{t(tr, "about.team_name")}</h4>
+            <span class="ab-team-role">{t(tr, "about.team_role")}</span>
+            <p>{t(tr, "about.team_bio")}</p>
           </div>
         </div>
       </div>
@@ -231,12 +238,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <div class="container">
       <div class="ab-cta-inner">
         <div class="ab-cta-content">
-          <h2>Ready to Get Started?</h2>
-          <p>Contact our team to discuss your chemical product requirements and get a personalized quote.</p>
+          <h2>{t(tr, "about.cta_title")}</h2>
+          <p>{t(tr, "about.cta_desc")}</p>
         </div>
         <div class="ab-cta-actions">
-          <a href="/contact" class="btn btn-white">Contact Us <i class="fas fa-arrow-right"></i></a>
-          <a href="/ordering" class="btn btn-outline-white">How to Order <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact")} class="btn btn-white">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/ordering")} class="btn btn-outline-white">{t(tr, "common.how_to_order")} <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>

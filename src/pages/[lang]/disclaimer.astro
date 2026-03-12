@@ -1,0 +1,236 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, t, getLangStaticPaths } from '../../i18n/index';
+import { defaultLang } from '../../i18n/languages';
+
+export const getStaticPaths = getLangStaticPaths;
+const lang = Astro.params.lang ?? defaultLang;
+const tr = getTranslations(lang);
+const disclaimer = tr.disclaimer;
+const tocItems = [
+  { id: 'general', label: disclaimer.toc_general },
+  { id: 'product-use', label: disclaimer.toc_product_use },
+  { id: 'limitation', label: disclaimer.toc_limitation },
+  { id: 'professional', label: disclaimer.toc_professional },
+  { id: 'regulatory', label: disclaimer.toc_regulatory },
+  { id: 'no-guarantee', label: disclaimer.toc_no_guarantee },
+  { id: 'third-party', label: disclaimer.toc_third_party },
+  { id: 'ip', label: disclaimer.toc_ip },
+  { id: 'indemnification', label: disclaimer.toc_indemnification },
+  { id: 'changes', label: disclaimer.toc_changes },
+  { id: 'governing', label: disclaimer.toc_governing },
+  { id: 'contact', label: disclaimer.toc_contact },
+];
+const productUseItems = [
+  disclaimer.product_use_item1,
+  disclaimer.product_use_item2,
+  disclaimer.product_use_item3,
+  disclaimer.product_use_item4,
+];
+const limitationItems = [
+  disclaimer.limitation_item1,
+  disclaimer.limitation_item2,
+  disclaimer.limitation_item3,
+  disclaimer.limitation_item4,
+];
+const professionalItems = [
+  { icon: 'fa-hard-hat', text: disclaimer.professional_item1 },
+  { icon: 'fa-wind', text: disclaimer.professional_item2 },
+  { icon: 'fa-clipboard-check', text: disclaimer.professional_item3 },
+  { icon: 'fa-kit-medical', text: disclaimer.professional_item4 },
+  { icon: 'fa-tags', text: disclaimer.professional_item5 },
+];
+---
+
+<BaseLayout lang={lang} title={disclaimer.meta_title} description={disclaimer.meta_desc} activePage="">
+
+  <!-- ========== HERO ========== -->
+  <section class="lg-hero">
+    <div class="lg-hero-bg"></div>
+    <div class="container lg-hero-inner">
+      <div class="lg-hero-badge"><i class="fas fa-triangle-exclamation"></i> {disclaimer.hero_badge}</div>
+      <h1>{disclaimer.title}</h1>
+      <p class="lg-hero-sub">{disclaimer.hero_sub}</p>
+      <div class="lg-hero-meta">
+        <span><i class="fas fa-calendar"></i> {disclaimer.last_updated}</span>
+        <span><i class="fas fa-gavel"></i> {disclaimer.german_law}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CONTENT ========== -->
+  <section class="lg-content">
+    <div class="container">
+      <div class="lg-grid">
+
+        <!-- Sidebar TOC -->
+        <aside class="lg-sidebar">
+          <div class="lg-toc">
+            <h4>{disclaimer.toc}</h4>
+            <nav>
+              {tocItems.map((item) => <a href={`#${item.id}`}>{item.label}</a>)}
+            </nav>
+          </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="lg-main">
+
+          <div class="lg-section" id="general">
+            <div class="lg-section-num">01</div>
+            <h3>{disclaimer.general_title}</h3>
+            <p>{disclaimer.general_desc}</p>
+          </div>
+
+          <div class="lg-section" id="product-use">
+            <div class="lg-section-num">02</div>
+            <h3>{disclaimer.product_use_title}</h3>
+            <div class="lg-highlight">
+              <i class="fas fa-exclamation-triangle"></i>
+              <p>{disclaimer.product_use_highlight}</p>
+            </div>
+            <p>{disclaimer.product_use_intro}</p>
+            <ul>
+              {productUseItems.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+
+          <div class="lg-section" id="limitation">
+            <div class="lg-section-num">03</div>
+            <h3>{disclaimer.limitation_title}</h3>
+            <p>{disclaimer.limitation_intro}</p>
+            <ul>
+              {limitationItems.map((item) => <li>{item}</li>)}
+            </ul>
+          </div>
+
+          <div class="lg-section" id="professional">
+            <div class="lg-section-num">04</div>
+            <h3>{disclaimer.professional_title}</h3>
+            <p>{disclaimer.professional_intro}</p>
+            <div class="dc-req-grid">
+              {professionalItems.map((item) => (
+                <div class="dc-req-item"><i class:list={['fas', item.icon]}></i><span>{item.text}</span></div>
+              ))}
+            </div>
+          </div>
+
+          <div class="lg-section" id="regulatory">
+            <div class="lg-section-num">05</div>
+            <h3>{disclaimer.regulatory_title}</h3>
+            <p>{disclaimer.regulatory_desc}</p>
+          </div>
+
+          <div class="lg-section" id="no-guarantee">
+            <div class="lg-section-num">06</div>
+            <h3>{disclaimer.no_guarantee_title}</h3>
+            <p>{disclaimer.no_guarantee_desc}</p>
+          </div>
+
+          <div class="lg-section" id="third-party">
+            <div class="lg-section-num">07</div>
+            <h3>{disclaimer.third_party_title}</h3>
+            <p>{disclaimer.third_party_desc}</p>
+          </div>
+
+          <div class="lg-section" id="ip">
+            <div class="lg-section-num">08</div>
+            <h3>{disclaimer.ip_title}</h3>
+            <p>{disclaimer.ip_desc}</p>
+          </div>
+
+          <div class="lg-section" id="indemnification">
+            <div class="lg-section-num">09</div>
+            <h3>{disclaimer.indemnification_title}</h3>
+            <p>{disclaimer.indemnification_desc}</p>
+          </div>
+
+          <div class="lg-section" id="changes">
+            <div class="lg-section-num">10</div>
+            <h3>{disclaimer.changes_title}</h3>
+            <p>{disclaimer.changes_desc}</p>
+          </div>
+
+          <div class="lg-section" id="governing">
+            <div class="lg-section-num">11</div>
+            <h3>{disclaimer.governing_title}</h3>
+            <p>{disclaimer.governing_desc}</p>
+          </div>
+
+          <div class="lg-section" id="contact">
+            <div class="lg-section-num">12</div>
+            <h3>{disclaimer.contact_title}</h3>
+            <p>{disclaimer.contact_intro}</p>
+            <div class="lg-contact-card">
+              <div><i class="fas fa-building"></i> <strong>UE Chemicals</strong></div>
+              <div><i class="fas fa-map-marker-alt"></i> {t(tr, 'contact.visit_value')}</div>
+              <div><i class="fas fa-envelope"></i> <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ===== Hero ===== */
+  .lg-hero { position: relative; padding: 130px 0 60px; overflow: hidden; }
+  .lg-hero-bg { position: absolute; inset: 0; background: linear-gradient(135deg, #0a0f1e 0%, #1a1f2e 100%); }
+  .lg-hero-inner { position: relative; z-index: 1; max-width: 700px; }
+  .lg-hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); padding: 8px 18px; border-radius: 100px; font-size: .83rem; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+  .lg-hero h1 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; color: var(--white); margin-bottom: 14px; }
+  .lg-hero-sub { color: rgba(255,255,255,.65); font-size: 1.05rem; line-height: 1.7; margin-bottom: 20px; }
+  .lg-hero-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+  .lg-hero-meta span { display: flex; align-items: center; gap: 8px; color: rgba(255,255,255,.45); font-size: .85rem; }
+  .lg-hero-meta i { color: var(--accent); font-size: .8rem; }
+
+  /* ===== Layout ===== */
+  .lg-content { padding: 70px 0 90px; background: var(--white); }
+  .lg-grid { display: grid; grid-template-columns: 250px 1fr; gap: 50px; }
+
+  /* Sidebar */
+  .lg-sidebar { position: sticky; top: 100px; align-self: start; }
+  .lg-toc { background: var(--light-bg); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+  .lg-toc h4 { font-size: .85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--dark); margin-bottom: 16px; }
+  .lg-toc nav { display: flex; flex-direction: column; }
+  .lg-toc nav a { display: block; padding: 8px 12px; font-size: .84rem; color: var(--body-text); text-decoration: none; border-radius: 6px; transition: var(--transition); border-left: 2px solid transparent; }
+  .lg-toc nav a:hover { background: var(--white); color: var(--accent); border-left-color: var(--accent); }
+
+  /* Sections */
+  .lg-section { padding: 30px 0; border-bottom: 1px solid var(--border); position: relative; }
+  .lg-section:last-child { border-bottom: none; }
+  .lg-section-num { font-size: 2rem; font-weight: 800; color: rgba(252,82,32,.12); position: absolute; top: 26px; right: 0; }
+  .lg-section h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 14px; color: var(--near-black); }
+  .lg-section p { color: var(--body-text); line-height: 1.8; margin-bottom: 14px; }
+  .lg-section ul { margin: 0 0 16px 20px; }
+  .lg-section li { color: var(--body-text); line-height: 1.8; margin-bottom: 8px; }
+  .lg-section a { color: var(--accent); text-decoration: underline; }
+
+  /* Highlight */
+  .lg-highlight { display: flex; gap: 14px; background: rgba(252,82,32,.05); border: 1px solid rgba(252,82,32,.15); border-radius: 10px; padding: 18px 20px; margin-bottom: 14px; }
+  .lg-highlight i { color: var(--accent); font-size: 1.1rem; flex-shrink: 0; margin-top: 3px; }
+  .lg-highlight p { margin: 0; font-size: .93rem; }
+
+  /* Requirements grid */
+  .dc-req-grid { display: flex; flex-direction: column; gap: 10px; margin-top: 14px; }
+  .dc-req-item { display: flex; align-items: flex-start; gap: 14px; background: var(--light-bg); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; }
+  .dc-req-item i { color: var(--accent); font-size: 1rem; margin-top: 2px; width: 20px; text-align: center; flex-shrink: 0; }
+  .dc-req-item span { font-size: .9rem; color: var(--body-text); line-height: 1.6; }
+
+  /* Contact card */
+  .lg-contact-card { background: var(--light-bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px 24px; display: flex; flex-direction: column; gap: 10px; margin-top: 10px; }
+  .lg-contact-card div { display: flex; align-items: center; gap: 10px; font-size: .93rem; }
+  .lg-contact-card i { color: var(--accent); width: 18px; text-align: center; }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .lg-grid { grid-template-columns: 1fr; }
+    .lg-sidebar { position: static; }
+  }
+  @media (max-width: 600px) {
+    .lg-section-num { display: none; }
+  }
+</style>

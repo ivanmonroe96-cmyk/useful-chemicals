@@ -1,0 +1,814 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath, getLangStaticPaths } from '../../i18n/index';
+import { defaultLang } from '../../i18n/languages';
+
+export const getStaticPaths = getLangStaticPaths;
+const lang = Astro.params.lang ?? defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+const homeFaqItems = [
+  { question: t(tr, 'home.faq1_q'), answer: t(tr, 'home.faq1_a') },
+  { question: t(tr, 'home.faq2_q'), answer: t(tr, 'home.faq2_a') },
+  { question: t(tr, 'home.faq3_q'), answer: t(tr, 'home.faq3_a') },
+  { question: t(tr, 'home.faq4_q'), answer: t(tr, 'home.faq4_a') },
+  { question: t(tr, 'home.faq5_q'), answer: t(tr, 'home.faq5_a') },
+  { question: t(tr, 'home.faq6_q'), answer: t(tr, 'home.faq6_a') },
+];
+
+const homeFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": homeFaqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer,
+    },
+  }))
+};
+---
+
+
+<BaseLayout lang={lang} title={t(tr, "home.meta_title")} description={t(tr, "home.meta_desc")} activePage="home" jsonLd={[homeFaqSchema]}>
+
+  <!-- ========== HERO ========== -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img src="/images/caluanie-muelear-oxidize-manufacturer-in-usa.webp" alt={t(tr, "home.hero_title")} />
+      <div class="hero-overlay"></div>
+    </div>
+    <div class="container hero-inner">
+      <div class="hero-content">
+        <div class="hero-badge">{t(tr, "home.hero_badge")}</div>
+        <h1>{t(tr, "home.hero_title")}</h1>
+        <p class="hero-sub">{t(tr, "home.hero_sub")}</p>
+        <div class="hero-actions">
+          <a href={lp("/products")} class="btn btn-accent">{t(tr, "common.explore_products")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact")} class="btn btn-outline-white">{t(tr, "common.get_quote")} <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">3</span>
+          <span class="hero-stat-label">{t(tr, "common.core_products")}</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">99.99%</span>
+          <span class="hero-stat-label">{t(tr, "common.purity_certified")}</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">{t(tr, "common.global")}</span>
+          <span class="hero-stat-label">{t(tr, "common.shipping_network")}</span>
+        </div>
+      </div>
+    </div>
+    <a href="#products" class="hero-scroll" aria-label={t(tr, 'home.scroll_down')}>
+      <i class="fas fa-chevron-down"></i>
+    </a>
+  </section>
+
+  <!-- ========== MARQUEE TRUST BAR ========== -->
+  <section class="trust-bar">
+    <div class="trust-bar-track">
+      <div class="trust-bar-items">
+        <span><i class="fas fa-flask"></i> {t(tr, "home.trust_purity")}</span>
+        <span><i class="fas fa-shield-halved"></i> {t(tr, "home.trust_safety")}</span>
+        <span><i class="fas fa-truck-fast"></i> {t(tr, "home.trust_shipping")}</span>
+        <span><i class="fas fa-award"></i> {t(tr, "home.trust_quality")}</span>
+        <span><i class="fas fa-headset"></i> {t(tr, "home.trust_support")}</span>
+        <span><i class="fas fa-certificate"></i> {t(tr, "home.trust_coa")}</span>
+        <span><i class="fas fa-flask"></i> {t(tr, "home.trust_purity")}</span>
+        <span><i class="fas fa-shield-halved"></i> {t(tr, "home.trust_safety")}</span>
+        <span><i class="fas fa-truck-fast"></i> {t(tr, "home.trust_shipping")}</span>
+        <span><i class="fas fa-award"></i> {t(tr, "home.trust_quality")}</span>
+        <span><i class="fas fa-headset"></i> {t(tr, "home.trust_support")}</span>
+        <span><i class="fas fa-certificate"></i> {t(tr, "home.trust_coa")}</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PRODUCTS SHOWCASE ========== -->
+  <section class="hp-products" id="products">
+    <div class="container">
+      <div class="hp-section-header">
+        <div>
+          <div class="section-label">{t(tr, "common.our_products")}</div>
+          <h2>{t(tr, "home.products_title")}</h2>
+        </div>
+        <a href={lp("/products")} class="btn btn-outline">{t(tr, "common.view_all_products")} <i class="fas fa-arrow-right"></i></a>
+      </div>
+
+      <div class="hp-products-grid">
+        <!-- Card 1 -->
+        <a href={lp("/products/caluanie")} class="hp-product-card">
+          <div class="hp-product-img">
+            <img src="/images/caluanie-muelear-oxidize-for-sale.jpg" alt={t(tr, "home.product1_name")} />
+            <div class="hp-product-num">01</div>
+          </div>
+          <div class="hp-product-body">
+            <h3>{t(tr, "home.product1_name")}</h3>
+            <p>{t(tr, "home.product1_desc")}</p>
+            <span class="hp-product-link">{t(tr, "common.learn_more")} <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <!-- Card 2 -->
+        <a href={lp("/products/red-mercury")} class="hp-product-card">
+          <div class="hp-product-img">
+            <img src="/images/red-liquid-mercury-for-sale-usa.png" alt={t(tr, "home.product2_name")} />
+            <div class="hp-product-num">02</div>
+          </div>
+          <div class="hp-product-body">
+            <h3>{t(tr, "home.product2_name")}</h3>
+            <p>{t(tr, "home.product2_desc")}</p>
+            <span class="hp-product-link">{t(tr, "common.learn_more")} <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href={lp("/products/silver-mercury")} class="hp-product-card">
+          <div class="hp-product-img">
+            <img src="/images/silver-liquid-mercury-for-sale.png" alt={t(tr, "home.product3_name")} />
+            <div class="hp-product-num">03</div>
+          </div>
+          <div class="hp-product-body">
+            <h3>{t(tr, "home.product3_name")}</h3>
+            <p>{t(tr, "home.product3_desc")}</p>
+            <span class="hp-product-link">{t(tr, "common.learn_more")} <i class="fas fa-arrow-right"></i></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ABOUT / SPLIT ========== -->
+  <section class="hp-about">
+    <div class="hp-about-image">
+      <img src="/images/pexels-los-muertos-crew-10041264.jpg" alt={t(tr, "home.about_title")} />
+    </div>
+    <div class="hp-about-content">
+      <div class="section-label">{t(tr, "home.about_label")}</div>
+      <h2>{t(tr, "home.about_title")}</h2>
+      <p>{t(tr, "home.about_desc")}</p>
+      <div class="hp-about-features">
+        <div class="hp-about-feat">
+          <div class="hp-about-feat-icon"><i class="fas fa-microscope"></i></div>
+          <div>
+            <h6>{t(tr, "home.about_feat1_title")}</h6>
+            <p>{t(tr, "home.about_feat1_desc")}</p>
+          </div>
+        </div>
+        <div class="hp-about-feat">
+          <div class="hp-about-feat-icon"><i class="fas fa-earth-americas"></i></div>
+          <div>
+            <h6>{t(tr, "home.about_feat2_title")}</h6>
+            <p>{t(tr, "home.about_feat2_desc")}</p>
+          </div>
+        </div>
+      </div>
+      <a href={lp("/about")} class="btn btn-primary">{t(tr, "common.learn_about_us")} <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <!-- ========== APPLICATIONS STRIP ========== -->
+  <section class="hp-applications">
+    <div class="container">
+      <div class="text-center">
+        <div class="section-label">{t(tr, "home.apps_label")}</div>
+        <h2>{t(tr, "home.apps_title")}</h2>
+      </div>
+      <div class="hp-app-grid">
+        <div class="hp-app-card">
+          <div class="hp-app-icon"><i class="fas fa-gears"></i></div>
+          <h5>{t(tr, "home.app1_title")}</h5>
+          <p>{t(tr, "home.app1_desc")}</p>
+        </div>
+        <div class="hp-app-card">
+          <div class="hp-app-icon"><i class="fas fa-flask"></i></div>
+          <h5>{t(tr, "home.app2_title")}</h5>
+          <p>{t(tr, "home.app2_desc")}</p>
+        </div>
+        <div class="hp-app-card">
+          <div class="hp-app-icon"><i class="fas fa-gem"></i></div>
+          <h5>{t(tr, "home.app3_title")}</h5>
+          <p>{t(tr, "home.app3_desc")}</p>
+        </div>
+        <div class="hp-app-card">
+          <div class="hp-app-icon"><i class="fas fa-microscope"></i></div>
+          <h5>{t(tr, "home.app4_title")}</h5>
+          <p>{t(tr, "home.app4_desc")}</p>
+        </div>
+        <div class="hp-app-card">
+          <div class="hp-app-icon"><i class="fas fa-microchip"></i></div>
+          <h5>{t(tr, "home.app5_title")}</h5>
+          <p>{t(tr, "home.app5_desc")}</p>
+        </div>
+        <div class="hp-app-card">
+          <div class="hp-app-icon"><i class="fas fa-coins"></i></div>
+          <h5>{t(tr, "home.app6_title")}</h5>
+          <p>{t(tr, "home.app6_desc")}</p>
+        </div>
+      </div>
+      <div class="text-center" style="margin-top:50px;">
+        <a href={lp("/applications")} class="btn btn-primary">{t(tr, "common.see_all_applications")} <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== WHY CHOOSE US ========== -->
+  <section class="hp-why">
+    <div class="container">
+      <div class="hp-why-grid">
+        <div class="hp-why-content">
+          <div class="section-label">{t(tr, "home.why_label")}</div>
+          <h2>{t(tr, "home.why_title")}</h2>
+          <p>{t(tr, "home.why_desc")}</p>
+        </div>
+        <div class="hp-why-cards">
+          <div class="hp-why-card">
+            <div class="hp-why-card-num">01</div>
+            <div>
+              <h5>{t(tr, "home.why1_title")}</h5>
+              <p>{t(tr, "home.why1_desc")}</p>
+            </div>
+          </div>
+          <div class="hp-why-card">
+            <div class="hp-why-card-num">02</div>
+            <div>
+              <h5>{t(tr, "home.why2_title")}</h5>
+              <p>{t(tr, "home.why2_desc")}</p>
+            </div>
+          </div>
+          <div class="hp-why-card">
+            <div class="hp-why-card-num">03</div>
+            <div>
+              <h5>{t(tr, "home.why3_title")}</h5>
+              <p>{t(tr, "home.why3_desc")}</p>
+            </div>
+          </div>
+          <div class="hp-why-card">
+            <div class="hp-why-card-num">04</div>
+            <div>
+              <h5>{t(tr, "home.why4_title")}</h5>
+              <p>{t(tr, "home.why4_desc")}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="hp-testimonials">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:50px;">
+        <div class="section-label">{t(tr, "home.testimonials_label")}</div>
+        <h2>{t(tr, "home.testimonials_title")}</h2>
+      </div>
+      <div class="hp-test-grid">
+        <div class="hp-test-card">
+          <div class="hp-test-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>"{t(tr, "home.test1_text")}"</p>
+          <div class="hp-test-author">
+            <div class="hp-test-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <strong>{t(tr, "home.test1_name")}</strong>
+              <span>{t(tr, "home.test1_role")}</span>
+            </div>
+          </div>
+        </div>
+        <div class="hp-test-card">
+          <div class="hp-test-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>"{t(tr, "home.test2_text")}"</p>
+          <div class="hp-test-author">
+            <div class="hp-test-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <strong>{t(tr, "home.test2_name")}</strong>
+              <span>{t(tr, "home.test2_role")}</span>
+            </div>
+          </div>
+        </div>
+        <div class="hp-test-card">
+          <div class="hp-test-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <p>"{t(tr, "home.test3_text")}"</p>
+          <div class="hp-test-author">
+            <div class="hp-test-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <strong>{t(tr, "home.test3_name")}</strong>
+              <span>{t(tr, "home.test3_role")}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ (AEO) ========== -->
+  <section class="hp-faq">
+    <div class="container">
+      <div class="hp-section-header">
+        <div>
+          <div class="section-label">{t(tr, "home.faq_label")}</div>
+          <h2>{t(tr, "home.faq_title")}</h2>
+        </div>
+      </div>
+      <div class="hp-faq-grid">
+        <details class="hp-faq-item">
+          <summary>{t(tr, "home.faq1_q")}</summary>
+          <p>{t(tr, "home.faq1_a")}</p>
+        </details>
+        <details class="hp-faq-item">
+          <summary>{t(tr, "home.faq2_q")}</summary>
+          <p>{t(tr, "home.faq2_a")}</p>
+        </details>
+        <details class="hp-faq-item">
+          <summary>{t(tr, "home.faq3_q")}</summary>
+          <p>{t(tr, "home.faq3_a")}</p>
+        </details>
+        <details class="hp-faq-item">
+          <summary>{t(tr, "home.faq4_q")}</summary>
+          <p>{t(tr, "home.faq4_a")}</p>
+        </details>
+        <details class="hp-faq-item">
+          <summary>{t(tr, "home.faq5_q")}</summary>
+          <p>{t(tr, "home.faq5_a")}</p>
+        </details>
+        <details class="hp-faq-item">
+          <summary>{t(tr, "home.faq6_q")}</summary>
+          <p>{t(tr, "home.faq6_a")}</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="hp-cta">
+    <div class="container">
+      <div class="hp-cta-inner">
+        <div class="hp-cta-content">
+          <h2>{t(tr, "home.cta_title")}</h2>
+          <p>{t(tr, "home.cta_desc")}</p>
+        </div>
+        <div class="hp-cta-actions">
+          <a href={lp("/contact")} class="btn btn-white">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/ordering")} class="btn btn-outline-white">{t(tr, "common.how_to_order")} <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ========================================
+     HOMEPAGE-SPECIFIC STYLES
+     ======================================== */
+
+  /* Hero */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+  .hero-bg img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(25,24,23,0.92) 0%, rgba(25,24,23,0.7) 60%, rgba(252,82,32,0.15) 100%);
+  }
+  .hero-inner {
+    position: relative;
+    z-index: 1;
+    padding-top: 140px;
+    padding-bottom: 100px;
+  }
+  .hero-content { max-width: 700px; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 24px;
+  }
+  .hero h1 {
+    color: var(--white);
+    font-size: clamp(42px, 6vw, 80px);
+    line-height: 1.05;
+    margin-bottom: 24px;
+    letter-spacing: -1px;
+  }
+  .hero-sub {
+    color: rgba(255,255,255,0.7);
+    font-size: 18px;
+    line-height: 1.7;
+    max-width: 560px;
+    margin-bottom: 40px;
+  }
+  .hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-outline-white {
+    background: transparent;
+    color: var(--white);
+    border: 2px solid rgba(255,255,255,0.3);
+  }
+  .btn-outline-white:hover {
+    background: var(--white);
+    color: var(--near-black);
+    border-color: var(--white);
+  }
+
+  /* Hero Stats */
+  .hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    margin-top: 80px;
+    padding-top: 40px;
+    border-top: 1px solid rgba(255,255,255,0.12);
+  }
+  .hero-stat-num {
+    display: block;
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--white);
+    letter-spacing: -0.5px;
+  }
+  .hero-stat-label {
+    display: block;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+  }
+  .hero-stat-divider {
+    width: 1px;
+    height: 50px;
+    background: rgba(255,255,255,0.12);
+  }
+
+  /* Hero Scroll */
+  .hero-scroll {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 44px;
+    height: 44px;
+    border: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.5);
+    font-size: 14px;
+    z-index: 1;
+    animation: heroFloat 2s ease-in-out infinite;
+  }
+  .hero-scroll:hover { border-color: var(--accent); color: var(--accent); }
+  @keyframes heroFloat {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(8px); }
+  }
+
+  /* Trust Bar Marquee */
+  .trust-bar {
+    background: var(--near-black);
+    padding: 16px 0;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .trust-bar-track { overflow: hidden; }
+  .trust-bar-items {
+    display: flex;
+    gap: 60px;
+    animation: marquee 25s linear infinite;
+    white-space: nowrap;
+    width: max-content;
+  }
+  .trust-bar-items span {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+  }
+  .trust-bar-items span i { color: var(--accent); font-size: 14px; }
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  /* Products Section */
+  .hp-products { padding: 120px 0; background: var(--white); }
+  .hp-section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+  .hp-section-header h2 {
+    font-size: clamp(28px, 3.5vw, 50px);
+    line-height: 1.15;
+  }
+
+  .hp-products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .hp-product-card {
+    display: block;
+    border-left: 1px solid var(--border);
+    overflow: hidden;
+    transition: var(--transition);
+    color: var(--body-text);
+  }
+  .hp-product-card:last-child { border-right: 1px solid var(--border); }
+  .hp-product-card:hover { color: var(--body-text); }
+  .hp-product-img {
+    position: relative;
+    height: 320px;
+    overflow: hidden;
+  }
+  .hp-product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+  .hp-product-card:hover .hp-product-img img { transform: scale(1.08); }
+  .hp-product-num {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 13px;
+    font-weight: 800;
+    color: var(--white);
+    background: var(--near-black);
+    padding: 6px 14px;
+    letter-spacing: 1px;
+  }
+  .hp-product-body { padding: 30px; }
+  .hp-product-body h3 {
+    font-size: 22px;
+    margin-bottom: 12px;
+    transition: color 0.3s;
+  }
+  .hp-product-card:hover .hp-product-body h3 { color: var(--accent); }
+  .hp-product-body p { font-size: 15px; margin-bottom: 20px; }
+  .hp-product-link {
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--accent);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hp-product-link i { font-size: 11px; transition: transform 0.3s; }
+  .hp-product-card:hover .hp-product-link i { transform: translateX(6px); }
+
+  /* About Split */
+  .hp-about {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 600px;
+  }
+  .hp-about-image { overflow: hidden; }
+  .hp-about-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .hp-about-content {
+    padding: 80px 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: var(--light-bg);
+  }
+  .hp-about-content h2 {
+    font-size: clamp(24px, 3vw, 40px);
+    margin-bottom: 20px;
+    line-height: 1.15;
+  }
+  .hp-about-content > p { max-width: 480px; }
+  .hp-about-features { margin: 30px 0 35px; display: flex; flex-direction: column; gap: 24px; }
+  .hp-about-feat { display: flex; gap: 16px; align-items: flex-start; }
+  .hp-about-feat-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--near-black);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    flex-shrink: 0;
+    font-size: 18px;
+  }
+  .hp-about-feat h6 { font-size: 15px; margin-bottom: 4px; }
+  .hp-about-feat p { font-size: 14px; margin: 0; color: var(--body-text); }
+
+  /* Applications */
+  .hp-applications {
+    padding: 120px 0;
+    background: var(--white);
+    border-top: 1px solid var(--border);
+  }
+  .hp-applications h2 {
+    font-size: clamp(28px, 3.5vw, 50px);
+    margin-bottom: 60px;
+    line-height: 1.15;
+  }
+  .hp-app-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+  }
+  .hp-app-card {
+    padding: 50px 30px;
+    border-left: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    transition: var(--transition);
+  }
+  .hp-app-card:nth-child(3n) { border-right: 1px solid var(--border); }
+  .hp-app-card:nth-child(-n+3) { border-top: 1px solid var(--border); }
+  .hp-app-card:hover { background: var(--light-bg); }
+  .hp-app-icon {
+    width: 52px;
+    height: 52px;
+    background: rgba(252,82,32,0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--accent);
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+  .hp-app-card h5 { font-size: 17px; margin-bottom: 10px; text-transform: uppercase; }
+  .hp-app-card p { font-size: 14px; margin: 0; }
+
+  /* Why Section */
+  .hp-why {
+    padding: 120px 0;
+    background: var(--near-black);
+  }
+  .hp-why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+  .hp-why-content .section-label { color: rgba(255,255,255,0.6); }
+  .hp-why-content .section-label::before { background: var(--accent); }
+  .hp-why-content h2 {
+    color: var(--white);
+    font-size: clamp(24px, 3vw, 42px);
+    margin-bottom: 20px;
+    line-height: 1.15;
+  }
+  .hp-why-content p { color: rgba(255,255,255,0.5); max-width: 440px; }
+  .hp-why-cards { display: flex; flex-direction: column; gap: 0; }
+  .hp-why-card {
+    display: flex;
+    gap: 24px;
+    padding: 30px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    align-items: flex-start;
+  }
+  .hp-why-card:first-child { padding-top: 0; }
+  .hp-why-card-num {
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--accent);
+    letter-spacing: 1px;
+    flex-shrink: 0;
+    padding-top: 2px;
+  }
+  .hp-why-card h5 {
+    color: var(--white);
+    font-size: 16px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+  .hp-why-card p { color: rgba(255,255,255,0.45); font-size: 14px; margin: 0; }
+
+  /* FAQ Section */
+  .hp-faq { padding: 100px 0; background: var(--light-bg); border-top: 1px solid var(--border); }
+  .hp-faq-grid { display: flex; flex-direction: column; gap: 0; max-width: 800px; }
+  .hp-faq-item { border-bottom: 1px solid var(--border); }
+  .hp-faq-item summary {
+    padding: 24px 0;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .hp-faq-item summary::after { content: '+'; font-size: 22px; color: var(--accent); font-weight: 300; }
+  .hp-faq-item[open] summary::after { content: '−'; }
+  .hp-faq-item summary::-webkit-details-marker { display: none; }
+  .hp-faq-item p { padding: 0 0 24px 0; margin: 0; color: var(--body-text); line-height: 1.7; font-size: 15px; }
+
+  /* CTA Section */
+  .hp-cta {
+    padding: 100px 0;
+    background: var(--accent);
+  }
+  .hp-cta-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+  }
+  .hp-cta-content h2 {
+    color: var(--white);
+    font-size: clamp(28px, 3.5vw, 46px);
+    margin-bottom: 12px;
+  }
+  .hp-cta-content p { color: rgba(255,255,255,0.85); max-width: 500px; margin: 0; }
+  .hp-cta-actions { display: flex; gap: 16px; flex-shrink: 0; flex-wrap: wrap; }
+  .hp-cta .btn-white { border-color: var(--white); }
+  .hp-cta .btn-white:hover { background: var(--near-black); color: var(--white); border-color: var(--near-black); }
+  .hp-cta .btn-outline-white { border-color: rgba(255,255,255,0.4); }
+  .hp-cta .btn-outline-white:hover { background: var(--white); color: var(--accent); border-color: var(--white); }
+
+  /* Testimonials */
+  .hp-testimonials { padding: 100px 0; background: var(--surface); border-top: 1px solid var(--border); }
+  .hp-test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+  .hp-test-card { background: var(--bg); border: 1px solid var(--border-light); border-radius: 12px; padding: 32px; transition: transform 0.3s, box-shadow 0.3s; }
+  .hp-test-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.06); }
+  .hp-test-stars { color: #f4b400; margin-bottom: 16px; font-size: 0.9rem; display: flex; gap: 3px; }
+  .hp-test-card > p { color: var(--body-text); line-height: 1.7; font-size: 0.92rem; margin-bottom: 20px; font-style: italic; }
+  .hp-test-author { display: flex; align-items: center; gap: 12px; }
+  .hp-test-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
+  .hp-test-author strong { display: block; font-size: 0.9rem; }
+  .hp-test-author span { font-size: 0.8rem; color: var(--body-text); }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 1024px) {
+    .hp-products-grid { grid-template-columns: 1fr; }
+    .hp-product-card { border-left: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .hp-product-card:first-child { border-top: 1px solid var(--border); }
+    .hp-about { grid-template-columns: 1fr; }
+    .hp-about-image { height: 400px; }
+    .hp-about-content { padding: 60px 24px; }
+    .hp-app-grid { grid-template-columns: 1fr 1fr; }
+    .hp-app-card:nth-child(3n) { border-right: none; }
+    .hp-app-card:nth-child(2n) { border-right: 1px solid var(--border); }
+    .hp-app-card:nth-child(-n+3) { border-top: none; }
+    .hp-app-card:nth-child(-n+2) { border-top: 1px solid var(--border); }
+    .hp-why-grid { grid-template-columns: 1fr; gap: 50px; }
+    .hp-test-grid { grid-template-columns: 1fr; }
+    .hp-cta-inner { flex-direction: column; text-align: center; }
+    .hp-cta-actions { justify-content: center; }
+    .hp-section-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+  }
+
+  @media (max-width: 768px) {
+    .hero-stats { flex-direction: column; gap: 20px; align-items: flex-start; }
+    .hero-stat-divider { width: 100%; height: 1px; }
+    .hero h1 { font-size: clamp(32px, 8vw, 52px); }
+    .hero-sub { font-size: 16px; }
+    .hp-app-grid { grid-template-columns: 1fr; }
+    .hp-app-card { border-left: 1px solid var(--border); border-right: 1px solid var(--border); border-top: none !important; }
+    .hp-app-card:first-child { border-top: 1px solid var(--border) !important; }
+    .hp-products, .hp-applications, .hp-why { padding: 80px 0; }
+    .hp-cta { padding: 60px 0; }
+  }
+</style>

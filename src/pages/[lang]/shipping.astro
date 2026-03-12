@@ -1,0 +1,426 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath, getLangStaticPaths } from '../../i18n/index';
+import { defaultLang } from '../../i18n/languages';
+
+export const getStaticPaths = getLangStaticPaths;
+const lang = Astro.params.lang ?? defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+---
+
+
+<BaseLayout lang={lang} title={t(tr, "shipping.meta_title")} description={t(tr, "shipping.meta_desc")} activePage="shipping">
+
+  <!-- ========== HERO ========== -->
+  <section class="sh-hero">
+    <div class="sh-hero-bg">
+      <img src="/images/industrial-worker-holding-plastic-cans-with-chemicals-production-plant.jpg" alt={t(tr, "shipping.hero_title")} />
+      <div class="sh-hero-overlay"></div>
+    </div>
+    <div class="container sh-hero-inner">
+      <div class="sh-hero-content">
+        <div class="sh-hero-badge"><i class="fas fa-truck-fast"></i> {t(tr, "shipping.hero_badge")}</div>
+        <h1>{t(tr, "shipping.hero_title")}</h1>
+        <p class="sh-hero-sub">{t(tr, "shipping.hero_sub")}</p>
+        <div class="sh-hero-actions">
+          <a href={lp("/contact")} class="btn btn-accent">{t(tr, "shipping.hero_get_quote")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/ordering")} class="btn btn-outline-white">{t(tr, "shipping.hero_ordering")} <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="sh-hero-stats">
+        <div class="sh-hero-stat">
+          <span class="sh-hero-stat-num">6</span>
+          <span class="sh-hero-stat-label">{t(tr, "shipping.stat1_label")}</span>
+        </div>
+        <div class="sh-hero-stat">
+          <span class="sh-hero-stat-num">100%</span>
+          <span class="sh-hero-stat-label">{t(tr, "shipping.stat2_label")}</span>
+        </div>
+        <div class="sh-hero-stat">
+          <span class="sh-hero-stat-num">24h</span>
+          <span class="sh-hero-stat-label">{t(tr, "shipping.stat3_label")}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== OVERVIEW ========== -->
+  <section class="sh-overview">
+    <div class="container">
+      <div class="sh-overview-intro">
+        <div class="section-label">{t(tr, "shipping.overview_label")}</div>
+        <h2>{t(tr, "shipping.overview_title")}</h2>
+        <p>{t(tr, "shipping.overview_desc")}</p>
+      </div>
+      <div class="sh-overview-grid">
+        <div class="sh-overview-card">
+          <div class="sh-overview-icon"><i class="fas fa-earth-europe"></i></div>
+          <h4>{t(tr, "shipping.ov1_title")}</h4>
+          <p>{t(tr, "shipping.ov1_desc")}</p>
+        </div>
+        <div class="sh-overview-card">
+          <div class="sh-overview-icon"><i class="fas fa-shield-halved"></i></div>
+          <h4>{t(tr, "shipping.ov2_title")}</h4>
+          <p>{t(tr, "shipping.ov2_desc")}</p>
+        </div>
+        <div class="sh-overview-card">
+          <div class="sh-overview-icon"><i class="fas fa-file-certificate"></i></div>
+          <h4>{t(tr, "shipping.ov3_title")}</h4>
+          <p>{t(tr, "shipping.ov3_desc")}</p>
+        </div>
+        <div class="sh-overview-card">
+          <div class="sh-overview-icon"><i class="fas fa-box-open"></i></div>
+          <h4>{t(tr, "shipping.ov4_title")}</h4>
+          <p>{t(tr, "shipping.ov4_desc")}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TRANSPORT REGULATIONS ========== -->
+  <section class="sh-regs">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:50px;">
+        <div class="section-label">{t(tr, "shipping.regs_label")}</div>
+        <h2 class="section-title">{t(tr, "shipping.regs_title")}</h2>
+        <p style="max-width:680px;margin:0 auto;color:var(--body-text);">{t(tr, "shipping.regs_desc")}</p>
+      </div>
+      <div class="sh-regs-grid">
+        <div class="sh-reg-card">
+          <div class="sh-reg-header">
+            <div class="sh-reg-icon"><i class="fas fa-truck"></i></div>
+            <div>
+              <h4>{t(tr, "shipping.road_title")}</h4>
+              <span class="sh-reg-code">ADR</span>
+            </div>
+          </div>
+          <p>{t(tr, "shipping.road_desc")}</p>
+          <ul>
+            <li><i class="fas fa-check"></i> {t(tr, "shipping.road_item1")}</li>
+            <li><i class="fas fa-check"></i> {t(tr, "shipping.road_item2")}</li>
+            <li><i class="fas fa-check"></i> {t(tr, "shipping.road_item3")}</li>
+            <li><i class="fas fa-check"></i> {t(tr, "shipping.road_item4")}</li>
+          </ul>
+        </div>
+        <div class="sh-reg-card">
+          <div class="sh-reg-header">
+            <div class="sh-reg-icon"><i class="fas fa-ship"></i></div>
+            <div>
+              <h4>{t(tr, "shipping.sea_title")}</h4>
+              <span class="sh-reg-code">IMDG Code</span>
+            </div>
+          </div>
+          <p>{t(tr, "shipping.sea_desc")}</p>
+          <ul>
+            <li><i class="fas fa-check"></i> {t(tr, "shipping.sea_item1")}</li>
+            <li><i class="fas fa-check"></i> {t(tr, "shipping.sea_item2")}</li>
+            <li><i class="fas fa-check"></i> {t(tr, "shipping.sea_item3")}</li>
+            <li><i class="fas fa-check"></i> {t(tr, "shipping.sea_item4")}</li>
+          </ul>
+        </div>
+        <div class="sh-reg-card">
+          <div class="sh-reg-header">
+            <div class="sh-reg-icon"><i class="fas fa-plane"></i></div>
+            <div>
+              <h4>{t(tr, "shipping.air_title")}</h4>
+              <span class="sh-reg-code">IATA DGR</span>
+            </div>
+          </div>
+          <p>{t(tr, "shipping.air_desc")}</p>
+          <ul>
+            <li><i class="fas fa-check"></i> {t(tr, "shipping.air_item1")}</li>
+            <li><i class="fas fa-check"></i> {t(tr, "shipping.air_item2")}</li>
+            <li><i class="fas fa-check"></i> {t(tr, "shipping.air_item3")}</li>
+            <li><i class="fas fa-check"></i> {t(tr, "shipping.air_item4")}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PACKAGING ========== -->
+  <section class="sh-packaging">
+    <div class="container">
+      <div class="sh-pack-grid">
+        <div class="sh-pack-content">
+          <div class="section-label">{t(tr, "shipping.pack_label")}</div>
+          <h2>{t(tr, "shipping.pack_title")}</h2>
+          <p>{t(tr, "shipping.pack_desc")}</p>
+          <div class="sh-pack-items">
+            <div class="sh-pack-item">
+              <div class="sh-pack-item-icon"><i class="fas fa-flask"></i></div>
+              <div>
+                <strong>{t(tr, "shipping.pack1_title")}</strong>
+                <p>{t(tr, "shipping.pack1_desc")}</p>
+              </div>
+            </div>
+            <div class="sh-pack-item">
+              <div class="sh-pack-item-icon"><i class="fas fa-bottle-droplet"></i></div>
+              <div>
+                <strong>{t(tr, "shipping.pack2_title")}</strong>
+                <p>{t(tr, "shipping.pack2_desc")}</p>
+              </div>
+            </div>
+            <div class="sh-pack-item">
+              <div class="sh-pack-item-icon"><i class="fas fa-tags"></i></div>
+              <div>
+                <strong>{t(tr, "shipping.pack3_title")}</strong>
+                <p>{t(tr, "shipping.pack3_desc")}</p>
+              </div>
+            </div>
+            <div class="sh-pack-item">
+              <div class="sh-pack-item-icon"><i class="fas fa-lock"></i></div>
+              <div>
+                <strong>{t(tr, "shipping.pack4_title")}</strong>
+                <p>{t(tr, "shipping.pack4_desc")}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="sh-pack-labels-card">
+          <h4><i class="fas fa-triangle-exclamation"></i> {t(tr, "shipping.labels_title")}</h4>
+          <div class="sh-label-grid">
+            <div class="sh-label"><i class="fas fa-skull-crossbones"></i><span>{t(tr, "shipping.label1")}</span></div>
+            <div class="sh-label"><i class="fas fa-flask-vial"></i><span>{t(tr, "shipping.label2")}</span></div>
+            <div class="sh-label"><i class="fas fa-leaf"></i><span>{t(tr, "shipping.label3")}</span></div>
+            <div class="sh-label"><i class="fas fa-temperature-high"></i><span>{t(tr, "shipping.label4")}</span></div>
+            <div class="sh-label"><i class="fas fa-hand"></i><span>{t(tr, "shipping.label5")}</span></div>
+            <div class="sh-label"><i class="fas fa-barcode"></i><span>{t(tr, "shipping.label6")}</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== DELIVERY TIMELINE ========== -->
+  <section class="sh-timeline">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:50px;">
+        <div class="section-label">{t(tr, "shipping.timeline_label")}</div>
+        <h2 class="section-title">{t(tr, "shipping.timeline_title")}</h2>
+        <p style="max-width:600px;margin:0 auto;color:var(--body-text);">{t(tr, "shipping.timeline_desc")}</p>
+      </div>
+      <div class="sh-timeline-wrap">
+        <div class="sh-timeline-cards">
+          <div class="sh-tl-card">
+            <div class="sh-tl-flag"><i class="fas fa-flag"></i></div>
+            <h4>{t(tr, "shipping.tl_thailand")}</h4>
+            <span class="sh-tl-method">{t(tr, "shipping.method_road")}</span>
+            <div class="sh-tl-days">1–3 <small>{t(tr, "shipping.business_days")}</small></div>
+          </div>
+          <div class="sh-tl-card">
+            <div class="sh-tl-flag"><i class="fas fa-flag"></i></div>
+            <h4>{t(tr, "shipping.tl_eu")}</h4>
+            <span class="sh-tl-method">{t(tr, "shipping.method_road_sea")}</span>
+            <div class="sh-tl-days">3–7 <small>{t(tr, "shipping.business_days")}</small></div>
+          </div>
+          <div class="sh-tl-card">
+            <div class="sh-tl-flag"><i class="fas fa-flag"></i></div>
+            <h4>{t(tr, "shipping.tl_uk")}</h4>
+            <span class="sh-tl-method">{t(tr, "shipping.method_sea_air")}</span>
+            <div class="sh-tl-days">5–10 <small>{t(tr, "shipping.business_days")}</small></div>
+          </div>
+          <div class="sh-tl-card">
+            <div class="sh-tl-flag"><i class="fas fa-flag"></i></div>
+            <h4>{t(tr, "shipping.tl_na")}</h4>
+            <span class="sh-tl-method">{t(tr, "shipping.method_sea_air")}</span>
+            <div class="sh-tl-days">7–14 <small>{t(tr, "shipping.business_days")}</small></div>
+          </div>
+          <div class="sh-tl-card">
+            <div class="sh-tl-flag"><i class="fas fa-flag"></i></div>
+            <h4>{t(tr, "shipping.tl_sa")}</h4>
+            <span class="sh-tl-method">{t(tr, "shipping.method_sea_air")}</span>
+            <div class="sh-tl-days">10–18 <small>{t(tr, "shipping.business_days")}</small></div>
+          </div>
+          <div class="sh-tl-card">
+            <div class="sh-tl-flag"><i class="fas fa-flag"></i></div>
+            <h4>{t(tr, "shipping.tl_asia")}</h4>
+            <span class="sh-tl-method">{t(tr, "shipping.method_sea_air")}</span>
+            <div class="sh-tl-days">10–21 <small>{t(tr, "shipping.business_days")}</small></div>
+          </div>
+          <div class="sh-tl-card">
+            <div class="sh-tl-flag"><i class="fas fa-flag"></i></div>
+            <h4>{t(tr, "shipping.tl_africa")}</h4>
+            <span class="sh-tl-method">{t(tr, "shipping.method_sea_air")}</span>
+            <div class="sh-tl-days">14–25 <small>{t(tr, "shipping.business_days")}</small></div>
+          </div>
+          <div class="sh-tl-card">
+            <div class="sh-tl-flag"><i class="fas fa-flag"></i></div>
+            <h4>{t(tr, "shipping.tl_oceania")}</h4>
+            <span class="sh-tl-method">{t(tr, "shipping.method_sea_air")}</span>
+            <div class="sh-tl-days">14–25 <small>{t(tr, "shipping.business_days")}</small></div>
+          </div>
+        </div>
+        <div class="sh-tl-note">
+          <i class="fas fa-info-circle"></i>
+          <p>{t(tr, "shipping.tl_note")}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROCESS ========== -->
+  <section class="sh-process">
+    <div class="container">
+      <div class="text-center" style="margin-bottom:50px;">
+        <div class="section-label">{t(tr, "shipping.process_label")}</div>
+        <h2 class="section-title">{t(tr, "shipping.process_title")}</h2>
+      </div>
+      <div class="sh-steps">
+        <div class="sh-step">
+          <div class="sh-step-num">01</div>
+          <div class="sh-step-line"></div>
+          <h4>{t(tr, "shipping.proc1_title")}</h4>
+          <p>{t(tr, "shipping.proc1_desc")}</p>
+        </div>
+        <div class="sh-step">
+          <div class="sh-step-num">02</div>
+          <div class="sh-step-line"></div>
+          <h4>{t(tr, "shipping.proc2_title")}</h4>
+          <p>{t(tr, "shipping.proc2_desc")}</p>
+        </div>
+        <div class="sh-step">
+          <div class="sh-step-num">03</div>
+          <div class="sh-step-line"></div>
+          <h4>{t(tr, "shipping.proc3_title")}</h4>
+          <p>{t(tr, "shipping.proc3_desc")}</p>
+        </div>
+        <div class="sh-step">
+          <div class="sh-step-num">04</div>
+          <h4>{t(tr, "shipping.proc4_title")}</h4>
+          <p>{t(tr, "shipping.proc4_desc")}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="sh-cta">
+    <div class="container">
+      <div class="sh-cta-inner">
+        <h2>{t(tr, "shipping.cta_title")}</h2>
+        <p>{t(tr, "shipping.cta_desc")}</p>
+        <div class="sh-cta-actions">
+          <a href={lp("/contact")} class="btn btn-white">{t(tr, "shipping.cta_quote")} <i class="fas fa-arrow-right"></i></a>
+          <a href="mailto:info@useful-chemicals.com" class="btn btn-outline-white">{t(tr, "shipping.cta_email")} <i class="fas fa-envelope"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ===== Hero ===== */
+  .sh-hero { position: relative; min-height: 55vh; display: flex; align-items: center; }
+  .sh-hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .sh-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .sh-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,15,30,.9), rgba(10,15,30,.65)); }
+  .sh-hero-inner { position: relative; z-index: 1; padding: 110px 0 60px; }
+  .sh-hero-content { max-width: 650px; margin-bottom: 40px; }
+  .sh-hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(8px); padding: 8px 18px; border-radius: 100px; font-size: .85rem; color: var(--accent); margin-bottom: 20px; font-weight: 600; }
+  .sh-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; color: var(--white); line-height: 1.12; margin-bottom: 16px; }
+  .sh-hero-sub { color: rgba(255,255,255,.7); font-size: 1.08rem; line-height: 1.7; margin-bottom: 28px; }
+  .sh-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+  .sh-hero-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 500px; }
+  .sh-hero-stat { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); backdrop-filter: blur(8px); padding: 18px 20px; border-radius: 12px; text-align: center; }
+  .sh-hero-stat-num { display: block; font-size: 1.6rem; font-weight: 800; color: var(--white); }
+  .sh-hero-stat-label { font-size: .75rem; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .8px; font-weight: 600; }
+
+  /* ===== Overview ===== */
+  .sh-overview { padding: 90px 0; }
+  .sh-overview-intro { max-width: 700px; margin: 0 auto 50px; text-align: center; }
+  .sh-overview-intro h2 { font-size: 1.8rem; font-weight: 800; margin-bottom: 14px; }
+  .sh-overview-intro p { color: var(--body-text); line-height: 1.8; }
+  .sh-overview-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  .sh-overview-card { text-align: center; padding: 32px 24px; border: 1px solid var(--border); border-radius: 16px; transition: all .3s; }
+  .sh-overview-card:hover { border-color: var(--accent); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.06); }
+  .sh-overview-icon { width: 56px; height: 56px; border-radius: 14px; background: rgba(252,82,32,.08); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; color: var(--accent); margin: 0 auto 16px; }
+  .sh-overview-card h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+  .sh-overview-card p { color: var(--body-text); font-size: .9rem; line-height: 1.65; margin: 0; }
+
+  /* ===== Regulations ===== */
+  .sh-regs { padding: 90px 0; background: var(--light-bg); }
+  .sh-regs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
+  .sh-reg-card { background: var(--white); border: 1px solid var(--border); border-radius: 16px; padding: 32px 28px; transition: all .3s; }
+  .sh-reg-card:hover { border-color: var(--accent); box-shadow: 0 8px 30px rgba(0,0,0,.06); }
+  .sh-reg-header { display: flex; align-items: center; gap: 16px; margin-bottom: 16px; }
+  .sh-reg-icon { width: 50px; height: 50px; border-radius: 12px; background: var(--near-black); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 1.2rem; flex-shrink: 0; }
+  .sh-reg-header h4 { font-size: 1.1rem; font-weight: 700; margin-bottom: 2px; }
+  .sh-reg-code { font-size: .78rem; color: var(--accent); font-weight: 700; text-transform: uppercase; letter-spacing: .5px; }
+  .sh-reg-card > p { color: var(--body-text); font-size: .9rem; line-height: 1.7; margin-bottom: 16px; }
+  .sh-reg-card ul { list-style: none; margin: 0; padding: 0; }
+  .sh-reg-card li { display: flex; align-items: center; gap: 10px; padding: 8px 0; font-size: .9rem; color: var(--body-text); border-top: 1px solid var(--border); }
+  .sh-reg-card li:first-child { border-top: none; }
+  .sh-reg-card li i { color: var(--accent); font-size: .75rem; }
+
+  /* ===== Packaging ===== */
+  .sh-packaging { padding: 90px 0; }
+  .sh-pack-grid { display: grid; grid-template-columns: 1.3fr .7fr; gap: 50px; align-items: start; }
+  .sh-pack-content h2 { font-size: 1.7rem; font-weight: 800; margin-bottom: 14px; }
+  .sh-pack-content > p { color: var(--body-text); line-height: 1.8; margin-bottom: 30px; }
+  .sh-pack-items { display: flex; flex-direction: column; gap: 20px; }
+  .sh-pack-item { display: flex; gap: 16px; }
+  .sh-pack-item-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(252,82,32,.08); display: flex; align-items: center; justify-content: center; color: var(--accent); font-size: 1rem; flex-shrink: 0; }
+  .sh-pack-item strong { display: block; font-size: .95rem; margin-bottom: 4px; }
+  .sh-pack-item p { color: var(--body-text); font-size: .88rem; line-height: 1.6; margin: 0; }
+
+  /* Labels card */
+  .sh-pack-labels-card { background: var(--near-black); border-radius: 20px; padding: 36px 30px; }
+  .sh-pack-labels-card > h4 { color: var(--white); font-size: 1rem; display: flex; align-items: center; gap: 10px; margin-bottom: 24px; }
+  .sh-pack-labels-card > h4 i { color: var(--accent); }
+  .sh-label-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .sh-label { display: flex; align-items: center; gap: 12px; background: rgba(255,255,255,.07); padding: 14px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,.08); }
+  .sh-label i { color: var(--accent); font-size: 1.1rem; width: 22px; text-align: center; }
+  .sh-label span { color: rgba(255,255,255,.85); font-size: .88rem; font-weight: 500; }
+
+  /* ===== Timeline ===== */
+  .sh-timeline { padding: 90px 0; background: var(--light-bg); }
+  .sh-timeline-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-bottom: 20px; }
+  .sh-tl-card { background: var(--white); border: 1px solid var(--border); border-radius: 14px; padding: 24px 20px; text-align: center; transition: all .3s; }
+  .sh-tl-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+  .sh-tl-flag { font-size: 1rem; color: var(--accent); margin-bottom: 8px; }
+  .sh-tl-card h4 { font-size: .95rem; font-weight: 700; margin-bottom: 4px; }
+  .sh-tl-method { font-size: .78rem; color: var(--body-text); opacity: .6; display: block; margin-bottom: 12px; }
+  .sh-tl-days { font-size: 1.3rem; font-weight: 800; color: var(--near-black); }
+  .sh-tl-days small { font-size: .7rem; font-weight: 500; color: var(--body-text); display: block; }
+  .sh-tl-note { display: flex; gap: 12px; align-items: flex-start; background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 16px 20px; }
+  .sh-tl-note i { color: var(--accent); margin-top: 3px; flex-shrink: 0; }
+  .sh-tl-note p { color: var(--body-text); font-size: .88rem; line-height: 1.6; margin: 0; }
+
+  /* ===== Process ===== */
+  .sh-process { padding: 90px 0; }
+  .sh-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
+  .sh-step { text-align: center; padding: 30px 24px; position: relative; }
+  .sh-step-num { font-size: 2.2rem; font-weight: 800; color: var(--accent); margin-bottom: 16px; }
+  .sh-step-line { position: absolute; top: 42px; right: -10px; width: 20px; height: 2px; background: var(--border); }
+  .sh-step:last-child .sh-step-line { display: none; }
+  .sh-step h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 8px; }
+  .sh-step p { color: var(--body-text); font-size: .88rem; line-height: 1.65; }
+
+  /* ===== CTA ===== */
+  .sh-cta { padding: 90px 0; }
+  .sh-cta-inner { background: linear-gradient(135deg, var(--near-black), #1a1f2e); padding: 60px; border-radius: 24px; text-align: center; }
+  .sh-cta-inner h2 { color: var(--white); font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 16px; }
+  .sh-cta-inner p { color: rgba(255,255,255,.7); max-width: 600px; margin: 0 auto 30px; line-height: 1.7; }
+  .sh-cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 1024px) {
+    .sh-overview-grid { grid-template-columns: repeat(2, 1fr); }
+    .sh-regs-grid { grid-template-columns: 1fr; }
+    .sh-pack-grid { grid-template-columns: 1fr; }
+    .sh-timeline-cards { grid-template-columns: repeat(2, 1fr); }
+    .sh-steps { grid-template-columns: repeat(2, 1fr); }
+    .sh-step-line { display: none; }
+  }
+  @media (max-width: 600px) {
+    .sh-overview-grid { grid-template-columns: 1fr; }
+    .sh-hero-stats { grid-template-columns: 1fr; max-width: 100%; }
+    .sh-timeline-cards { grid-template-columns: 1fr; }
+    .sh-steps { grid-template-columns: 1fr; }
+    .sh-label-grid { grid-template-columns: 1fr; }
+    .sh-cta-inner { padding: 40px 24px; }
+  }
+</style>

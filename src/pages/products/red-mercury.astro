@@ -1,19 +1,62 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath } from '../../i18n/index';
+import { defaultLang } from '../../i18n/languages';
+
+const lang = defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+const techSpecs = [
+  [t(tr, 'red_mercury.tech_name'), t(tr, 'red_mercury.tech_name_val')],
+  [t(tr, 'red_mercury.tech_formula'), t(tr, 'red_mercury.tech_formula_val')],
+  [t(tr, 'red_mercury.tech_cas'), t(tr, 'red_mercury.tech_cas_val')],
+  [t(tr, 'red_mercury.tech_appearance'), t(tr, 'red_mercury.tech_appearance_val')],
+  [t(tr, 'red_mercury.tech_purity'), t(tr, 'red_mercury.tech_purity_val')],
+  [t(tr, 'red_mercury.tech_density'), t(tr, 'red_mercury.tech_density_val')],
+  [t(tr, 'red_mercury.tech_boiling'), t(tr, 'red_mercury.tech_boiling_val')],
+  [t(tr, 'red_mercury.tech_solubility'), t(tr, 'red_mercury.tech_solubility_val')],
+  [t(tr, 'red_mercury.tech_hazard'), t(tr, 'red_mercury.tech_hazard_val')],
+  [t(tr, 'red_mercury.tech_un'), t(tr, 'red_mercury.tech_un_val')],
+  [t(tr, 'red_mercury.tech_packing'), t(tr, 'red_mercury.tech_packing_val')],
+  [t(tr, 'red_mercury.tech_shelf'), t(tr, 'red_mercury.tech_shelf_val')],
+  [t(tr, 'red_mercury.tech_packs'), t(tr, 'red_mercury.tech_packs_val')],
+];
+const overviewFeatures = [
+  { title: t(tr, 'red_mercury.overview_feat1_title'), description: t(tr, 'red_mercury.overview_feat1_desc') },
+  { title: t(tr, 'red_mercury.overview_feat2_title'), description: t(tr, 'red_mercury.overview_feat2_desc') },
+  { title: t(tr, 'red_mercury.overview_feat3_title'), description: t(tr, 'red_mercury.overview_feat3_desc') },
+];
+const buyingItems = [
+  { title: t(tr, 'red_mercury.buy1_title'), description: t(tr, 'red_mercury.buy1_desc') },
+  { title: t(tr, 'red_mercury.buy2_title'), description: t(tr, 'red_mercury.buy2_desc') },
+  { title: t(tr, 'red_mercury.buy3_title'), description: t(tr, 'red_mercury.buy3_desc') },
+];
+const safetyItems = [
+  t(tr, 'red_mercury.safety1'),
+  t(tr, 'red_mercury.safety2'),
+  t(tr, 'red_mercury.safety3'),
+  t(tr, 'red_mercury.safety4'),
+];
+const faqItems = [
+  { question: t(tr, 'red_mercury.faq1_q'), answer: t(tr, 'red_mercury.faq1_a') },
+  { question: t(tr, 'red_mercury.faq2_q'), answer: t(tr, 'red_mercury.faq2_a') },
+  { question: t(tr, 'red_mercury.faq3_q'), answer: t(tr, 'red_mercury.faq3_a') },
+  { question: t(tr, 'red_mercury.faq4_q'), answer: t(tr, 'red_mercury.faq4_a') },
+];
 
 const productSchema = {
   "@context": "https://schema.org",
   "@type": "Product",
-  "name": "Red Liquid Mercury 99.999% (5N Grade)",
-  "description": "High-purity Red Liquid Mercury (Sb₂O₇Hg₂) with 99.999% purity for industrial and research applications. Manufactured in Thailand by UE Chemicals.",
+  "name": t(tr, 'nav.red_mercury'),
+  "description": t(tr, 'red_mercury.meta_desc'),
   "brand": { "@type": "Brand", "name": "UE Chemicals" },
   "manufacturer": { "@type": "Organization", "name": "UE Chemicals", "address": { "@type": "PostalAddress", "addressLocality": "Bangkok", "addressCountry": "TH" } },
   "sku": "UEC-RLM-5N",
-  "material": "Sb₂O₇Hg₂",
+  "material": t(tr, 'red_mercury.tech_formula_val'),
   "additionalProperty": [
-    { "@type": "PropertyValue", "name": "Purity", "value": "99.999% (5N)" },
-    { "@type": "PropertyValue", "name": "Density", "value": "20.2 g/cm³" },
-    { "@type": "PropertyValue", "name": "Formula", "value": "Sb₂O₇Hg₂" }
+    { "@type": "PropertyValue", "name": t(tr, 'red_mercury.tech_purity'), "value": t(tr, 'red_mercury.tech_purity_val') },
+    { "@type": "PropertyValue", "name": t(tr, 'red_mercury.tech_density'), "value": t(tr, 'red_mercury.tech_density_val') },
+    { "@type": "PropertyValue", "name": t(tr, 'red_mercury.tech_formula'), "value": t(tr, 'red_mercury.tech_formula_val') }
   ],
   "offers": {
     "@type": "Offer",
@@ -21,7 +64,7 @@ const productSchema = {
     "priceCurrency": "USD",
     "price": "0",
     "priceValidUntil": "2026-12-31",
-    "url": "https://useful-chemicals.com/products/red-mercury",
+    "url": `https://useful-chemicals.com${lp('/products/red-mercury')}`,
     "seller": { "@type": "Organization", "name": "UE Chemicals" }
   }
 };
@@ -29,44 +72,41 @@ const productSchema = {
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "mainEntity": [
-    { "@type": "Question", "name": "What is red mercury?", "acceptedAnswer": { "@type": "Answer", "text": "Red mercury refers to Red Liquid Mercury with the chemical formula Sb₂O₇Hg₂. It is a high-density substance (20.2 g/cm³) with 99.999% purity (5N grade) used in specialized industrial and research applications. UE Chemicals supplies certified Red Liquid Mercury with full documentation." } },
-    { "@type": "Question", "name": "What is red mercury used for?", "acceptedAnswer": { "@type": "Answer", "text": "Red Liquid Mercury is used in specialized industrial processes, advanced research applications, and certain chemical synthesis procedures. Its unique chemical properties and high density make it suitable for precision applications requiring extremely pure compounds." } },
-    { "@type": "Question", "name": "Is it legal to buy red liquid mercury?", "acceptedAnswer": { "@type": "Answer", "text": "Regulations for purchasing Red Liquid Mercury vary by country and jurisdiction. UE Chemicals ensures full regulatory compliance and can provide guidance on legal requirements for your region. Contact our team for specific compliance information." } },
-    { "@type": "Question", "name": "How can I ensure authenticity of red mercury?", "acceptedAnswer": { "@type": "Answer", "text": "Purchase from verified, reputable suppliers like UE Chemicals who provide detailed certification, Certificate of Analysis (COA), and quality documentation with every order. Our Red Liquid Mercury is tested for 99.999% purity before shipping." } },
-    { "@type": "Question", "name": "What safety precautions should I follow for red mercury?", "acceptedAnswer": { "@type": "Answer", "text": "Always wear appropriate PPE including chemical-resistant gloves, safety goggles, and protective clothing. Handle in well-ventilated areas, store in a cool dry place away from incompatible materials, and follow EPA or local guidelines for safe handling and disposal." } },
-    { "@type": "Question", "name": "Can I buy red mercury online?", "acceptedAnswer": { "@type": "Answer", "text": "Yes, you can purchase Red Liquid Mercury online from UE Chemicals at useful-chemicals.com. We offer worldwide shipping with secure packaging, full compliance documentation, and Certificate of Analysis for every order." } },
-    { "@type": "Question", "name": "What are the chemical properties of red mercury?", "acceptedAnswer": { "@type": "Answer", "text": "Red Liquid Mercury (Sb₂O₇Hg₂) has a density of 20.2 g/cm³, purity of 99.999% (5N grade), and distinctive red coloration. It is supplied in liquid form with verified composition confirmed by Certificate of Analysis." } }
-  ]
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": { "@type": "Answer", "text": item.answer }
+  }))
 };
 
 const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://useful-chemicals.com/" },
-    { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://useful-chemicals.com/products" },
-    { "@type": "ListItem", "position": 3, "name": "Red Liquid Mercury", "item": "https://useful-chemicals.com/products/red-mercury" }
+    { "@type": "ListItem", "position": 1, "name": t(tr, 'nav.home'), "item": `https://useful-chemicals.com${lp('/')}` },
+    { "@type": "ListItem", "position": 2, "name": t(tr, 'nav.products'), "item": `https://useful-chemicals.com${lp('/products')}` },
+    { "@type": "ListItem", "position": 3, "name": t(tr, 'nav.red_mercury'), "item": `https://useful-chemicals.com${lp('/products/red-mercury')}` }
   ]
 };
 ---
 
-<BaseLayout title="Buy Red Liquid Mercury 99.999% | Red Mercury for Sale" description="Buy Red Liquid Mercury (Sb₂O₇Hg₂) with 99.999% purity from UE Chemicals. What is red mercury used for? Industrial and research applications. Red mercury for sale with certified quality and worldwide shipping." activePage="products" jsonLd={[productSchema, faqSchema, breadcrumbSchema]}>
+
+<BaseLayout lang={lang} title={t(tr, 'red_mercury.meta_title')} description={t(tr, 'red_mercury.meta_desc')} activePage="products" jsonLd={[productSchema, faqSchema, breadcrumbSchema]}>
 
   <!-- ========== HERO ========== -->
   <section class="pd-hero">
     <div class="pd-hero-bg">
-      <img src="/images/buy-red-liquid-mercury-usa.jpg" alt="Buy Red Liquid Mercury for sale - 99.999% purity" />
+      <img src="/images/buy-red-liquid-mercury-usa.jpg" alt={t(tr, 'nav.red_mercury')} />
       <div class="pd-hero-overlay"></div>
     </div>
     <div class="container pd-hero-inner">
       <div class="pd-hero-content">
-        <div class="pd-hero-badge"><i class="fas fa-flask"></i> Product Details</div>
-        <h1>Red Liquid Mercury for Sale</h1>
-        <p class="pd-hero-sub">Buy Red Liquid Mercury (Sb₂O₇Hg₂) with 99.999% purity. Used in research, industrial and specialized applications. Certified quality from a verified, reputable supplier.</p>
+        <div class="pd-hero-badge"><i class="fas fa-flask"></i> {t(tr, 'red_mercury.hero_badge')}</div>
+        <h1>{t(tr, "red_mercury.hero_title")}</h1>
+        <p class="pd-hero-sub">{t(tr, 'red_mercury.hero_sub')}</p>
         <div class="pd-hero-actions">
-          <a href="/contact" class="btn btn-accent">Get a Quote <i class="fas fa-arrow-right"></i></a>
-          <a href="/safety" class="btn btn-outline-white">Safety Info <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact")} class="btn btn-accent">{t(tr, 'common.get_quote')} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/safety")} class="btn btn-outline-white">{t(tr, 'red_mercury.safety_label')} <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -77,20 +117,20 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="pd-specs-row">
         <div class="pd-spec-item">
-          <span class="pd-spec-label">Application</span>
-          <span class="pd-spec-value">Research &amp; Industrial</span>
+          <span class="pd-spec-label">{t(tr, 'red_mercury.spec_app_label')}</span>
+          <span class="pd-spec-value">{t(tr, 'red_mercury.spec_app')}</span>
         </div>
         <div class="pd-spec-item">
-          <span class="pd-spec-label">Purity</span>
-          <span class="pd-spec-value">99.999% (5N)</span>
+          <span class="pd-spec-label">{t(tr, 'red_mercury.tech_purity')}</span>
+          <span class="pd-spec-value">{t(tr, 'red_mercury.tech_purity_val')}</span>
         </div>
         <div class="pd-spec-item">
-          <span class="pd-spec-label">Pricing</span>
-          <span class="pd-spec-value">Request Quote</span>
+          <span class="pd-spec-label">{t(tr, 'red_mercury.spec_price_label')}</span>
+          <span class="pd-spec-value">{t(tr, 'red_mercury.spec_price')}</span>
         </div>
         <div class="pd-spec-item">
-          <span class="pd-spec-label">Availability</span>
-          <span class="pd-spec-value">In Stock</span>
+          <span class="pd-spec-label">{t(tr, 'red_mercury.spec_avail_label')}</span>
+          <span class="pd-spec-value">{t(tr, 'red_mercury.spec_avail')}</span>
         </div>
       </div>
     </div>
@@ -99,35 +139,23 @@ const breadcrumbSchema = {
   <!-- ========== OVERVIEW SPLIT ========== -->
   <section class="pd-overview">
     <div class="pd-overview-image">
-      <img src="/images/red-liquid-mercury-for-sale-usa.png" alt="Red Liquid Mercury" />
+      <img src="/images/red-liquid-mercury-for-sale-usa.png" alt={t(tr, 'nav.red_mercury')} />
     </div>
     <div class="pd-overview-content">
-      <div class="section-label">Overview</div>
-      <h2>What Is Red Liquid Mercury?</h2>
-      <p>Red liquid mercury is a term often used to describe a rare substance with unique properties. This product is mainly used in specific industries that require its unique chemical makeup.</p>
-      <p>Before purchasing, it's essential to understand the exact purpose, potential applications, and safety measures associated with it. Our team provides full guidance on proper use and handling.</p>
+      <div class="section-label">{t(tr, "red_mercury.overview_label")}</div>
+      <h2>{t(tr, "red_mercury.overview_title")}</h2>
+      <p>{t(tr, 'red_mercury.overview_desc1')}</p>
+      <p>{t(tr, 'red_mercury.overview_desc2')}</p>
       <div class="pd-overview-features">
-        <div class="pd-overview-feat">
-          <div class="pd-overview-feat-icon"><i class="fas fa-check-circle"></i></div>
-          <div>
-            <h6>Quality Assured</h6>
-            <p>Our product is sourced from reputable suppliers and meets all regulatory standards.</p>
+        {overviewFeatures.map(feature => (
+          <div class="pd-overview-feat">
+            <div class="pd-overview-feat-icon"><i class="fas fa-check-circle"></i></div>
+            <div>
+              <h6>{feature.title}</h6>
+              <p>{feature.description}</p>
+            </div>
           </div>
-        </div>
-        <div class="pd-overview-feat">
-          <div class="pd-overview-feat-icon"><i class="fas fa-check-circle"></i></div>
-          <div>
-            <h6>Detailed Certification</h6>
-            <p>We provide detailed certification with every purchase for your records.</p>
-          </div>
-        </div>
-        <div class="pd-overview-feat">
-          <div class="pd-overview-feat-icon"><i class="fas fa-check-circle"></i></div>
-          <div>
-            <h6>Customer Service</h6>
-            <p>Our customer service team is available to help with any questions about authenticity, safety, and use.</p>
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   </section>
@@ -137,27 +165,16 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="pd-tech-grid">
         <div class="pd-tech-content">
-          <div class="section-label">Technical Data</div>
-          <h2>Chemical Specifications</h2>
-          <p>Detailed technical specifications for Red Liquid Mercury as verified by our quality control laboratory.</p>
+          <div class="section-label">{t(tr, "red_mercury.tech_label")}</div>
+          <h2>{t(tr, 'red_mercury.tech_title')}</h2>
+          <p>{t(tr, 'red_mercury.tech_desc')}</p>
         </div>
         <div class="pd-tech-table-wrap">
           <table class="pd-tech-table">
             <tbody>
-              <tr><td>Chemical Name</td><td>Antimony Mercury Oxide</td></tr>
-              <tr><td>Molecular Formula</td><td>Sb₂O₇Hg₂</td></tr>
-              <tr><td>Appearance</td><td>Cherry red metallic liquid</td></tr>
-              <tr><td>Purity</td><td>99.999% (5N)</td></tr>
-              <tr><td>Density</td><td>20.2 g/cm³</td></tr>
-              <tr><td>Molar Mass</td><td>756.70 g/mol</td></tr>
-              <tr><td>Melting Point</td><td>-37.67°C</td></tr>
-              <tr><td>Boiling Point</td><td>356.72°C</td></tr>
-              <tr><td>Flash Point</td><td>170.03°C</td></tr>
-              <tr><td>CAS Number</td><td>7439-97-6 (Hg base)</td></tr>
-              <tr><td>UN Number</td><td>UN2809</td></tr>
-              <tr><td>Hazard Class</td><td>8 (Corrosive) / 6.1 (Toxic)</td></tr>
-              <tr><td>Packing Group</td><td>III</td></tr>
-              <tr><td>Pack Sizes</td><td>1 kg, 5 kg, 17.5 kg, 34.5 kg</td></tr>
+              {techSpecs.map(([label, value]) => (
+                <tr><td>{label}</td><td>{value}</td></tr>
+              ))}
             </tbody>
           </table>
         </div>
@@ -166,26 +183,26 @@ const breadcrumbSchema = {
         <div class="pd-doc-card">
           <i class="fas fa-file-pdf"></i>
           <div>
-            <h5>Technical Data Sheet (TDS)</h5>
-            <p>Complete chemical specifications and physical properties.</p>
+            <h5>{t(tr, 'red_mercury.doc_tds_title')}</h5>
+            <p>{t(tr, 'red_mercury.doc_tds_desc')}</p>
           </div>
-          <a href="/contact" class="btn btn-outline btn-sm">Request TDS <i class="fas fa-download"></i></a>
+          <a href={lp("/contact")} class="btn btn-outline btn-sm">{t(tr, 'red_mercury.request_tds')} <i class="fas fa-download"></i></a>
         </div>
         <div class="pd-doc-card">
           <i class="fas fa-file-shield"></i>
           <div>
-            <h5>Safety Data Sheet (SDS)</h5>
-            <p>Hazard identification, handling, and emergency procedures.</p>
+            <h5>{t(tr, 'red_mercury.doc_sds_title')}</h5>
+            <p>{t(tr, 'red_mercury.doc_sds_desc')}</p>
           </div>
-          <a href="/contact" class="btn btn-outline btn-sm">Request SDS <i class="fas fa-download"></i></a>
+          <a href={lp("/contact")} class="btn btn-outline btn-sm">{t(tr, 'red_mercury.request_sds')} <i class="fas fa-download"></i></a>
         </div>
         <div class="pd-doc-card">
           <i class="fas fa-file-certificate"></i>
           <div>
-            <h5>Certificate of Analysis (COA)</h5>
-            <p>Batch-specific purity and quality verification.</p>
+            <h5>{t(tr, 'red_mercury.doc_coa_title')}</h5>
+            <p>{t(tr, 'red_mercury.doc_coa_desc')}</p>
           </div>
-          <a href="/contact" class="btn btn-outline btn-sm">Request COA <i class="fas fa-download"></i></a>
+          <a href={lp("/contact")} class="btn btn-outline btn-sm">{t(tr, 'red_mercury.request_coa')} <i class="fas fa-download"></i></a>
         </div>
       </div>
     </div>
@@ -195,24 +212,24 @@ const breadcrumbSchema = {
   <section class="pd-apps">
     <div class="container">
       <div class="text-center" style="margin-bottom:60px;">
-        <div class="section-label">Applications</div>
-        <h2>Why Choose Red Liquid Mercury?</h2>
+        <div class="section-label">{t(tr, "red_mercury.apps_label")}</div>
+        <h2>{t(tr, 'red_mercury.apps_title')}</h2>
       </div>
       <div class="pd-apps-grid">
         <div class="pd-app-card">
           <div class="pd-app-num">01</div>
-          <h5>Research &amp; Industrial</h5>
-          <p>Red liquid mercury can be used in research, industrial, and educational settings. Its unique chemical properties make it valuable for specialized applications.</p>
+          <h5>{t(tr, 'red_mercury.app1_title')}</h5>
+          <p>{t(tr, 'red_mercury.app1_desc')}</p>
         </div>
         <div class="pd-app-card">
           <div class="pd-app-num">02</div>
-          <h5>Safety &amp; Handling</h5>
-          <p>Due to its hazardous nature, it requires careful handling and storage. We provide complete safety documentation and handling guidelines with every order.</p>
+          <h5>{t(tr, 'red_mercury.app2_title')}</h5>
+          <p>{t(tr, 'red_mercury.app2_desc')}</p>
         </div>
         <div class="pd-app-card">
           <div class="pd-app-num">03</div>
-          <h5>Verified Authenticity</h5>
-          <p>With the rarity of this substance, ensuring you're purchasing from a trustworthy source is crucial. Every order includes verification and certification documents.</p>
+          <h5>{t(tr, 'red_mercury.app3_title')}</h5>
+          <p>{t(tr, 'red_mercury.app3_desc')}</p>
         </div>
       </div>
     </div>
@@ -223,32 +240,20 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="pd-benefits-grid">
         <div class="pd-benefits-content">
-          <div class="section-label">Buying Guide</div>
-          <h2>How to Buy<br />Safely</h2>
-          <p>Ensure a safe and compliant purchasing experience by following these key guidelines.</p>
+          <div class="section-label">{t(tr, 'red_mercury.buying_label')}</div>
+          <h2>{t(tr, 'red_mercury.buying_title')}</h2>
+          <p>{t(tr, 'red_mercury.buying_desc')}</p>
         </div>
         <div class="pd-benefits-cards">
-          <div class="pd-benefit-card">
-            <div class="pd-benefit-num">01</div>
-            <div>
-              <h5>Find a Reputable Seller</h5>
-              <p>Look for verified sellers with high ratings and positive reviews. UE Chemicals provides full transparency and certification.</p>
+          {buyingItems.map((item, index) => (
+            <div class="pd-benefit-card">
+              <div class="pd-benefit-num">{String(index + 1).padStart(2, '0')}</div>
+              <div>
+                <h5>{item.title}</h5>
+                <p>{item.description}</p>
+              </div>
             </div>
-          </div>
-          <div class="pd-benefit-card">
-            <div class="pd-benefit-num">02</div>
-            <div>
-              <h5>Check Legality</h5>
-              <p>Regulations can vary by state. Verify legal requirements and any import/export restrictions in your region before ordering.</p>
-            </div>
-          </div>
-          <div class="pd-benefit-card">
-            <div class="pd-benefit-num">03</div>
-            <div>
-              <h5>Ensure Proper Shipping</h5>
-              <p>Verify that the seller follows strict safety guidelines for storage and shipment. All our packaging meets industry safety standards.</p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     </div>
@@ -259,27 +264,20 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="pd-safety-inner">
         <div class="pd-safety-text">
-          <div class="section-label">Safety &amp; Handling</div>
-          <h2>Handling Information</h2>
-          <p>Follow these important safety and handling guidelines to ensure safe use of Red Liquid Mercury.</p>
+          <div class="section-label">{t(tr, "red_mercury.safety_label")}</div>
+          <h2>{t(tr, "red_mercury.safety_title")}</h2>
+          <p>{t(tr, 'red_mercury.safety_desc')}</p>
         </div>
         <div class="pd-safety-items">
-          <div class="pd-safety-item">
-            <i class="fas fa-box"></i>
-            <span><strong>Storage:</strong> Keep in a cool, dry area away from sunlight and incompatible materials.</span>
-          </div>
-          <div class="pd-safety-item">
-            <i class="fas fa-shield-halved"></i>
-            <span><strong>Handling:</strong> Use protective gloves and eye protection when handling at all times.</span>
-          </div>
-          <div class="pd-safety-item">
-            <i class="fas fa-recycle"></i>
-            <span><strong>Disposal:</strong> Follow EPA or local guidelines for hazardous waste disposal procedures.</span>
-          </div>
-          <div class="pd-safety-item">
-            <i class="fas fa-file-lines"></i>
-            <span><strong>Documentation:</strong> Safety Data Sheets (SDS) provided with every shipment for reference.</span>
-          </div>
+          {safetyItems.map((item, index) => (
+            <div class="pd-safety-item">
+              <i class:list={[
+                'fas',
+                index === 0 ? 'fa-box' : index === 1 ? 'fa-shield-halved' : index === 2 ? 'fa-recycle' : 'fa-file-lines'
+              ]}></i>
+              <span>{item}</span>
+            </div>
+          ))}
         </div>
       </div>
     </div>
@@ -290,27 +288,27 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="pd-quote-grid">
         <div class="pd-quote-text">
-          <div class="section-label">Get Started</div>
-          <h2>Request a Quote</h2>
-          <p>Ready to order Red Liquid Mercury? Fill out the form and our team will respond with a customized quote within 24 hours.</p>
+          <div class="section-label">{t(tr, "red_mercury.quote_label")}</div>
+          <h2>{t(tr, "red_mercury.quote_title")}</h2>
+          <p>{t(tr, 'red_mercury.quote_desc')}</p>
           <div class="pd-quote-badges">
-            <div class="pd-quote-badge"><i class="fas fa-clock"></i> 24hr Response</div>
-            <div class="pd-quote-badge"><i class="fas fa-lock"></i> Secure &amp; Private</div>
-            <div class="pd-quote-badge"><i class="fas fa-certificate"></i> Full Certification</div>
+            <div class="pd-quote-badge"><i class="fas fa-clock"></i> {t(tr, 'red_mercury.quote_badge1')}</div>
+            <div class="pd-quote-badge"><i class="fas fa-lock"></i> {t(tr, 'red_mercury.quote_badge2')}</div>
+            <div class="pd-quote-badge"><i class="fas fa-certificate"></i> {t(tr, 'red_mercury.quote_badge3')}</div>
           </div>
         </div>
         <div class="pd-quote-form-wrap">
           <form>
             <div class="form-group">
-              <label>Full Name</label>
-              <input type="text" name="name" class="form-control" placeholder="Your full name" required>
+              <label>{t(tr, 'red_mercury.form_name')}</label>
+              <input type="text" name="name" class="form-control" placeholder={t(tr, 'red_mercury.form_placeholder_name')} required>
             </div>
             <div class="form-group">
-              <label>Email Address</label>
-              <input type="email" name="email" class="form-control" placeholder="Your email address" required>
+              <label>{t(tr, 'red_mercury.form_email')}</label>
+              <input type="email" name="email" class="form-control" placeholder={t(tr, 'red_mercury.form_placeholder_email')} required>
             </div>
             <div class="form-group">
-              <label>Phone Number</label>
+              <label>{t(tr, 'red_mercury.form_phone')}</label>
               <div class="phone-input">
                 <select class="form-control">
                   <option>+49 DE</option>
@@ -319,15 +317,15 @@ const breadcrumbSchema = {
                   <option>+61 AU</option>
                   <option>+33 FR</option>
                 </select>
-                <input type="tel" name="phone" class="form-control" placeholder="Phone number">
+                <input type="tel" name="phone" class="form-control" placeholder={t(tr, 'red_mercury.form_placeholder_phone')}>
               </div>
             </div>
-            <input type="hidden" name="product" value="Red Liquid Mercury">
+            <input type="hidden" name="product" value={t(tr, 'nav.red_mercury')}>
             <div class="form-group">
-              <label>Message</label>
-              <textarea name="message" class="form-control" placeholder="Tell us about your desired quantity, intended use, delivery location, or any special requirements..." rows="4"></textarea>
+              <label>{t(tr, 'red_mercury.form_message')}</label>
+              <textarea name="message" class="form-control" placeholder={t(tr, 'red_mercury.form_placeholder_message')} rows="4"></textarea>
             </div>
-            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Request Quote <i class="fas fa-arrow-right"></i></button>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">{t(tr, 'red_mercury.form_submit')} <i class="fas fa-arrow-right"></i></button>
           </form>
         </div>
       </div>
@@ -339,29 +337,19 @@ const breadcrumbSchema = {
     <div class="container">
       <div class="faq-row">
         <div class="faq-content-col">
-          <div class="section-label">Common Concerns</div>
-          <h2 class="section-title">Common Concerns About Red Liquid Mercury</h2>
+          <div class="section-label">{t(tr, 'red_mercury.faq_label')}</div>
+          <h2 class="section-title">{t(tr, 'red_mercury.faq_title')}</h2>
           <div class="faq-list">
-            <div class="faq-item">
-              <div class="faq-question">Is it legal to buy? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">Depending on the state, there may be regulations for purchasing and handling. Check with your local authorities to confirm compliance.</div></div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-question">How can I ensure authenticity? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">Purchase from verified, reputable suppliers like UE Chemicals who provide detailed certification and quality documentation with every order.</div></div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-question">What safety precautions should I follow? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">Always wear appropriate PPE including gloves and eye protection. Store in a cool, dry area and follow EPA or local guidelines for disposal.</div></div>
-            </div>
-            <div class="faq-item">
-              <div class="faq-question">Can I import from overseas? <i class="fas fa-chevron-down"></i></div>
-              <div class="faq-answer"><div class="faq-answer-inner">Import regulations vary by country and state. Contact our team for guidance on international shipping and compliance requirements.</div></div>
-            </div>
+            {faqItems.map(item => (
+              <div class="faq-item">
+                <div class="faq-question">{item.question} <i class="fas fa-chevron-down"></i></div>
+                <div class="faq-answer"><div class="faq-answer-inner">{item.answer}</div></div>
+              </div>
+            ))}
           </div>
         </div>
         <div class="faq-image-col">
-          <img src="/images/buy-red-liquid-mercury-usa.jpg" alt="Red Liquid Mercury" />
+          <img src="/images/buy-red-liquid-mercury-usa.jpg" alt={t(tr, 'nav.red_mercury')} />
         </div>
       </div>
     </div>

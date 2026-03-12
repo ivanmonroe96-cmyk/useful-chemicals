@@ -1,0 +1,149 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath, getLangStaticPaths } from '../../i18n/index';
+import { defaultLang } from '../../i18n/languages';
+
+export const getStaticPaths = getLangStaticPaths;
+const lang = Astro.params.lang ?? defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+const blog = tr.blog;
+const blogDate = new Intl.DateTimeFormat(lang, {
+  month: 'long',
+  year: 'numeric',
+}).format(new Date(Date.UTC(2025, 6, 1)));
+
+const posts = [
+  {
+    title: blog.post1_title,
+    excerpt: blog.post1_excerpt,
+    date: blogDate,
+    category: blog.cat_safety,
+    image: "/images/Buy-Silver-Liquid-Mercury.jpg",
+    slug: "#"
+  },
+  {
+    title: blog.post2_title,
+    excerpt: blog.post2_excerpt,
+    date: blogDate,
+    category: blog.cat_products,
+    image: "/images/caluanie-muelear-oxidize-for-sale.jpg",
+    slug: "#"
+  },
+  {
+    title: blog.post3_title,
+    excerpt: blog.post3_excerpt,
+    date: blogDate,
+    category: blog.cat_compliance,
+    image: "/images/buy-new-stock-caluanie-muelear-oxidize.jpg",
+    slug: "#"
+  },
+  {
+    title: blog.post4_title,
+    excerpt: blog.post4_excerpt,
+    date: blogDate,
+    category: blog.cat_products,
+    image: "/images/buy-red-liquid-mercury-usa.jpg",
+    slug: "#"
+  },
+  {
+    title: blog.post5_title,
+    excerpt: blog.post5_excerpt,
+    date: blogDate,
+    category: blog.cat_logistics,
+    image: "/images/red-liquid-mercury-for-sale-usa.png",
+    slug: "#"
+  },
+  {
+    title: blog.post6_title,
+    excerpt: blog.post6_excerpt,
+    date: blogDate,
+    category: blog.cat_industry,
+    image: "/images/caluanie-muelear-oxidize-manufacturer-in-usa.webp",
+    slug: "#"
+  }
+];
+---
+
+
+<BaseLayout lang={lang} title={t(tr, "blog.meta_title")} description={t(tr, "blog.meta_desc")} activePage="blog">
+
+  <!-- Page Hero -->
+  <section class="page-hero">
+    <div class="container">
+      <div class="section-label">{t(tr, "blog.hero_label")}</div>
+      <h1>{t(tr, "blog.hero_title")}</h1>
+      <p>{t(tr, "blog.hero_sub")}</p>
+    </div>
+  </section>
+
+  <!-- Blog Grid -->
+  <section class="blog-section">
+    <div class="container">
+      <div class="blog-grid">
+        {posts.map((post) => (
+          <article class="blog-card">
+            <div class="blog-card-img">
+              <img src={post.image} alt={post.title} />
+              <span class="blog-card-cat">{post.category}</span>
+            </div>
+            <div class="blog-card-body">
+              <span class="blog-card-date"><i class="fas fa-calendar"></i> {post.date}</span>
+              <h3>{post.title}</h3>
+              <p>{post.excerpt}</p>
+              <span class="blog-card-link">{t(tr, "common.coming_soon")} <i class="fas fa-arrow-right"></i></span>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="blog-cta">
+        <p>{t(tr, "blog.more_coming")}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container text-center">
+      <h2>{t(tr, "blog.cta_title")}</h2>
+      <p>{t(tr, "blog.cta_desc")}</p>
+      <div class="cta-actions">
+        <a href={lp("/contact")} class="btn btn-accent">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+        <a href={lp("/faq")} class="btn btn-outline">{t(tr, "common.view_faq")} <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .blog-section { padding: 80px 0; }
+  .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-bottom: 50px; }
+
+  .blog-card { border-radius: 12px; overflow: hidden; background: var(--surface); border: 1px solid var(--border-light); transition: transform 0.3s, box-shadow 0.3s; }
+  .blog-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.08); }
+
+  .blog-card-img { position: relative; height: 200px; overflow: hidden; }
+  .blog-card-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; }
+  .blog-card:hover .blog-card-img img { transform: scale(1.05); }
+  .blog-card-cat { position: absolute; top: 14px; left: 14px; background: var(--primary); color: #fff; padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.05em; }
+
+  .blog-card-body { padding: 24px; }
+  .blog-card-date { font-size: 0.8rem; color: var(--body-text); display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+  .blog-card-date i { color: var(--primary); }
+  .blog-card-body h3 { font-size: 1.15rem; line-height: 1.4; margin-bottom: 10px; }
+  .blog-card-body p { color: var(--body-text); font-size: 0.9rem; line-height: 1.6; margin-bottom: 16px; }
+  .blog-card-link { color: var(--primary); font-weight: 600; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px; }
+
+  .blog-cta { text-align: center; }
+  .blog-cta p { color: var(--body-text); font-size: 1rem; }
+
+  .cta-section { padding: 80px 0; background: var(--dark); }
+  .cta-section h2 { color: #fff; margin-bottom: 16px; }
+  .cta-section p { color: rgba(255,255,255,0.7); margin-bottom: 30px; }
+  .cta-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  @media (max-width: 1024px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 768px) { .blog-grid { grid-template-columns: 1fr; } }
+</style>

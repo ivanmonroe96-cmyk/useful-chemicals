@@ -1,0 +1,342 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath, getLangStaticPaths } from '../../i18n/index';
+import { defaultLang } from '../../i18n/languages';
+
+export const getStaticPaths = getLangStaticPaths;
+const lang = Astro.params.lang ?? defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+const faq = tr.faq;
+
+const faqStats = [
+  { icon: 'fa-flask', value: t(tr, 'faq.stat1'), label: t(tr, 'faq.stat1_label') },
+  { icon: 'fa-earth-europe', value: t(tr, 'faq.stat2'), label: t(tr, 'faq.stat2_label') },
+  { icon: 'fa-clock', value: t(tr, 'faq.stat3'), label: t(tr, 'faq.stat3_label') },
+  { icon: 'fa-file-lines', value: t(tr, 'faq.stat4'), label: t(tr, 'faq.stat4_label') },
+];
+
+const faqSections = [
+  {
+    id: 'general',
+    icon: 'fa-building',
+    iconClass: '',
+    navLabel: t(tr, 'faq.cat_general'),
+    title: t(tr, 'faq.general_title'),
+    description: t(tr, 'faq.general_desc'),
+    items: [
+      { question: t(tr, 'faq.gen1_q'), answer: t(tr, 'faq.gen1_a') },
+      { question: t(tr, 'faq.gen2_q'), answer: t(tr, 'faq.gen2_a') },
+      { question: t(tr, 'faq.gen3_q'), answer: t(tr, 'faq.gen3_a') },
+      { question: t(tr, 'faq.gen4_q'), answer: t(tr, 'faq.gen4_a') },
+      { question: t(tr, 'faq.gen5_q'), answer: t(tr, 'faq.gen5_a') },
+    ],
+  },
+  {
+    id: 'products',
+    icon: 'fa-flask',
+    iconClass: 'fq-icon-blue',
+    navLabel: t(tr, 'faq.cat_products'),
+    title: t(tr, 'faq.products_title'),
+    description: t(tr, 'faq.products_desc'),
+    items: [
+      { question: t(tr, 'faq.prod1_q'), answer: t(tr, 'faq.prod1_a') },
+      { question: t(tr, 'faq.prod2_q'), answer: t(tr, 'faq.prod2_a') },
+      { question: t(tr, 'faq.prod3_q'), answer: t(tr, 'faq.prod3_a') },
+      { question: t(tr, 'faq.prod4_q'), answer: t(tr, 'faq.prod4_a') },
+      { question: t(tr, 'faq.prod5_q'), answer: t(tr, 'faq.prod5_a') },
+    ],
+  },
+  {
+    id: 'ordering',
+    icon: 'fa-shopping-cart',
+    iconClass: 'fq-icon-green',
+    navLabel: t(tr, 'faq.cat_ordering'),
+    title: t(tr, 'faq.ordering_title'),
+    description: t(tr, 'faq.ordering_desc'),
+    items: [
+      { question: t(tr, 'faq.ord1_q'), answer: t(tr, 'faq.ord1_a') },
+      { question: t(tr, 'faq.ord2_q'), answer: t(tr, 'faq.ord2_a') },
+      { question: t(tr, 'faq.ord3_q'), answer: t(tr, 'faq.ord3_a') },
+      { question: t(tr, 'faq.ord4_q'), answer: t(tr, 'faq.ord4_a') },
+      { question: t(tr, 'faq.ord5_q'), answer: t(tr, 'faq.ord5_a') },
+    ],
+  },
+  {
+    id: 'shipping',
+    icon: 'fa-truck',
+    iconClass: 'fq-icon-purple',
+    navLabel: t(tr, 'faq.cat_shipping'),
+    title: t(tr, 'faq.shipping_title'),
+    description: t(tr, 'faq.shipping_desc'),
+    items: [
+      { question: t(tr, 'faq.ship1_q'), answer: t(tr, 'faq.ship1_a') },
+      { question: t(tr, 'faq.ship2_q'), answer: t(tr, 'faq.ship2_a') },
+      { question: t(tr, 'faq.ship3_q'), answer: t(tr, 'faq.ship3_a') },
+      { question: t(tr, 'faq.ship4_q'), answer: t(tr, 'faq.ship4_a') },
+      { question: t(tr, 'faq.ship5_q'), answer: t(tr, 'faq.ship5_a') },
+    ],
+  },
+  {
+    id: 'safety',
+    icon: 'fa-shield-halved',
+    iconClass: 'fq-icon-red',
+    navLabel: t(tr, 'faq.cat_safety'),
+    title: t(tr, 'faq.safety_title'),
+    description: t(tr, 'faq.safety_desc'),
+    items: [
+      { question: t(tr, 'faq.safe1_q'), answer: t(tr, 'faq.safe1_a') },
+      { question: t(tr, 'faq.safe2_q'), answer: t(tr, 'faq.safe2_a') },
+      { question: t(tr, 'faq.safe3_q'), answer: t(tr, 'faq.safe3_a') },
+      { question: t(tr, 'faq.safe4_q'), answer: t(tr, 'faq.safe4_a') },
+    ],
+  },
+  {
+    id: 'compliance',
+    icon: 'fa-file-lines',
+    iconClass: 'fq-icon-gold',
+    navLabel: t(tr, 'faq.cat_compliance'),
+    title: t(tr, 'faq.compliance_title'),
+    description: t(tr, 'faq.compliance_desc'),
+    items: [
+      { question: t(tr, 'faq.comp1_q'), answer: t(tr, 'faq.comp1_a') },
+      { question: t(tr, 'faq.comp2_q'), answer: t(tr, 'faq.comp2_a') },
+      { question: t(tr, 'faq.comp3_q'), answer: t(tr, 'faq.comp3_a') },
+      { question: t(tr, 'faq.comp4_q'), answer: t(tr, 'faq.comp4_a') },
+      { question: t(tr, 'faq.comp5_q'), answer: t(tr, 'faq.comp5_a') },
+    ],
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqSections.flatMap((section) =>
+    section.items.map((item) => ({
+      "@type": "Question",
+      "name": item.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.answer,
+      },
+    }))
+  )
+};
+---
+
+
+<BaseLayout lang={lang} title={faq.meta_title} description={faq.meta_desc} activePage="faq" jsonLd={faqSchema}>
+
+  <!-- ========== HERO ========== -->
+  <section class="fq-hero">
+    <div class="fq-hero-bg">
+      <img src="/images/pexels-los-muertos-crew-10041264.jpg" alt={faq.hero_title} />
+      <div class="fq-hero-overlay"></div>
+    </div>
+    <div class="container fq-hero-inner">
+      <div class="fq-hero-content">
+        <div class="fq-hero-badge"><i class="fas fa-circle-question"></i> {faq.hero_badge}</div>
+        <h1>{faq.hero_title}</h1>
+        <p class="fq-hero-sub">{faq.hero_sub}</p>
+      </div>
+      <div class="fq-hero-stats">
+        {faqStats.map((stat) => (
+          <div class="fq-stat-pill">
+            <i class={`fas ${stat.icon}`}></i>
+            <span>{stat.value} {stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== FAQ Content ========== -->
+  <section class="fq-content">
+    <div class="container">
+      <div class="fq-grid">
+
+        <!-- Sidebar -->
+        <aside class="fq-sidebar">
+          <div class="fq-sidebar-inner">
+            <h5><i class="fas fa-layer-group"></i> {faq.categories}</h5>
+            <nav class="fq-nav">
+              {faqSections.map((section, index) => (
+                <a href={`#${section.id}`} class={`fq-nav-link ${index === 0 ? 'active' : ''}`} data-cat={section.id}>
+                  <span class="fq-nav-icon"><i class={`fas ${section.icon}`}></i></span>
+                  {section.navLabel}
+                  <span class="fq-nav-count">{section.items.length}</span>
+                </a>
+              ))}
+            </nav>
+            <div class="fq-sidebar-cta">
+              <p>{faq.cant_find}</p>
+              <p>{faq.cant_find_desc}</p>
+              <a href={lp("/contact")} class="btn btn-accent" style="width:100%;text-align:center;font-size:.88rem;padding:12px;">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Main FAQ -->
+        <div class="fq-main">
+          {faqSections.map((section) => (
+            <div class="fq-category" id={section.id}>
+              <div class="fq-cat-header">
+                <div class={`fq-cat-icon ${section.iconClass}`.trim()}><i class={`fas ${section.icon}`}></i></div>
+                <div>
+                  <h3>{section.title}</h3>
+                  <p>{section.description}</p>
+                </div>
+              </div>
+              <div class="fq-list">
+                {section.items.map((item) => (
+                  <div class="fq-item">
+                    <button class="fq-question" aria-expanded="false">
+                      <span>{item.question}</span>
+                      <div class="fq-toggle"><i class="fas fa-plus"></i></div>
+                    </button>
+                    <div class="fq-answer"><div class="fq-answer-inner">{item.answer}</div></div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CTA ========== -->
+  <section class="fq-cta">
+    <div class="container">
+      <div class="fq-cta-inner">
+        <div class="fq-cta-icon"><i class="fas fa-comments"></i></div>
+        <h2>{faq.cta_title}</h2>
+        <p>{faq.cta_desc}</p>
+        <div class="fq-cta-actions">
+          <a href={lp("/contact")} class="btn btn-white">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "common.browse_products")} <i class="fas fa-flask"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ===== Hero ===== */
+  .fq-hero { position: relative; min-height: 50vh; display: flex; align-items: center; }
+  .fq-hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .fq-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .fq-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(10,15,30,.92), rgba(10,15,30,.72)); }
+  .fq-hero-inner { position: relative; z-index: 1; padding: 110px 0 70px; }
+  .fq-hero-content { max-width: 680px; margin-bottom: 32px; }
+  .fq-hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); backdrop-filter: blur(8px); padding: 8px 18px; border-radius: 100px; font-size: .85rem; color: var(--accent); margin-bottom: 20px; }
+  .fq-hero h1 { font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 800; color: #fff; line-height: 1.15; margin-bottom: 18px; }
+  .fq-hero-sub { color: rgba(255,255,255,.75); font-size: 1.1rem; line-height: 1.7; }
+  .fq-hero-stats { display: flex; gap: 12px; flex-wrap: wrap; }
+  .fq-stat-pill { display: flex; align-items: center; gap: 8px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); padding: 10px 18px; border-radius: 10px; color: rgba(255,255,255,.85); font-size: .86rem; font-weight: 500; backdrop-filter: blur(4px); }
+  .fq-stat-pill i { color: var(--accent); }
+
+  /* ===== Content ===== */
+  .fq-content { padding: 80px 0; }
+  .fq-grid { display: grid; grid-template-columns: 260px 1fr; gap: 48px; }
+
+  /* ===== Sidebar ===== */
+  .fq-sidebar { position: sticky; top: 100px; align-self: start; }
+  .fq-sidebar-inner { background: #fff; border: 1px solid var(--border); border-radius: 16px; padding: 28px 24px; }
+  .fq-sidebar-inner h5 { font-size: .82rem; text-transform: uppercase; letter-spacing: .1em; color: var(--body-text); margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+  .fq-sidebar-inner h5 i { color: var(--accent); }
+  .fq-nav { display: flex; flex-direction: column; gap: 4px; margin-bottom: 24px; }
+  .fq-nav-link { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 10px; color: var(--body-text); font-size: .9rem; font-weight: 500; transition: all .2s; text-decoration: none; }
+  .fq-nav-link:hover { background: var(--light-bg); color: var(--accent); }
+  .fq-nav-link.active { background: var(--accent); color: #fff; }
+  .fq-nav-link.active .fq-nav-count { background: rgba(255,255,255,.2); color: #fff; }
+  .fq-nav-icon { width: 20px; text-align: center; font-size: .85rem; }
+  .fq-nav-count { margin-left: auto; font-size: .75rem; font-weight: 700; background: var(--light-bg); padding: 2px 8px; border-radius: 100px; }
+  .fq-sidebar-cta { padding-top: 20px; border-top: 1px solid var(--border); }
+  .fq-sidebar-cta p { font-size: .88rem; font-weight: 600; margin-bottom: 12px; color: var(--dark); }
+
+  /* ===== Category ===== */
+  .fq-category { margin-bottom: 48px; }
+  .fq-category:last-child { margin-bottom: 0; }
+  .fq-cat-header { display: flex; align-items: center; gap: 16px; margin-bottom: 24px; padding-bottom: 18px; border-bottom: 2px solid var(--border); }
+  .fq-cat-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(252,82,32,.1); display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: var(--accent); flex-shrink: 0; }
+  .fq-cat-icon.fq-icon-blue { background: rgba(59,130,246,.1); color: #3b82f6; }
+  .fq-cat-icon.fq-icon-green { background: rgba(34,197,94,.1); color: #22c55e; }
+  .fq-cat-icon.fq-icon-purple { background: rgba(139,92,246,.1); color: #8b5cf6; }
+  .fq-cat-icon.fq-icon-red { background: rgba(239,68,68,.1); color: #ef4444; }
+  .fq-cat-icon.fq-icon-gold { background: rgba(234,179,8,.1); color: #eab308; }
+  .fq-cat-header h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 2px; }
+  .fq-cat-header p { font-size: .85rem; color: var(--body-text); }
+
+  /* ===== FAQ Items ===== */
+  .fq-list { display: flex; flex-direction: column; gap: 10px; }
+  .fq-item { background: #fff; border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: all .3s; }
+  .fq-item:hover { border-color: rgba(252,82,32,.3); }
+  .fq-item.active { border-color: var(--accent); box-shadow: 0 4px 20px rgba(252,82,32,.08); }
+  .fq-question { width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 22px; background: none; border: none; cursor: pointer; font-size: .95rem; font-weight: 600; color: var(--dark); text-align: left; font-family: inherit; transition: color .2s; }
+  .fq-question:hover { color: var(--accent); }
+  .fq-toggle { width: 28px; height: 28px; border-radius: 8px; background: var(--light-bg); display: flex; align-items: center; justify-content: center; font-size: .7rem; color: var(--accent); flex-shrink: 0; transition: all .3s; }
+  .fq-item.active .fq-toggle { background: var(--accent); color: #fff; transform: rotate(45deg); }
+  .fq-answer { max-height: 0; overflow: hidden; transition: max-height .4s ease; }
+  .fq-item.active .fq-answer { max-height: 300px; }
+  .fq-answer-inner { padding: 0 22px 20px; color: var(--body-text); font-size: .92rem; line-height: 1.7; }
+  .fq-answer-inner a { color: var(--accent); font-weight: 600; text-decoration: underline; }
+
+  /* ===== CTA ===== */
+  .fq-cta { padding: 80px 0; }
+  .fq-cta-inner { background: linear-gradient(135deg, var(--near-black), var(--dark)); padding: 64px; border-radius: 24px; text-align: center; position: relative; overflow: hidden; }
+  .fq-cta-inner::before { content: ''; position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: rgba(252,82,32,.12); }
+  .fq-cta-inner::after { content: ''; position: absolute; bottom: -80px; left: -40px; width: 240px; height: 240px; border-radius: 50%; background: rgba(252,82,32,.08); }
+  .fq-cta-icon { width: 60px; height: 60px; margin: 0 auto 20px; background: rgba(252,82,32,.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; color: var(--accent); position: relative; z-index: 1; }
+  .fq-cta-inner h2 { color: #fff; font-size: clamp(1.5rem, 3vw, 2rem); margin-bottom: 14px; position: relative; z-index: 1; }
+  .fq-cta-inner p { color: rgba(255,255,255,.7); max-width: 580px; margin: 0 auto 30px; line-height: 1.7; position: relative; z-index: 1; }
+  .fq-cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
+
+  /* ===== Responsive ===== */
+  @media (max-width: 992px) {
+    .fq-grid { grid-template-columns: 1fr; gap: 30px; }
+    .fq-sidebar { position: static; }
+    .fq-sidebar-inner { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+    .fq-sidebar-inner h5 { width: 100%; }
+    .fq-nav { flex-direction: row; flex-wrap: wrap; gap: 6px; margin-bottom: 0; }
+    .fq-sidebar-cta { display: none; }
+  }
+  @media (max-width: 600px) {
+    .fq-cta-inner { padding: 40px 24px; }
+    .fq-hero-stats { flex-direction: column; }
+    .fq-question { padding: 16px 18px; font-size: .9rem; }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Toggle FAQ items
+    document.querySelectorAll('.fq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.fq-item');
+        if (!item) return;
+        const wasActive = item.classList.contains('active');
+        // Close all in same list
+        item.closest('.fq-list')?.querySelectorAll('.fq-item.active').forEach(el => el.classList.remove('active'));
+        if (!wasActive) item.classList.add('active');
+        btn.setAttribute('aria-expanded', String(!wasActive));
+      });
+    });
+
+    // Sidebar nav active state on scroll
+    const cats = document.querySelectorAll('.fq-category');
+    const links = document.querySelectorAll('.fq-nav-link');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          links.forEach(l => l.classList.remove('active'));
+          const link = document.querySelector('.fq-nav-link[href="#' + entry.target.id + '"]');
+          if (link) link.classList.add('active');
+        }
+      });
+    }, { rootMargin: '-20% 0px -60% 0px' });
+    cats.forEach(cat => observer.observe(cat));
+  });
+</script>
