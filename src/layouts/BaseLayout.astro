@@ -49,14 +49,15 @@ function normalizePathForSeo(path: string): string {
 const pagePath = normalizePathForSeo(canonicalPath || Astro.url.pathname);
 const canonical = `${siteUrl}${pagePath}`;
 const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
-const brandSuffix = ' | UE Chemicals';
 const normalizedTitle = normalizeWhitespace(title);
 const maxTitleLength = 60;
+const brandSuffix = ' | UE Chemicals';
+const titleHasBrand = /\bue\b/i.test(normalizedTitle);
 const safeTitleCore = truncateAtWord(
   normalizedTitle,
-  Math.max(20, maxTitleLength - brandSuffix.length),
+  titleHasBrand ? maxTitleLength : Math.max(20, maxTitleLength - brandSuffix.length),
 );
-const fullTitle = `${safeTitleCore}${brandSuffix}`;
+const fullTitle = titleHasBrand ? safeTitleCore : `${safeTitleCore}${brandSuffix}`;
 
 const defaultDescription = normalizeWhitespace(t(tr, 'site.default_description'));
 const selectedDescription = normalizeWhitespace(description || defaultDescription);
