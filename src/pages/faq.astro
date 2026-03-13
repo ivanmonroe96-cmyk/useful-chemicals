@@ -307,6 +307,16 @@ const faqSchema = {
     .fq-hero-stats { flex-direction: column; }
     .fq-question { padding: 16px 18px; font-size: .9rem; }
   }
+
+  @media (max-width: 480px) {
+    .fq-sidebar-inner { padding: 22px 18px; }
+    .fq-nav { flex-direction: column; }
+    .fq-nav-link { width: 100%; }
+    .fq-answer-inner { padding: 0 18px 18px; }
+    .fq-cta-actions { flex-direction: column; align-items: stretch; }
+    .fq-cta-actions .btn { width: 100%; justify-content: center; }
+    .fq-cta-inner { padding: 32px 18px; }
+  }
 </style>
 
 <script>

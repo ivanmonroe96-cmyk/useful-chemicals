@@ -480,9 +480,20 @@ const breadcrumbSchema = {
   @media (max-width: 768px) {
     .pd-hero { min-height: 65vh; }
     .pd-hero h1 { font-size: clamp(30px, 8vw, 48px); }
+    .pd-hero-actions { flex-direction: column; align-items: stretch; }
+    .pd-hero-actions .btn { width: 100%; justify-content: center; }
     .pd-specs-row { grid-template-columns: 1fr; }
     .pd-apps, .pd-benefits, .pd-quote { padding: 80px 0; }
     .pd-quote-form-wrap { padding: 24px; }
+  }
+
+  @media (max-width: 480px) {
+    .pd-overview-image { height: 300px; }
+    .pd-overview-content { padding: 40px 20px; }
+    .pd-app-card { padding: 36px 20px; }
+    .pd-quote-badges { flex-direction: column; align-items: stretch; }
+    .pd-quote-badge { justify-content: center; }
+    .pd-quote-form-wrap { padding: 20px; }
   }
 
 </style>

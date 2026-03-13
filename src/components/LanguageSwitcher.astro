@@ -42,7 +42,8 @@ const tr = getTranslations(currentLang);
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 6px 12px;
+    min-height: 36px;
+    padding: 6px 10px;
     background: transparent;
     border: 1px solid var(--border);
     cursor: pointer;
@@ -142,11 +143,31 @@ const tr = getTranslations(currentLang);
       display: none;
     }
     .lang-toggle {
-      padding: 6px 8px;
+      min-height: 32px;
+      padding: 5px 7px;
+      gap: 6px;
     }
     .lang-dropdown {
       right: -12px;
       min-width: 180px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .lang-toggle {
+      min-height: 30px;
+      padding: 4px 6px;
+    }
+
+    .lang-flag {
+      width: 16px;
+      height: auto;
+    }
+
+    .lang-dropdown {
+      right: -42px;
+      min-width: 160px;
+      max-width: calc(100vw - 24px);
     }
   }
 </style>

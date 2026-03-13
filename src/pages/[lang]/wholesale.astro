@@ -354,10 +354,26 @@ const lp = (path: string) => localizedPath(path, lang);
   }
   @media (max-width: 600px) {
     .wh-benefits-grid, .wh-products-grid { grid-template-columns: 1fr; }
-    .wh-industries-grid { grid-template-columns: repeat(2, 1fr); }
+    .wh-industries-grid { grid-template-columns: 1fr; }
     .wh-cta-inner { padding: 40px 24px; }
+    .wh-hero-actions,
+    .wh-cta-actions { flex-direction: column; align-items: stretch; }
+    .wh-hero-actions .btn,
+    .wh-cta-actions .btn { width: 100%; justify-content: center; }
     .wh-hero-highlights { flex-direction: column; }
+    .wh-highlight { width: 100%; justify-content: flex-start; }
+    .wh-product-inner { padding: 24px 20px; }
+    .wh-product-specs li { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .wh-product-btn { width: 100%; }
     .wh-process-line { left: 16px; }
     .wh-step-dot { width: 40px; height: 40px; }
+    .wh-step-content h4 { font-size: 1rem; }
+    .wh-step-content p { font-size: .9rem; }
+  }
+
+  @media (max-width: 420px) {
+    .wh-hero-inner { padding: 92px 0 56px; }
+    .wh-section-header { margin-bottom: 36px; }
+    .wh-cta-inner { padding: 32px 18px; }
   }
 </style>

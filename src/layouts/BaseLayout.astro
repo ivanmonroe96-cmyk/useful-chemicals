@@ -1,5 +1,5 @@
 ---
-import { languages, defaultLang } from '../i18n/languages';
+import { languages, defaultLang, getLocalizedPath } from '../i18n/languages';
 import { getTranslations, t, localizedPath } from '../i18n/index';
 
 interface Props {
@@ -24,11 +24,49 @@ const {
 
 const tr = getTranslations(lang);
 const siteUrl = 'https://useful-chemicals.com';
-const pagePath = canonicalPath || Astro.url.pathname;
+
+function normalizeWhitespace(value: string): string {
+  return value.replace(/\s+/g, ' ').trim();
+}
+
+function truncateAtWord(value: string, maxLength: number): string {
+  if (value.length <= maxLength) return value;
+  if (maxLength <= 3) return value.slice(0, maxLength);
+
+  const sliced = value.slice(0, maxLength - 3);
+  const boundary = sliced.lastIndexOf(' ');
+  const trimmed = (boundary > Math.floor(maxLength * 0.6) ? sliced.slice(0, boundary) : sliced).trim();
+  return `${trimmed}...`;
+}
+
+function normalizePathForSeo(path: string): string {
+  if (!path) return '/';
+  const [pathWithoutHash] = path.split('#');
+  const [pathname] = pathWithoutHash.split('?');
+  return getLocalizedPath(pathname || '/', defaultLang);
+}
+
+const pagePath = normalizePathForSeo(canonicalPath || Astro.url.pathname);
 const canonical = `${siteUrl}${pagePath}`;
 const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
-const fullTitle = `${title} | UE Chemicals`;
-const metaDescription = description || t(tr, 'site.default_description');
+const brandSuffix = ' | UE Chemicals';
+const normalizedTitle = normalizeWhitespace(title);
+const maxTitleLength = 60;
+const safeTitleCore = truncateAtWord(
+  normalizedTitle,
+  Math.max(20, maxTitleLength - brandSuffix.length),
+);
+const fullTitle = `${safeTitleCore}${brandSuffix}`;
+
+const defaultDescription = normalizeWhitespace(t(tr, 'site.default_description'));
+const selectedDescription = normalizeWhitespace(description || defaultDescription);
+const maxDescriptionLength = 160;
+const minDescriptionLength = 120;
+let metaDescription = selectedDescription;
+if (metaDescription.length < minDescriptionLength && defaultDescription !== metaDescription) {
+  metaDescription = normalizeWhitespace(`${metaDescription} ${defaultDescription}`);
+}
+metaDescription = truncateAtWord(metaDescription, maxDescriptionLength);
 const currentLanguage = languages.find(language => language.code === lang);
 const ogLocales: Record<string, string> = {
   en: 'en_US',
@@ -57,8 +95,7 @@ const uiLabels = {
   formError: t(tr, 'ui.form_error'),
 };
 
-// Determine the "clean" path (without lang prefix) for hreflang generation
-const cleanPath = pagePath.replace(new RegExp(`^/(${languages.filter(l => l.code !== defaultLang).map(l => l.code).join('|')})/`), '/').replace(new RegExp(`^/(${languages.filter(l => l.code !== defaultLang).map(l => l.code).join('|')})$`), '/');
+const cleanPath = getLocalizedPath(pagePath, defaultLang);
 
 const langDir = languages.find(l => l.code === lang)?.dir || 'ltr';
 
@@ -106,6 +143,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import CookieBanner from '../components/CookieBanner.astro';
 import ScrollTop from '../components/ScrollTop.astro';
+import mainScriptUrl from '../scripts/main.js?url';
 import '../styles/global.css';
 ---
 
@@ -142,7 +180,7 @@ import '../styles/global.css';
   <!-- Hreflang -->
   <link rel="alternate" hreflang="x-default" href={`${siteUrl}${cleanPath}`} />
   {languages.map(l => (
-    <link rel="alternate" hreflang={l.code} href={`${siteUrl}${l.code === defaultLang ? cleanPath : `/${l.code}${cleanPath === '/' ? '' : cleanPath}`}`} />
+    <link rel="alternate" hreflang={l.code} href={`${siteUrl}${getLocalizedPath(cleanPath, l.code)}`} />
   ))}
 
   <link rel="icon" type="image/webp" href="/images/favicon.png" />
@@ -171,6 +209,6 @@ import '../styles/global.css';
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <script src="../scripts/main.js"></script>
+  <script type="module" src={mainScriptUrl}></script>
 </body>
 </html>

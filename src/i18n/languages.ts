@@ -35,6 +35,18 @@ const nonDefaultLangCodes = languages
   .join('|');
 const langPrefixPattern = new RegExp(`^/(${nonDefaultLangCodes})(/|$)`);
 
+function normalizePathname(pathname: string): string {
+  let normalized = pathname.trim();
+  if (!normalized.startsWith('/')) normalized = `/${normalized}`;
+  normalized = normalized.replace(/\/+/g, '/');
+
+  if (normalized !== '/' && !normalized.endsWith('/')) {
+    normalized = `${normalized}/`;
+  }
+
+  return normalized || '/';
+}
+
 export function getLangFromUrl(pathname: string): string {
   const [, maybeLang] = pathname.split('/');
   const found = languages.find(l => l.code === maybeLang);
@@ -42,8 +54,16 @@ export function getLangFromUrl(pathname: string): string {
 }
 
 export function getLocalizedPath(path: string, lang: string): string {
-  // Strip any existing lang prefix
-  const clean = path.replace(langPrefixPattern, '/');
-  if (lang === defaultLang) return clean || '/';
-  return `/${lang}${clean === '/' ? '' : clean}`;
+  const [pathWithoutHash, hash = ''] = path.split('#');
+  const [pathname, search = ''] = pathWithoutHash.split('?');
+
+  // Strip any existing lang prefix then normalize to canonical trailing-slash URLs.
+  const cleanPathname = normalizePathname((pathname || '/').replace(langPrefixPattern, '/'));
+  const localizedPathname = lang === defaultLang
+    ? cleanPathname
+    : `/${lang}${cleanPathname === '/' ? '/' : cleanPathname}`;
+
+  const queryPart = search ? `?${search}` : '';
+  const hashPart = hash ? `#${hash}` : '';
+  return `${localizedPathname}${queryPart}${hashPart}`;
 }

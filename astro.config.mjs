@@ -7,6 +7,7 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://useful-chemicals.com',
   output: 'static',
+  trailingSlash: 'always',
   adapter: cloudflare({ imageService: 'compile' }),
   integrations: [sitemap()],
   i18n: {

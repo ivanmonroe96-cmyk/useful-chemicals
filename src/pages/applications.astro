@@ -865,6 +865,8 @@ const lp = (path: string) => localizedPath(path, lang);
     .app-hero-sub { font-size: 16px; }
     .app-hero-stats { flex-direction: column; gap: 20px; align-items: flex-start; }
     .app-hero-stat-divider { width: 100%; height: 1px; }
+    .app-cta-actions { flex-direction: column; align-items: stretch; }
+    .app-cta-actions .btn { width: 100%; justify-content: center; }
     .app-industries-grid { grid-template-columns: 1fr; }
     .app-ind-card { border-left: 1px solid rgba(255,255,255,0.08); border-right: 1px solid rgba(255,255,255,0.08); border-top: none !important; }
     .app-ind-card:first-child { border-top: 1px solid rgba(255,255,255,0.08) !important; }
@@ -872,5 +874,11 @@ const lp = (path: string) => localizedPath(path, lang);
     .chem-showcase-header { padding-bottom: 50px; margin-bottom: 50px; }
     .app-cta { padding: 60px 0; }
     .chem-block-image { height: 280px; }
+  }
+
+  @media (max-width: 480px) {
+    .chem-block-content { padding: 40px 20px; }
+    .app-split-image { height: 300px; }
+    .app-split-content { padding: 40px 20px; }
   }
 </style>

@@ -1,4 +1,4 @@
-import { defaultLang, languages } from './languages';
+import { defaultLang, languages, getLocalizedPath } from './languages';
 
 const translationModules = import.meta.glob('./translations/*.json', { eager: true });
 const fallbackModule = translationModules[`./translations/${defaultLang}.json`] as any;
@@ -29,8 +29,7 @@ export function t(translations: Record<string, any>, key: string): string {
 }
 
 export function localizedPath(path: string, lang: string): string {
-  if (lang === defaultLang) return path;
-  return `/${lang}${path === '/' ? '' : path}`;
+  return getLocalizedPath(path, lang);
 }
 
 export function getLangStaticPaths() {

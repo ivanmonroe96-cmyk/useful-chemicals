@@ -10,6 +10,13 @@ const uiLabels = (() => {
 const sendingLabel = uiLabels.formSending || 'Sending...';
 const sentLabel = uiLabels.formSent || 'Sent!';
 const errorLabel = uiLabels.formError || 'Error - try again';
+const searchOverlay = document.getElementById('searchOverlay');
+
+function syncBodyScrollLock() {
+  const navOpen = document.getElementById('nav')?.classList.contains('open');
+  const searchOpen = searchOverlay?.classList.contains('active');
+  document.body.style.overflow = navOpen || searchOpen ? 'hidden' : '';
+}
 
 const header = document.getElementById('header');
 if (header) {
@@ -22,11 +29,29 @@ if (header) {
 const menuToggle = document.getElementById('menuToggle');
 const nav = document.getElementById('nav');
 if (menuToggle && nav) {
+  const closeNav = () => {
+    menuToggle.classList.remove('active');
+    nav.classList.remove('open');
+    menuToggle.setAttribute('aria-expanded', 'false');
+    syncBodyScrollLock();
+  };
+
   menuToggle.addEventListener('click', () => {
     menuToggle.classList.toggle('active');
     nav.classList.toggle('open');
-    document.body.style.overflow = nav.classList.contains('open') ? 'hidden' : '';
+    menuToggle.setAttribute('aria-expanded', String(nav.classList.contains('open')));
+    syncBodyScrollLock();
   });
+
+  nav.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      const parent = link.parentElement;
+      if (window.innerWidth <= 768 && !parent?.classList.contains('nav-dropdown')) {
+        closeNav();
+      }
+    });
+  });
+
   // Dropdown toggle on mobile
   nav.querySelectorAll('.nav-dropdown').forEach(dd => {
     dd.querySelector('.nav-link')?.addEventListener('click', (e) => {
@@ -35,6 +60,12 @@ if (menuToggle && nav) {
         dd.classList.toggle('open');
       }
     });
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      closeNav();
+    }
   });
 }
 
@@ -142,7 +173,6 @@ document.querySelectorAll('form:not(#contactForm)').forEach(form => {
 
 // Search functionality
 const searchToggle = document.getElementById('searchToggle');
-const searchOverlay = document.getElementById('searchOverlay');
 const searchClose = document.getElementById('searchClose');
 const searchInput = document.getElementById('searchInput');
 const searchResults = document.getElementById('searchResults');
@@ -158,13 +188,13 @@ const noResultsLabel = searchOverlay?.dataset.noResults || 'No results found.';
 
 function openSearch() {
   searchOverlay?.classList.add('active');
-  document.body.style.overflow = 'hidden';
+  syncBodyScrollLock();
   setTimeout(() => searchInput?.focus(), 200);
 }
 
 function closeSearch() {
   searchOverlay?.classList.remove('active');
-  document.body.style.overflow = '';
+  syncBodyScrollLock();
   if (searchInput) searchInput.value = '';
   if (searchResults) searchResults.innerHTML = '';
 }
