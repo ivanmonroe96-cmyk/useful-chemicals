@@ -39,33 +39,44 @@ function truncateAtWord(value: string, maxLength: number): string {
   return `${trimmed}...`;
 }
 
-function normalizePathForSeo(path: string): string {
+function normalizePathForSeo(path: string, locale: string): string {
   if (!path) return '/';
   const [pathWithoutHash] = path.split('#');
   const [pathname] = pathWithoutHash.split('?');
-  return getLocalizedPath(pathname || '/', defaultLang);
+  return getLocalizedPath(pathname || '/', locale);
 }
 
-const pagePath = normalizePathForSeo(canonicalPath || Astro.url.pathname);
+const pagePath = normalizePathForSeo(canonicalPath || Astro.url.pathname, lang);
 const canonical = `${siteUrl}${pagePath}`;
 const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`;
 const normalizedTitle = normalizeWhitespace(title);
+const minTitleLength = 30;
 const maxTitleLength = 60;
 const brandSuffix = ' | UE Chemicals';
+const locationSuffix = ' | Bangkok, Thailand';
 const titleHasBrand = /\bue\b/i.test(normalizedTitle);
 const safeTitleCore = truncateAtWord(
   normalizedTitle,
   titleHasBrand ? maxTitleLength : Math.max(20, maxTitleLength - brandSuffix.length),
 );
-const fullTitle = titleHasBrand ? safeTitleCore : `${safeTitleCore}${brandSuffix}`;
+let fullTitle = titleHasBrand ? safeTitleCore : `${safeTitleCore}${brandSuffix}`;
+if (fullTitle.length < minTitleLength && !/bangkok|thailand/i.test(fullTitle)) {
+  fullTitle = truncateAtWord(`${fullTitle}${locationSuffix}`, maxTitleLength);
+}
 
 const defaultDescription = normalizeWhitespace(t(tr, 'site.default_description'));
+const organizationDescription = normalizeWhitespace(t(tr, 'site.organization_description'));
+const websiteDescription = normalizeWhitespace(t(tr, 'site.website_description'));
 const selectedDescription = normalizeWhitespace(description || defaultDescription);
 const maxDescriptionLength = 160;
 const minDescriptionLength = 120;
 let metaDescription = selectedDescription;
-if (metaDescription.length < minDescriptionLength && defaultDescription !== metaDescription) {
-  metaDescription = normalizeWhitespace(`${metaDescription} ${defaultDescription}`);
+const descriptionFallbacks = [defaultDescription, organizationDescription, websiteDescription];
+for (const fallbackDescription of descriptionFallbacks) {
+  if (metaDescription.length >= minDescriptionLength) break;
+  if (fallbackDescription && fallbackDescription !== metaDescription && !metaDescription.includes(fallbackDescription)) {
+    metaDescription = normalizeWhitespace(`${metaDescription} ${fallbackDescription}`);
+  }
 }
 metaDescription = truncateAtWord(metaDescription, maxDescriptionLength);
 const currentLanguage = languages.find(language => language.code === lang);
@@ -210,6 +221,6 @@ import '../styles/global.css';
     <i class="fab fa-whatsapp"></i>
   </a>
 
-  <script type="module" src={mainScriptUrl}></script>
+  <script is:inline type="module" src={mainScriptUrl}></script>
 </body>
 </html>

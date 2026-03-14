@@ -15,7 +15,7 @@ const tr = getTranslations(currentLang);
 
 <div class="lang-switcher" id="langSwitcher">
   <button class="lang-toggle" id="langToggle" aria-expanded="false" aria-label={t(tr, 'language.select')}>
-    <img src={`https://flagcdn.com/w20/${currentLanguage.flag}.png`} srcset={`https://flagcdn.com/w40/${currentLanguage.flag}.png 2x`} width="20" alt={currentLanguage.name} class="lang-flag" />
+    <img loading="lazy" src={`https://flagcdn.com/w20/${currentLanguage.flag}.png`} srcset={`https://flagcdn.com/w40/${currentLanguage.flag}.png 2x`} width="20" alt={currentLanguage.name} class="lang-flag" />
     <span class="lang-name">{currentLanguage.name}</span>
     <i class="fas fa-chevron-down lang-arrow"></i>
   </button>
@@ -26,7 +26,7 @@ const tr = getTranslations(currentLang);
         class:list={['lang-option', { active: lang.code === currentLang }]}
         data-lang={lang.code}
       >
-        <img src={`https://flagcdn.com/w20/${lang.flag}.png`} srcset={`https://flagcdn.com/w40/${lang.flag}.png 2x`} width="20" alt={lang.name} class="lang-flag" />
+        <img loading="lazy" src={`https://flagcdn.com/w20/${lang.flag}.png`} srcset={`https://flagcdn.com/w40/${lang.flag}.png 2x`} width="20" alt={lang.name} class="lang-flag" />
         <span class="lang-name">{lang.name}</span>
       </a>
     ))}
