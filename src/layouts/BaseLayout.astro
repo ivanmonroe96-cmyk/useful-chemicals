@@ -24,6 +24,11 @@ const {
 
 const tr = getTranslations(lang);
 const siteUrl = 'https://useful-chemicals.com';
+const documentCacheControl = 'public, max-age=0, must-revalidate';
+
+Astro.response.headers.set('Cache-Control', documentCacheControl);
+Astro.response.headers.set('CDN-Cache-Control', 'no-store');
+Astro.response.headers.set('Cloudflare-CDN-Cache-Control', 'no-store');
 
 function normalizeWhitespace(value: string): string {
   return value.replace(/\s+/g, ' ').trim();
