@@ -7,15 +7,28 @@ export const getStaticPaths = getLangStaticPaths;
 const lang = Astro.params.lang ?? defaultLang;
 const tr = getTranslations(lang);
 const lp = (path: string) => localizedPath(path, lang);
+
+const safetySchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": t(tr, "safety.meta_title"),
+  "description": t(tr, "safety.meta_desc"),
+  "specialty": "Chemical Safety & Handling",
+  "about": {
+    "@type": "Thing",
+    "name": "Chemical Safety Guidelines",
+    "description": "Safety data sheets, handling procedures, and regulatory compliance for industrial chemicals"
+  }
+};
 ---
 
 
-<BaseLayout lang={lang} title={t(tr, "safety.meta_title")} description={t(tr, "safety.meta_desc")} activePage="safety">
+<BaseLayout lang={lang} title={t(tr, "safety.meta_title")} description={t(tr, "safety.meta_desc")} activePage="safety" jsonLd={safetySchema}>
 
   <!-- ========== HERO ========== -->
   <section class="sf-hero">
     <div class="sf-hero-bg">
-      <img src="/images/safety-guidelines-for-chemical-storage-and-handling-1.jpg" alt={t(tr, "safety.hero_title")} />
+      <img src="/images/about/BTC-CHONBURI-PLANT-2-8.1.jpg" alt={t(tr, "safety.hero_title")} />
       <div class="sf-hero-overlay"></div>
     </div>
     <div class="container sf-hero-inner">
@@ -303,7 +316,7 @@ const lp = (path: string) => localizedPath(path, lang);
   <!-- ========== COMMITMENT SPLIT ========== -->
   <section class="sf-commitment">
     <div class="sf-commitment-image">
-      <img src="/images/ue-chemicals.png" alt={t(tr, "safety.commitment_title")} />
+      <img src="/images/about/Whisk_a8e5707ae2a89769b4e4a5d84aafec92dr.png" alt={t(tr, "safety.commitment_title")} />
     </div>
     <div class="sf-commitment-content">
       <div class="section-label">{t(tr, "safety.commitment_label")}</div>

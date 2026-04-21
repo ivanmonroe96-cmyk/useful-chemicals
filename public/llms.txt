@@ -41,16 +41,42 @@
 ## Key Pages
 
 - Home: https://useful-chemicals.com/
-- Products: https://useful-chemicals.com/products
-- About: https://useful-chemicals.com/about
-- Applications: https://useful-chemicals.com/applications
-- Safety: https://useful-chemicals.com/safety
-- Contact: https://useful-chemicals.com/contact
-- Ordering: https://useful-chemicals.com/ordering
-- Shipping: https://useful-chemicals.com/shipping
-- Wholesale: https://useful-chemicals.com/wholesale
-- FAQ: https://useful-chemicals.com/faq
-- Certificates: https://useful-chemicals.com/certificates
+- Products: https://useful-chemicals.com/products/
+- About: https://useful-chemicals.com/about/
+- Applications: https://useful-chemicals.com/applications/
+- Safety: https://useful-chemicals.com/safety/
+- Contact: https://useful-chemicals.com/contact/
+- Ordering: https://useful-chemicals.com/ordering/
+- Shipping: https://useful-chemicals.com/shipping/
+- Wholesale: https://useful-chemicals.com/wholesale/
+- FAQ: https://useful-chemicals.com/faq/
+- Certificates: https://useful-chemicals.com/certificates/
+- Blog: https://useful-chemicals.com/blog/
+- Caluanie Buyer's Guide: https://useful-chemicals.com/blog/caluanie-muelear-oxidize-guide/
+
+## Frequently Asked Questions
+
+### What is Caluanie Muelear Oxidize?
+Caluanie Muelear Oxidize is a heavy-water-based liquid oxidizer used in metalworking, metal refining, mineral extraction, and chemical manufacturing. It appears as a clear to slightly amber liquid with a density of approximately 1.2 g/cm³.
+
+### Can I buy Caluanie Muelear Oxidize online?
+Yes. UE Chemicals accepts orders through the website contact form at https://useful-chemicals.com/contact/. Submit your requirements and receive a customized quote with full documentation, typically within 24 hours.
+
+### Is Caluanie Muelear Oxidize legal?
+Yes. Caluanie Muelear Oxidize is a legal industrial chemical in the vast majority of jurisdictions worldwide. Its use is subject to local regulations regarding hazardous materials handling, storage, and transportation.
+
+### What documentation is provided with orders?
+Every order ships with a Certificate of Analysis (COA), Safety Data Sheet (SDS), and Technical Data Sheet (TDS). Transport documentation (ADR, IMDG, IATA) is included for international shipments.
+
+### Where does UE Chemicals ship to?
+UE Chemicals ships globally from Bangkok, Thailand. Delivery is available to the USA, Europe (Germany, France, Spain, Italy, Netherlands, Poland, Czech Republic, Romania), Middle East (UAE, Saudi Arabia, Iran, Turkey), Asia-Pacific (China, South Korea, Indonesia, Vietnam, Bangladesh), and Latin America (Brazil, Mexico, Colombia).
+
+### What pack sizes are available?
+Products are available in 1 L, 5 L, 10 L, and 25 L containers for smaller orders, and 200 L drums for industrial-scale use.
+
+## Languages Supported
+
+This website is available in 19 languages: English, Arabic, Bengali, Chinese, Czech, Dutch, French, German, Indonesian, Italian, Korean, Farsi, Polish, Portuguese, Romanian, Russian, Spanish, Turkish, and Vietnamese.
 
 ## Capabilities
 

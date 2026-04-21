@@ -54,14 +54,16 @@
   "ui": {
     "form_sending": "正在发送...",
     "form_sent": "发送！",
-    "form_error": "错误 - 再试一次",
-    "scroll_to_top": "滚动到顶部"
+    "form_error": "错误 - 再试一次"
   },
   "site": {
     "default_description": "购买 Caluanie Muelear Oxidize, 红汞, 液态汞 直接来自位于泰国曼谷的制造商和供应商 UE Chemicals. 提供 COA、SDS、TDS、纯度证明和全球运输.",
     "organization_description": "直接来自位于泰国曼谷的制造商和供应商 UE Chemicals. 用于金属加工、精炼、科研和贵金属回收的工业化学品. 每个批次均提供 ISO、REACH 和分析文件.",
     "website_description": "购买 Caluanie Muelear Oxidize, 红汞, 液态汞 直接来自位于泰国曼谷的制造商和供应商 UE Chemicals. 提供 COA、SDS、TDS、纯度证明和全球运输.",
-    "whatsapp_label": "在 WhatsApp 上聊天"
+    "whatsapp_label": "在 WhatsApp 上聊天",
+    "local_region": "中国及亚太地区",
+    "local_shipping_note": "直接发货至中国大陆、香港、台湾及亚太地区。",
+    "meta_keywords": "Caluanie Muelear Oxidize, 红汞, 液态汞, 银汞, 曼谷化工供应商, 制造商, COA, SDS, TDS, 批发, 全球运输, 工业化学品"
   },
   "common": {
     "get_quote": "获取报价",
@@ -92,7 +94,7 @@
   },
   "home": {
     "meta_title": "caluanie muelear oxidize是什么 | 红汞 | 液态汞",
-    "meta_desc": "购买 Caluanie Muelear Oxidize, 红汞, 液态汞 直接来自位于泰国曼谷的制造商和供应商 UE Chemicals. 提供 COA、SDS、TDS、纯度证明和全球运输.",
+    "meta_desc": "购买 Caluanie Muelear Oxidize, 红汞, 液态汞 直接来自位于泰国曼谷的制造商和供应商 UE Chemicals. 提供 COA、SDS、TDS、纯度证明和全球运输. 发货至中国及亚太地区.",
     "hero_badge": "泰国曼谷 — 从第一天起就值得信赖",
     "hero_title": "Caluanie Muelear 氧化、红汞和银汞出售",
     "hero_sub": "购买工业级 Caluanie Muelear Oxidize、红色液体汞和银色液体汞。纯度认证，泰国制造，销往世界各地。从第一天起就是值得信赖的化学品供应商。",
@@ -292,7 +294,8 @@
     "stat3_num": "全球",
     "stat3_label": "航运网络",
     "get_quote": "获取报价",
-    "view_apps": "查看应用"
+    "view_apps": "查看应用",
+    "meta_keywords": "Caluanie Muelear Oxidize, 红汞, 液态汞, 银汞, 曼谷化工供应商, 制造商, 批发, 报价, COA, SDS, TDS, 全球运输, 工业化学品"
   },
   "contact": {
     "meta_title": "联系 UE Chemicals – 购买 Caluanie Muelear 氧化和汞",
@@ -1101,7 +1104,8 @@
     "cat_logistics": "物流",
     "cat_industry": "工业",
     "more_coming": "更多文章即将推出。订阅以了解最新的化工行业见解和产品新闻。",
-    "view_faq": "查看常见问题解答"
+    "view_faq": "查看常见问题解答",
+    "meta_keywords": "Caluanie Muelear Oxidize 指南, 红汞指南, 液态汞指南, 工业化学品博客, 化学安全, 运输文件, COA, SDS, TDS, 常见问题, 曼谷供应商"
   },
   "certificates": {
     "meta_title": "证书和质量保证 – UE Chemicals",

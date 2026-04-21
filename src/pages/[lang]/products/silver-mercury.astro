@@ -55,6 +55,7 @@ const productSchema = {
   "@type": "Product",
   "name": t(tr, 'nav.silver_mercury'),
   "description": t(tr, 'silver_mercury.meta_desc'),
+  "image": `https://useful-chemicals.com/images/Buy-Silver-Liquid-Mercury.jpg`,
   "brand": { "@type": "Brand", "name": "UE Chemicals" },
   "manufacturer": { "@type": "Organization", "name": "UE Chemicals", "address": { "@type": "PostalAddress", "addressLocality": "Bangkok", "addressCountry": "TH" } },
   "sku": "UEC-SLM-4N",
@@ -63,16 +64,7 @@ const productSchema = {
     { "@type": "PropertyValue", "name": t(tr, 'silver_mercury.tech_cas'), "value": t(tr, 'silver_mercury.tech_cas_val') },
     { "@type": "PropertyValue", "name": t(tr, 'silver_mercury.tech_density'), "value": t(tr, 'silver_mercury.tech_density_val') },
     { "@type": "PropertyValue", "name": t(tr, 'silver_mercury.tech_un'), "value": t(tr, 'silver_mercury.tech_un_val') }
-  ],
-  "offers": {
-    "@type": "Offer",
-    "availability": "https://schema.org/InStock",
-    "priceCurrency": "USD",
-    "price": "0",
-    "priceValidUntil": "2026-12-31",
-    "url": `https://useful-chemicals.com${lp('/products/silver-mercury')}`,
-    "seller": { "@type": "Organization", "name": "UE Chemicals" }
-  }
+  ]
 };
 
 const faqSchema = {
@@ -97,7 +89,7 @@ const breadcrumbSchema = {
 ---
 
 
-<BaseLayout lang={lang} title={t(tr, 'silver_mercury.meta_title')} description={t(tr, 'silver_mercury.meta_desc')} activePage="products" jsonLd={[productSchema, faqSchema, breadcrumbSchema]}>
+<BaseLayout lang={lang} title={t(tr, 'silver_mercury.meta_title')} description={t(tr, 'silver_mercury.meta_desc')} activePage="products" ogImage="/images/Buy-Silver-Liquid-Mercury.jpg" jsonLd={[productSchema, faqSchema, breadcrumbSchema]}>
 
   <!-- ========== HERO ========== -->
   <section class="pd-hero">
@@ -192,7 +184,7 @@ const breadcrumbSchema = {
             <h5>{t(tr, 'silver_mercury.doc_tds_title')}</h5>
             <p>{t(tr, 'silver_mercury.doc_tds_desc')}</p>
           </div>
-          <a href={lp("/contact")} class="btn btn-outline btn-sm">{t(tr, 'silver_mercury.request_tds')} <i class="fas fa-download"></i></a>
+          <a href="#" class="btn btn-outline btn-sm" style="opacity: 0.5; pointer-events: none;" title="TDS Not Available">{t(tr, 'silver_mercury.request_tds')} <i class="fas fa-download"></i></a>
         </div>
         <div class="pd-doc-card">
           <i class="fas fa-file-shield"></i>
@@ -200,7 +192,7 @@ const breadcrumbSchema = {
             <h5>{t(tr, 'silver_mercury.doc_sds_title')}</h5>
             <p>{t(tr, 'silver_mercury.doc_sds_desc')}</p>
           </div>
-          <a href={lp("/contact")} class="btn btn-outline btn-sm">{t(tr, 'silver_mercury.request_sds')} <i class="fas fa-download"></i></a>
+          <a href="/documents/Silver%20Liquid%20Mercury/Safety%20Data%20Sheet%20-%20Silver%20Mercury.pdf" download class="btn btn-outline btn-sm">{t(tr, 'caluanie.download_sds')} <i class="fas fa-download"></i></a>
         </div>
         <div class="pd-doc-card">
           <i class="fas fa-file-certificate"></i>
@@ -208,7 +200,7 @@ const breadcrumbSchema = {
             <h5>{t(tr, 'silver_mercury.doc_coa_title')}</h5>
             <p>{t(tr, 'silver_mercury.doc_coa_desc')}</p>
           </div>
-          <a href={lp("/contact")} class="btn btn-outline btn-sm">{t(tr, 'silver_mercury.request_coa')} <i class="fas fa-download"></i></a>
+          <a href="/documents/Silver%20Liquid%20Mercury/Certificate%20of%20Analysis%20-%20Silver%20Mercury.pdf" download class="btn btn-outline btn-sm">{t(tr, 'caluanie.download_coa')} <i class="fas fa-download"></i></a>
         </div>
       </div>
     </div>

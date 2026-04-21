@@ -54,14 +54,16 @@
   "ui": {
     "form_sending": "Invio...",
     "form_sent": "Inviato!",
-    "form_error": "Errore: riprova",
-    "scroll_to_top": "Scorri verso l'alto"
+    "form_error": "Errore: riprova"
   },
   "site": {
     "default_description": "Acquista Caluanie Muelear Oxidize, mercurio rosso, mercurio liquido direttamente da UE Chemicals, produttore e fornitore a Bangkok, Thailandia, con COA, SDS, TDS, purezza certificata e spedizione globale.",
     "organization_description": "direttamente da UE Chemicals, produttore e fornitore a Bangkok, Thailandia. prodotti chimici industriali per lavorazione dei metalli, raffinazione, ricerca e recupero dei metalli preziosi. certificazioni ISO, REACH e documentazione analitica per ogni lotto.",
     "website_description": "Acquista Caluanie Muelear Oxidize, mercurio rosso, mercurio liquido direttamente da UE Chemicals, produttore e fornitore a Bangkok, Thailandia, con COA, SDS, TDS, purezza certificata e spedizione globale.",
-    "whatsapp_label": "Chatta su WhatsApp"
+    "whatsapp_label": "Chatta su WhatsApp",
+    "local_region": "Italia & Europa",
+    "local_shipping_note": "Spedizione diretta in Italia, Svizzera e in tutta Europa.",
+    "meta_keywords": "Caluanie Muelear Oxidize, mercurio rosso, mercurio liquido, mercurio argentato, fornitore chimico a Bangkok, produttore, COA, SDS, TDS, vendita all'ingrosso, spedizione globale, prodotti chimici industriali"
   },
   "common": {
     "get_quote": "Richiedi un preventivo",
@@ -292,7 +294,8 @@
     "stat3_num": "Globale",
     "stat3_label": "Rete di spedizioni",
     "get_quote": "Richiedi un preventivo",
-    "view_apps": "Visualizza applicazioni"
+    "view_apps": "Visualizza applicazioni",
+    "meta_keywords": "Caluanie Muelear Oxidize, mercurio rosso, mercurio liquido, mercurio argentato, fornitore chimico a Bangkok, produttore, vendita all'ingrosso, preventivo, COA, SDS, TDS, spedizione globale, prodotti chimici industriali"
   },
   "contact": {
     "meta_title": "Contatta UE Chemicals – Acquista Caluanie Muelear Oxidize & Mercury",
@@ -504,8 +507,8 @@
     "view_products": "Visualizza i prodotti"
   },
   "ordering": {
-    "meta_title": "Come acquistare Caluanie Muelear ossida e mercurio online",
-    "meta_desc": "Come ordinare Caluanie Muelear Oxidize, Red Mercury e Silver Mercury online. Processo di ordinazione semplice, spedizione in tutto il mondo da Bangkok, Tailandia.",
+    "meta_title": "Come acquistare Caluanie Muelear Oxidize e mercurio online",
+    "meta_desc": "Come ordinare Caluanie Muelear Oxidize, mercurio rosso e mercurio liquido argentato online. Processo di ordinazione semplice, spedizione in tutto il mondo da Bangkok, Thailandia.",
     "hero_label": "Come ordinare",
     "hero_title": "Informazioni per l'ordinazione di prodotti chimici industriali",
     "hero_desc": "Segui il nostro semplice processo di ordinazione per ricevere i prodotti chimici di cui hai bisogno, consegnati in modo sicuro e puntuale.",
@@ -1101,7 +1104,8 @@
     "cat_logistics": "Logistica",
     "cat_industry": "Industria",
     "more_coming": "Altri articoli in arrivo. Iscriviti per rimanere aggiornato sugli approfondimenti del settore chimico e sulle novità sui prodotti.",
-    "view_faq": "Visualizza le domande frequenti"
+    "view_faq": "Visualizza le domande frequenti",
+    "meta_keywords": "guida a Caluanie Muelear Oxidize, guida al mercurio rosso, guida al mercurio liquido, blog di prodotti chimici industriali, sicurezza chimica, documentazione di spedizione, COA, SDS, TDS, FAQ, fornitore a Bangkok"
   },
   "certificates": {
     "meta_title": "Certificati e garanzia di qualità – Prodotti chimici UE",

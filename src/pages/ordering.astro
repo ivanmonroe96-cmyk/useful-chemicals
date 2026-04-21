@@ -6,10 +6,23 @@ import { defaultLang } from '../i18n/languages';
 const lang = defaultLang;
 const tr = getTranslations(lang);
 const lp = (path: string) => localizedPath(path, lang);
+
+const howToSchema = {
+  "@context": "https://schema.org",
+  "@type": "HowTo",
+  "name": t(tr, "ordering.meta_title"),
+  "description": t(tr, "ordering.meta_desc"),
+  "step": [
+    { "@type": "HowToStep", "position": 1, "name": t(tr, "ordering.step1_title"), "text": t(tr, "ordering.step1_desc") },
+    { "@type": "HowToStep", "position": 2, "name": t(tr, "ordering.step2_title"), "text": t(tr, "ordering.step2_desc") },
+    { "@type": "HowToStep", "position": 3, "name": t(tr, "ordering.step3_title"), "text": t(tr, "ordering.step3_desc") },
+    { "@type": "HowToStep", "position": 4, "name": t(tr, "ordering.step4_title"), "text": t(tr, "ordering.step4_desc") },
+  ]
+};
 ---
 
 
-<BaseLayout lang={lang} title={t(tr, "ordering.meta_title")} description={t(tr, "ordering.meta_desc")} activePage="ordering">
+<BaseLayout lang={lang} title={t(tr, "ordering.meta_title")} description={t(tr, "ordering.meta_desc")} activePage="ordering" jsonLd={howToSchema}>
 
   <!-- Page Hero -->
   <section class="page-hero">
@@ -76,7 +89,7 @@ const lp = (path: string) => localizedPath(path, lang);
           <p style="margin-top:15px;"><strong style="color:var(--black);">{t(tr, "ordering.shipping_estimate")}</strong> {t(tr, "ordering.shipping_estimate_desc")}</p>
         </div>
         <div class="two-col-image">
-          <img src="/images/Applications-of-Our-Industrial-Chemicals.jpg" alt={t(tr, "ordering.shipping_title")} style="height:400px;object-fit:cover;width:100%;">
+          <img src="/images/about/Storage-Rack-2_0.jpg" alt={t(tr, "ordering.shipping_title")} style="height:400px;object-fit:cover;width:100%;">
         </div>
       </div>
     </div>

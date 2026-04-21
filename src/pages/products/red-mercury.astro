@@ -49,6 +49,7 @@ const productSchema = {
   "@type": "Product",
   "name": t(tr, 'nav.red_mercury'),
   "description": t(tr, 'red_mercury.meta_desc'),
+  "image": `https://useful-chemicals.com/images/buy-red-liquid-mercury-usa.jpg`,
   "brand": { "@type": "Brand", "name": "UE Chemicals" },
   "manufacturer": { "@type": "Organization", "name": "UE Chemicals", "address": { "@type": "PostalAddress", "addressLocality": "Bangkok", "addressCountry": "TH" } },
   "sku": "UEC-RLM-5N",
@@ -57,16 +58,7 @@ const productSchema = {
     { "@type": "PropertyValue", "name": t(tr, 'red_mercury.tech_purity'), "value": t(tr, 'red_mercury.tech_purity_val') },
     { "@type": "PropertyValue", "name": t(tr, 'red_mercury.tech_density'), "value": t(tr, 'red_mercury.tech_density_val') },
     { "@type": "PropertyValue", "name": t(tr, 'red_mercury.tech_formula'), "value": t(tr, 'red_mercury.tech_formula_val') }
-  ],
-  "offers": {
-    "@type": "Offer",
-    "availability": "https://schema.org/InStock",
-    "priceCurrency": "USD",
-    "price": "0",
-    "priceValidUntil": "2026-12-31",
-    "url": `https://useful-chemicals.com${lp('/products/red-mercury')}`,
-    "seller": { "@type": "Organization", "name": "UE Chemicals" }
-  }
+  ]
 };
 
 const faqSchema = {
@@ -91,7 +83,7 @@ const breadcrumbSchema = {
 ---
 
 
-<BaseLayout lang={lang} title={t(tr, 'red_mercury.meta_title')} description={t(tr, 'red_mercury.meta_desc')} activePage="products" jsonLd={[productSchema, faqSchema, breadcrumbSchema]}>
+<BaseLayout lang={lang} title={t(tr, 'red_mercury.meta_title')} description={t(tr, 'red_mercury.meta_desc')} activePage="products" ogImage="/images/buy-red-liquid-mercury-usa.jpg" jsonLd={[productSchema, faqSchema, breadcrumbSchema]}>
 
   <!-- ========== HERO ========== -->
   <section class="pd-hero">
@@ -186,7 +178,7 @@ const breadcrumbSchema = {
             <h5>{t(tr, 'red_mercury.doc_tds_title')}</h5>
             <p>{t(tr, 'red_mercury.doc_tds_desc')}</p>
           </div>
-          <a href={lp("/contact")} class="btn btn-outline btn-sm">{t(tr, 'red_mercury.request_tds')} <i class="fas fa-download"></i></a>
+          <a href="/documents/Red%20Liquid%20Mercury/Red%20Mercury%20-%20Technical%20Data%20Sheet.pdf" download class="btn btn-outline btn-sm">{t(tr, 'caluanie.download_tds')} <i class="fas fa-download"></i></a>
         </div>
         <div class="pd-doc-card">
           <i class="fas fa-file-shield"></i>
@@ -194,7 +186,7 @@ const breadcrumbSchema = {
             <h5>{t(tr, 'red_mercury.doc_sds_title')}</h5>
             <p>{t(tr, 'red_mercury.doc_sds_desc')}</p>
           </div>
-          <a href={lp("/contact")} class="btn btn-outline btn-sm">{t(tr, 'red_mercury.request_sds')} <i class="fas fa-download"></i></a>
+          <a href="/documents/Red%20Liquid%20Mercury/Safety%20Data%20Sheet%20-%20Red%20Mercury.pdf" download class="btn btn-outline btn-sm">{t(tr, 'caluanie.download_sds')} <i class="fas fa-download"></i></a>
         </div>
         <div class="pd-doc-card">
           <i class="fas fa-file-certificate"></i>
@@ -202,7 +194,7 @@ const breadcrumbSchema = {
             <h5>{t(tr, 'red_mercury.doc_coa_title')}</h5>
             <p>{t(tr, 'red_mercury.doc_coa_desc')}</p>
           </div>
-          <a href={lp("/contact")} class="btn btn-outline btn-sm">{t(tr, 'red_mercury.request_coa')} <i class="fas fa-download"></i></a>
+          <a href="/documents/Red%20Liquid%20Mercury/Certificate%20of%20Analysis%20-%20Red%20Mercury.pdf" download class="btn btn-outline btn-sm">{t(tr, 'caluanie.download_coa')} <i class="fas fa-download"></i></a>
         </div>
       </div>
     </div>

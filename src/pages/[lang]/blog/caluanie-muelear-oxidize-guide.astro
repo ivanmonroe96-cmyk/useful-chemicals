@@ -1,0 +1,457 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { getTranslations, t, localizedPath, getLangStaticPaths } from '../../../i18n/index';
+import { defaultLang } from '../../../i18n/languages';
+
+export const getStaticPaths = getLangStaticPaths;
+const lang = Astro.params.lang ?? defaultLang;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+const a = tr.blog.article_caluanie;
+
+const faqItems = [
+  { q: a.faq1_q, a: a.faq1_a },
+  { q: a.faq2_q, a: a.faq2_a },
+  { q: a.faq3_q, a: a.faq3_a },
+  { q: a.faq4_q, a: a.faq4_a },
+  { q: a.faq5_q, a: a.faq5_a },
+  { q: a.faq6_q, a: a.faq6_a },
+];
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": a.meta_title,
+  "description": a.meta_desc,
+  "author": { "@type": "Organization", "name": "UE Chemicals", "url": "https://useful-chemicals.com" },
+  "publisher": { "@type": "Organization", "name": "UE Chemicals", "logo": { "@type": "ImageObject", "url": "https://useful-chemicals.com/images/favicon.png" } },
+  "datePublished": "2026-04-13",
+  "dateModified": "2026-04-13",
+  "image": "https://useful-chemicals.com/images/buy-new-stock-caluanie-muelear-oxidize.jpg",
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://useful-chemicals.com${lp('/blog/caluanie-muelear-oxidize-guide')}` }
+};
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(item => ({
+    "@type": "Question",
+    "name": item.q,
+    "acceptedAnswer": { "@type": "Answer", "text": item.a }
+  }))
+};
+
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": t(tr, 'nav.home'), "item": `https://useful-chemicals.com${lp('/')}` },
+    { "@type": "ListItem", "position": 2, "name": t(tr, 'nav.blog'), "item": `https://useful-chemicals.com${lp('/blog')}` },
+    { "@type": "ListItem", "position": 3, "name": a.hero_title, "item": `https://useful-chemicals.com${lp('/blog/caluanie-muelear-oxidize-guide')}` }
+  ]
+};
+---
+
+<BaseLayout lang={lang} title={a.meta_title} description={a.meta_desc} activePage="blog" jsonLd={[articleSchema, faqSchema, breadcrumbSchema]}>
+
+  <!-- ========== HERO ========== -->
+  <section class="art-hero">
+    <div class="art-hero-bg">
+      <img src="/images/buy-new-stock-caluanie-muelear-oxidize.jpg" alt={a.hero_title} />
+      <div class="art-hero-overlay"></div>
+    </div>
+    <div class="container art-hero-inner">
+      <div class="art-hero-content">
+        <a href={lp("/blog")} class="art-back"><i class="fas fa-arrow-left"></i> {t(tr, "nav.blog")}</a>
+        <div class="art-hero-badge"><i class="fas fa-book-open"></i> {a.hero_badge}</div>
+        <h1>{a.hero_title}</h1>
+        <p class="art-hero-sub">{a.hero_sub}</p>
+        <div class="art-hero-meta">
+          <span><i class="fas fa-calendar"></i> {a.hero_date}</span>
+          <span><i class="fas fa-clock"></i> {a.hero_read_time}</span>
+          <span><i class="fas fa-tag"></i> {t(tr, "blog.cat_products")}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== ARTICLE BODY ========== -->
+  <article class="art-body">
+    <div class="container art-container">
+
+      <!-- Introduction -->
+      <section class="art-section">
+        <h2>{a.intro_title}</h2>
+        <p>{a.intro_p1}</p>
+        <p>{a.intro_p2}</p>
+        <p>{a.intro_p3}</p>
+      </section>
+
+      <!-- What Is Caluanie -->
+      <section class="art-section">
+        <h2>{a.what_title}</h2>
+        <div class="art-split">
+          <div class="art-split-text">
+            <p>{a.what_p1}</p>
+            <p>{a.what_p2}</p>
+            <p>{a.what_p3}</p>
+          </div>
+          <div class="art-split-image">
+            <img loading="lazy" src="/images/caluanie-muelear-oxidize-for-sale.jpg" alt="Caluanie Muelear Oxidize" />
+          </div>
+        </div>
+        <div class="art-callout">
+          <i class="fas fa-lightbulb"></i>
+          <p>{a.what_callout}</p>
+        </div>
+      </section>
+
+      <!-- Applications -->
+      <section class="art-section">
+        <h2>{a.apps_title}</h2>
+        <p>{a.apps_desc}</p>
+        <div class="art-features-grid">
+          <div class="art-feature-card">
+            <div class="art-feature-icon"><i class="fas fa-gears"></i></div>
+            <h4>{a.app1_title}</h4>
+            <p>{a.app1_desc}</p>
+          </div>
+          <div class="art-feature-card">
+            <div class="art-feature-icon"><i class="fas fa-gem"></i></div>
+            <h4>{a.app2_title}</h4>
+            <p>{a.app2_desc}</p>
+          </div>
+          <div class="art-feature-card">
+            <div class="art-feature-icon"><i class="fas fa-flask"></i></div>
+            <h4>{a.app3_title}</h4>
+            <p>{a.app3_desc}</p>
+          </div>
+          <div class="art-feature-card">
+            <div class="art-feature-icon"><i class="fas fa-building"></i></div>
+            <h4>{a.app4_title}</h4>
+            <p>{a.app4_desc}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Applications image break -->
+      <div class="art-image-break">
+        <img loading="lazy" src="/images/Applications-of-Our-Industrial-Chemicals.jpg" alt="Industrial chemical applications warehouse" />
+      </div>
+
+      <!-- How to Buy -->
+      <section class="art-section">
+        <h2>{a.buy_title}</h2>
+        <p>{a.buy_desc}</p>
+        <div class="art-steps">
+          <div class="art-step">
+            <div class="art-step-num">1</div>
+            <div>
+              <h4>{a.buy1_title}</h4>
+              <p>{a.buy1_desc}</p>
+            </div>
+          </div>
+          <div class="art-step">
+            <div class="art-step-num">2</div>
+            <div>
+              <h4>{a.buy2_title}</h4>
+              <p>{a.buy2_desc}</p>
+            </div>
+          </div>
+          <div class="art-step">
+            <div class="art-step-num">3</div>
+            <div>
+              <h4>{a.buy3_title}</h4>
+              <p>{a.buy3_desc}</p>
+            </div>
+          </div>
+          <div class="art-step">
+            <div class="art-step-num">4</div>
+            <div>
+              <h4>{a.buy4_title}</h4>
+              <p>{a.buy4_desc}</p>
+            </div>
+          </div>
+          <div class="art-step">
+            <div class="art-step-num">5</div>
+            <div>
+              <h4>{a.buy5_title}</h4>
+              <p>{a.buy5_desc}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Safety -->
+      <section class="art-section">
+        <h2>{a.safety_title}</h2>
+        <p>{a.safety_desc}</p>
+        <div class="art-split art-split--reverse">
+          <div class="art-split-image">
+            <img loading="lazy" src="/images/safety-guidelines-for-chemical-storage-and-handling-1.jpg" alt="Chemical safety guidelines" />
+          </div>
+          <div class="art-split-text">
+            <ul class="art-safety-list">
+              <li><i class="fas fa-shield-halved"></i> <span>{a.safety1}</span></li>
+              <li><i class="fas fa-wind"></i> <span>{a.safety2}</span></li>
+              <li><i class="fas fa-box"></i> <span>{a.safety3}</span></li>
+              <li><i class="fas fa-triangle-exclamation"></i> <span>{a.safety4}</span></li>
+              <li><i class="fas fa-graduation-cap"></i> <span>{a.safety5}</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Legal -->
+      <section class="art-section">
+        <h2>{a.legal_title}</h2>
+        <p>{a.legal_p1}</p>
+        <p>{a.legal_p2}</p>
+        <p>{a.legal_p3}</p>
+      </section>
+
+      <!-- Pricing -->
+      <section class="art-section">
+        <h2>{a.pricing_title}</h2>
+        <p>{a.pricing_p1}</p>
+        <p>{a.pricing_p2}</p>
+        <div class="art-callout art-callout--accent">
+          <i class="fas fa-tag"></i>
+          <p>{a.pricing_cta}</p>
+        </div>
+      </section>
+
+      <!-- Manufacturer facility images -->
+      <div class="art-image-break">
+        <img loading="lazy" src="/images/ue-chemicals.png" alt="UE Chemicals manufacturing facility" />
+      </div>
+
+      <!-- Choosing a Manufacturer -->
+      <section class="art-section">
+        <h2>{a.manufacturer_title}</h2>
+        <p>{a.manufacturer_p1}</p>
+        <div class="art-features-grid art-features-grid--2col">
+          <div class="art-feature-card">
+            <div class="art-feature-icon"><i class="fas fa-industry"></i></div>
+            <h4>{a.manufacturer1_title}</h4>
+            <p>{a.manufacturer1_desc}</p>
+          </div>
+          <div class="art-feature-card">
+            <div class="art-feature-icon"><i class="fas fa-comments"></i></div>
+            <h4>{a.manufacturer2_title}</h4>
+            <p>{a.manufacturer2_desc}</p>
+          </div>
+          <div class="art-feature-card">
+            <div class="art-feature-icon"><i class="fas fa-truck-fast"></i></div>
+            <h4>{a.manufacturer3_title}</h4>
+            <p>{a.manufacturer3_desc}</p>
+          </div>
+          <div class="art-feature-card">
+            <div class="art-feature-icon"><i class="fas fa-earth-americas"></i></div>
+            <h4>{a.manufacturer4_title}</h4>
+            <p>{a.manufacturer4_desc}</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Facility gallery -->
+      <section class="art-section">
+        <div class="art-gallery">
+          <div class="art-gallery-item">
+            <img loading="lazy" src="/images/about/bentech-plant2-solarpanel-4-1.jpg" alt="Manufacturing facility aerial view" />
+          </div>
+          <div class="art-gallery-item">
+            <img loading="lazy" src="/images/about/bentech-plant2-solarpanel-2-1.jpg" alt="Solar-powered production plant" />
+          </div>
+          <div class="art-gallery-item">
+            <img loading="lazy" src="/images/about/bentech-plant2-solarpanel-6-1.jpg" alt="Sustainable chemical manufacturing" />
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="art-section">
+        <h2>{a.faq_title}</h2>
+        <div class="art-faq-list">
+          {faqItems.map((item) => (
+            <details class="art-faq-item">
+              <summary>{item.q}</summary>
+              <p>{item.a}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <!-- Industrial worker image -->
+      <div class="art-image-break">
+        <img loading="lazy" src="/images/industrial-worker-holding-plastic-cans-with-chemicals-production-plant.jpg" alt="Industrial chemical handling" />
+      </div>
+
+      <!-- Conclusion -->
+      <section class="art-section art-conclusion">
+        <h2>{a.conclusion_title}</h2>
+        <p>{a.conclusion_p1}</p>
+        <p>{a.conclusion_p2}</p>
+        <div class="art-conclusion-actions">
+          <a href={lp("/products/caluanie")} class="btn btn-accent">{t(tr, "common.view_product")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact")} class="btn btn-primary">{a.conclusion_cta} <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </section>
+
+      <!-- Related Links -->
+      <section class="art-related">
+        <h3>{t(tr, "common.learn_more")}</h3>
+        <div class="art-related-grid">
+          <a href={lp("/products/caluanie")} class="art-related-card">
+            <img loading="lazy" src="/images/buy-new-stock-caluanie-muelear-oxidize-usa.png" alt={t(tr, 'nav.caluanie')} />
+            <span>{t(tr, "nav.caluanie")}</span>
+          </a>
+          <a href={lp("/safety")} class="art-related-card">
+            <img loading="lazy" src="/images/about/Whisk_09152e171d89c6285db4abb298799bacdr.png" alt={t(tr, 'nav.safety')} />
+            <span>{t(tr, "nav.safety")}</span>
+          </a>
+          <a href={lp("/certificates")} class="art-related-card">
+            <img loading="lazy" src="/images/azienda3.png" alt={t(tr, 'nav.certificates')} />
+            <span>{t(tr, "nav.certificates")}</span>
+          </a>
+        </div>
+      </section>
+
+    </div>
+  </article>
+
+  <!-- CTA -->
+  <section class="art-cta">
+    <div class="container">
+      <div class="art-cta-inner">
+        <div class="art-cta-content">
+          <h2>{t(tr, "blog.cta_title")}</h2>
+          <p>{t(tr, "blog.cta_desc")}</p>
+        </div>
+        <div class="art-cta-actions">
+          <a href={lp("/contact")} class="btn btn-white">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "common.view_products")} <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ===== ARTICLE HERO ===== */
+  .art-hero { position: relative; min-height: 70vh; display: flex; align-items: center; overflow: hidden; }
+  .art-hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .art-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .art-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(25,24,23,0.94) 0%, rgba(25,24,23,0.82) 50%, rgba(25,24,23,0.65) 100%); }
+  .art-hero-inner { position: relative; z-index: 1; padding-top: 140px; padding-bottom: 80px; }
+  .art-hero-content { max-width: 780px; }
+  .art-back { display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.6); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 20px; transition: color 0.3s; }
+  .art-back:hover { color: var(--white); }
+  .art-hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px; border: 1px solid rgba(255,255,255,0.2); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.8); margin-bottom: 24px; }
+  .art-hero-badge i { color: var(--accent); }
+  .art-hero h1 { color: var(--white); font-size: clamp(30px, 4.5vw, 56px); line-height: 1.15; margin-bottom: 20px; letter-spacing: -0.5px; }
+  .art-hero-sub { color: rgba(255,255,255,0.65); font-size: 18px; line-height: 1.7; margin-bottom: 28px; }
+  .art-hero-meta { display: flex; gap: 24px; flex-wrap: wrap; }
+  .art-hero-meta span { display: inline-flex; align-items: center; gap: 8px; color: rgba(255,255,255,0.5); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; }
+  .art-hero-meta i { color: var(--accent); font-size: 13px; }
+
+  /* ===== ARTICLE BODY ===== */
+  .art-body { padding: 80px 0 40px; background: var(--white); }
+  .art-container { max-width: 900px; }
+
+  .art-section { margin-bottom: 60px; }
+  .art-section h2 { font-size: clamp(22px, 3vw, 34px); line-height: 1.2; margin-bottom: 20px; color: var(--near-black); }
+  .art-section p { font-size: 17px; line-height: 1.8; color: var(--body-text); margin-bottom: 16px; }
+
+  /* Split layout */
+  .art-split { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: start; margin: 30px 0; }
+  .art-split--reverse { direction: rtl; }
+  .art-split--reverse > * { direction: ltr; }
+  .art-split-image { overflow: hidden; border-radius: 8px; }
+  .art-split-image img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+  .art-split-text p { margin-bottom: 14px; }
+
+  /* Callout */
+  .art-callout { display: flex; gap: 16px; padding: 24px 28px; background: var(--light-bg); border-left: 4px solid var(--accent); margin: 30px 0; align-items: flex-start; }
+  .art-callout i { color: var(--accent); font-size: 20px; flex-shrink: 0; margin-top: 2px; }
+  .art-callout p { margin: 0; font-size: 16px; line-height: 1.7; font-weight: 500; }
+  .art-callout--accent { background: rgba(252, 82, 32, 0.06); }
+
+  /* Features grid */
+  .art-features-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin: 30px 0; }
+  .art-feature-card { padding: 30px; border: 1px solid var(--border); border-radius: 8px; transition: var(--transition); }
+  .art-feature-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.06); }
+  .art-feature-icon { width: 48px; height: 48px; background: var(--near-black); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 18px; margin-bottom: 16px; border-radius: 4px; }
+  .art-feature-card h4 { font-size: 17px; margin-bottom: 8px; }
+  .art-feature-card p { font-size: 15px; margin: 0; line-height: 1.65; color: var(--body-text); }
+
+  /* Image break */
+  .art-image-break { margin: 50px 0; border-radius: 8px; overflow: hidden; }
+  .art-image-break img { width: 100%; height: 380px; object-fit: cover; border-radius: 8px; }
+
+  /* Steps */
+  .art-steps { margin: 30px 0; }
+  .art-step { display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .art-step:last-child { border-bottom: none; }
+  .art-step-num { width: 40px; height: 40px; background: var(--near-black); color: var(--white); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 15px; flex-shrink: 0; border-radius: 4px; }
+  .art-step h4 { font-size: 17px; margin-bottom: 6px; }
+  .art-step p { font-size: 15px; margin: 0; color: var(--body-text); line-height: 1.65; }
+
+  /* Safety list */
+  .art-safety-list { list-style: none; padding: 0; margin: 0; }
+  .art-safety-list li { display: flex; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); align-items: flex-start; font-size: 15px; line-height: 1.65; color: var(--body-text); }
+  .art-safety-list li:last-child { border-bottom: none; }
+  .art-safety-list i { color: var(--accent); font-size: 16px; margin-top: 3px; flex-shrink: 0; }
+
+  /* Gallery */
+  .art-gallery { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .art-gallery-item { overflow: hidden; border-radius: 8px; height: 220px; }
+  .art-gallery-item img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; transition: transform 0.5s; }
+  .art-gallery-item:hover img { transform: scale(1.06); }
+
+  /* FAQ */
+  .art-faq-list { margin: 20px 0; }
+  .art-faq-item { border-bottom: 1px solid var(--border); }
+  .art-faq-item summary { padding: 20px 0; font-size: 17px; font-weight: 700; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--near-black); }
+  .art-faq-item summary::after { content: '+'; font-size: 22px; color: var(--accent); font-weight: 300; }
+  .art-faq-item[open] summary::after { content: '−'; }
+  .art-faq-item p { padding: 0 0 20px; font-size: 15px; line-height: 1.7; color: var(--body-text); margin: 0; }
+
+  /* Conclusion */
+  .art-conclusion { border-top: 2px solid var(--near-black); padding-top: 40px; }
+  .art-conclusion-actions { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 24px; }
+
+  /* Related */
+  .art-related { margin-top: 60px; padding-top: 40px; border-top: 1px solid var(--border); }
+  .art-related h3 { font-size: 20px; margin-bottom: 24px; text-transform: uppercase; letter-spacing: 1px; }
+  .art-related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+  .art-related-card { display: block; overflow: hidden; border: 1px solid var(--border); border-radius: 8px; transition: var(--transition); }
+  .art-related-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.08); transform: translateY(-2px); }
+  .art-related-card img { width: 100%; height: 160px; object-fit: cover; }
+  .art-related-card span { display: block; padding: 14px 16px; font-size: 15px; font-weight: 700; color: var(--near-black); }
+
+  /* CTA */
+  .art-cta { padding: 80px 0; background: var(--accent); }
+  .art-cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+  .art-cta-content h2 { color: var(--white); font-size: clamp(24px, 3vw, 40px); margin-bottom: 12px; }
+  .art-cta-content p { color: rgba(255,255,255,0.85); max-width: 500px; margin: 0; }
+  .art-cta-actions { display: flex; gap: 16px; flex-shrink: 0; flex-wrap: wrap; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    .art-hero-inner { padding-top: 110px; padding-bottom: 50px; }
+    .art-hero h1 { font-size: 28px; }
+    .art-hero-meta { gap: 14px; }
+    .art-split { grid-template-columns: 1fr; }
+    .art-split--reverse { direction: ltr; }
+    .art-features-grid { grid-template-columns: 1fr; }
+    .art-gallery { grid-template-columns: 1fr; }
+    .art-gallery-item { height: 200px; }
+    .art-related-grid { grid-template-columns: 1fr; }
+    .art-image-break img { height: 240px; }
+    .art-cta-inner { flex-direction: column; text-align: center; }
+    .art-cta-actions { justify-content: center; }
+    .art-conclusion-actions { flex-direction: column; }
+  }
+</style>

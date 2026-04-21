@@ -54,14 +54,16 @@
   "ui": {
     "form_sending": "Senden...",
     "form_sent": "Gesendet!",
-    "form_error": "Fehler – versuchen Sie es erneut",
-    "scroll_to_top": "Nach oben scrollen"
+    "form_error": "Fehler – versuchen Sie es erneut"
   },
   "site": {
     "default_description": "Beziehen Sie Caluanie Muelear Oxidize, rotes Quecksilber und flüssiges Quecksilber direkt von UE Chemicals in Bangkok, Thailand, mit COA, SDS, TDS, chargenbezogener Qualitätsdokumentation und weltweitem Versand.",
     "organization_description": "UE Chemicals ist Hersteller und Lieferant von Industriechemikalien in Bangkok, Thailand, für Metallbearbeitung, Raffination, Forschung und Edelmetallrückgewinnung mit ISO-, REACH- und Analysedokumentation für jede Charge.",
     "website_description": "Entdecken Sie Caluanie Muelear Oxidize, rotes Quecksilber und flüssiges Quecksilber von UE Chemicals mit vollständiger Qualitätsdokumentation, Exportunterstützung und sicherem internationalen Versand.",
-    "whatsapp_label": "Chatten Sie auf WhatsApp"
+    "whatsapp_label": "Chatten Sie auf WhatsApp",
+    "local_region": "Deutschland & Europa",
+    "local_shipping_note": "Direktversand nach Deutschland, Österreich, Schweiz und ganz Europa.",
+    "meta_keywords": "Caluanie Muelear Oxidize, rotes Quecksilber, flüssiges Quecksilber, Chemikalienlieferant in Bangkok, Hersteller, COA, SDS, TDS, Großhandel, weltweiter Versand, industrielle Chemikalien"
   },
   "common": {
     "get_quote": "Holen Sie sich ein Angebot",
@@ -292,7 +294,8 @@
     "stat3_num": "Global",
     "stat3_label": "Versandnetzwerk",
     "get_quote": "Holen Sie sich ein Angebot",
-    "view_apps": "Anwendungen anzeigen"
+    "view_apps": "Anwendungen anzeigen",
+    "meta_keywords": "Caluanie Muelear Oxidize, rotes Quecksilber, flüssiges Quecksilber, Silberquecksilber, Chemikalienlieferant in Bangkok, Hersteller, Großhandel, Angebot, COA, SDS, TDS, weltweiter Versand, industrielle Chemikalien"
   },
   "contact": {
     "meta_title": "Kontaktieren Sie UE Chemicals | Angebote und Exportanfragen",
@@ -504,8 +507,8 @@
     "view_products": "Produkte anzeigen"
   },
   "ordering": {
-    "meta_title": "So kaufen Sie Caluanie Muelear Oxidize & Mercury online",
-    "meta_desc": "So bestellen Sie Caluanie Muelear Oxidize, Red Mercury und Silver Mercury online. Einfacher Bestellvorgang, weltweiter Versand aus Bangkok, Thailand.",
+    "meta_title": "Caluanie Muelear Oxidize und Quecksilber online kaufen",
+    "meta_desc": "Bestellen Sie Caluanie Muelear Oxidize, rotes Quecksilber und Silberquecksilber online bei UE Chemicals in Bangkok, Thailand. Einfache Bestellung, COA, SDS, TDS und weltweiter Versand.",
     "hero_label": "So bestellen Sie",
     "hero_title": "Bestellinformationen für Industriechemikalien",
     "hero_desc": "Folgen Sie unserem einfachen Bestellvorgang, um die von Ihnen benötigten Chemikalien sicher und pünktlich geliefert zu bekommen.",
@@ -1101,7 +1104,8 @@
     "cat_logistics": "Logistik",
     "cat_industry": "Industrie",
     "more_coming": "Weitere Artikel folgen in Kürze. Abonnieren Sie, um über Einblicke und Produktneuigkeiten aus der chemischen Industrie auf dem Laufenden zu bleiben.",
-    "view_faq": "FAQ anzeigen"
+    "view_faq": "FAQ anzeigen",
+    "meta_keywords": "Caluanie-Muelear-Oxidize-Leitfaden, Leitfaden für rotes Quecksilber, Leitfaden für flüssiges Quecksilber, Blog für Industriechemikalien, Chemikaliensicherheit, Versanddokumentation, COA, SDS, TDS, FAQ, Lieferant in Bangkok"
   },
   "certificates": {
     "meta_title": "Zertifikate und Qualitätssicherung | UE Chemicals",

@@ -54,14 +54,16 @@
   "ui": {
     "form_sending": "Enviando...",
     "form_sent": "Enviado!",
-    "form_error": "Erro - tente novamente",
-    "scroll_to_top": "Role para cima"
+    "form_error": "Erro - tente novamente"
   },
   "site": {
     "default_description": "Compre Caluanie Muelear Oxidize, mercúrio vermelho e mercúrio líquido diretamente da UE Chemicals em Bangcoc, Tailândia, com COA, SDS, TDS, documentação por lote e envio internacional seguro.",
     "organization_description": "A UE Chemicals é fabricante e fornecedora de produtos químicos industriais em Bangcoc, Tailândia, para metalurgia, refino, pesquisa e recuperação de metais preciosos, com certificações ISO, conformidade REACH e documentação analítica por lote.",
     "website_description": "Explore Caluanie Muelear Oxidize, mercúrio vermelho e mercúrio líquido da UE Chemicals com suporte de exportação, documentação técnica completa e logística internacional confiável.",
-    "whatsapp_label": "Converse no WhatsApp"
+    "whatsapp_label": "Converse no WhatsApp",
+    "local_region": "Brasil & Portugal",
+    "local_shipping_note": "Envio direto para Brasil, Portugal e toda a América Latina.",
+    "meta_keywords": "Caluanie Muelear Oxidize, mercúrio vermelho, mercúrio líquido, mercúrio prateado, fornecedor químico em Bangcoc, fabricante, COA, SDS, TDS, atacado, envio global, produtos químicos industriais"
   },
   "common": {
     "get_quote": "Faça uma cotação",
@@ -292,7 +294,8 @@
     "stat3_num": "Globais",
     "stat3_label": "Rede de Expedição",
     "get_quote": "Faça uma cotação",
-    "view_apps": "Ver candidaturas"
+    "view_apps": "Ver candidaturas",
+    "meta_keywords": "Caluanie Muelear Oxidize, mercúrio vermelho, mercúrio líquido, mercúrio prateado, fornecedor químico em Bangcoc, fabricante, atacado, cotação, COA, SDS, TDS, envio global, produtos químicos industriais"
   },
   "contact": {
     "meta_title": "Contato com a UE Chemicals | Cotações e suporte de exportação",
@@ -504,8 +507,8 @@
     "view_products": "Ver Produtos"
   },
   "ordering": {
-    "meta_title": "Como comprar Caluanie Muelear Oxidize & Mercury online",
-    "meta_desc": "Como encomendar Caluanie Muelear Oxidize, Red Mercury e Silver Mercury online. Processo de pedido simples, envio mundial de Bangkok, Tailândia.",
+    "meta_title": "Como comprar Caluanie Muelear Oxidize e mercúrio online",
+    "meta_desc": "Como encomendar Caluanie Muelear Oxidize, mercúrio vermelho e mercúrio líquido prateado online. Processo de pedido simples, envio mundial de Bangkok, Tailândia.",
     "hero_label": "Como encomendar",
     "hero_title": "Informações para pedidos de produtos químicos industriais",
     "hero_desc": "Siga nosso processo simples de pedido para obter os produtos químicos que você precisa, entregues com segurança e dentro do prazo.",
@@ -1101,7 +1104,8 @@
     "cat_logistics": "Logística",
     "cat_industry": "Indústria",
     "more_coming": "Mais artigos em breve. Inscreva-se para ficar atualizado sobre insights da indústria química e novidades sobre produtos.",
-    "view_faq": "Ver perguntas frequentes"
+    "view_faq": "Ver perguntas frequentes",
+    "meta_keywords": "guia de Caluanie Muelear Oxidize, guia de mercúrio vermelho, guia de mercúrio líquido, blog de químicos industriais, segurança química, documentação de envio, COA, SDS, TDS, FAQ, fornecedor em Bangcoc"
   },
   "certificates": {
     "meta_title": "Certificados e garantia de qualidade | UE Chemicals",

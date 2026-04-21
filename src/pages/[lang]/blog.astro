@@ -28,7 +28,7 @@ const posts = [
     date: blogDate,
     category: blog.cat_products,
     image: "/images/caluanie-muelear-oxidize-for-sale.jpg",
-    slug: "#"
+    slug: lp("/blog/caluanie-muelear-oxidize-guide")
   },
   {
     title: blog.post3_title,
@@ -63,10 +63,23 @@ const posts = [
     slug: "#"
   }
 ];
+
+const blogSchema = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "name": t(tr, "blog.meta_title"),
+  "description": t(tr, "blog.meta_desc"),
+  "mainEntity": {
+    "@type": "Blog",
+    "name": "UE Chemicals Blog",
+    "description": "Industry insights, safety guidelines, and product information for industrial chemicals",
+    "publisher": { "@type": "Organization", "name": "UE Chemicals" }
+  }
+};
 ---
 
 
-<BaseLayout lang={lang} title={t(tr, "blog.meta_title")} description={t(tr, "blog.meta_desc")} activePage="blog">
+<BaseLayout lang={lang} title={t(tr, "blog.meta_title")} description={t(tr, "blog.meta_desc")} activePage="blog" jsonLd={blogSchema}>
 
   <!-- Page Hero -->
   <section class="page-hero">

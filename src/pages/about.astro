@@ -6,71 +6,407 @@ import { defaultLang } from '../i18n/languages';
 const lang = defaultLang;
 const tr = getTranslations(lang);
 const lp = (path: string) => localizedPath(path, lang);
+
+const aboutSchema = {
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": t(tr, "about.meta_title"),
+  "description": t(tr, "about.meta_desc"),
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "UE Chemicals",
+    "description": t(tr, 'site.organization_description'),
+    "foundingLocation": { "@type": "Place", "name": "Bangkok, Thailand" },
+    "address": { "@type": "PostalAddress", "addressLocality": "Bangkok", "postalCode": "10110", "addressCountry": "TH" },
+    "email": "info@useful-chemicals.com",
+    "telephone": "+66-951690848",
+    "knowsAbout": ["Caluanie Muelear Oxidize", "Red Liquid Mercury", "Silver Liquid Mercury", "Industrial Chemical Supply", "Chemical Quality Assurance"],
+    "hasCredential": [
+      { "@type": "EducationalOccupationalCredential", "credentialCategory": "ISO 9001:2015" },
+      { "@type": "EducationalOccupationalCredential", "credentialCategory": "ISO 14001:2015" }
+    ],
+    "areaServed": { "@type": "Place", "name": "Worldwide" },
+    "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 10 }
+  },
+  "review": [
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": t(tr, "about.testimonial1_author") },
+      "reviewBody": t(tr, "about.testimonial1_text"),
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": t(tr, "about.testimonial2_author") },
+      "reviewBody": t(tr, "about.testimonial2_text"),
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": t(tr, "about.testimonial3_author") },
+      "reviewBody": t(tr, "about.testimonial3_text"),
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+    },
+    {
+      "@type": "Review",
+      "author": { "@type": "Person", "name": t(tr, "about.testimonial4_author") },
+      "reviewBody": t(tr, "about.testimonial4_text"),
+      "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+    }
+  ]
+};
 ---
 
 
-<BaseLayout lang={lang} title={t(tr, "about.meta_title")} description={t(tr, "about.meta_desc")} activePage="about">
+<BaseLayout lang={lang} title={t(tr, "about.meta_title")} description={t(tr, "about.meta_desc")} activePage="about" jsonLd={aboutSchema}>
 
   <!-- ========== HERO ========== -->
   <section class="ab-hero">
     <div class="ab-hero-bg">
-      <img src="/images/caluanie-muelear-oxidize-manufacturer-in-usa.webp" alt={t(tr, "about.hero_title")} />
+      <img src="/images/about/bentech-plant2-solarpanel-6-1.jpg" alt="UE Chemicals BTC Plant 2 — aerial view of manufacturing complex with solar energy installation" />
       <div class="ab-hero-overlay"></div>
     </div>
     <div class="container ab-hero-inner">
       <div class="ab-hero-content">
-        <div class="ab-hero-badge"><i class="fas fa-building"></i> {t(tr, "about.hero_badge")}</div>
+        <div class="ab-hero-badge"><i class="fas fa-shield-halved"></i> {t(tr, "about.hero_badge")}</div>
         <h1>{t(tr, "about.hero_title")}</h1>
         <p class="ab-hero-sub">{t(tr, "about.hero_sub")}</p>
         <div class="ab-hero-actions">
-          <a href={lp("/products")} class="btn btn-accent">{t(tr, "about.hero_explore")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/contact")} class="btn btn-outline-white">{t(tr, "about.hero_contact")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products")} class="btn btn-accent">{t(tr, "about.hero_cta_products")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact")} class="btn btn-outline-white">{t(tr, "about.hero_cta_contact")} <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
       <div class="ab-hero-stats">
         <div class="ab-hero-stat">
-          <span class="ab-hero-stat-num">{t(tr, "about.hero_stat1")}</span>
+          <span class="ab-hero-stat-num">{t(tr, "about.hero_stat1_num")}</span>
           <span class="ab-hero-stat-label">{t(tr, "about.hero_stat1_label")}</span>
         </div>
         <div class="ab-hero-stat-divider"></div>
         <div class="ab-hero-stat">
-          <span class="ab-hero-stat-num">{t(tr, "about.hero_stat2")}</span>
+          <span class="ab-hero-stat-num">{t(tr, "about.hero_stat2_num")}</span>
           <span class="ab-hero-stat-label">{t(tr, "about.hero_stat2_label")}</span>
         </div>
         <div class="ab-hero-stat-divider"></div>
         <div class="ab-hero-stat">
-          <span class="ab-hero-stat-num">{t(tr, "about.hero_stat3")}</span>
+          <span class="ab-hero-stat-num">{t(tr, "about.hero_stat3_num")}</span>
           <span class="ab-hero-stat-label">{t(tr, "about.hero_stat3_label")}</span>
+        </div>
+        <div class="ab-hero-stat-divider"></div>
+        <div class="ab-hero-stat">
+          <span class="ab-hero-stat-num">{t(tr, "about.hero_stat4_num")}</span>
+          <span class="ab-hero-stat-label">{t(tr, "about.hero_stat4_label")}</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ========== MISSION SPLIT ========== -->
-  <section class="ab-mission">
-    <div class="ab-mission-image">
-      <img src="/images/ue-chemicals.png" alt={t(tr, "about.mission_title")} />
+  <!-- ========== EMPATHY / CONNECTION ========== -->
+  <section class="ab-empathy">
+    <div class="container">
+      <div class="ab-empathy-inner">
+        <div class="ab-empathy-accent"></div>
+        <div class="ab-empathy-content">
+          <div class="section-label">{t(tr, "about.empathy_label")}</div>
+          <h2>{t(tr, "about.empathy_title")}</h2>
+          <p>{t(tr, "about.empathy_p1")}</p>
+          <p>{t(tr, "about.empathy_p2")}</p>
+          <p class="ab-empathy-highlight">{t(tr, "about.empathy_p3")}</p>
+        </div>
+      </div>
     </div>
-    <div class="ab-mission-content">
-      <div class="section-label">{t(tr, "about.mission_label")}</div>
-      <h2>{t(tr, "about.mission_title")}</h2>
-      <p>{t(tr, "about.mission_desc1")}</p>
-      <p>{t(tr, "about.mission_desc2")}</p>
-      <div class="ab-mission-features">
-        <div class="ab-mission-feat">
-          <div class="ab-mission-feat-icon"><i class="fas fa-flask"></i></div>
+  </section>
+
+  <!-- ========== WHO WE ARE — IDENTITY & MISSION ========== -->
+  <section class="ab-identity">
+    <div class="ab-identity-image">
+      <img src="/images/about/BTC-CHONBURI-PLANT-2-8.1.jpg" alt="UE Chemicals laboratory — professional quality control and precision chemical analysis" loading="lazy" />
+    </div>
+    <div class="ab-identity-content">
+      <div class="section-label">{t(tr, "about.identity_label")}</div>
+      <h2>{t(tr, "about.identity_title")}</h2>
+      <p>{t(tr, "about.identity_p1")}</p>
+      <p>{t(tr, "about.identity_p2")}</p>
+      <p>{t(tr, "about.identity_p3")}</p>
+      <div class="ab-identity-features">
+        <div class="ab-identity-feat">
+          <div class="ab-identity-feat-icon"><i class="fas fa-industry"></i></div>
           <div>
-            <h6>{t(tr, "about.mission_feat1_title")}</h6>
-            <p>{t(tr, "about.mission_feat1_desc")}</p>
+            <h6>{t(tr, "about.identity_feat1_title")}</h6>
+            <p>{t(tr, "about.identity_feat1_desc")}</p>
           </div>
         </div>
-        <div class="ab-mission-feat">
-          <div class="ab-mission-feat-icon"><i class="fas fa-earth-americas"></i></div>
+        <div class="ab-identity-feat">
+          <div class="ab-identity-feat-icon"><i class="fas fa-heart"></i></div>
           <div>
-            <h6>{t(tr, "about.mission_feat2_title")}</h6>
-            <p>{t(tr, "about.mission_feat2_desc")}</p>
+            <h6>{t(tr, "about.identity_feat2_title")}</h6>
+            <p>{t(tr, "about.identity_feat2_desc")}</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EXPERTISE ========== -->
+  <section class="ab-expertise">
+    <div class="container">
+      <div class="ab-expertise-header">
+        <div class="section-label">{t(tr, "about.expertise_label")}</div>
+        <h2>{t(tr, "about.expertise_title")}</h2>
+        <p class="ab-expertise-intro">{t(tr, "about.expertise_p1")}</p>
+      </div>
+      <div class="ab-expertise-grid">
+        <div class="ab-expertise-card">
+          <div class="ab-expertise-icon"><img src="/images/certs/iso-9001.svg" alt="ISO 9001:2015" loading="lazy" /></div>
+          <h5>{t(tr, "about.expertise_item1_title")}</h5>
+          <p>{t(tr, "about.expertise_item1_desc")}</p>
+        </div>
+        <div class="ab-expertise-card">
+          <div class="ab-expertise-icon"><img src="/images/certs/iso-14001.svg" alt="ISO 14001:2015" loading="lazy" /></div>
+          <h5>{t(tr, "about.expertise_item2_title")}</h5>
+          <p>{t(tr, "about.expertise_item2_desc")}</p>
+        </div>
+        <div class="ab-expertise-card">
+          <div class="ab-expertise-icon"><img src="/images/certs/reach.svg" alt="REACH & GHS Compliance" loading="lazy" /></div>
+          <h5>{t(tr, "about.expertise_item3_title")}</h5>
+          <p>{t(tr, "about.expertise_item3_desc")}</p>
+        </div>
+        <div class="ab-expertise-card">
+          <div class="ab-expertise-icon"><i class="fas fa-flask-vial"></i></div>
+          <h5>{t(tr, "about.expertise_item4_title")}</h5>
+          <p>{t(tr, "about.expertise_item4_desc")}</p>
+        </div>
+        <div class="ab-expertise-card">
+          <div class="ab-expertise-icon"><i class="fas fa-list-check"></i></div>
+          <h5>{t(tr, "about.expertise_item5_title")}</h5>
+          <p>{t(tr, "about.expertise_item5_desc")}</p>
+        </div>
+        <div class="ab-expertise-card">
+          <div class="ab-expertise-icon"><i class="fas fa-truck"></i></div>
+          <h5>{t(tr, "about.expertise_item6_title")}</h5>
+          <p>{t(tr, "about.expertise_item6_desc")}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== PROOF OF DELIVERY ========== -->
+  <section class="ab-delivery">
+    <div class="container">
+      <div class="ab-delivery-grid">
+        <div class="ab-delivery-content">
+          <div class="section-label">{t(tr, "about.delivery_label")}</div>
+          <h2>{t(tr, "about.delivery_title")}</h2>
+          <p>{t(tr, "about.delivery_p1")}</p>
+          <p>{t(tr, "about.delivery_p2")}</p>
+        </div>
+        <div class="ab-delivery-cards">
+          <div class="ab-delivery-card">
+            <div class="ab-delivery-card-icon"><i class="fas fa-location-dot"></i></div>
+            <div>
+              <h5>{t(tr, "about.delivery_item1_title")}</h5>
+              <p>{t(tr, "about.delivery_item1_desc")}</p>
+            </div>
+          </div>
+          <div class="ab-delivery-card">
+            <div class="ab-delivery-card-icon"><i class="fas fa-box"></i></div>
+            <div>
+              <h5>{t(tr, "about.delivery_item2_title")}</h5>
+              <p>{t(tr, "about.delivery_item2_desc")}</p>
+            </div>
+          </div>
+          <div class="ab-delivery-card">
+            <div class="ab-delivery-card-icon"><i class="fas fa-truck-fast"></i></div>
+            <div>
+              <h5>{t(tr, "about.delivery_item3_title")}</h5>
+              <p>{t(tr, "about.delivery_item3_desc")}</p>
+            </div>
+          </div>
+          <div class="ab-delivery-card">
+            <div class="ab-delivery-card-icon"><i class="fas fa-file-lines"></i></div>
+            <div>
+              <h5>{t(tr, "about.delivery_item4_title")}</h5>
+              <p>{t(tr, "about.delivery_item4_desc")}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== QUALITY ASSURANCE PROCESS ========== -->
+  <section class="ab-quality">
+    <div class="container">
+      <div class="ab-quality-header">
+        <div class="section-label">{t(tr, "about.quality_label")}</div>
+        <h2>{t(tr, "about.quality_title")}</h2>
+        <p>{t(tr, "about.quality_p1")}</p>
+      </div>
+      <div class="ab-quality-steps">
+        <div class="ab-quality-step">
+          <div class="ab-quality-step-num">01</div>
+          <div class="ab-quality-step-body">
+            <h5>{t(tr, "about.quality_step1_title")}</h5>
+            <p>{t(tr, "about.quality_step1_desc")}</p>
+          </div>
+        </div>
+        <div class="ab-quality-step">
+          <div class="ab-quality-step-num">02</div>
+          <div class="ab-quality-step-body">
+            <h5>{t(tr, "about.quality_step2_title")}</h5>
+            <p>{t(tr, "about.quality_step2_desc")}</p>
+          </div>
+        </div>
+        <div class="ab-quality-step">
+          <div class="ab-quality-step-num">03</div>
+          <div class="ab-quality-step-body">
+            <h5>{t(tr, "about.quality_step3_title")}</h5>
+            <p>{t(tr, "about.quality_step3_desc")}</p>
+          </div>
+        </div>
+        <div class="ab-quality-step">
+          <div class="ab-quality-step-num">04</div>
+          <div class="ab-quality-step-body">
+            <h5>{t(tr, "about.quality_step4_title")}</h5>
+            <p>{t(tr, "about.quality_step4_desc")}</p>
+          </div>
+        </div>
+        <div class="ab-quality-step">
+          <div class="ab-quality-step-num">05</div>
+          <div class="ab-quality-step-body">
+            <h5>{t(tr, "about.quality_step5_title")}</h5>
+            <p>{t(tr, "about.quality_step5_desc")}</p>
+          </div>
+        </div>
+      </div>
+      <div class="ab-quality-coa">
+        <i class="fas fa-certificate"></i>
+        <p>{t(tr, "about.quality_coa")}</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== CUSTOMER FOCUS ========== -->
+  <section class="ab-customer">
+    <div class="ab-customer-image">
+      <img src="/images/about/BTC-CHONBURI-PLANT-2-5.6-scaled.jpg" alt="UE Chemicals customer service and support team" loading="lazy" />
+    </div>
+    <div class="ab-customer-content">
+      <div class="section-label">{t(tr, "about.customer_label")}</div>
+      <h2>{t(tr, "about.customer_title")}</h2>
+      <p>{t(tr, "about.customer_p1")}</p>
+      <div class="ab-customer-items">
+        <div class="ab-customer-item">
+          <div class="ab-customer-item-icon"><i class="fas fa-clock"></i></div>
+          <div>
+            <h6>{t(tr, "about.customer_item1_title")}</h6>
+            <p>{t(tr, "about.customer_item1_desc")}</p>
+          </div>
+        </div>
+        <div class="ab-customer-item">
+          <div class="ab-customer-item-icon"><i class="fas fa-user-tie"></i></div>
+          <div>
+            <h6>{t(tr, "about.customer_item2_title")}</h6>
+            <p>{t(tr, "about.customer_item2_desc")}</p>
+          </div>
+        </div>
+        <div class="ab-customer-item">
+          <div class="ab-customer-item-icon"><i class="fas fa-sliders"></i></div>
+          <div>
+            <h6>{t(tr, "about.customer_item3_title")}</h6>
+            <p>{t(tr, "about.customer_item3_desc")}</p>
+          </div>
+        </div>
+        <div class="ab-customer-item">
+          <div class="ab-customer-item-icon"><i class="fas fa-comments"></i></div>
+          <div>
+            <h6>{t(tr, "about.customer_item4_title")}</h6>
+            <p>{t(tr, "about.customer_item4_desc")}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONIALS ========== -->
+  <section class="ab-testimonials">
+    <div class="container">
+      <div class="ab-testimonials-header">
+        <div class="section-label">{t(tr, "about.testimonials_label")}</div>
+        <h2>{t(tr, "about.testimonials_title")}</h2>
+      </div>
+      <div class="ab-testimonials-grid">
+        <div class="ab-testimonial-card">
+          <div class="ab-testimonial-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <blockquote>{t(tr, "about.testimonial1_text")}</blockquote>
+          <div class="ab-testimonial-author">
+            <div class="ab-testimonial-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <strong>{t(tr, "about.testimonial1_author")}</strong>
+              <span>{t(tr, "about.testimonial1_location")}</span>
+            </div>
+          </div>
+        </div>
+        <div class="ab-testimonial-card">
+          <div class="ab-testimonial-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <blockquote>{t(tr, "about.testimonial2_text")}</blockquote>
+          <div class="ab-testimonial-author">
+            <div class="ab-testimonial-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <strong>{t(tr, "about.testimonial2_author")}</strong>
+              <span>{t(tr, "about.testimonial2_location")}</span>
+            </div>
+          </div>
+        </div>
+        <div class="ab-testimonial-card">
+          <div class="ab-testimonial-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <blockquote>{t(tr, "about.testimonial3_text")}</blockquote>
+          <div class="ab-testimonial-author">
+            <div class="ab-testimonial-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <strong>{t(tr, "about.testimonial3_author")}</strong>
+              <span>{t(tr, "about.testimonial3_location")}</span>
+            </div>
+          </div>
+        </div>
+        <div class="ab-testimonial-card">
+          <div class="ab-testimonial-stars">
+            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+          </div>
+          <blockquote>{t(tr, "about.testimonial4_text")}</blockquote>
+          <div class="ab-testimonial-author">
+            <div class="ab-testimonial-avatar"><i class="fas fa-user"></i></div>
+            <div>
+              <strong>{t(tr, "about.testimonial4_author")}</strong>
+              <span>{t(tr, "about.testimonial4_location")}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TRANSPARENCY ========== -->
+  <section class="ab-transparency">
+    <div class="container">
+      <div class="ab-transparency-inner">
+        <div class="ab-transparency-content">
+          <div class="section-label">{t(tr, "about.transparency_label")}</div>
+          <h2>{t(tr, "about.transparency_title")}</h2>
+          <p>{t(tr, "about.transparency_p1")}</p>
+        </div>
+        <ul class="ab-transparency-list">
+          <li><i class="fas fa-check"></i> <span>{t(tr, "about.transparency_item1")}</span></li>
+          <li><i class="fas fa-check"></i> <span>{t(tr, "about.transparency_item2")}</span></li>
+          <li><i class="fas fa-check"></i> <span>{t(tr, "about.transparency_item3")}</span></li>
+          <li><i class="fas fa-check"></i> <span>{t(tr, "about.transparency_item4")}</span></li>
+          <li><i class="fas fa-check"></i> <span>{t(tr, "about.transparency_item5")}</span></li>
+        </ul>
       </div>
     </div>
   </section>
@@ -88,7 +424,7 @@ const lp = (path: string) => localizedPath(path, lang);
       <div class="ab-products-grid">
         <a href={lp("/products/caluanie")} class="ab-prod-card">
           <div class="ab-prod-img">
-            <img loading="lazy" src="/images/caluanie-muelear-oxidize-for-sale.jpg" alt={t(tr, "about.prod1_name")} />
+            <img loading="lazy" src="/images/caluanie-muelear-oxidize-for-sale.jpg" alt="Buy Caluanie Muelear Oxidize — premium quality for sale" />
             <div class="ab-prod-num">01</div>
           </div>
           <div class="ab-prod-body">
@@ -99,7 +435,7 @@ const lp = (path: string) => localizedPath(path, lang);
         </a>
         <a href={lp("/products/red-mercury")} class="ab-prod-card">
           <div class="ab-prod-img">
-            <img loading="lazy" src="/images/red-liquid-mercury-for-sale-usa.png" alt={t(tr, "about.prod2_name")} />
+            <img loading="lazy" src="/images/red-liquid-mercury-for-sale-usa.png" alt="Red Liquid Mercury for sale — laboratory grade" />
             <div class="ab-prod-num">02</div>
           </div>
           <div class="ab-prod-body">
@@ -110,7 +446,7 @@ const lp = (path: string) => localizedPath(path, lang);
         </a>
         <a href={lp("/products/silver-mercury")} class="ab-prod-card">
           <div class="ab-prod-img">
-            <img loading="lazy" src="/images/silver-liquid-mercury-for-sale.png" alt={t(tr, "about.prod3_name")} />
+            <img loading="lazy" src="/images/silver-liquid-mercury-for-sale.png" alt="Silver Liquid Mercury 99.99% purity for sale" />
             <div class="ab-prod-num">03</div>
           </div>
           <div class="ab-prod-body">
@@ -123,91 +459,37 @@ const lp = (path: string) => localizedPath(path, lang);
     </div>
   </section>
 
-  <!-- ========== WHY CHOOSE US (DARK) ========== -->
-  <section class="ab-why">
-    <div class="container">
-      <div class="ab-why-grid">
-        <div class="ab-why-content">
-          <div class="section-label">{t(tr, "about.why_label")}</div>
-          <h2>{t(tr, "about.why_title")}</h2>
-          <p>{t(tr, "about.why_desc")}</p>
-        </div>
-        <div class="ab-why-cards">
-          <div class="ab-why-card">
-            <div class="ab-why-card-num">01</div>
-            <div>
-              <h5>{t(tr, "about.why1_title")}</h5>
-              <p>{t(tr, "about.why1_desc")}</p>
-            </div>
-          </div>
-          <div class="ab-why-card">
-            <div class="ab-why-card-num">02</div>
-            <div>
-              <h5>{t(tr, "about.why2_title")}</h5>
-              <p>{t(tr, "about.why2_desc")}</p>
-            </div>
-          </div>
-          <div class="ab-why-card">
-            <div class="ab-why-card-num">03</div>
-            <div>
-              <h5>{t(tr, "about.why3_title")}</h5>
-              <p>{t(tr, "about.why3_desc")}</p>
-            </div>
-          </div>
-          <div class="ab-why-card">
-            <div class="ab-why-card-num">04</div>
-            <div>
-              <h5>{t(tr, "about.why4_title")}</h5>
-              <p>{t(tr, "about.why4_desc")}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ========== FACILITY SPLIT (REVERSED) ========== -->
+  <!-- ========== FACILITY ========== -->
   <section class="ab-facility">
     <div class="ab-facility-content">
       <div class="section-label">{t(tr, "about.facility_label")}</div>
       <h2>{t(tr, "about.facility_title")}</h2>
-      <p>{t(tr, "about.facility_desc1")}</p>
-      <p>{t(tr, "about.facility_desc2")}</p>
-      <a href={lp("/products")} class="btn btn-primary">{t(tr, "about.facility_explore")} <i class="fas fa-arrow-right"></i></a>
+      <p>{t(tr, "about.facility_p1")}</p>
+      <p>{t(tr, "about.facility_p2")}</p>
+      <a href={lp("/certificates")} class="btn btn-primary">{t(tr, "common.certificates")} <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="ab-facility-image">
-      <img loading="lazy" src="/images/useful-chemical-industry.jpg" alt={t(tr, "about.facility_title")} />
+      <img loading="lazy" src="/images/about/BTC-P2-1.jpg" alt="UE Chemicals manufacturing facility in Bangkok, Thailand" />
     </div>
   </section>
 
-  <!-- ========== SAFETY COMMITMENT ========== -->
-  <section class="ab-safety">
-    <div class="container">
-      <div class="text-center" style="margin-bottom:60px;">
-        <div class="section-label">{t(tr, "about.safety_label")}</div>
-        <h2>{t(tr, "about.safety_title")}</h2>
+  <!-- ========== FACILITY GALLERY ========== -->
+  <section class="ab-gallery">
+    <div class="ab-gallery-grid">
+      <div class="ab-gallery-item ab-gallery-featured">
+        <img loading="lazy" src="/images/about/bentech-plant2-solarpanel-4-1.jpg" alt="UE Chemicals BTC Plant 2 — aerial overview of full manufacturing complex" />
       </div>
-      <div class="ab-safety-grid">
-        <div class="ab-safety-card">
-          <div class="ab-safety-icon"><i class="fas fa-flask"></i></div>
-          <h5>{t(tr, "about.safety1_title")}</h5>
-          <p>{t(tr, "about.safety1_desc")}</p>
-        </div>
-        <div class="ab-safety-card">
-          <div class="ab-safety-icon"><i class="fas fa-box"></i></div>
-          <h5>{t(tr, "about.safety2_title")}</h5>
-          <p>{t(tr, "about.safety2_desc")}</p>
-        </div>
-        <div class="ab-safety-card">
-          <div class="ab-safety-icon"><i class="fas fa-truck-fast"></i></div>
-          <h5>{t(tr, "about.safety3_title")}</h5>
-          <p>{t(tr, "about.safety3_desc")}</p>
-        </div>
-        <div class="ab-safety-card">
-          <div class="ab-safety-icon"><i class="fas fa-file-lines"></i></div>
-          <h5>{t(tr, "about.safety4_title")}</h5>
-          <p>{t(tr, "about.safety4_desc")}</p>
-        </div>
+      <div class="ab-gallery-item">
+        <img loading="lazy" src="/images/about/bentech-plant2-solarpanel-2-1.jpg" alt="UE Chemicals facility solar panel installation — renewable energy operations" />
+      </div>
+      <div class="ab-gallery-item">
+        <img loading="lazy" src="/images/about/Storage-Rack-2_0.jpg" alt="UE Chemicals chemical storage warehouse — safety-compliant organized inventory" />
+      </div>
+      <div class="ab-gallery-item">
+        <img loading="lazy" src="/images/about/Whisk_09152e171d89c6285db4abb298799bacdr.png" alt="UE Chemicals industrial chemical processing and formulation equipment" />
+      </div>
+      <div class="ab-gallery-item">
+        <img loading="lazy" src="/images/about/Whisk_a8e5707ae2a89769b4e4a5d84aafec92dr.png" alt="UE Chemicals precision laboratory production — industrial-grade chemical manufacturing" />
       </div>
     </div>
   </section>
@@ -233,6 +515,19 @@ const lp = (path: string) => localizedPath(path, lang);
     </div>
   </section>
 
+  <!-- ========== TRUST BADGES ========== -->
+  <section class="ab-trust-badges">
+    <div class="container">
+      <div class="ab-badges-row">
+        <div class="ab-badge"><img src="/images/certs/iso-9001.svg" alt="ISO 9001:2015 Certified" loading="lazy" /><span>ISO 9001</span></div>
+        <div class="ab-badge"><img src="/images/certs/iso-14001.svg" alt="ISO 14001:2015 Certified" loading="lazy" /><span>ISO 14001</span></div>
+        <div class="ab-badge"><img src="/images/certs/reach.svg" alt="REACH Compliant" loading="lazy" /><span>REACH</span></div>
+        <div class="ab-badge"><img src="/images/certs/ghs.svg" alt="GHS Compliant" loading="lazy" /><span>GHS</span></div>
+        <div class="ab-badge"><img src="/images/certs/gmp.svg" alt="GMP Standards" loading="lazy" /><span>GMP</span></div>
+      </div>
+    </div>
+  </section>
+
   <!-- ========== CTA ========== -->
   <section class="ab-cta">
     <div class="container">
@@ -242,8 +537,9 @@ const lp = (path: string) => localizedPath(path, lang);
           <p>{t(tr, "about.cta_desc")}</p>
         </div>
         <div class="ab-cta-actions">
-          <a href={lp("/contact")} class="btn btn-white">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/ordering")} class="btn btn-outline-white">{t(tr, "common.how_to_order")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact")} class="btn btn-white">{t(tr, "about.cta_btn_contact")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/ordering")} class="btn btn-outline-white">{t(tr, "about.cta_btn_order")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "about.cta_btn_products")} <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>
@@ -258,38 +554,133 @@ const lp = (path: string) => localizedPath(path, lang);
   .ab-hero-bg img { width: 100%; height: 100%; object-fit: cover; }
   .ab-hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(25,24,23,0.93) 0%, rgba(25,24,23,0.75) 50%, rgba(252,82,32,0.12) 100%); }
   .ab-hero-inner { position: relative; z-index: 1; padding-top: 140px; padding-bottom: 100px; }
-  .ab-hero-content { max-width: 680px; }
+  .ab-hero-content { max-width: 720px; }
   .ab-hero-badge { display: inline-flex; align-items: center; gap: 10px; padding: 8px 20px; border: 1px solid rgba(255,255,255,0.2); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: rgba(255,255,255,0.8); margin-bottom: 24px; }
   .ab-hero-badge i { color: var(--accent); font-size: 13px; }
-  .ab-hero h1 { color: var(--white); font-size: clamp(38px, 5.5vw, 72px); line-height: 1.05; margin-bottom: 24px; letter-spacing: -1px; }
-  .ab-hero-sub { color: rgba(255,255,255,0.65); font-size: 18px; line-height: 1.7; max-width: 540px; margin-bottom: 40px; }
+  .ab-hero h1 { color: var(--white); font-size: clamp(32px, 4.5vw, 58px); line-height: 1.1; margin-bottom: 24px; letter-spacing: -0.5px; }
+  .ab-hero-sub { color: rgba(255,255,255,0.7); font-size: 18px; line-height: 1.7; max-width: 600px; margin-bottom: 40px; }
   .ab-hero-actions { display: flex; gap: 16px; flex-wrap: wrap; }
   .btn-outline-white { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.3); }
   .btn-outline-white:hover { background: var(--white); color: var(--near-black); border-color: var(--white); }
   .ab-hero-stats { display: flex; align-items: center; gap: 40px; margin-top: 80px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.12); }
   .ab-hero-stat-num { display: block; font-size: 28px; font-weight: 800; color: var(--white); letter-spacing: -0.5px; }
-  .ab-hero-stat-label { display: block; font-size: 13px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
+  .ab-hero-stat-label { display: block; font-size: 12px; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 1px; margin-top: 4px; }
   .ab-hero-stat-divider { width: 1px; height: 50px; background: rgba(255,255,255,0.12); }
 
-  /* Mission Split */
-  .ab-mission { display: grid; grid-template-columns: 1fr 1fr; min-height: 600px; }
-  .ab-mission-image { overflow: hidden; }
-  .ab-mission-image img { width: 100%; height: 100%; object-fit: cover; }
-  .ab-mission-content { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; background: var(--light-bg); }
-  .ab-mission-content h2 { font-size: clamp(24px, 3vw, 40px); margin-bottom: 20px; line-height: 1.15; }
-  .ab-mission-content > p { max-width: 480px; }
-  .ab-mission-features { margin: 30px 0 0; display: flex; flex-direction: column; gap: 24px; }
-  .ab-mission-feat { display: flex; gap: 16px; align-items: flex-start; }
-  .ab-mission-feat-icon { width: 48px; height: 48px; background: var(--near-black); display: flex; align-items: center; justify-content: center; color: var(--white); flex-shrink: 0; font-size: 18px; }
-  .ab-mission-feat h6 { font-size: 15px; margin-bottom: 4px; }
-  .ab-mission-feat p { font-size: 14px; margin: 0; color: var(--body-text); }
+  /* Empathy Section */
+  .ab-empathy { padding: 100px 0; background: var(--white); }
+  .ab-empathy-inner { display: flex; gap: 40px; max-width: 840px; margin: 0 auto; }
+  .ab-empathy-accent { width: 4px; background: var(--accent); flex-shrink: 0; border-radius: 2px; }
+  .ab-empathy-content h2 { font-size: clamp(24px, 3vw, 36px); line-height: 1.2; margin-bottom: 24px; }
+  .ab-empathy-content p { margin-bottom: 16px; line-height: 1.8; }
+  .ab-empathy-highlight { font-weight: 500; color: var(--near-black); font-style: italic; border-left: 3px solid var(--accent); padding-left: 20px; margin-top: 24px; }
+
+  /* Identity / Who We Are Split */
+  .ab-identity { display: grid; grid-template-columns: 1fr 1fr; min-height: 650px; }
+  .ab-identity-image { overflow: hidden; }
+  .ab-identity-image img { width: 100%; height: 100%; object-fit: cover; }
+  .ab-identity-content { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; background: var(--light-bg); }
+  .ab-identity-content h2 { font-size: clamp(22px, 2.5vw, 34px); margin-bottom: 20px; line-height: 1.2; }
+  .ab-identity-content > p { max-width: 500px; margin-bottom: 14px; line-height: 1.7; }
+  .ab-identity-features { margin: 24px 0 0; display: flex; flex-direction: column; gap: 24px; }
+  .ab-identity-feat { display: flex; gap: 16px; align-items: flex-start; }
+  .ab-identity-feat-icon { width: 48px; height: 48px; background: var(--near-black); display: flex; align-items: center; justify-content: center; color: var(--white); flex-shrink: 0; font-size: 18px; }
+  .ab-identity-feat h6 { font-size: 15px; margin-bottom: 4px; }
+  .ab-identity-feat p { font-size: 14px; margin: 0; color: var(--body-text); }
+
+  /* Expertise Grid */
+  .ab-expertise { padding: 120px 0; background: var(--near-black); }
+  .ab-expertise-header { text-align: center; margin-bottom: 60px; }
+  .ab-expertise-header .section-label { color: rgba(255,255,255,0.6); }
+  .ab-expertise-header .section-label::before { background: var(--accent); }
+  .ab-expertise-header h2 { color: var(--white); font-size: clamp(26px, 3.5vw, 44px); line-height: 1.15; margin-bottom: 20px; }
+  .ab-expertise-intro { color: rgba(255,255,255,0.6); max-width: 700px; margin: 0 auto; line-height: 1.7; }
+  .ab-expertise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .ab-expertise-card { padding: 40px 30px; border: 1px solid rgba(255,255,255,0.08); transition: var(--transition); }
+  .ab-expertise-card:hover { background: rgba(255,255,255,0.04); }
+  .ab-expertise-icon { width: 56px; height: 56px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
+  .ab-expertise-icon img { width: 48px; height: 48px; object-fit: contain; filter: brightness(0) invert(1); }
+  .ab-expertise-icon i { font-size: 24px; color: var(--accent); }
+  .ab-expertise-card h5 { color: var(--white); font-size: 15px; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .ab-expertise-card p { color: rgba(255,255,255,0.5); font-size: 14px; margin: 0; line-height: 1.6; }
+
+  /* Delivery / Proof Section */
+  .ab-delivery { padding: 120px 0; background: var(--light-bg); border-top: 1px solid var(--border); }
+  .ab-delivery-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+  .ab-delivery-content h2 { font-size: clamp(24px, 3vw, 40px); margin-bottom: 20px; line-height: 1.15; }
+  .ab-delivery-content p { margin-bottom: 16px; line-height: 1.7; }
+  .ab-delivery-cards { display: flex; flex-direction: column; }
+  .ab-delivery-card { display: flex; gap: 20px; padding: 24px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
+  .ab-delivery-card:first-child { padding-top: 0; }
+  .ab-delivery-card:last-child { border-bottom: none; }
+  .ab-delivery-card-icon { width: 44px; height: 44px; background: var(--near-black); display: flex; align-items: center; justify-content: center; color: var(--white); flex-shrink: 0; font-size: 16px; }
+  .ab-delivery-card h5 { font-size: 15px; margin-bottom: 4px; }
+  .ab-delivery-card p { font-size: 14px; margin: 0; color: var(--body-text); line-height: 1.6; }
+
+  /* Quality Assurance Process */
+  .ab-quality { padding: 120px 0; background: var(--white); }
+  .ab-quality-header { text-align: center; max-width: 720px; margin: 0 auto 60px; }
+  .ab-quality-header h2 { font-size: clamp(26px, 3.5vw, 44px); line-height: 1.15; margin-bottom: 20px; }
+  .ab-quality-header p { line-height: 1.7; }
+  .ab-quality-steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-bottom: 50px; }
+  .ab-quality-step { padding: 30px 24px; border-left: 1px solid var(--border); position: relative; }
+  .ab-quality-step:last-child { border-right: 1px solid var(--border); }
+  .ab-quality-step::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transition: transform 0.4s ease; }
+  .ab-quality-step:hover::before { transform: scaleX(1); }
+  .ab-quality-step-num { font-size: 14px; font-weight: 800; color: var(--accent); letter-spacing: 1px; margin-bottom: 16px; }
+  .ab-quality-step-body h5 { font-size: 15px; margin-bottom: 8px; text-transform: uppercase; }
+  .ab-quality-step-body p { font-size: 13px; color: var(--body-text); margin: 0; line-height: 1.6; }
+  .ab-quality-coa { display: flex; align-items: center; gap: 20px; background: var(--light-bg); padding: 30px 40px; border-left: 4px solid var(--accent); }
+  .ab-quality-coa i { font-size: 28px; color: var(--accent); flex-shrink: 0; }
+  .ab-quality-coa p { font-size: 16px; font-weight: 500; margin: 0; line-height: 1.6; color: var(--near-black); }
+
+  /* Customer Focus Split */
+  .ab-customer { display: grid; grid-template-columns: 1fr 1fr; min-height: 650px; }
+  .ab-customer-image { overflow: hidden; }
+  .ab-customer-image img { width: 100%; height: 100%; object-fit: cover; }
+  .ab-customer-content { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; background: var(--near-black); }
+  .ab-customer-content .section-label { color: rgba(255,255,255,0.6); }
+  .ab-customer-content .section-label::before { background: var(--accent); }
+  .ab-customer-content h2 { color: var(--white); font-size: clamp(22px, 2.5vw, 34px); margin-bottom: 16px; line-height: 1.2; }
+  .ab-customer-content > p { color: rgba(255,255,255,0.65); max-width: 500px; margin-bottom: 28px; line-height: 1.7; }
+  .ab-customer-items { display: flex; flex-direction: column; gap: 20px; }
+  .ab-customer-item { display: flex; gap: 16px; align-items: flex-start; }
+  .ab-customer-item-icon { width: 40px; height: 40px; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; color: var(--accent); flex-shrink: 0; font-size: 16px; }
+  .ab-customer-item h6 { color: var(--white); font-size: 14px; margin-bottom: 4px; }
+  .ab-customer-item p { font-size: 13px; margin: 0; color: rgba(255,255,255,0.5); line-height: 1.5; }
+
+  /* Testimonials */
+  .ab-testimonials { padding: 120px 0; background: var(--light-bg); border-top: 1px solid var(--border); }
+  .ab-testimonials-header { text-align: center; margin-bottom: 60px; }
+  .ab-testimonials-header h2 { font-size: clamp(26px, 3.5vw, 44px); line-height: 1.15; }
+  .ab-testimonials-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; }
+  .ab-testimonial-card { background: var(--white); padding: 40px; border: 1px solid var(--border); transition: var(--transition); }
+  .ab-testimonial-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.06); transform: translateY(-2px); }
+  .ab-testimonial-stars { margin-bottom: 20px; }
+  .ab-testimonial-stars i { color: #f5a623; font-size: 14px; margin-right: 2px; }
+  .ab-testimonial-card blockquote { font-size: 15px; line-height: 1.75; color: var(--body-text); margin: 0 0 24px; font-style: italic; }
+  .ab-testimonial-author { display: flex; align-items: center; gap: 14px; }
+  .ab-testimonial-avatar { width: 44px; height: 44px; background: var(--near-black); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 16px; flex-shrink: 0; }
+  .ab-testimonial-author strong { display: block; font-size: 14px; color: var(--near-black); }
+  .ab-testimonial-author span { display: block; font-size: 12px; color: var(--body-text); margin-top: 2px; }
+
+  /* Transparency */
+  .ab-transparency { padding: 100px 0; background: var(--white); }
+  .ab-transparency-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+  .ab-transparency-content h2 { font-size: clamp(24px, 3vw, 40px); margin-bottom: 16px; line-height: 1.15; }
+  .ab-transparency-content p { line-height: 1.7; }
+  .ab-transparency-list { list-style: none; padding: 0; margin: 0; }
+  .ab-transparency-list li { display: flex; gap: 14px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid var(--border); font-size: 15px; line-height: 1.6; }
+  .ab-transparency-list li:first-child { padding-top: 0; }
+  .ab-transparency-list li:last-child { border-bottom: none; }
+  .ab-transparency-list i { color: var(--accent); font-size: 14px; margin-top: 4px; flex-shrink: 0; }
 
   /* Products Grid */
-  .ab-products { padding: 120px 0; background: var(--white); }
+  .ab-products { padding: 120px 0; background: var(--light-bg); border-top: 1px solid var(--border); }
   .ab-section-header { display: flex; justify-content: space-between; align-items: flex-end; gap: 30px; margin-bottom: 60px; }
   .ab-section-header h2 { font-size: clamp(28px, 3.5vw, 50px); line-height: 1.15; }
   .ab-products-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
-  .ab-prod-card { display: block; border-left: 1px solid var(--border); overflow: hidden; transition: var(--transition); color: var(--body-text); }
+  .ab-prod-card { display: block; border-left: 1px solid var(--border); overflow: hidden; transition: var(--transition); color: var(--body-text); background: var(--white); }
   .ab-prod-card:last-child { border-right: 1px solid var(--border); }
   .ab-prod-img { position: relative; height: 300px; overflow: hidden; }
   .ab-prod-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
@@ -298,62 +689,53 @@ const lp = (path: string) => localizedPath(path, lang);
   .ab-prod-body { padding: 30px; }
   .ab-prod-body h3 { font-size: 20px; margin-bottom: 10px; transition: color 0.3s; }
   .ab-prod-card:hover .ab-prod-body h3 { color: var(--accent); }
-  .ab-prod-body p { font-size: 15px; margin-bottom: 20px; }
+  .ab-prod-body p { font-size: 14px; margin-bottom: 20px; line-height: 1.6; }
   .ab-prod-link { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); display: inline-flex; align-items: center; gap: 8px; }
   .ab-prod-link i { font-size: 11px; transition: transform 0.3s; }
   .ab-prod-card:hover .ab-prod-link i { transform: translateX(6px); }
 
-  /* Why Section (Dark) */
-  .ab-why { padding: 120px 0; background: var(--near-black); }
-  .ab-why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .ab-why-content .section-label { color: rgba(255,255,255,0.6); }
-  .ab-why-content .section-label::before { background: var(--accent); }
-  .ab-why-content h2 { color: var(--white); font-size: clamp(24px, 3vw, 42px); margin-bottom: 20px; line-height: 1.15; }
-  .ab-why-content p { color: rgba(255,255,255,0.5); max-width: 440px; }
-  .ab-why-cards { display: flex; flex-direction: column; }
-  .ab-why-card { display: flex; gap: 24px; padding: 30px 0; border-bottom: 1px solid rgba(255,255,255,0.1); align-items: flex-start; }
-  .ab-why-card:first-child { padding-top: 0; }
-  .ab-why-card-num { font-size: 14px; font-weight: 800; color: var(--accent); letter-spacing: 1px; flex-shrink: 0; padding-top: 2px; }
-  .ab-why-card h5 { color: var(--white); font-size: 16px; margin-bottom: 6px; text-transform: uppercase; }
-  .ab-why-card p { color: rgba(255,255,255,0.45); font-size: 14px; margin: 0; }
-
   /* Facility Split */
   .ab-facility { display: grid; grid-template-columns: 1fr 1fr; min-height: 560px; }
   .ab-facility-content { padding: 80px 60px; display: flex; flex-direction: column; justify-content: center; background: var(--white); }
-  .ab-facility-content h2 { font-size: clamp(24px, 3vw, 40px); margin-bottom: 20px; line-height: 1.15; }
-  .ab-facility-content > p { max-width: 480px; }
-  .ab-facility-content .btn { margin-top: 30px; align-self: flex-start; }
+  .ab-facility-content h2 { font-size: clamp(24px, 3vw, 38px); margin-bottom: 20px; line-height: 1.15; }
+  .ab-facility-content > p { max-width: 480px; margin-bottom: 14px; line-height: 1.7; }
+  .ab-facility-content .btn { margin-top: 20px; align-self: flex-start; }
   .ab-facility-image { overflow: hidden; }
   .ab-facility-image img { width: 100%; height: 100%; object-fit: cover; }
 
-  /* Safety Grid */
-  .ab-safety { padding: 120px 0; background: var(--light-bg); border-top: 1px solid var(--border); }
-  .ab-safety h2 { font-size: clamp(28px, 3.5vw, 50px); line-height: 1.15; }
-  .ab-safety-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
-  .ab-safety-card { padding: 45px 30px; border-left: 1px solid var(--border); transition: var(--transition); }
-  .ab-safety-card:last-child { border-right: 1px solid var(--border); }
-  .ab-safety-card:hover { background: var(--white); }
-  .ab-safety-icon { width: 52px; height: 52px; background: var(--near-black); display: flex; align-items: center; justify-content: center; color: var(--white); font-size: 20px; margin-bottom: 22px; }
-  .ab-safety-card h5 { font-size: 16px; text-transform: uppercase; margin-bottom: 10px; }
-  .ab-safety-card p { font-size: 14px; color: var(--body-text); margin: 0; line-height: 1.6; }
+  /* Facility Gallery */
+  .ab-gallery { background: var(--near-black); overflow: hidden; }
+  .ab-gallery-grid { display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 380px 260px; gap: 4px; }
+  .ab-gallery-item { overflow: hidden; position: relative; }
+  .ab-gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; display: block; }
+  .ab-gallery-item:hover img { transform: scale(1.05); }
+  .ab-gallery-featured { grid-column: 1 / 3; }
 
   /* Team */
-  .ab-team { padding: 100px 0; background: var(--white); border-top: 1px solid var(--border); }
+  .ab-team { padding: 100px 0; background: var(--light-bg); border-top: 1px solid var(--border); }
   .ab-team-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
   .ab-team-text h2 { font-size: clamp(24px, 3vw, 42px); margin-bottom: 16px; line-height: 1.15; }
-  .ab-team-text p { max-width: 440px; }
-  .ab-team-card { display: flex; gap: 24px; align-items: center; padding: 40px; border: 1px solid var(--border); }
+  .ab-team-text p { max-width: 440px; line-height: 1.7; }
+  .ab-team-card { display: flex; gap: 24px; align-items: center; padding: 40px; border: 1px solid var(--border); background: var(--white); }
   .ab-team-avatar { width: 80px; height: 80px; background: var(--near-black); display: flex; align-items: center; justify-content: center; font-size: 2rem; color: var(--white); flex-shrink: 0; border-radius: 50%; }
   .ab-team-info h4 { font-size: 20px; margin-bottom: 4px; }
   .ab-team-role { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); display: block; margin-bottom: 10px; }
-  .ab-team-info p { font-size: 14px; color: var(--body-text); margin: 0; }
+  .ab-team-info p { font-size: 14px; color: var(--body-text); margin: 0; line-height: 1.6; }
+
+  /* Trust Badges */
+  .ab-trust-badges { padding: 60px 0; background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .ab-badges-row { display: flex; justify-content: center; align-items: center; gap: 50px; flex-wrap: wrap; }
+  .ab-badge { display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0.6; transition: opacity 0.3s; }
+  .ab-badge:hover { opacity: 1; }
+  .ab-badge img { height: 48px; width: auto; }
+  .ab-badge span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--body-text); }
 
   /* CTA */
   .ab-cta { padding: 100px 0; background: var(--accent); }
   .ab-cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
-  .ab-cta-content h2 { color: var(--white); font-size: clamp(28px, 3.5vw, 46px); margin-bottom: 12px; }
-  .ab-cta-content p { color: rgba(255,255,255,0.85); max-width: 500px; margin: 0; }
-  .ab-cta-actions { display: flex; gap: 16px; flex-shrink: 0; flex-wrap: wrap; }
+  .ab-cta-content h2 { color: var(--white); font-size: clamp(24px, 3vw, 40px); margin-bottom: 12px; line-height: 1.2; }
+  .ab-cta-content p { color: rgba(255,255,255,0.85); max-width: 520px; margin: 0; line-height: 1.7; }
+  .ab-cta-actions { display: flex; gap: 14px; flex-shrink: 0; flex-wrap: wrap; }
   .ab-cta .btn-white { border-color: var(--white); }
   .ab-cta .btn-white:hover { background: var(--near-black); color: var(--white); border-color: var(--near-black); }
   .ab-cta .btn-outline-white { border-color: rgba(255,255,255,0.4); }
@@ -361,31 +743,47 @@ const lp = (path: string) => localizedPath(path, lang);
 
   /* Responsive */
   @media (max-width: 1024px) {
-    .ab-mission { grid-template-columns: 1fr; }
-    .ab-mission-image { height: 400px; }
-    .ab-mission-content { padding: 60px 24px; }
+    .ab-empathy-inner { flex-direction: column; gap: 0; }
+    .ab-empathy-accent { width: 100%; height: 4px; }
+    .ab-identity { grid-template-columns: 1fr; }
+    .ab-identity-image { height: 400px; }
+    .ab-identity-content { padding: 60px 24px; }
+    .ab-expertise-grid { grid-template-columns: 1fr 1fr; }
+    .ab-delivery-grid { grid-template-columns: 1fr; gap: 50px; }
+    .ab-quality-steps { grid-template-columns: 1fr; }
+    .ab-quality-step { border-left: none; border-bottom: 1px solid var(--border); }
+    .ab-quality-step:last-child { border-right: none; }
+    .ab-customer { grid-template-columns: 1fr; }
+    .ab-customer-image { height: 400px; }
+    .ab-customer-content { padding: 60px 24px; }
+    .ab-testimonials-grid { grid-template-columns: 1fr; }
+    .ab-transparency-inner { grid-template-columns: 1fr; }
     .ab-products-grid { grid-template-columns: 1fr; }
     .ab-prod-card { border-left: 1px solid var(--border); border-right: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .ab-prod-card:first-child { border-top: 1px solid var(--border); }
     .ab-section-header { flex-direction: column; align-items: flex-start; gap: 20px; }
-    .ab-why-grid { grid-template-columns: 1fr; gap: 50px; }
     .ab-facility { grid-template-columns: 1fr; }
     .ab-facility-image { height: 400px; order: -1; }
     .ab-facility-content { padding: 60px 24px; }
-    .ab-safety-grid { grid-template-columns: 1fr 1fr; }
-    .ab-safety-card { border-bottom: 1px solid var(--border); }
+    .ab-gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 280px 230px 230px; }
+    .ab-gallery-featured { grid-column: 1 / 3; }
     .ab-team-inner { grid-template-columns: 1fr; }
     .ab-cta-inner { flex-direction: column; text-align: center; }
     .ab-cta-actions { justify-content: center; }
   }
   @media (max-width: 768px) {
     .ab-hero { min-height: 75vh; }
-    .ab-hero h1 { font-size: clamp(30px, 8vw, 50px); }
+    .ab-hero h1 { font-size: clamp(26px, 7vw, 42px); }
     .ab-hero-stats { flex-direction: column; gap: 20px; align-items: flex-start; }
     .ab-hero-stat-divider { width: 100%; height: 1px; }
-    .ab-safety-grid { grid-template-columns: 1fr; }
-    .ab-safety-card { border-left: 1px solid var(--border); border-right: 1px solid var(--border); }
-    .ab-products, .ab-why, .ab-safety { padding: 80px 0; }
+    .ab-expertise-grid { grid-template-columns: 1fr; }
+    .ab-quality-coa { flex-direction: column; text-align: center; padding: 24px; }
+    .ab-gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: 220px 180px 180px; }
+    .ab-gallery-featured { grid-column: 1 / 3; }
+    .ab-products, .ab-expertise, .ab-delivery, .ab-quality, .ab-testimonials { padding: 80px 0; }
     .ab-cta { padding: 60px 0; }
+    .ab-badges-row { gap: 30px; }
+    .ab-team-card { flex-direction: column; text-align: center; }
+    .ab-empathy { padding: 60px 0; }
   }
 </style>

@@ -12,15 +12,29 @@ const contactMessages = {
   networkError: t(tr, "contact.network_error"),
   submit: t(tr, "contact.submit"),
 };
+
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "name": t(tr, "contact.meta_title"),
+  "description": t(tr, "contact.meta_desc"),
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "UE Chemicals",
+    "email": "info@useful-chemicals.com",
+    "telephone": "+66-951690848",
+    "address": { "@type": "PostalAddress", "addressLocality": "Bangkok", "postalCode": "10110", "addressCountry": "TH" }
+  }
+};
 ---
 
 
-<BaseLayout lang={lang} title={t(tr, "contact.meta_title")} description={t(tr, "contact.meta_desc")} activePage="contact">
+<BaseLayout lang={lang} title={t(tr, "contact.meta_title")} description={t(tr, "contact.meta_desc")} activePage="contact" jsonLd={contactSchema}>
 
   <!-- ========== HERO ========== -->
   <section class="ct-hero">
     <div class="ct-hero-bg">
-      <img src="/images/industrial-worker-holding-plastic-cans-with-chemicals-production-plant.jpg" alt={t(tr, "contact.hero_title")} />
+      <img src="/images/about/BTC-CHONBURI-PLANT-2-5.6-scaled.jpg" alt={t(tr, "contact.hero_title")} />
       <div class="ct-hero-overlay"></div>
     </div>
     <div class="container ct-hero-inner">

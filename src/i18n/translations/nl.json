@@ -54,14 +54,16 @@
   "ui": {
     "form_sending": "Verzenden...",
     "form_sent": "Verstuurd!",
-    "form_error": "Fout - probeer het opnieuw",
-    "scroll_to_top": "Scroll naar boven"
+    "form_error": "Fout - probeer het opnieuw"
   },
   "site": {
     "default_description": "Koop Caluanie Muelear Oxidize, rood kwik te koop, vloeibaar kwik kopen rechtstreeks van UE Chemicals, fabrikant en leverancier in Bangkok, Thailand. met COA, SDS, TDS, gecertificeerde zuiverheid en wereldwijde verzending.",
     "organization_description": "rechtstreeks van UE Chemicals, fabrikant en leverancier in Bangkok, Thailand. industriële chemicaliën voor metaalbewerking, raffinage, onderzoek en terugwinning van edelmetalen. ISO-, REACH- en analysecertificaten voor elke batch.",
     "website_description": "Koop Caluanie Muelear Oxidize, rood kwik te koop, vloeibaar kwik kopen rechtstreeks van UE Chemicals, fabrikant en leverancier in Bangkok, Thailand. met COA, SDS, TDS, gecertificeerde zuiverheid en wereldwijde verzending.",
-    "whatsapp_label": "Chatten op WhatsApp"
+    "whatsapp_label": "Chatten op WhatsApp",
+    "local_region": "Nederland & Benelux",
+    "local_shipping_note": "Directe levering naar Nederland, België, Luxemburg en heel Europa.",
+    "meta_keywords": "Caluanie Muelear Oxidize, rood kwik, vloeibaar kwik, zilverkwik, chemische leverancier in Bangkok, fabrikant, COA, SDS, TDS, groothandel, wereldwijde verzending, industriële chemicaliën"
   },
   "common": {
     "get_quote": "Vraag een offerte aan",
@@ -292,7 +294,8 @@
     "stat3_num": "Globaal",
     "stat3_label": "Verzendnetwerk",
     "get_quote": "Vraag een offerte aan",
-    "view_apps": "Bekijk toepassingen"
+    "view_apps": "Bekijk toepassingen",
+    "meta_keywords": "Caluanie Muelear Oxidize, rood kwik, vloeibaar kwik, zilverkwik, chemische leverancier in Bangkok, fabrikant, groothandel, offerte, COA, SDS, TDS, wereldwijde verzending, industriële chemicaliën"
   },
   "contact": {
     "meta_title": "Neem contact op met UE Chemicals – Koop Caluanie Muelear Oxidize & kwik",
@@ -504,8 +507,8 @@
     "view_products": "Bekijk producten"
   },
   "ordering": {
-    "meta_title": "Caluanie Muelear Oxidize & kwik online kopen",
-    "meta_desc": "Hoe u Caluanie Muelear Oxidize, Rood Kwik en Zilverkwik online kunt bestellen. Eenvoudig bestelproces, wereldwijde verzending vanuit Bangkok, Thailand.",
+    "meta_title": "Caluanie Muelear Oxidize en kwik online kopen",
+    "meta_desc": "Bestel Caluanie Muelear Oxidize, rood kwik en zilverkwik online bij UE Chemicals in Bangkok, Thailand. Eenvoudig bestelproces, COA, SDS, TDS en wereldwijde verzending.",
     "hero_label": "Hoe te bestellen",
     "hero_title": "Bestelinformatie voor industriële chemicaliën",
     "hero_desc": "Volg ons eenvoudige bestelproces om de chemicaliën die u nodig heeft, veilig en op tijd geleverd te krijgen.",
@@ -1101,7 +1104,8 @@
     "cat_logistics": "Logistiek",
     "cat_industry": "Industrie",
     "more_coming": "Binnenkort meer artikelen. Schrijf u in om op de hoogte te blijven van inzichten in de chemische industrie en productnieuws.",
-    "view_faq": "Bekijk veelgestelde vragen"
+    "view_faq": "Bekijk veelgestelde vragen",
+    "meta_keywords": "gids voor Caluanie Muelear Oxidize, gids voor rood kwik, gids voor vloeibaar kwik, blog over industriële chemicaliën, chemische veiligheid, verzenddocumentatie, COA, SDS, TDS, FAQ, leverancier in Bangkok"
   },
   "certificates": {
     "meta_title": "Certificaten en kwaliteitsborging – UE Chemicals",

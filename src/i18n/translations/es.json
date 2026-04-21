@@ -54,14 +54,16 @@
   "ui": {
     "form_sending": "Enviando...",
     "form_sent": "¡Enviado!",
-    "form_error": "Error: inténtalo de nuevo",
-    "scroll_to_top": "Desplazarse hacia arriba"
+    "form_error": "Error: inténtalo de nuevo"
   },
   "site": {
     "default_description": "Compre Caluanie Muelear Oxidize, mercurio rojo y mercurio líquido directamente de UE Chemicals en Bangkok, Tailandia, con COA, SDS, TDS, documentación por lote y envío internacional seguro.",
     "organization_description": "UE Chemicals es fabricante y proveedor de productos químicos industriales en Bangkok, Tailandia, para metalurgia, refinación, investigación y recuperación de metales preciosos, con certificaciones ISO, cumplimiento REACH y documentación analítica por lote.",
     "website_description": "Descubra Caluanie Muelear Oxidize, mercurio rojo y mercurio líquido de UE Chemicals con soporte de exportación, documentación técnica completa y logística internacional confiable.",
-    "whatsapp_label": "Chatear por WhatsApp"
+    "whatsapp_label": "Chatear por WhatsApp",
+    "local_region": "España & Latinoamérica",
+    "local_shipping_note": "Envío directo a España, México, Colombia y toda América Latina.",
+    "meta_keywords": "Caluanie Muelear Oxidize, mercurio rojo, mercurio líquido, mercurio plateado, proveedor químico en Bangkok, fabricante, COA, SDS, TDS, venta al por mayor, envío internacional, productos químicos industriales"
   },
   "common": {
     "get_quote": "Obtenga una cotización",
@@ -292,7 +294,8 @@
     "stat3_num": "Mundial",
     "stat3_label": "Red de envío",
     "get_quote": "Obtenga una cotización",
-    "view_apps": "Ver aplicaciones"
+    "view_apps": "Ver aplicaciones",
+    "meta_keywords": "Caluanie Muelear Oxidize, mercurio rojo, mercurio líquido, mercurio plateado, proveedor químico en Bangkok, fabricante, venta al por mayor, cotización, COA, SDS, TDS, envío internacional, productos químicos industriales"
   },
   "contact": {
     "meta_title": "Contacte con UE Chemicals | Cotizaciones y soporte técnico",
@@ -1101,7 +1104,8 @@
     "cat_logistics": "Logística",
     "cat_industry": "Industria",
     "more_coming": "Más artículos próximamente. Suscríbase para mantenerse actualizado sobre conocimientos de la industria química y noticias de productos.",
-    "view_faq": "Ver preguntas frecuentes"
+    "view_faq": "Ver preguntas frecuentes",
+    "meta_keywords": "guía de Caluanie Muelear Oxidize, guía de mercurio rojo, guía de mercurio líquido, blog de químicos industriales, seguridad química, documentación de envío, COA, SDS, TDS, preguntas frecuentes, proveedor de Bangkok"
   },
   "certificates": {
     "meta_title": "Certificados y garantía de calidad | UE Chemicals",

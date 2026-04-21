@@ -151,15 +151,30 @@ const processSteps = [
   { title: t(tr, 'certificates.qc4_title'), description: t(tr, 'certificates.qc4_desc') },
   { title: t(tr, 'certificates.qc5_title'), description: t(tr, 'certificates.qc5_desc') },
 ];
+
+const certsSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": certs.meta_title,
+  "description": certs.meta_desc,
+  "specialty": "Chemical Certifications & Quality Assurance",
+  "about": [
+    { "@type": "Thing", "name": "ISO 9001:2015", "description": "Quality Management System" },
+    { "@type": "Thing", "name": "ISO 14001:2015", "description": "Environmental Management System" },
+    { "@type": "Thing", "name": "ISO 45001:2018", "description": "Occupational Health and Safety" },
+    { "@type": "Thing", "name": "REACH Compliance", "description": "EU Chemical Regulation" },
+    { "@type": "Thing", "name": "GHS/CLP", "description": "Globally Harmonized System Classification" }
+  ]
+};
 ---
 
 
-<BaseLayout lang={lang} title={certs.meta_title} description={certs.meta_desc} activePage="certificates">
+<BaseLayout lang={lang} title={certs.meta_title} description={certs.meta_desc} activePage="certificates" jsonLd={certsSchema}>
 
   <!-- ========== HERO ========== -->
   <section class="cq-hero">
     <div class="cq-hero-bg">
-      <img src="/images/safety-guidelines-for-chemical-storage-and-handling-1.jpg" alt={certs.hero_title} />
+      <img src="/images/about/BTC-CHONBURI-PLANT-2-8.1.jpg" alt={certs.hero_title} />
       <div class="cq-hero-overlay"></div>
     </div>
     <div class="container cq-hero-inner">

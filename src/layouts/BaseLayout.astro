@@ -16,7 +16,7 @@ const {
   title,
   description,
   activePage = '',
-  ogImage = '/images/caluanie-muelear-oxidize-manufacturer-in-usa.webp',
+  ogImage = '/images/about/BTC-CHONBURI-PLANT-2-5.6-scaled.jpg',
   canonicalPath,
   jsonLd,
   lang = defaultLang,
@@ -27,6 +27,11 @@ const siteUrl = 'https://useful-chemicals.com';
 
 function normalizeWhitespace(value: string): string {
   return value.replace(/\s+/g, ' ').trim();
+}
+
+function readMetaText(key: string): string {
+  const value = normalizeWhitespace(t(tr, key));
+  return value === key ? '' : value;
 }
 
 function truncateAtWord(value: string, maxLength: number): string {
@@ -67,6 +72,12 @@ if (fullTitle.length < minTitleLength && !/bangkok|thailand/i.test(fullTitle)) {
 const defaultDescription = normalizeWhitespace(t(tr, 'site.default_description'));
 const organizationDescription = normalizeWhitespace(t(tr, 'site.organization_description'));
 const websiteDescription = normalizeWhitespace(t(tr, 'site.website_description'));
+const pageKeywordKey = activePage === 'products'
+  ? 'products.meta_keywords'
+  : activePage === 'blog'
+    ? 'blog.meta_keywords'
+    : 'site.meta_keywords';
+const metaKeywords = readMetaText(pageKeywordKey) || readMetaText('site.meta_keywords') || readMetaText('ui.meta_keywords');
 const selectedDescription = normalizeWhitespace(description || defaultDescription);
 const maxDescriptionLength = 160;
 const minDescriptionLength = 120;
@@ -79,27 +90,49 @@ for (const fallbackDescription of descriptionFallbacks) {
   }
 }
 metaDescription = truncateAtWord(metaDescription, maxDescriptionLength);
-const currentLanguage = languages.find(language => language.code === lang);
 const ogLocales: Record<string, string> = {
   en: 'en_US',
   de: 'de_DE',
   fr: 'fr_FR',
   es: 'es_ES',
   it: 'it_IT',
-  pt: 'pt_PT',
+  pt: 'pt_BR',
   ru: 'ru_RU',
   zh: 'zh_CN',
-  ja: 'ja_JP',
   ko: 'ko_KR',
   ar: 'ar_SA',
-  hi: 'hi_IN',
   tr: 'tr_TR',
   pl: 'pl_PL',
   nl: 'nl_NL',
-  el: 'el_GR',
-  he: 'he_IL',
-  th: 'th_TH',
-  uk: 'uk_UA',
+  bn: 'bn_BD',
+  cs: 'cs_CZ',
+  fa: 'fa_IR',
+  id: 'id_ID',
+  ro: 'ro_RO',
+  vi: 'vi_VN',
+};
+
+// Locale-specific geo metadata for local SEO
+const geoData: Record<string, { region: string; placename: string; lat: string; lng: string }> = {
+  en: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  de: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  fr: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  es: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  it: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  pt: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  ru: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  zh: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  ko: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  ar: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  tr: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  pl: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  nl: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  bn: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  cs: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  fa: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  id: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  ro: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  vi: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
 };
 const uiLabels = {
   formSending: t(tr, 'ui.form_sending'),
@@ -117,21 +150,81 @@ const orgSchema = {
   "name": "UE Chemicals",
   "url": siteUrl,
   "logo": `${siteUrl}/images/favicon.png`,
+  "image": `${siteUrl}/images/ue-chemicals.png`,
   "description": t(tr, 'site.organization_description'),
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Bangkok",
     "addressLocality": "Bangkok",
+    "addressRegion": "Bangkok",
     "postalCode": "10110",
     "addressCountry": "TH"
   },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "contactType": "sales",
-    "email": "info@useful-chemicals.com",
-    "availableLanguage": currentLanguage?.name || 'English'
+  "contactPoint": [
+    {
+      "@type": "ContactPoint",
+      "contactType": "sales",
+      "email": "info@useful-chemicals.com",
+      "availableLanguage": languages.map(l => l.name)
+    },
+    {
+      "@type": "ContactPoint",
+      "contactType": "customer service",
+      "telephone": "+66-951690848",
+      "contactOption": "TollFree",
+      "availableLanguage": ["English", "Thai"]
+    }
+  ],
+  "sameAs": [
+    "https://www.facebook.com/uechemicals",
+    "https://www.linkedin.com/company/ue-chemicals",
+    "https://twitter.com/uechemicals"
+  ],
+  "foundingLocation": {
+    "@type": "Place",
+    "name": "Bangkok, Thailand"
   },
-  "sameAs": []
+  "areaServed": [
+    { "@type": "Country", "name": "United States" },
+    { "@type": "Country", "name": "Germany" },
+    { "@type": "Country", "name": "United Kingdom" },
+    { "@type": "Country", "name": "France" },
+    { "@type": "Country", "name": "Spain" },
+    { "@type": "Country", "name": "Italy" },
+    { "@type": "Country", "name": "Netherlands" },
+    { "@type": "Country", "name": "Poland" },
+    { "@type": "Country", "name": "Czech Republic" },
+    { "@type": "Country", "name": "Romania" },
+    { "@type": "Country", "name": "Russia" },
+    { "@type": "Country", "name": "Turkey" },
+    { "@type": "Country", "name": "Saudi Arabia" },
+    { "@type": "Country", "name": "United Arab Emirates" },
+    { "@type": "Country", "name": "Iran" },
+    { "@type": "Country", "name": "China" },
+    { "@type": "Country", "name": "South Korea" },
+    { "@type": "Country", "name": "Indonesia" },
+    { "@type": "Country", "name": "Vietnam" },
+    { "@type": "Country", "name": "Bangladesh" },
+    { "@type": "Country", "name": "Brazil" },
+    { "@type": "Country", "name": "Thailand" }
+  ],
+  "knowsAbout": [
+    "Caluanie Muelear Oxidize",
+    "Red Liquid Mercury",
+    "Silver Liquid Mercury",
+    "Industrial Chemical Supply",
+    "Chemical Export",
+    "Hazardous Materials Shipping"
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Industrial Chemicals",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Caluanie Muelear Oxidize", "sku": "UEC-CMO-HQ" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Red Liquid Mercury", "sku": "UEC-RLM-5N" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Silver Liquid Mercury", "sku": "UEC-SLM-4N" } }
+    ]
+  }
 };
 
 const websiteSchema = {
@@ -140,16 +233,52 @@ const websiteSchema = {
   "name": "UE Chemicals",
   "url": siteUrl,
   "description": t(tr, 'site.website_description'),
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": `${siteUrl}${localizedPath('/', lang)}?s={search_term_string}`,
-    "query-input": "required name=search_term_string"
+  "inLanguage": lang,
+  "publisher": {
+    "@type": "Organization",
+    "name": "UE Chemicals"
+  },
+  "potentialAction": [
+    {
+      "@type": "SearchAction",
+      "target": `${siteUrl}${localizedPath('/', lang)}?s={search_term_string}`,
+      "query-input": "required name=search_term_string"
+    }
+  ],
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": ["h1", ".art-hero-sub", ".page-hero p", "meta[name='description']"]
   }
 };
 
+// Default BreadcrumbList based on URL path
+const pathSegments = pagePath.replace(/^\/|\/$/g, '').split('/').filter(Boolean);
+const langPrefix = languages.some(l => l.code === pathSegments[0] && l.code !== defaultLang);
+const breadcrumbSegments = langPrefix ? pathSegments.slice(1) : pathSegments;
+const breadcrumbItems: { "@type": string; position: number; name: string; item: string }[] = [
+  { "@type": "ListItem", position: 1, name: t(tr, 'nav.home'), item: `${siteUrl}${localizedPath('/', lang)}` }
+];
+let cumulativePath = '';
+breadcrumbSegments.forEach((segment, i) => {
+  cumulativePath += `/${segment}`;
+  const segmentName = segment.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+  breadcrumbItems.push({
+    "@type": "ListItem",
+    position: i + 2,
+    name: segmentName,
+    item: `${siteUrl}${localizedPath(cumulativePath, lang)}`
+  });
+});
+const breadcrumbSchema = breadcrumbSegments.length > 0 ? {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": breadcrumbItems
+} : null;
+
+const baseSchemas = [orgSchema, websiteSchema, ...(breadcrumbSchema ? [breadcrumbSchema] : [])];
 const allSchemas = jsonLd
-  ? Array.isArray(jsonLd) ? [orgSchema, websiteSchema, ...jsonLd] : [orgSchema, websiteSchema, jsonLd]
-  : [orgSchema, websiteSchema];
+  ? Array.isArray(jsonLd) ? [...baseSchemas, ...jsonLd] : [...baseSchemas, jsonLd]
+  : baseSchemas;
 
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -166,6 +295,7 @@ import '../styles/global.css';
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{fullTitle}</title>
   <meta name="description" content={metaDescription} />
+  {metaKeywords && <meta name="keywords" content={metaKeywords} />}
   <link rel="canonical" href={canonical} />
 
   <!-- Open Graph -->
@@ -183,16 +313,27 @@ import '../styles/global.css';
   <meta name="twitter:description" content={metaDescription} />
   <meta name="twitter:image" content={fullOgImage} />
 
-  <!-- Geo Tags -->
-  <meta name="geo.region" content="TH-10" />
-  <meta name="geo.placename" content="Bangkok" />
-  <meta name="geo.position" content="13.7563;100.5018" />
-  <meta name="ICBM" content="13.7563, 100.5018" />
+  <!-- Geo Tags (locale-aware for local SEO) -->
+  {(() => {
+    const geo = geoData[lang] || geoData.en;
+    return <>
+      <meta name="geo.region" content={geo.region} />
+      <meta name="geo.placename" content={geo.placename} />
+      <meta name="geo.position" content={`${geo.lat};${geo.lng}`} />
+      <meta name="ICBM" content={`${geo.lat}, ${geo.lng}`} />
+    </>;
+  })()}
+  <meta http-equiv="content-language" content={lang} />
 
   <!-- Hreflang -->
   <link rel="alternate" hreflang="x-default" href={`${siteUrl}${cleanPath}`} />
   {languages.map(l => (
     <link rel="alternate" hreflang={l.code} href={`${siteUrl}${getLocalizedPath(cleanPath, l.code)}`} />
+  ))}
+
+  <!-- OG locale alternates -->
+  {languages.filter(l => l.code !== lang).map(l => (
+    <meta property="og:locale:alternate" content={ogLocales[l.code] || `${l.code}_${l.flag.toUpperCase()}`} />
   ))}
 
   <link rel="icon" type="image/webp" href="/images/favicon.png" />

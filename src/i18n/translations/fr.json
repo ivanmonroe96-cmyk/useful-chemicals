@@ -54,14 +54,16 @@
   "ui": {
     "form_sending": "Envoi en cours...",
     "form_sent": "Envoyé!",
-    "form_error": "Erreur – réessayez",
-    "scroll_to_top": "Faire défiler vers le haut"
+    "form_error": "Erreur – réessayez"
   },
   "site": {
     "default_description": "Achetez Caluanie Muelear Oxidize, mercure rouge et mercure liquide directement auprès de UE Chemicals à Bangkok, Thaïlande, avec COA, SDS, TDS, documentation par lot et expédition internationale sécurisée.",
     "organization_description": "UE Chemicals est fabricant et fournisseur de produits chimiques industriels à Bangkok, en Thaïlande, pour le travail des métaux, le raffinage, la recherche et la récupération des métaux précieux, avec certifications ISO, conformité REACH et documentation analytique par lot.",
     "website_description": "Découvrez Caluanie Muelear Oxidize, le mercure rouge et le mercure liquide de UE Chemicals avec assistance export, documentation technique complète et logistique internationale fiable.",
-    "whatsapp_label": "Discutez sur WhatsApp"
+    "whatsapp_label": "Discutez sur WhatsApp",
+    "local_region": "France & Europe",
+    "local_shipping_note": "Livraison directe en France, Belgique, Suisse et dans toute l'Europe.",
+    "meta_keywords": "Caluanie Muelear Oxidize, mercure rouge, mercure liquide, mercure argenté, fournisseur chimique à Bangkok, fabricant, COA, SDS, TDS, vente en gros, expédition mondiale, produits chimiques industriels"
   },
   "common": {
     "get_quote": "Obtenez un devis",
@@ -292,7 +294,8 @@
     "stat3_num": "Mondial",
     "stat3_label": "Réseau maritime",
     "get_quote": "Obtenez un devis",
-    "view_apps": "Voir les candidatures"
+    "view_apps": "Voir les candidatures",
+    "meta_keywords": "Caluanie Muelear Oxidize, mercure rouge, mercure liquide, mercure argenté, fournisseur chimique à Bangkok, fabricant, vente en gros, devis, COA, SDS, TDS, expédition mondiale, produits chimiques industriels"
   },
   "contact": {
     "meta_title": "Contacter UE Chemicals | Devis et assistance export",
@@ -504,8 +507,8 @@
     "view_products": "Voir les produits"
   },
   "ordering": {
-    "meta_title": "Comment acheter Caluanie Muelear Oxidize & Mercury en ligne",
-    "meta_desc": "Comment commander Caluanie Muelear Oxidize, Red Mercury et Silver Mercury en ligne. Processus de commande simple, expédition dans le monde entier depuis Bangkok, Thaïlande.",
+    "meta_title": "Comment acheter Caluanie Muelear Oxidize et mercure en ligne",
+    "meta_desc": "Commandez Caluanie Muelear Oxidize, mercure rouge et mercure liquide argenté en ligne chez UE Chemicals à Bangkok, Thaïlande. Processus simple, COA, SDS, TDS et expédition mondiale.",
     "hero_label": "Comment commander",
     "hero_title": "Informations de commande de produits chimiques industriels",
     "hero_desc": "Suivez notre processus de commande simple pour obtenir les produits chimiques dont vous avez besoin, livrés en toute sécurité et à temps.",
@@ -997,7 +1000,7 @@
   },
   "wholesale": {
     "meta_title": "Vente en gros de Caluanie Muelear Oxidize et de mercure | UE Chemicals",
-    "meta_desc": "Obtenez des prix de gros pour Caluanie Muelear Oxidize, le mercure rouge et le mercure liquide avec remises sur volume, documentation export et assistance commerciale de UE Chemicals.",
+    "meta_desc": "Obtenez des prix de gros pour Caluanie Muelear Oxidize, le mercure rouge et le mercure liquide argenté chez UE Chemicals, avec remises sur volume, documentation export et assistance commerciale.",
     "hero_badge": "Programme de vente en gros",
     "hero_title": "Fourniture de produits chimiques industriels en gros",
     "hero_sub": "Prix de gros compétitifs pour Caluanie Muelear Oxidize, le mercure liquide rouge et le mercure liquide argenté, directement depuis nos installations de Bangkok, en Thaïlande.",
@@ -1101,7 +1104,8 @@
     "cat_logistics": "Logistique",
     "cat_industry": "Industrie",
     "more_coming": "Plus d'articles à venir. Abonnez-vous pour rester informé des informations sur l'industrie chimique et des nouveautés sur les produits.",
-    "view_faq": "Voir la FAQ"
+    "view_faq": "Voir la FAQ",
+    "meta_keywords": "guide Caluanie Muelear Oxidize, guide mercure rouge, guide mercure liquide, blog produits chimiques industriels, sécurité chimique, documentation d'expédition, COA, SDS, TDS, FAQ, fournisseur à Bangkok"
   },
   "certificates": {
     "meta_title": "Certificats et assurance qualité | UE Chemicals",

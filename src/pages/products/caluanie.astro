@@ -53,6 +53,7 @@ const productSchema = {
   "@type": "Product",
   "name": t(tr, 'nav.caluanie'),
   "description": t(tr, 'caluanie.meta_desc'),
+  "image": `https://useful-chemicals.com/images/buy-new-stock-caluanie-muelear-oxidize.jpg`,
   "brand": { "@type": "Brand", "name": "UE Chemicals" },
   "manufacturer": { "@type": "Organization", "name": "UE Chemicals", "address": { "@type": "PostalAddress", "addressLocality": "Bangkok", "addressCountry": "TH" } },
   "sku": "UEC-CMO-HQ",
@@ -60,16 +61,7 @@ const productSchema = {
     { "@type": "PropertyValue", "name": t(tr, 'caluanie.spec_type_label'), "value": t(tr, 'caluanie.spec_type') },
     { "@type": "PropertyValue", "name": t(tr, 'caluanie.spec_app_label'), "value": t(tr, 'caluanie.spec_app') },
     { "@type": "PropertyValue", "name": t(tr, 'caluanie.tech_density'), "value": t(tr, 'caluanie.tech_density_val') }
-  ],
-  "offers": {
-    "@type": "Offer",
-    "availability": "https://schema.org/InStock",
-    "priceCurrency": "USD",
-    "price": "0",
-    "priceValidUntil": "2026-12-31",
-    "url": `https://useful-chemicals.com${lp('/products/caluanie')}`,
-    "seller": { "@type": "Organization", "name": "UE Chemicals" }
-  }
+  ]
 };
 
 const faqSchema = {
@@ -94,7 +86,7 @@ const breadcrumbSchema = {
 ---
 
 
-<BaseLayout lang={lang} title={t(tr, "caluanie.meta_title")} description={t(tr, "caluanie.meta_desc")} activePage="products" jsonLd={[productSchema, faqSchema, breadcrumbSchema]}>
+<BaseLayout lang={lang} title={t(tr, "caluanie.meta_title")} description={t(tr, "caluanie.meta_desc")} activePage="products" ogImage="/images/buy-new-stock-caluanie-muelear-oxidize.jpg" jsonLd={[productSchema, faqSchema, breadcrumbSchema]}>
 
   <!-- ========== HERO ========== -->
   <section class="pd-hero">
@@ -189,7 +181,7 @@ const breadcrumbSchema = {
             <h5>{t(tr, 'caluanie.doc_tds_title')}</h5>
             <p>{t(tr, 'caluanie.doc_tds_desc')}</p>
           </div>
-          <a href="/docs/caluanie/UE-Chemicals-Caluanie-Muelear-Oxidize-TDS.pdf" download class="btn btn-outline btn-sm">{t(tr, 'caluanie.download_tds')} <i class="fas fa-download"></i></a>
+          <a href="/documents/Caluanie%20Muelear%20Oxidize/Caluanie%20Muelear%20Oxidize%20Technical%20Data%20Sheet.pdf" download class="btn btn-outline btn-sm">{t(tr, 'caluanie.download_tds')} <i class="fas fa-download"></i></a>
         </div>
         <div class="pd-doc-card">
           <i class="fas fa-file-shield"></i>
@@ -197,7 +189,7 @@ const breadcrumbSchema = {
             <h5>{t(tr, 'caluanie.doc_sds_title')}</h5>
             <p>{t(tr, 'caluanie.doc_sds_desc')}</p>
           </div>
-          <a href="/docs/caluanie/UE-Chemicals-Caluanie-Muelear-Oxidize-SDS.pdf" download class="btn btn-outline btn-sm">{t(tr, 'caluanie.download_sds')} <i class="fas fa-download"></i></a>
+          <a href="/documents/Caluanie%20Muelear%20Oxidize/Caluanie%20MSDS%20Material%20Safety%20Datasheet.pdf" download class="btn btn-outline btn-sm">{t(tr, 'caluanie.download_sds')} <i class="fas fa-download"></i></a>
         </div>
         <div class="pd-doc-card">
           <i class="fas fa-file-certificate"></i>
@@ -205,7 +197,7 @@ const breadcrumbSchema = {
             <h5>{t(tr, 'caluanie.doc_coa_title')}</h5>
             <p>{t(tr, 'caluanie.doc_coa_desc')}</p>
           </div>
-          <a href="/docs/caluanie/UE-Chemicals-Caluanie-Muelear-Oxidize-COA.pdf" download class="btn btn-outline btn-sm">{t(tr, 'caluanie.download_coa')} <i class="fas fa-download"></i></a>
+          <a href="#" style="opacity: 0.5; pointer-events: none;" title="COA Not Available" download class="btn btn-outline btn-sm">{t(tr, 'caluanie.download_coa')} <i class="fas fa-download"></i></a>
         </div>
       </div>
     </div>
