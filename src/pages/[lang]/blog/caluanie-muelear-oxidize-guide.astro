@@ -6,8 +6,9 @@ import { defaultLang } from '../../../i18n/languages';
 export const getStaticPaths = getLangStaticPaths;
 const lang = Astro.params.lang ?? defaultLang;
 const tr = getTranslations(lang);
+const trEn = getTranslations(defaultLang);
 const lp = (path: string) => localizedPath(path, lang);
-const a = tr.blog.article_caluanie;
+const a = tr.blog?.article_caluanie ?? trEn.blog.article_caluanie;
 
 const faqItems = [
   { q: a.faq1_q, a: a.faq1_a },
