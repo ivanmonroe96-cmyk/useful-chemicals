@@ -18,15 +18,15 @@ const posts = [
     excerpt: blog.post1_excerpt,
     date: blogDate,
     category: blog.cat_safety,
-    image: "/images/Buy-Silver-Liquid-Mercury.jpg",
-    slug: "#"
+    image: "/images/home-silver-mercury-product.jpeg",
+    slug: lp("/blog/silver-liquid-mercury-guide")
   },
   {
     title: blog.post2_title,
     excerpt: blog.post2_excerpt,
     date: blogDate,
     category: blog.cat_products,
-    image: "/images/caluanie-muelear-oxidize-for-sale.jpg",
+    image: "/images/home-caluanie-product.jpeg",
     slug: lp("/blog/caluanie-muelear-oxidize-guide")
   },
   {
@@ -34,7 +34,7 @@ const posts = [
     excerpt: blog.post3_excerpt,
     date: blogDate,
     category: blog.cat_compliance,
-    image: "/images/buy-new-stock-caluanie-muelear-oxidize.jpg",
+    image: "/images/home-caluanie-product.jpeg",
     slug: "#"
   },
   {
@@ -42,15 +42,15 @@ const posts = [
     excerpt: blog.post4_excerpt,
     date: blogDate,
     category: blog.cat_products,
-    image: "/images/buy-red-liquid-mercury-usa.jpg",
-    slug: "#"
+    image: "/images/home-red-mercury-product.jpeg",
+    slug: lp("/blog/red-mercury-2020-258-guide")
   },
   {
     title: blog.post5_title,
     excerpt: blog.post5_excerpt,
     date: blogDate,
     category: blog.cat_logistics,
-    image: "/images/red-liquid-mercury-for-sale-usa.png",
+    image: "/images/home-red-mercury-product.jpeg",
     slug: "#"
   },
   {
@@ -103,7 +103,11 @@ const blogSchema = {
               <span class="blog-card-date"><i class="fas fa-calendar"></i> {post.date}</span>
               <h3>{post.title}</h3>
               <p>{post.excerpt}</p>
-              <span class="blog-card-link">{t(tr, "common.coming_soon")} <i class="fas fa-arrow-right"></i></span>
+              {post.slug === "#" ? (
+                <span class="blog-card-link">{t(tr, "common.coming_soon")} <i class="fas fa-arrow-right"></i></span>
+              ) : (
+                <a href={post.slug} class="blog-card-link">{t(tr, "common.read_more")} <i class="fas fa-arrow-right"></i></a>
+              )}
             </div>
           </article>
         ))}

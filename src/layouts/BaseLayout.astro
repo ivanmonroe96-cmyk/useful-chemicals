@@ -10,33 +10,25 @@ interface Props {
   canonicalPath?: string;
   jsonLd?: object | object[];
   lang?: string;
+  noindex?: boolean;
 }
 
 const {
   title,
   description,
   activePage = '',
-  ogImage = '/images/about/BTC-CHONBURI-PLANT-2-5.6-scaled.jpg',
+  ogImage = '/images/caluanie-muelear-oxidize-manufacturer-in-usa.webp',
   canonicalPath,
   jsonLd,
   lang = defaultLang,
+  noindex = false,
 } = Astro.props;
 
 const tr = getTranslations(lang);
 const siteUrl = 'https://useful-chemicals.com';
-const documentCacheControl = 'public, max-age=0, must-revalidate';
-
-Astro.response.headers.set('Cache-Control', documentCacheControl);
-Astro.response.headers.set('CDN-Cache-Control', 'no-store');
-Astro.response.headers.set('Cloudflare-CDN-Cache-Control', 'no-store');
 
 function normalizeWhitespace(value: string): string {
   return value.replace(/\s+/g, ' ').trim();
-}
-
-function readMetaText(key: string): string {
-  const value = normalizeWhitespace(t(tr, key));
-  return value === key ? '' : value;
 }
 
 function truncateAtWord(value: string, maxLength: number): string {
@@ -77,12 +69,6 @@ if (fullTitle.length < minTitleLength && !/bangkok|thailand/i.test(fullTitle)) {
 const defaultDescription = normalizeWhitespace(t(tr, 'site.default_description'));
 const organizationDescription = normalizeWhitespace(t(tr, 'site.organization_description'));
 const websiteDescription = normalizeWhitespace(t(tr, 'site.website_description'));
-const pageKeywordKey = activePage === 'products'
-  ? 'products.meta_keywords'
-  : activePage === 'blog'
-    ? 'blog.meta_keywords'
-    : 'site.meta_keywords';
-const metaKeywords = readMetaText(pageKeywordKey) || readMetaText('site.meta_keywords') || readMetaText('ui.meta_keywords');
 const selectedDescription = normalizeWhitespace(description || defaultDescription);
 const maxDescriptionLength = 160;
 const minDescriptionLength = 120;
@@ -120,24 +106,24 @@ const ogLocales: Record<string, string> = {
 // Locale-specific geo metadata for local SEO
 const geoData: Record<string, { region: string; placename: string; lat: string; lng: string }> = {
   en: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  de: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  fr: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  es: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  it: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  pt: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  ru: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  zh: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  ko: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  ar: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  tr: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  pl: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  nl: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  bn: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  cs: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  fa: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  id: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  ro: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
-  vi: { region: 'TH-10', placename: 'Bangkok', lat: '13.7563', lng: '100.5018' },
+  de: { region: 'DE-BE', placename: 'Berlin', lat: '52.5200', lng: '13.4050' },
+  fr: { region: 'FR-75', placename: 'Paris', lat: '48.8566', lng: '2.3522' },
+  es: { region: 'ES-MD', placename: 'Madrid', lat: '40.4168', lng: '-3.7038' },
+  it: { region: 'IT-MI', placename: 'Milano', lat: '45.4642', lng: '9.1900' },
+  pt: { region: 'BR-SP', placename: 'São Paulo', lat: '-23.5505', lng: '-46.6333' },
+  ru: { region: 'RU-MOW', placename: 'Москва', lat: '55.7558', lng: '37.6173' },
+  zh: { region: 'CN-31', placename: '上海', lat: '31.2304', lng: '121.4737' },
+  ko: { region: 'KR-11', placename: '서울', lat: '37.5665', lng: '126.9780' },
+  ar: { region: 'AE-DU', placename: 'دبي', lat: '25.2048', lng: '55.2708' },
+  tr: { region: 'TR-34', placename: 'İstanbul', lat: '41.0082', lng: '28.9784' },
+  pl: { region: 'PL-MZ', placename: 'Warszawa', lat: '52.2297', lng: '21.0122' },
+  nl: { region: 'NL-NH', placename: 'Amsterdam', lat: '52.3676', lng: '4.9041' },
+  bn: { region: 'BD-13', placename: 'ঢাকা', lat: '23.8103', lng: '90.4125' },
+  cs: { region: 'CZ-PR', placename: 'Praha', lat: '50.0755', lng: '14.4378' },
+  fa: { region: 'IR-23', placename: 'تهران', lat: '35.6892', lng: '51.3890' },
+  id: { region: 'ID-JK', placename: 'Jakarta', lat: '-6.2088', lng: '106.8456' },
+  ro: { region: 'RO-B', placename: 'București', lat: '44.4268', lng: '26.1025' },
+  vi: { region: 'VN-SG', placename: 'Hồ Chí Minh', lat: '10.8231', lng: '106.6297' },
 };
 const uiLabels = {
   formSending: t(tr, 'ui.form_sending'),
@@ -171,13 +157,6 @@ const orgSchema = {
       "contactType": "sales",
       "email": "info@useful-chemicals.com",
       "availableLanguage": languages.map(l => l.name)
-    },
-    {
-      "@type": "ContactPoint",
-      "contactType": "customer service",
-      "telephone": "+66-951690848",
-      "contactOption": "TollFree",
-      "availableLanguage": ["English", "Thai"]
     }
   ],
   "sameAs": [
@@ -300,7 +279,7 @@ import '../styles/global.css';
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{fullTitle}</title>
   <meta name="description" content={metaDescription} />
-  {metaKeywords && <meta name="keywords" content={metaKeywords} />}
+  {noindex && <meta name="robots" content="noindex, nofollow" />}
   <link rel="canonical" href={canonical} />
 
   <!-- Open Graph -->
@@ -361,11 +340,6 @@ import '../styles/global.css';
   <Footer lang={lang} />
   <CookieBanner lang={lang} />
   <ScrollTop lang={lang} />
-
-  <!-- WhatsApp Floating Button -->
-  <a href="https://wa.me/66951690848" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label={t(tr, 'site.whatsapp_label')}>
-    <i class="fab fa-whatsapp"></i>
-  </a>
 
   <script is:inline type="module" src={mainScriptUrl}></script>
 </body>

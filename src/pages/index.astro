@@ -35,12 +35,11 @@ const homeFaqSchema = {
   <!-- ========== HERO ========== -->
   <section class="hero">
     <div class="hero-bg">
-      <img src="/images/about/BTC-CHONBURI-PLANT-2-5.6-scaled.jpg" alt="UE Chemicals BTC Chonburi Plant 2 — industrial chemical manufacturing facility" />
+      <img src="/images/about/BTC-CHONBURI-PLANT-2-5.6-scaled.jpg" alt="UE Chemicals BTC Chonburi Plant 2 — industrial chemical manufacturing facility" width="2560" height="1922" fetchpriority="high" decoding="async" />
       <div class="hero-overlay"></div>
     </div>
     <div class="container hero-inner">
       <div class="hero-content">
-        <div class="hero-badge">{t(tr, "home.hero_badge")}</div>
         <h1>{t(tr, "home.hero_title")}</h1>
         <p class="hero-sub">{t(tr, "home.hero_sub")}</p>
         <div class="hero-actions">
@@ -105,7 +104,7 @@ const homeFaqSchema = {
         <!-- Card 1 -->
         <a href={lp("/products/caluanie")} class="hp-product-card">
           <div class="hp-product-img">
-            <img src="/images/caluanie-muelear-oxidize-for-sale.jpg" alt={t(tr, "home.product1_name")} />
+            <img src="/images/home-caluanie-product.jpeg" alt={t(tr, "home.product1_name")} />
             <div class="hp-product-num">01</div>
           </div>
           <div class="hp-product-body">
@@ -118,7 +117,7 @@ const homeFaqSchema = {
         <!-- Card 2 -->
         <a href={lp("/products/red-mercury")} class="hp-product-card">
           <div class="hp-product-img">
-            <img loading="lazy" src="/images/red-liquid-mercury-for-sale-usa.png" alt={t(tr, "home.product2_name")} />
+            <img loading="lazy" src="/images/home-red-mercury-product.jpeg" alt={t(tr, "home.product2_name")} />
             <div class="hp-product-num">02</div>
           </div>
           <div class="hp-product-body">
@@ -131,7 +130,7 @@ const homeFaqSchema = {
         <!-- Card 3 -->
         <a href={lp("/products/silver-mercury")} class="hp-product-card">
           <div class="hp-product-img">
-            <img loading="lazy" src="/images/silver-liquid-mercury-for-sale.png" alt={t(tr, "home.product3_name")} />
+            <img loading="lazy" src="/images/home-silver-mercury-product.jpeg" alt={t(tr, "home.product3_name")} />
             <div class="hp-product-num">03</div>
           </div>
           <div class="hp-product-body">
@@ -404,19 +403,6 @@ const homeFaqSchema = {
     padding-bottom: 100px;
   }
   .hero-content { max-width: 700px; }
-  .hero-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 8px 20px;
-    border: 1px solid rgba(255,255,255,0.2);
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    color: rgba(255,255,255,0.8);
-    margin-bottom: 24px;
-  }
   .hero h1 {
     color: var(--white);
     font-size: clamp(42px, 6vw, 80px);
@@ -778,6 +764,40 @@ const homeFaqSchema = {
   .hp-test-avatar { width: 42px; height: 42px; border-radius: 50%; background: var(--primary); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; }
   .hp-test-author strong { display: block; font-size: 0.9rem; }
   .hp-test-author span { font-size: 0.8rem; color: var(--body-text); }
+
+  /* Refined visual system */
+  .hero { min-height: 92vh; background: var(--primary-dark); }
+  .hero-overlay { background: linear-gradient(115deg, rgba(8,47,56,0.96) 0%, rgba(15,76,92,0.78) 48%, rgba(47,143,107,0.28) 100%); }
+  .hero-scroll,
+  .hero-stats { border-radius: 8px; }
+  .hero-sub { color: rgba(255,255,255,0.78); }
+  .hero-stats { width: fit-content; max-width: 100%; padding: 24px 28px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); backdrop-filter: blur(10px); }
+  .hero-stat-label { color: rgba(255,255,255,0.66); }
+  .trust-bar { background: var(--primary-dark); border-bottom-color: rgba(255,255,255,0.1); }
+  .trust-bar-items span { color: rgba(255,255,255,0.66); }
+  .trust-bar-items span i { color: var(--accent); }
+  .hp-products { background: var(--surface); }
+  .hp-products-grid { gap: 24px; }
+  .hp-product-card { background: var(--white); border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--shadow-sm); }
+  .hp-product-card:last-child { border-right: 1px solid var(--border); }
+  .hp-product-img { height: 300px; }
+  .hp-product-num { border-radius: 8px; background: var(--primary-dark); }
+  .hp-product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: rgba(252,82,32,0.35); }
+  .hp-about-content { background: linear-gradient(135deg, var(--surface), var(--secondary-soft)); }
+  .hp-about-feat-icon,
+  .hp-app-icon { border-radius: 8px; background: var(--primary-dark); color: var(--accent); }
+  .hp-applications { background: var(--white); }
+  .hp-app-grid { gap: 18px; }
+  .hp-app-card { border: 1px solid var(--border) !important; border-radius: 8px; background: var(--surface); }
+  .hp-app-card:hover { background: var(--white); box-shadow: var(--shadow-sm); transform: translateY(-3px); }
+  .hp-why { background: linear-gradient(135deg, var(--primary-dark), #0B3E49 62%, #0F5E55); }
+  .hp-why-card { border-bottom-color: rgba(255,255,255,0.14); }
+  .hp-faq { background: var(--surface); }
+  .hp-faq-grid { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 12px 28px; box-shadow: var(--shadow-sm); }
+  .hp-cta { background: linear-gradient(135deg, var(--accent), var(--secondary)); }
+  .hp-cta-inner { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.22); border-radius: 8px; padding: 42px; backdrop-filter: blur(8px); }
+  .hp-test-card { background: var(--white); border-color: var(--border); border-radius: 8px; }
+  .hp-test-avatar { background: var(--primary-dark); }
 
   /* ========== RESPONSIVE ========== */
   @media (max-width: 1024px) {

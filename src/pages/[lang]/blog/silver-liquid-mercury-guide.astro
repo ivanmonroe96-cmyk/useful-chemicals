@@ -1,0 +1,16 @@
+---
+import BlogProductGuide from '../../../components/BlogProductGuide.astro';
+import { getLangStaticPaths } from '../../../i18n/index';
+import { defaultLang } from '../../../i18n/languages';
+
+export const getStaticPaths = getLangStaticPaths;
+const lang = Astro.params.lang ?? defaultLang;
+---
+
+<BlogProductGuide
+  lang={lang}
+  namespace="silver_mercury"
+  productNavKey="nav.silver_mercury"
+  image="/images/home-silver-mercury-product.jpeg"
+  slug="/blog/silver-liquid-mercury-guide"
+/>

@@ -39,13 +39,13 @@ const searchPages = [
       <a href={lp("/")} class:list={["nav-link", { active: activePage === 'home' }]}>{t(tr, 'nav.home')}</a>
       <a href={lp("/about")} class:list={["nav-link", { active: activePage === 'about' }]}>{t(tr, 'nav.about')}</a>
       <div class="nav-dropdown">
-        <a href={lp("/products")} class:list={["nav-link", { active: activePage === 'products' }]}>
+        <a href={lp("/products")} class:list={["nav-link", { active: activePage === 'products' }]} aria-haspopup="true" aria-expanded="false">
           {t(tr, 'nav.products')} <i class="fas fa-chevron-down"></i>
         </a>
-        <div class="dropdown-menu">
-          <a href={lp("/products/caluanie")}>{t(tr, 'nav.caluanie')}</a>
-          <a href={lp("/products/red-mercury")}>{t(tr, 'nav.red_mercury')}</a>
-          <a href={lp("/products/silver-mercury")}>{t(tr, 'nav.silver_mercury')}</a>
+        <div class="dropdown-menu" role="menu">
+          <a href={lp("/products/caluanie")} role="menuitem">{t(tr, 'nav.caluanie')}</a>
+          <a href={lp("/products/red-mercury")} role="menuitem">{t(tr, 'nav.red_mercury')}</a>
+          <a href={lp("/products/silver-mercury")} role="menuitem">{t(tr, 'nav.silver_mercury')}</a>
         </div>
       </div>
       <a href={lp("/faq")} class:list={["nav-link", { active: activePage === 'faq' }]}>{t(tr, 'nav.faq')}</a>

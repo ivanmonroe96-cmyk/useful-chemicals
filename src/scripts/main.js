@@ -152,7 +152,6 @@ document.querySelectorAll('form:not(#contactForm)').forEach(form => {
         body: JSON.stringify({
           name: getFieldValue('name'),
           email: getFieldValue('email'),
-          phone: getFieldValue('phone'),
           product: getFieldValue('product'),
           message: getFieldValue('message'),
         }),

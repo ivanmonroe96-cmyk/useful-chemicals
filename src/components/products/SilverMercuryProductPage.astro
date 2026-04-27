@@ -1,0 +1,1661 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import { getTranslations, localizedPath, t } from '../../i18n/index';
+import { defaultLang } from '../../i18n/languages';
+import { getDocumentDownload } from '../../lib/documentDownloads';
+import heroImage from '../../assets/products/silver-mercury/silver-liquid-mercury-99-995-purity-flask.jpg';
+import pourImage from '../../assets/products/silver-mercury/silver-liquid-mercury-mirror-luster-pour.jpg';
+import bulkImage from '../../assets/products/silver-mercury/silver-liquid-mercury-bulk-supply-bangkok.jpeg';
+import instrumentImage from '../../assets/products/silver-mercury/silver-liquid-mercury-precision-instrument-grade.jpeg';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = defaultLang } = Astro.props;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+const docDownload = (id: string) => {
+  const download = getDocumentDownload(id, lang);
+  if (!download) throw new Error(`Missing document download: ${id}`);
+  return download;
+};
+
+const siteUrl = 'https://useful-chemicals.com';
+const productName = 'Silver Liquid Mercury';
+const pageTitle = t(tr, 'silver_mercury.meta_title');
+const pageDescription = t(tr, 'silver_mercury.meta_desc');
+const productPageUrl = `${siteUrl}${lp('/products/silver-mercury')}`;
+const imageUrls = [heroImage, pourImage, bulkImage, instrumentImage].map((image) => `${siteUrl}${image.src}`);
+
+const anchorLinks = [
+  { href: '#summary', label: t(tr, 'silver_mercury.overview_label') },
+  { href: '#specifications', label: t(tr, 'silver_mercury.tech_label') },
+  { href: '#video', label: t(tr, 'silver_mercury.anchor_nav_video') },
+  { href: '#documents', label: t(tr, 'silver_mercury.docs_label') },
+  { href: '#handling', label: t(tr, 'silver_mercury.safety_label') },
+  { href: '#quote', label: t(tr, 'silver_mercury.quote_label') },
+];
+
+const heroChipItems = [
+  t(tr, 'silver_mercury.hero_chip_un'),
+  t(tr, 'silver_mercury.hero_chip_sds'),
+  t(tr, 'silver_mercury.hero_chip_coa'),
+  t(tr, 'silver_mercury.hero_chip_origin'),
+];
+
+const heroFacts = [
+  { label: t(tr, 'silver_mercury.tech_formula'), value: t(tr, 'silver_mercury.tech_formula_val') },
+  { label: t(tr, 'silver_mercury.tech_cas'), value: t(tr, 'silver_mercury.tech_cas_val') },
+  { label: t(tr, 'silver_mercury.tech_purity'), value: t(tr, 'silver_mercury.tech_purity_val') },
+  { label: t(tr, 'silver_mercury.tech_packing'), value: t(tr, 'silver_mercury.tech_packing_val') },
+];
+
+const summaryCards = [
+  {
+    title: t(tr, 'silver_mercury.overview_feat1_title'),
+    body: t(tr, 'silver_mercury.overview_feat1_desc'),
+  },
+  {
+    title: t(tr, 'silver_mercury.overview_feat2_title'),
+    body: t(tr, 'silver_mercury.overview_feat2_desc'),
+  },
+  {
+    title: t(tr, 'silver_mercury.overview_feat3_title'),
+    body: t(tr, 'silver_mercury.overview_feat3_desc'),
+  },
+  {
+    title: t(tr, 'silver_mercury.summary_doc_title'),
+    body: t(tr, 'silver_mercury.summary_doc_desc'),
+  },
+];
+
+const verifiedSpecs = [
+  [t(tr, 'silver_mercury.tech_name'), t(tr, 'silver_mercury.tech_name_val')],
+  [t(tr, 'silver_mercury.tech_formula'), t(tr, 'silver_mercury.tech_formula_val')],
+  [t(tr, 'silver_mercury.tech_cas'), t(tr, 'silver_mercury.tech_cas_val')],
+  [t(tr, 'silver_mercury.tech_appearance'), t(tr, 'silver_mercury.tech_appearance_val')],
+  [t(tr, 'silver_mercury.tech_density'), t(tr, 'silver_mercury.tech_density_val')],
+  [t(tr, 'silver_mercury.tech_purity'), t(tr, 'silver_mercury.tech_purity_val')],
+  [t(tr, 'silver_mercury.tech_boiling'), t(tr, 'silver_mercury.tech_boiling_val')],
+  [t(tr, 'silver_mercury.tech_solubility'), t(tr, 'silver_mercury.tech_solubility_val')],
+  [t(tr, 'silver_mercury.tech_hazard'), t(tr, 'silver_mercury.tech_hazard_val')],
+  [t(tr, 'silver_mercury.tech_un'), t(tr, 'silver_mercury.tech_un_val')],
+  [t(tr, 'silver_mercury.tech_packing'), t(tr, 'silver_mercury.tech_packing_val')],
+  [t(tr, 'silver_mercury.tech_shelf'), t(tr, 'silver_mercury.tech_shelf_val')],
+  [t(tr, 'silver_mercury.tech_packs'), t(tr, 'silver_mercury.tech_packs_val')],
+];
+
+const cautionItems = [
+  t(tr, 'silver_mercury.tech_note1'),
+  t(tr, 'silver_mercury.tech_note2'),
+  t(tr, 'silver_mercury.tech_note3'),
+  t(tr, 'silver_mercury.tech_note4'),
+];
+
+const documentCards = [
+  {
+    icon: 'fa-shield-halved',
+    title: t(tr, 'silver_mercury.doc_sds_title'),
+    code: 'SDS',
+    date: t(tr, 'silver_mercury.doc_sds_date'),
+    summary: t(tr, 'silver_mercury.doc_sds_desc'),
+    note: t(tr, 'silver_mercury.doc_sds_note'),
+    download: docDownload('silver-mercury-sds'),
+    cta: t(tr, 'silver_mercury.request_sds'),
+    ariaLabel: `${t(tr, 'silver_mercury.request_sds')} - ${t(tr, 'silver_mercury.doc_sds_title')}`,
+    publishedDate: '2023-06-01',
+  },
+  {
+    icon: 'fa-certificate',
+    title: t(tr, 'silver_mercury.doc_coa_title'),
+    code: 'COA',
+    date: t(tr, 'silver_mercury.doc_coa_date'),
+    summary: t(tr, 'silver_mercury.doc_coa_desc'),
+    note: t(tr, 'silver_mercury.doc_coa_note'),
+    download: docDownload('silver-mercury-coa'),
+    cta: t(tr, 'silver_mercury.request_coa'),
+    ariaLabel: `${t(tr, 'silver_mercury.request_coa')} - ${t(tr, 'silver_mercury.doc_coa_title')}`,
+    publishedDate: '2025-05-24',
+  },
+];
+
+const applicationItems = [
+  {
+    title: t(tr, 'silver_mercury.app1_title'),
+    body: t(tr, 'silver_mercury.app1_desc'),
+  },
+  {
+    title: t(tr, 'silver_mercury.app2_title'),
+    body: t(tr, 'silver_mercury.app2_desc'),
+  },
+  {
+    title: t(tr, 'silver_mercury.app3_title'),
+    body: t(tr, 'silver_mercury.app3_desc'),
+  },
+];
+
+const handlingItems = [
+  t(tr, 'silver_mercury.safety1'),
+  t(tr, 'silver_mercury.safety2'),
+  t(tr, 'silver_mercury.safety3'),
+  t(tr, 'silver_mercury.safety4'),
+];
+
+const relatedLinks = [
+  {
+    href: lp('/certificates'),
+    title: t(tr, 'silver_mercury.link1_title'),
+    description: t(tr, 'silver_mercury.link1_desc'),
+  },
+  {
+    href: lp('/safety'),
+    title: t(tr, 'silver_mercury.link2_title'),
+    description: t(tr, 'silver_mercury.link2_desc'),
+  },
+  {
+    href: lp('/ordering'),
+    title: t(tr, 'silver_mercury.link3_title'),
+    description: t(tr, 'silver_mercury.link3_desc'),
+  },
+  {
+    href: lp('/shipping'),
+    title: t(tr, 'silver_mercury.link4_title'),
+    description: t(tr, 'silver_mercury.link4_desc'),
+  },
+  {
+    href: lp('/products/silver-mercury'),
+    title: t(tr, 'silver_mercury.link5_title'),
+    description: t(tr, 'silver_mercury.link5_desc'),
+  },
+  {
+    href: lp('/contact'),
+    title: t(tr, 'silver_mercury.link6_title'),
+    description: t(tr, 'silver_mercury.link6_desc'),
+  },
+];
+
+const quoteChecklist = [
+  t(tr, 'silver_mercury.quote_check1'),
+  t(tr, 'silver_mercury.quote_check2'),
+  t(tr, 'silver_mercury.quote_check3'),
+  t(tr, 'silver_mercury.quote_check4'),
+];
+
+const faqItems = [
+  {
+    question: t(tr, 'silver_mercury.faq1_q'),
+    answer: t(tr, 'silver_mercury.faq1_a'),
+  },
+  {
+    question: t(tr, 'silver_mercury.faq2_q'),
+    answer: t(tr, 'silver_mercury.faq2_a'),
+  },
+  {
+    question: t(tr, 'silver_mercury.faq3_q'),
+    answer: t(tr, 'silver_mercury.faq3_a'),
+  },
+  {
+    question: t(tr, 'silver_mercury.faq4_q'),
+    answer: t(tr, 'silver_mercury.faq4_a'),
+  },
+];
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: productName,
+  description: pageDescription,
+  image: imageUrls,
+  category: 'Specialty chemical',
+  sku: 'UEC-SLM-Hg-995',
+  brand: { '@type': 'Brand', name: 'UE Chemicals' },
+  manufacturer: {
+    '@type': 'Organization',
+    name: 'UE Chemicals',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Bangkok',
+      postalCode: '10260',
+      addressCountry: 'TH',
+    },
+  },
+  countryOfOrigin: { '@type': 'Country', name: 'Thailand' },
+  keywords: 'silver liquid mercury supplier, virgin mercury 99.999, mercury Hg 7439-97-6, quadruple distilled mercury, bangkok chemical supplier',
+  additionalProperty: verifiedSpecs.map(([label, value]) => ({
+    '@type': 'PropertyValue',
+    name: label,
+    value,
+  })),
+  subjectOf: documentCards.map((card) => ({
+    '@type': 'DigitalDocument',
+    name: `${productName} ${card.title}`,
+    encodingFormat: 'application/pdf',
+    url: `${siteUrl}${card.download.href}`,
+    inLanguage: card.download.language,
+    ...(card.publishedDate ? { datePublished: card.publishedDate } : {}),
+  })),
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: t(tr, 'nav.home'), item: `${siteUrl}${lp('/')}` },
+    { '@type': 'ListItem', position: 2, name: t(tr, 'nav.products'), item: `${siteUrl}${lp('/products')}` },
+    { '@type': 'ListItem', position: 3, name: productName, item: productPageUrl },
+  ],
+};
+
+const speakableSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: pageTitle,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', '.smp-hero-lead', '.smp-summary-card p', '.smp-faq-question'],
+  },
+  url: productPageUrl,
+};
+---
+
+<BaseLayout
+  lang={lang}
+  title={pageTitle}
+  description={pageDescription}
+  activePage="products"
+  ogImage={heroImage.src}
+  jsonLd={[productSchema, faqSchema, breadcrumbSchema, speakableSchema]}
+>
+  <section class="smp-hero" aria-labelledby="smp-hero-title">
+    <div class="container smp-hero-grid">
+      <div class="smp-hero-copy">
+        <div class="smp-kicker">{t(tr, 'silver_mercury.hero_badge')}</div>
+        <h1 id="smp-hero-title">{t(tr, 'silver_mercury.hero_title')}</h1>
+        <p class="smp-hero-lead">{t(tr, 'silver_mercury.hero_sub')}</p>
+        <div class="smp-chip-row" aria-label={t(tr, 'silver_mercury.hero_chip_row_label')}>
+          {heroChipItems.map((item) => (
+            <span>{item}</span>
+          ))}
+        </div>
+        <div class="smp-hero-actions">
+          <a href="#quote" class="btn btn-accent">{t(tr, 'common.get_quote')} <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <p class="smp-hero-note">{t(tr, 'silver_mercury.hero_note')}</p>
+      </div>
+
+      <div class="smp-hero-panel">
+        <figure class="smp-figure smp-figure-primary">
+          <Image
+            src={heroImage}
+            alt={t(tr, 'silver_mercury.hero_image_alt')}
+            widths={[768, 1200, 1600]}
+            sizes="(max-width: 1024px) 100vw, 48vw"
+            quality={82}
+            format="webp"
+            loading="eager"
+            fetchpriority="high"
+            class="smp-image"
+          />
+          <figcaption>{t(tr, 'silver_mercury.hero_image_caption')}</figcaption>
+        </figure>
+
+        <dl class="smp-fact-list">
+          {heroFacts.map((item) => (
+            <div class="smp-fact-item">
+              <dt>{item.label}</dt>
+              <dd>{item.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <nav class="smp-anchor-nav" aria-label={t(tr, 'silver_mercury.anchor_nav_label')}>
+    <div class="container smp-anchor-row">
+      {anchorLinks.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </div>
+  </nav>
+
+  <section class="smp-summary" id="summary" aria-labelledby="smp-summary-title">
+    <div class="container">
+      <div class="smp-section-head">
+        <div class="smp-kicker">{t(tr, 'silver_mercury.overview_label')}</div>
+        <h2 id="smp-summary-title">{t(tr, 'silver_mercury.overview_title')}</h2>
+        <p>{t(tr, 'silver_mercury.overview_desc1')}</p>
+      </div>
+      <div class="smp-summary-grid">
+        {summaryCards.map((card) => (
+          <article class="smp-summary-card">
+            <h3>{card.title}</h3>
+            <p>{card.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="smp-gallery" aria-labelledby="smp-gallery-title">
+    <div class="container">
+      <div class="smp-section-head smp-section-head-tight">
+        <div class="smp-kicker">{t(tr, 'silver_mercury.overview_label')}</div>
+        <h2 id="smp-gallery-title">{t(tr, 'silver_mercury.docs_label')}</h2>
+        <p>{t(tr, 'silver_mercury.overview_desc2')}</p>
+      </div>
+
+      <div class="smp-gallery-grid">
+        <figure class="smp-figure">
+          <Image
+            src={pourImage}
+            alt={t(tr, 'silver_mercury.gallery_image_alt')}
+            widths={[640, 960, 1280]}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            quality={80}
+            format="webp"
+            loading="lazy"
+            class="smp-image"
+          />
+          <figcaption>{t(tr, 'silver_mercury.gallery_image_caption')}</figcaption>
+        </figure>
+
+        <figure class="smp-figure">
+          <Image
+            src={bulkImage}
+            alt={t(tr, 'silver_mercury.facility_image_alt')}
+            widths={[640, 960, 1280]}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            quality={80}
+            format="webp"
+            loading="lazy"
+            class="smp-image"
+          />
+          <figcaption>{t(tr, 'silver_mercury.facility_image_caption')}</figcaption>
+        </figure>
+
+        <figure class="smp-figure">
+          <Image
+            src={instrumentImage}
+            alt={t(tr, 'silver_mercury.instrument_image_alt')}
+            widths={[640, 960, 1280]}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            quality={80}
+            format="webp"
+            loading="lazy"
+            class="smp-image"
+          />
+          <figcaption>{t(tr, 'silver_mercury.instrument_image_caption')}</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="smp-specs" id="specifications" aria-labelledby="smp-specs-title">
+    <div class="container smp-specs-grid">
+      <div class="smp-specs-copy">
+        <div class="smp-kicker">{t(tr, 'silver_mercury.tech_label')}</div>
+        <h2 id="smp-specs-title">{t(tr, 'silver_mercury.tech_title')}</h2>
+        <p>{t(tr, 'silver_mercury.tech_desc')}</p>
+
+        <div class="smp-note-card">
+          <h3>{t(tr, 'silver_mercury.tech_note_title')}</h3>
+          <ul>
+            {cautionItems.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div class="smp-table-card">
+        <table class="smp-spec-table">
+          <caption class="smp-sr-only">{t(tr, 'silver_mercury.tech_table_caption')}</caption>
+          <tbody>
+            {verifiedSpecs.map(([label, value]) => (
+              <tr>
+                <th scope="row">{label}</th>
+                <td>{value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="smp-video" id="video" aria-labelledby="smp-video-title">
+    <div class="container">
+      <div class="smp-section-head">
+        <div class="smp-kicker">{t(tr, 'silver_mercury.video_label')}</div>
+        <h2 id="smp-video-title">{t(tr, 'silver_mercury.video_title')}</h2>
+        <p>{t(tr, 'silver_mercury.video_desc')}</p>
+      </div>
+
+      <figure class="smp-video-figure">
+        <div
+          class="smp-video-frame"
+          data-smp-video
+          oncontextmenu="return false;"
+          ondragstart="event.preventDefault();"
+        >
+          <video
+            class="smp-video-el"
+            preload="metadata"
+            playsinline
+            autoplay
+            muted
+            loop
+            controls
+            poster="/videos/silver-liquid-mercury-density-test-poster.jpg"
+            controlslist="nodownload noremoteplayback noplaybackrate"
+            disablepictureinpicture
+            oncontextmenu="return false;"
+            aria-label={t(tr, 'silver_mercury.video_title')}
+          >
+            <source src="/videos/silver-liquid-mercury-density-test.mp4" type="video/mp4" />
+            {t(tr, 'silver_mercury.video_unsupported')}
+          </video>
+          <button
+            type="button"
+            class="smp-video-playbtn"
+            data-smp-playbtn
+            aria-label={t(tr, 'silver_mercury.video_title')}
+          >
+            <svg viewBox="0 0 64 64" width="64" height="64" aria-hidden="true">
+              <circle cx="32" cy="32" r="30" fill="rgba(0,0,0,0.55)" stroke="#fff" stroke-width="2"/>
+              <polygon points="26,20 26,44 46,32" fill="#fff"/>
+            </svg>
+          </button>
+          <div class="smp-video-watermark" aria-hidden="true">
+            <span class="smp-watermark-text">{t(tr, 'silver_mercury.video_watermark')}</span>
+            <span class="smp-watermark-text">{t(tr, 'silver_mercury.video_watermark')}</span>
+            <span class="smp-watermark-text">{t(tr, 'silver_mercury.video_watermark')}</span>
+            <span class="smp-watermark-text">{t(tr, 'silver_mercury.video_watermark')}</span>
+            <span class="smp-watermark-text">{t(tr, 'silver_mercury.video_watermark')}</span>
+            <span class="smp-watermark-text">{t(tr, 'silver_mercury.video_watermark')}</span>
+            <span class="smp-watermark-text">{t(tr, 'silver_mercury.video_watermark')}</span>
+            <span class="smp-watermark-text">{t(tr, 'silver_mercury.video_watermark')}</span>
+            <span class="smp-watermark-text">{t(tr, 'silver_mercury.video_watermark')}</span>
+            <span class="smp-watermark-text">{t(tr, 'silver_mercury.video_watermark')}</span>
+            <span class="smp-watermark-text">{t(tr, 'silver_mercury.video_watermark')}</span>
+            <span class="smp-watermark-text">{t(tr, 'silver_mercury.video_watermark')}</span>
+          </div>
+          <div class="smp-video-shield" aria-hidden="true"></div>
+        </div>
+        <figcaption>
+          <span class="smp-video-caption-text">{t(tr, 'silver_mercury.video_caption')}</span>
+          <span class="smp-video-protect">{t(tr, 'silver_mercury.video_protect_notice')}</span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="smp-docs" id="documents" aria-labelledby="smp-docs-title">
+    <div class="container">
+      <div class="smp-section-head">
+        <div class="smp-kicker">{t(tr, 'silver_mercury.docs_label')}</div>
+        <h2 id="smp-docs-title">{t(tr, 'silver_mercury.docs_label')}</h2>
+        <p>{t(tr, 'silver_mercury.doc_tds_desc')}</p>
+      </div>
+
+      <div class="smp-doc-grid">
+        {documentCards.map((card) => (
+          <article class="smp-doc-card">
+            <div class="smp-doc-icon"><i class:list={['fas', card.icon]}></i></div>
+            <div class="smp-doc-body">
+              <div class="smp-doc-meta">{card.code}</div>
+              <h3>{card.title}</h3>
+              <p class="smp-doc-date">{card.date}</p>
+              <p>{card.summary}</p>
+              <p class="smp-doc-note">{card.note}</p>
+              <p class="smp-doc-language">
+                {t(tr, 'common.pdf_language')}: {card.download.languageName}
+                {card.download.isFallback && <span>{t(tr, 'common.document_fallback')}</span>}
+              </p>
+              {card.download.availableVersions.length > 1 && (
+                <div class="smp-doc-languages" aria-label={t(tr, 'common.available_document_languages')}>
+                  {card.download.availableVersions.map((version) => (
+                    <a href={`/api/documents/${card.download.id}?lang=${version.lang}`} download hreflang={version.lang} lang={version.lang}>{version.languageName}</a>
+                  ))}
+                </div>
+              )}
+            </div>
+            <a href={card.download.href} download class="btn btn-outline doc-dl-btn" aria-label={`${card.ariaLabel} (${card.download.languageName})`} title={`${card.ariaLabel} (${card.download.languageName})`}>{card.code} ({card.download.languageName})<svg class="doc-dl-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="smp-columns" id="handling" aria-labelledby="smp-columns-title">
+    <div class="container">
+      <div class="smp-section-head smp-section-head-tight">
+        <div class="smp-kicker">{t(tr, 'silver_mercury.safety_label')}</div>
+        <h2 id="smp-columns-title">{t(tr, 'silver_mercury.safety_title')}</h2>
+      </div>
+
+      <div class="smp-columns-grid">
+        <article class="smp-list-card">
+          <h3>{t(tr, 'silver_mercury.apps_title')}</h3>
+          <div class="smp-list-stack">
+            {applicationItems.map((item) => (
+              <div class="smp-list-item">
+                <h4>{item.title}</h4>
+                <p>{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        <article class="smp-list-card smp-list-card-dark">
+          <h3>{t(tr, 'silver_mercury.safety_desc')}</h3>
+          <ul class="smp-bullet-list">
+            {handlingItems.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="smp-links" aria-labelledby="smp-links-title">
+    <div class="container">
+      <div class="smp-section-head smp-section-head-tight">
+        <div class="smp-kicker">{t(tr, 'silver_mercury.benefits_label')}</div>
+        <h2 id="smp-links-title">{t(tr, 'silver_mercury.benefits_title')}</h2>
+        <p>{t(tr, 'silver_mercury.benefits_desc')}</p>
+      </div>
+
+      <div class="smp-link-grid">
+        {relatedLinks.map((link) => (
+          <a href={link.href} class="smp-link-card">
+            <h3>{link.title}</h3>
+            <p>{link.description}</p>
+            <span>{t(tr, 'common.view_full_details')} <i class="fas fa-arrow-right"></i></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="smp-quote" id="quote" aria-labelledby="smp-quote-title">
+    <div class="container smp-quote-grid">
+      <div class="smp-quote-copy">
+        <div class="smp-kicker">{t(tr, 'silver_mercury.quote_label')}</div>
+        <h2 id="smp-quote-title">{t(tr, 'silver_mercury.quote_title')}</h2>
+        <p>{t(tr, 'silver_mercury.quote_desc')}</p>
+
+        <div class="smp-quote-badges">
+          <span><i class="fas fa-clock"></i> {t(tr, 'silver_mercury.quote_badge1')}</span>
+          <span><i class="fas fa-file-shield"></i> {t(tr, 'silver_mercury.quote_badge2')}</span>
+          <span><i class="fas fa-globe"></i> {t(tr, 'silver_mercury.quote_badge3')}</span>
+        </div>
+
+        <ol class="smp-checklist">
+          {quoteChecklist.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ol>
+      </div>
+
+      <div class="smp-form-card">
+        <form class="smp-form">
+          <div class="smp-form-row">
+            <div class="smp-form-group">
+              <label for="smp-name">{t(tr, 'silver_mercury.form_name')}</label>
+              <input id="smp-name" name="name" type="text" placeholder={t(tr, 'silver_mercury.form_placeholder_name')} required />
+            </div>
+            <div class="smp-form-group">
+              <label for="smp-email">{t(tr, 'silver_mercury.form_email')}</label>
+              <input id="smp-email" name="email" type="email" placeholder={t(tr, 'silver_mercury.form_placeholder_email')} required />
+            </div>
+          </div>
+
+          <input type="hidden" name="product" value={productName} />
+
+          <div class="smp-form-group">
+            <label for="smp-message">{t(tr, 'silver_mercury.form_message')}</label>
+            <textarea
+              id="smp-message"
+              name="message"
+              rows="7"
+              placeholder={t(tr, 'silver_mercury.form_placeholder_message')}
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-accent smp-submit" aria-label={t(tr, 'silver_mercury.form_submit')}>{t(tr, 'silver_mercury.form_submit')} <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="smp-faq" aria-labelledby="smp-faq-title">
+    <div class="container">
+      <div class="smp-section-head">
+        <div class="smp-kicker">{t(tr, 'silver_mercury.faq_label')}</div>
+        <h2 id="smp-faq-title">{t(tr, 'silver_mercury.faq_title')}</h2>
+      </div>
+
+      <div class="faq-list smp-faq-list">
+        {faqItems.map((item) => (
+          <article class="faq-item smp-faq-item">
+            <button type="button" class="faq-question smp-faq-question">
+              <span>{item.question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer smp-faq-answer">
+              <div class="faq-answer-inner smp-faq-answer-inner">{item.answer}</div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .smp-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .smp-hero {
+    position: relative;
+    padding: 160px 0 64px;
+    background:
+      radial-gradient(circle at top left, rgba(199, 88, 40, 0.18), transparent 34%),
+      radial-gradient(circle at top right, rgba(30, 69, 126, 0.16), transparent 30%),
+      linear-gradient(180deg, #f8f5ef 0%, #ffffff 72%);
+    overflow: hidden;
+  }
+
+  .smp-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+    gap: 42px;
+    align-items: start;
+  }
+
+  .smp-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #b35228;
+  }
+
+  .smp-kicker::before {
+    content: '';
+    width: 42px;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .smp-hero h1 {
+    max-width: 11ch;
+    margin-bottom: 20px;
+    font-size: clamp(2.5rem, 5vw, 4.9rem);
+    line-height: 0.95;
+    letter-spacing: -0.05em;
+    color: var(--near-black);
+  }
+
+  .smp-hero-lead {
+    max-width: 67ch;
+    margin-bottom: 24px;
+    font-size: 1.08rem;
+    line-height: 1.8;
+    color: #4e545a;
+  }
+
+  .smp-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .smp-chip-row span,
+  .smp-quote-badges span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(17, 63, 117, 0.08);
+    border: 1px solid rgba(17, 63, 117, 0.12);
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #16345e;
+  }
+
+  .smp-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .smp-btn-secondary {
+    background: #fff;
+    color: var(--near-black);
+    border: 1px solid rgba(25, 24, 23, 0.14);
+  }
+
+  .smp-btn-secondary:hover {
+    background: #f5f2ec;
+    color: var(--near-black);
+  }
+
+  .smp-hero-note {
+    max-width: 60ch;
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: #5c6167;
+  }
+
+  .smp-hero-panel {
+    display: grid;
+    gap: 18px;
+  }
+
+  .smp-figure {
+    margin: 0;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgba(25, 24, 23, 0.08);
+    box-shadow: 0 24px 60px rgba(17, 22, 33, 0.12);
+  }
+
+  .smp-figure figcaption {
+    padding: 15px 18px 18px;
+    font-size: 0.86rem;
+    line-height: 1.6;
+    color: #5c6167;
+  }
+
+  :global(.smp-image) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .smp-fact-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0;
+  }
+
+  .smp-fact-item {
+    padding: 16px 18px;
+    border-radius: 20px;
+    background: #102a53;
+    color: #fff;
+  }
+
+  .smp-fact-item dt {
+    margin-bottom: 8px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.62);
+  }
+
+  .smp-fact-item dd {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    font-weight: 700;
+  }
+
+  .smp-anchor-nav {
+    position: sticky;
+    top: 84px;
+    z-index: 6;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(14px);
+    border-top: 1px solid rgba(25, 24, 23, 0.06);
+    border-bottom: 1px solid rgba(25, 24, 23, 0.06);
+  }
+
+  .smp-anchor-row {
+    display: flex;
+    gap: 10px;
+    padding: 14px 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+
+  .smp-anchor-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .smp-anchor-row a {
+    flex-shrink: 0;
+    padding: 10px 16px;
+    border-radius: 999px;
+    color: #1c3155;
+    background: rgba(17, 63, 117, 0.06);
+    font-size: 0.88rem;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .smp-anchor-row a:hover {
+    background: rgba(179, 82, 40, 0.12);
+    color: #9f4321;
+  }
+
+  .smp-summary,
+  .smp-gallery,
+  .smp-specs,
+  .smp-docs,
+  .smp-columns,
+  .smp-links,
+  .smp-quote,
+  .smp-faq {
+    padding: 96px 0;
+  }
+
+  .smp-section-head {
+    max-width: 72ch;
+    margin-bottom: 34px;
+  }
+
+  .smp-section-head-tight {
+    margin-bottom: 28px;
+  }
+
+  .smp-section-head h2 {
+    margin-bottom: 16px;
+    font-size: clamp(2rem, 3.6vw, 3.5rem);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    color: var(--near-black);
+  }
+
+  .smp-section-head p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #4e545a;
+  }
+
+  .smp-summary {
+    background: #fff;
+  }
+
+  .smp-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .smp-summary-card {
+    padding: 26px 24px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #ffffff 0%, #f7f3ed 100%);
+    border: 1px solid rgba(25, 24, 23, 0.08);
+    box-shadow: 0 18px 48px rgba(18, 24, 36, 0.08);
+  }
+
+  .smp-summary-card h3 {
+    margin-bottom: 10px;
+    font-size: 1.02rem;
+    color: var(--near-black);
+  }
+
+  .smp-summary-card p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #52575d;
+  }
+
+  .smp-gallery {
+    background: #fbf8f2;
+    border-top: 1px solid rgba(25, 24, 23, 0.06);
+    border-bottom: 1px solid rgba(25, 24, 23, 0.06);
+  }
+
+  .smp-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .smp-specs-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    gap: 28px;
+    align-items: start;
+  }
+
+  .smp-note-card,
+  .smp-table-card,
+  .smp-list-card,
+  .smp-form-card {
+    border-radius: 28px;
+    background: #fff;
+    border: 1px solid rgba(25, 24, 23, 0.08);
+    box-shadow: 0 24px 60px rgba(18, 24, 36, 0.08);
+  }
+
+  .smp-note-card {
+    margin-top: 24px;
+    padding: 26px 24px;
+    background: linear-gradient(180deg, #fff9f4 0%, #fff 100%);
+  }
+
+  .smp-note-card h3 {
+    margin-bottom: 14px;
+    font-size: 1rem;
+  }
+
+  .smp-note-card ul {
+    margin: 0;
+    padding-left: 18px;
+    display: grid;
+    gap: 10px;
+    color: #53585e;
+  }
+
+  .smp-table-card {
+    padding: 14px;
+  }
+
+  .smp-spec-table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow: hidden;
+    border-radius: 20px;
+  }
+
+  .smp-spec-table th,
+  .smp-spec-table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid rgba(25, 24, 23, 0.08);
+    vertical-align: top;
+  }
+
+  .smp-spec-table tr:last-child th,
+  .smp-spec-table tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .smp-spec-table th {
+    width: 42%;
+    background: rgba(18, 42, 83, 0.05);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    text-align: left;
+    color: #173055;
+  }
+
+  .smp-spec-table td {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: #51575d;
+  }
+
+  .smp-docs {
+    background: #fff;
+  }
+
+  .smp-doc-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .smp-doc-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 28px 24px;
+    border-radius: 24px;
+    background: linear-gradient(180deg, #ffffff 0%, #f7f4ef 100%);
+    border: 1px solid rgba(25, 24, 23, 0.08);
+    box-shadow: 0 18px 48px rgba(18, 24, 36, 0.08);
+  }
+
+  .smp-doc-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 52px;
+    height: 52px;
+    margin-bottom: 18px;
+    border-radius: 16px;
+    background: rgba(179, 82, 40, 0.1);
+    color: #b35228;
+    font-size: 1.2rem;
+  }
+
+  .smp-doc-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding-bottom: 32px;
+  }
+
+  .smp-doc-meta {
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #16345e;
+  }
+
+  .smp-doc-card h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--near-black);
+  }
+
+  .smp-doc-card p {
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.72;
+    color: #52575d;
+  }
+
+  .smp-doc-date {
+    font-weight: 700;
+    color: #173055;
+  }
+
+  .smp-doc-note {
+    margin: 0;
+  }
+
+  .smp-doc-language {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--black);
+  }
+
+  .smp-doc-language span {
+    display: block;
+    margin-top: 3px;
+    font-weight: 600;
+    color: var(--body-text);
+  }
+
+  .smp-doc-languages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .smp-doc-languages a {
+    border: 1px solid var(--border);
+    padding: 4px 8px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  .smp-doc-card .btn {
+    margin-top: auto;
+  }
+
+  .smp-doc-card .doc-dl-btn {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .doc-dl-icon {
+    flex: none;
+    transition: transform 0.18s ease;
+  }
+
+  .smp-doc-card .doc-dl-btn:hover .doc-dl-icon {
+    transform: translateY(2px);
+  }
+
+  .smp-columns {
+    background: #fbf8f2;
+    border-top: 1px solid rgba(25, 24, 23, 0.06);
+    border-bottom: 1px solid rgba(25, 24, 23, 0.06);
+  }
+
+  .smp-columns-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+  }
+
+  .smp-list-card {
+    padding: 28px 24px;
+  }
+
+  .smp-list-card-dark {
+    background: linear-gradient(180deg, #0f2448 0%, #132d58 100%);
+    color: #fff;
+  }
+
+  .smp-list-card h3 {
+    margin-bottom: 18px;
+    font-size: 1.15rem;
+  }
+
+  .smp-list-stack {
+    display: grid;
+    gap: 16px;
+  }
+
+  .smp-list-item {
+    padding: 16px 0 0;
+    border-top: 1px solid rgba(25, 24, 23, 0.08);
+  }
+
+  .smp-list-item:first-child {
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  .smp-list-item h4 {
+    margin-bottom: 8px;
+    font-size: 0.98rem;
+  }
+
+  .smp-list-item p,
+  .smp-bullet-list li {
+    margin: 0;
+    font-size: 0.94rem;
+    line-height: 1.75;
+  }
+
+  .smp-list-card-dark h3,
+  .smp-list-card-dark li {
+    color: #fff;
+  }
+
+  .smp-bullet-list {
+    margin: 0;
+    padding-left: 20px;
+    display: grid;
+    gap: 12px;
+  }
+
+  .smp-links {
+    background: #fff;
+  }
+
+  .smp-link-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+  }
+
+  .smp-link-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    min-height: 100%;
+    padding: 24px 22px;
+    border-radius: 22px;
+    text-decoration: none;
+    background: linear-gradient(180deg, #ffffff 0%, #f7f4ef 100%);
+    border: 1px solid rgba(25, 24, 23, 0.08);
+    box-shadow: 0 18px 48px rgba(18, 24, 36, 0.08);
+  }
+
+  .smp-link-card h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--near-black);
+  }
+
+  .smp-link-card p {
+    margin: 0;
+    flex: 1;
+    font-size: 0.92rem;
+    line-height: 1.72;
+    color: #53585e;
+  }
+
+  .smp-link-card span {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #9f4321;
+  }
+
+  .smp-quote {
+    background:
+      linear-gradient(180deg, #132b55 0%, #0d2144 100%),
+      radial-gradient(circle at top left, rgba(199, 88, 40, 0.22), transparent 36%);
+  }
+
+  .smp-quote-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 0.92fr) minmax(0, 1.08fr);
+    gap: 24px;
+    align-items: start;
+  }
+
+  .smp-quote-copy {
+    color: #fff;
+  }
+
+  .smp-quote-copy .smp-kicker {
+    color: rgba(255, 255, 255, 0.76);
+  }
+
+  .smp-quote-copy .smp-kicker::before {
+    background: rgba(255, 255, 255, 0.5);
+  }
+
+  .smp-quote-copy h2 {
+    margin-bottom: 16px;
+    font-size: clamp(2rem, 3.6vw, 3.4rem);
+    line-height: 1.02;
+    letter-spacing: -0.04em;
+    color: #fff;
+  }
+
+  .smp-quote-copy p {
+    margin: 0 0 20px;
+    font-size: 1rem;
+    line-height: 1.82;
+    color: rgba(255, 255, 255, 0.72);
+  }
+
+  .smp-quote-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 24px;
+  }
+
+  .smp-checklist {
+    margin: 0;
+    padding-left: 20px;
+    display: grid;
+    gap: 12px;
+    color: rgba(255, 255, 255, 0.84);
+  }
+
+  .smp-form-card {
+    padding: 28px 24px;
+    background: rgba(255, 255, 255, 0.98);
+  }
+
+  .smp-form {
+    display: grid;
+    gap: 18px;
+  }
+
+  .smp-form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .smp-form-group {
+    display: grid;
+    gap: 8px;
+  }
+
+  .smp-form-group label {
+    font-size: 0.84rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: #173055;
+  }
+
+  .smp-form-group input,
+  .smp-form-group textarea {
+    width: 100%;
+    border-radius: 16px;
+    border: 1px solid rgba(25, 24, 23, 0.12);
+    background: #fff;
+    padding: 14px 16px;
+    font: inherit;
+    color: var(--near-black);
+  }
+
+  .smp-form-group textarea {
+    resize: vertical;
+  }
+
+  .smp-form-group input:focus,
+  .smp-form-group textarea:focus {
+    outline: 2px solid rgba(179, 82, 40, 0.16);
+    outline-offset: 2px;
+    border-color: rgba(179, 82, 40, 0.36);
+  }
+
+  .smp-submit {
+    justify-self: start;
+  }
+
+  .smp-faq {
+    background: #fff;
+  }
+
+  .smp-faq-list {
+    max-width: 880px;
+  }
+
+  .smp-faq-item {
+    border-radius: 22px;
+    background: linear-gradient(180deg, #ffffff 0%, #f7f4ef 100%);
+    border: 1px solid rgba(25, 24, 23, 0.08);
+    box-shadow: 0 18px 48px rgba(18, 24, 36, 0.08);
+    overflow: hidden;
+  }
+
+  .smp-faq-question {
+    width: 100%;
+    background: transparent;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 22px 24px;
+    text-align: left;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--near-black);
+  }
+
+  .smp-faq-answer-inner {
+    color: #52575d;
+    line-height: 1.8;
+  }
+
+  .smp-video {
+    background: linear-gradient(180deg, #f7f4f0 0%, #ffffff 100%);
+    padding: 96px 0;
+  }
+
+  .smp-video-figure {
+    margin: 32px auto 0;
+    max-width: 1080px;
+  }
+
+  .smp-video-frame {
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #0b0b0c;
+    border: 1px solid rgba(25, 24, 23, 0.12);
+    box-shadow: 0 30px 80px rgba(17, 22, 33, 0.25);
+    aspect-ratio: 16 / 9;
+    isolation: isolate;
+  }
+
+  .smp-video-el {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+    display: block;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    pointer-events: auto;
+  }
+
+  .smp-video-watermark {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(4, 1fr);
+    gap: 0;
+    transform: rotate(-22deg) scale(1.4);
+    transform-origin: center;
+    opacity: 0.28;
+    mix-blend-mode: screen;
+    z-index: 2;
+  }
+
+  .smp-watermark-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: clamp(0.7rem, 1.2vw, 0.95rem);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.6);
+    white-space: nowrap;
+  }
+
+  .smp-video-shield {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: transparent;
+  }
+
+  .smp-video-playbtn {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 96px;
+    height: 96px;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 6;
+    transition: transform 0.15s ease;
+  }
+
+  .smp-video-playbtn:hover { transform: scale(1.06); }
+
+  .smp-video-frame.is-paused .smp-video-playbtn {
+    display: flex;
+  }
+
+  .smp-video-figure figcaption {
+    margin-top: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    font-size: 0.92rem;
+    color: #5c6167;
+    line-height: 1.65;
+  }
+
+  .smp-video-protect {
+    font-size: 0.82rem;
+    color: #8a1f1f;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+
+  @media print {
+    .smp-video-frame {
+      display: none !important;
+    }
+  }
+
+  @media (max-width: 1100px) {
+    .smp-summary-grid,
+    .smp-doc-grid,
+    .smp-link-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .smp-hero-grid,
+    .smp-specs-grid,
+    .smp-quote-grid,
+    .smp-columns-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .smp-hero {
+      padding-top: 132px;
+    }
+
+    .smp-summary,
+    .smp-gallery,
+    .smp-specs,
+    .smp-docs,
+    .smp-columns,
+    .smp-links,
+    .smp-quote,
+    .smp-faq {
+      padding: 80px 0;
+    }
+
+    .smp-summary-grid,
+    .smp-gallery-grid,
+    .smp-doc-grid,
+    .smp-link-grid,
+    .smp-form-row,
+    .smp-fact-list {
+      grid-template-columns: 1fr;
+    }
+
+    .smp-hero-actions,
+    .smp-quote-badges {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .smp-hero-actions .btn,
+    .smp-submit {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .smp-anchor-nav {
+      top: 72px;
+    }
+  }
+</style>
+
+<script>
+  // Best-effort client-side download protection for the watermarked video.
+  // Note: no client measure can defeat screen recording or determined network capture.
+  (function () {
+    const init = () => {
+      const frames = document.querySelectorAll('[data-smp-video]');
+      frames.forEach((frame) => {
+        const el = frame as HTMLElement;
+        const video = el.querySelector('video') as HTMLVideoElement | null;
+        const playBtn = el.querySelector('[data-smp-playbtn]') as HTMLButtonElement | null;
+        if (!video) return;
+
+        const setPaused = (paused: boolean) => {
+          el.classList.toggle('is-paused', paused);
+        };
+
+        ['contextmenu', 'dragstart'].forEach((evt) => {
+          el.addEventListener(evt, (e) => e.preventDefault());
+          video.addEventListener(evt, (e) => e.preventDefault());
+        });
+        video.addEventListener('keydown', (e) => {
+          const k = (e as KeyboardEvent).key.toLowerCase();
+          if ((e as KeyboardEvent).ctrlKey || (e as KeyboardEvent).metaKey) {
+            if (k === 's' || k === 'u') e.preventDefault();
+          }
+        });
+
+        video.addEventListener('play', () => setPaused(false));
+        video.addEventListener('playing', () => setPaused(false));
+        video.addEventListener('pause', () => setPaused(true));
+        video.addEventListener('ended', () => setPaused(true));
+
+        if (playBtn) {
+          playBtn.addEventListener('click', () => {
+            video.muted = true;
+            const p = video.play();
+            if (p && typeof p.then === 'function') {
+              p.then(() => setPaused(false)).catch(() => setPaused(true));
+            }
+          });
+        }
+
+        // Pause on tab hide, resume on return
+        document.addEventListener('visibilitychange', () => {
+          if (document.hidden) {
+            try { video.pause(); } catch (_) { /* noop */ }
+          } else if (video.muted) {
+            const p = video.play();
+            if (p && typeof p.catch === 'function') p.catch(() => { /* noop */ });
+          }
+        });
+
+        // Best-effort autoplay kick-start
+        const tryPlay = () => {
+          video.muted = true;
+          const p = video.play();
+          if (p && typeof p.then === 'function') {
+            p.then(() => setPaused(false)).catch(() => setPaused(true));
+          }
+        };
+        if (video.readyState >= 2) tryPlay();
+        else video.addEventListener('loadeddata', tryPlay, { once: true });
+        // Initial state
+        setPaused(video.paused);
+      });
+    };
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+  })();
+</script>

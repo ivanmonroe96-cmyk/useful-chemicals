@@ -24,29 +24,6 @@ const trustItems = [
   t(tr, 'certificates.trust_adr'),
 ];
 
-const certificationBadges = [
-  {
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/ISO_Logo_%28Red_square%29.svg/200px-ISO_Logo_%28Red_square%29.svg.png',
-    label: t(tr, 'certificates.trust_iso9001'),
-  },
-  {
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b7/Flag_of_Europe.svg/200px-Flag_of_Europe.svg.png',
-    label: t(tr, 'certificates.trust_reach'),
-  },
-  {
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/GHS-pictogram-skull.svg/200px-GHS-pictogram-skull.svg.png',
-    label: t(tr, 'certificates.trust_ghs'),
-  },
-  {
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5f/GHS-pictogram-exclam.svg/200px-GHS-pictogram-exclam.svg.png',
-    label: t(tr, 'certificates.clp_sub'),
-  },
-  {
-    image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0c/GHS-pictogram-pollu.svg/200px-GHS-pictogram-pollu.svg.png',
-    label: t(tr, 'certificates.trust_adr'),
-  },
-];
-
 const certificationCards = [
   {
     icon: 'fa-award',
@@ -232,16 +209,6 @@ const certsSchema = {
         <p>{certs.certs_desc}</p>
       </div>
 
-      <!-- Certification image badges row -->
-      <div class="cq-cert-badges">
-        {certificationBadges.map((badge) => (
-          <div class="cq-badge-item">
-            <img src={badge.image} alt={badge.label} width="90" height="90" loading="lazy" />
-            <span>{badge.label}</span>
-          </div>
-        ))}
-      </div>
-
       <div class="cq-certs-grid">
         {certificationCards.map((card) => (
           <div class="cq-cert-card">
@@ -361,13 +328,6 @@ const certsSchema = {
   .cq-section-header h2 { font-size: 2rem; font-weight: 800; margin-bottom: 12px; }
   .cq-section-header p { max-width: 660px; margin: 0 auto; color: var(--body-text); line-height: 1.7; }
 
-  /* ===== Cert Badges Row ===== */
-  .cq-cert-badges { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-bottom: 56px; padding: 36px; background: var(--light-bg); border-radius: 16px; border: 1px solid var(--border); }
-  .cq-badge-item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-  .cq-badge-item img { width: 72px; height: 72px; object-fit: contain; filter: grayscale(20%); transition: all .3s; }
-  .cq-badge-item:hover img { filter: grayscale(0%); transform: scale(1.08); }
-  .cq-badge-item span { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; color: var(--dark); }
-
   /* ===== Certs Grid ===== */
   .cq-certs { padding: 100px 0; background: var(--light-bg); }
   .cq-certs-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; }
@@ -441,8 +401,6 @@ const certsSchema = {
     .cq-cta-inner { padding: 40px 24px; }
     .cq-hero-metrics { flex-direction: column; align-items: flex-start; gap: 12px; }
     .cq-metric-divider { display: none; }
-    .cq-cert-badges { gap: 20px; padding: 24px; }
-    .cq-badge-item img { width: 52px; height: 52px; }
     .cq-timeline-line { left: 24px; }
     .cq-step-marker { width: 48px; }
     .cq-step-num { width: 40px; height: 40px; font-size: .85rem; }
@@ -452,7 +410,6 @@ const certsSchema = {
   @media (max-width: 480px) {
     .cq-cta-actions { flex-direction: column; align-items: stretch; }
     .cq-cta-actions .btn { width: 100%; justify-content: center; }
-    .cq-cert-badges { flex-direction: column; align-items: stretch; }
     .cq-cert-card,
     .cq-doc-card,
     .cq-step-card { padding-left: 20px; padding-right: 20px; }

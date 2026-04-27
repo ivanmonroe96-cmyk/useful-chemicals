@@ -1,0 +1,1366 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { Image } from 'astro:assets';
+import { getTranslations, t, localizedPath } from '../../i18n/index';
+import { defaultLang } from '../../i18n/languages';
+import { getDocumentDownload } from '../../lib/documentDownloads';
+import heroImage from '../../assets/products/caluanie/caluanie-muelear-oxidize-stock-warehouse.jpeg';
+import galleryImage from '../../assets/products/caluanie/caluanie-muelear-oxidize-export-pallets.jpeg';
+import facilityImage from '../../assets/products/caluanie/ue-chemicals-caluanie-storage-facility.png';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = defaultLang } = Astro.props;
+const tr = getTranslations(lang);
+const lp = (path: string) => localizedPath(path, lang);
+const docDownload = (id: string) => {
+  const download = getDocumentDownload(id, lang);
+  if (!download) throw new Error(`Missing document download: ${id}`);
+  return download;
+};
+
+const siteUrl = 'https://useful-chemicals.com';
+const productName = 'Caluanie Muelear Oxidize';
+const pageTitle = t(tr, 'caluanie.meta_title');
+const pageDescription = t(tr, 'caluanie.meta_desc');
+const productPageUrl = `${siteUrl}${lp('/products/caluanie')}`;
+const imageUrls = [heroImage, galleryImage, facilityImage].map((image) => `${siteUrl}${image.src}`);
+
+const anchorLinks = [
+  { href: '#summary', label: t(tr, 'caluanie.overview_label') },
+  { href: '#specifications', label: t(tr, 'caluanie.tech_label') },
+  { href: '#documents', label: t(tr, 'caluanie.doc_tds_title') },
+  { href: '#handling', label: t(tr, 'caluanie.safety_label') },
+  { href: '#quote', label: t(tr, 'caluanie.quote_label') },
+];
+
+const heroChipItems = [
+  t(tr, 'caluanie.hero_chip_tds'),
+  t(tr, 'caluanie.hero_chip_sds'),
+  t(tr, 'caluanie.hero_chip_coa'),
+  t(tr, 'caluanie.hero_chip_use'),
+];
+
+const heroFacts = [
+  { label: t(tr, 'caluanie.tech_packs'), value: t(tr, 'caluanie.tech_packs_val') },
+  { label: t(tr, 'caluanie.tech_shelf'), value: t(tr, 'caluanie.tech_shelf_val') },
+  { label: t(tr, 'caluanie.tech_origin'), value: t(tr, 'caluanie.tech_origin_val') },
+  { label: t(tr, 'caluanie.doc_coa_title'), value: t(tr, 'caluanie.doc_coa_desc') },
+];
+
+const summaryCards = [
+  {
+    title: t(tr, 'caluanie.overview_feat1_title'),
+    body: t(tr, 'caluanie.overview_feat1_desc'),
+  },
+  {
+    title: t(tr, 'caluanie.overview_feat2_title'),
+    body: t(tr, 'caluanie.overview_feat2_desc'),
+  },
+  {
+    title: t(tr, 'caluanie.overview_feat3_title'),
+    body: t(tr, 'caluanie.overview_feat3_desc'),
+  },
+  {
+    title: t(tr, 'caluanie.tech_type'),
+    body: t(tr, 'caluanie.tech_type_val'),
+  },
+];
+
+const verifiedSpecs = [
+  [t(tr, 'caluanie.tech_name'), t(tr, 'caluanie.tech_name_val')],
+  [t(tr, 'caluanie.tech_type'), t(tr, 'caluanie.tech_type_val')],
+  [t(tr, 'caluanie.tech_appearance'), t(tr, 'caluanie.tech_appearance_val')],
+  [t(tr, 'caluanie.tech_application'), t(tr, 'caluanie.tech_application_val')],
+  [t(tr, 'caluanie.tech_power'), t(tr, 'caluanie.tech_power_val')],
+  [t(tr, 'caluanie.tech_density'), t(tr, 'caluanie.tech_density_val')],
+  [t(tr, 'caluanie.tech_ph'), t(tr, 'caluanie.tech_ph_val')],
+  [t(tr, 'caluanie.tech_solubility'), t(tr, 'caluanie.tech_solubility_val')],
+  [t(tr, 'caluanie.tech_shelf'), t(tr, 'caluanie.tech_shelf_val')],
+  [t(tr, 'caluanie.tech_packs'), t(tr, 'caluanie.tech_packs_val')],
+  [t(tr, 'caluanie.tech_storage'), t(tr, 'caluanie.tech_storage_val')],
+  [t(tr, 'caluanie.tech_origin'), t(tr, 'caluanie.tech_origin_val')],
+];
+
+const cautionItems = [
+  t(tr, 'caluanie.tech_note1'),
+  t(tr, 'caluanie.tech_note2'),
+  t(tr, 'caluanie.tech_note3'),
+  t(tr, 'caluanie.tech_note4'),
+];
+
+const documentCards = [
+  {
+    icon: 'fa-file-lines',
+    title: t(tr, 'caluanie.doc_tds_title'),
+    code: 'UEC-TDS-CMO-2026-01',
+    kind: 'TDS',
+    date: t(tr, 'caluanie.doc_tds_date'),
+    summary: t(tr, 'caluanie.doc_tds_desc'),
+    note: t(tr, 'caluanie.safety_desc'),
+    download: docDownload('caluanie-tds'),
+    cta: t(tr, 'caluanie.download_tds'),
+    ariaLabel: t(tr, 'caluanie.doc_tds_aria'),
+  },
+  {
+    icon: 'fa-shield-halved',
+    title: t(tr, 'caluanie.doc_sds_title'),
+    code: 'UEC-MSDS-CMO-2026-01',
+    kind: 'MSDS',
+    date: t(tr, 'caluanie.doc_sds_date'),
+    summary: t(tr, 'caluanie.doc_sds_desc'),
+    note: t(tr, 'caluanie.safety4'),
+    download: docDownload('caluanie-msds'),
+    cta: t(tr, 'caluanie.download_sds'),
+    ariaLabel: t(tr, 'caluanie.doc_sds_aria'),
+  },
+];
+
+const applicationItems = [
+  {
+    title: t(tr, 'caluanie.app1_title'),
+    body: t(tr, 'caluanie.app1_desc'),
+  },
+  {
+    title: t(tr, 'caluanie.app2_title'),
+    body: t(tr, 'caluanie.app2_desc'),
+  },
+  {
+    title: t(tr, 'caluanie.app3_title'),
+    body: t(tr, 'caluanie.app3_desc'),
+  },
+];
+
+const handlingItems = [
+  t(tr, 'caluanie.safety1'),
+  t(tr, 'caluanie.safety2'),
+  t(tr, 'caluanie.safety3'),
+  t(tr, 'caluanie.safety4'),
+  t(tr, 'caluanie.safety5'),
+  t(tr, 'caluanie.safety6'),
+];
+
+const orderChecklist = [
+  t(tr, 'caluanie.quote_check1'),
+  t(tr, 'caluanie.quote_check2'),
+  t(tr, 'caluanie.quote_check3'),
+  t(tr, 'caluanie.quote_check4'),
+];
+
+const relatedLinks = [
+  {
+    href: lp('/applications'),
+    title: t(tr, 'common.view_applications'),
+    description: t(tr, 'caluanie.benefits_link1_desc'),
+  },
+  {
+    href: lp('/safety'),
+    title: t(tr, 'common.learn_more'),
+    description: t(tr, 'caluanie.benefits_link2_desc'),
+  },
+  {
+    href: lp('/certificates'),
+    title: t(tr, 'common.request_documentation'),
+    description: t(tr, 'caluanie.benefits_link3_desc'),
+  },
+  {
+    href: lp('/ordering'),
+    title: t(tr, 'common.how_to_order'),
+    description: t(tr, 'caluanie.benefits_link4_desc'),
+  },
+  {
+    href: lp('/blog/caluanie-muelear-oxidize-guide'),
+    title: t(tr, 'common.read_more'),
+    description: t(tr, 'caluanie.benefits_link5_desc'),
+  },
+  {
+    href: lp('/contact'),
+    title: t(tr, 'common.contact_us'),
+    description: t(tr, 'caluanie.benefits_link6_desc'),
+  },
+];
+
+const faqItems = [
+  {
+    question: t(tr, 'caluanie.faq1_q'),
+    answer: t(tr, 'caluanie.faq1_a'),
+  },
+  {
+    question: t(tr, 'caluanie.faq2_q'),
+    answer: t(tr, 'caluanie.faq2_a'),
+  },
+  {
+    question: t(tr, 'caluanie.faq3_q'),
+    answer: t(tr, 'caluanie.faq3_a'),
+  },
+  {
+    question: t(tr, 'caluanie.faq4_q'),
+    answer: t(tr, 'caluanie.faq4_a'),
+  },
+  {
+    question: t(tr, 'caluanie.faq5_q'),
+    answer: t(tr, 'caluanie.faq5_a'),
+  },
+  {
+    question: t(tr, 'caluanie.faq6_q'),
+    answer: t(tr, 'caluanie.faq6_a'),
+  },
+];
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: productName,
+  description: pageDescription,
+  image: imageUrls,
+  category: 'Industrial liquid oxidizer',
+  sku: 'UEC-CMO-HQ',
+  brand: { '@type': 'Brand', name: 'UE Chemicals' },
+  manufacturer: {
+    '@type': 'Organization',
+    name: 'UE Chemicals',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Bangkok',
+      postalCode: '10110',
+      addressCountry: 'TH',
+    },
+  },
+  countryOfOrigin: { '@type': 'Country', name: 'Thailand' },
+  audience: { '@type': 'BusinessAudience', audienceType: 'Industrial and commercial buyers' },
+  additionalProperty: verifiedSpecs.map(([label, value]) => ({
+    '@type': 'PropertyValue',
+    name: label,
+    value,
+  })),
+  subjectOf: documentCards.map((card) => ({
+    '@type': 'DigitalDocument',
+    name: `${productName} ${card.title}`,
+    encodingFormat: 'application/pdf',
+    url: `${siteUrl}${card.download.href}`,
+    inLanguage: card.download.language,
+    datePublished: '2026-03-10',
+  })),
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqItems.map((item) => ({
+    '@type': 'Question',
+    name: item.question,
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: item.answer,
+    },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: t(tr, 'nav.home'), item: `${siteUrl}${lp('/')}` },
+    { '@type': 'ListItem', position: 2, name: t(tr, 'nav.products'), item: `${siteUrl}${lp('/products')}` },
+    { '@type': 'ListItem', position: 3, name: productName, item: productPageUrl },
+  ],
+};
+
+const speakableSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: pageTitle,
+  speakable: {
+    '@type': 'SpeakableSpecification',
+    cssSelector: ['h1', '.calp-hero-lead', '.calp-summary-card p', '.calp-faq-question'],
+  },
+  url: productPageUrl,
+};
+---
+
+<BaseLayout
+  lang={lang}
+  title={pageTitle}
+  description={pageDescription}
+  activePage="products"
+  ogImage={heroImage.src}
+  jsonLd={[productSchema, faqSchema, breadcrumbSchema, speakableSchema]}
+>
+  <section class="calp-hero" aria-labelledby="calp-hero-title">
+    <div class="container calp-hero-grid">
+      <div class="calp-hero-copy">
+        <div class="calp-kicker">{t(tr, 'caluanie.hero_badge')}</div>
+        <h1 id="calp-hero-title">{t(tr, 'caluanie.hero_title')}</h1>
+        <p class="calp-hero-lead">{t(tr, 'caluanie.hero_sub')}</p>
+        <div class="calp-chip-row" aria-label={t(tr, 'caluanie.hero_chip_row_label')}>
+          {heroChipItems.map((item) => (
+            <span>{item}</span>
+          ))}
+        </div>
+        <div class="calp-hero-actions">
+          <a href="#quote" class="btn btn-accent" aria-label={t(tr, 'common.get_quote')}>{t(tr, 'common.get_quote')} <i class="fas fa-arrow-right"></i></a>
+        </div>
+        <p class="calp-hero-note">{t(tr, 'caluanie.hero_note')}</p>
+      </div>
+
+      <div class="calp-hero-panel">
+        <figure class="calp-figure calp-figure-primary">
+          <Image
+            src={heroImage}
+            alt={t(tr, 'caluanie.hero_image_alt')}
+            widths={[768, 1200, 1600]}
+            sizes="(max-width: 1024px) 100vw, 48vw"
+            quality={82}
+            format="webp"
+            loading="eager"
+            fetchpriority="high"
+            class="calp-image"
+          />
+          <figcaption>{t(tr, 'caluanie.hero_image_caption')}</figcaption>
+        </figure>
+
+        <dl class="calp-fact-list">
+          {heroFacts.map((item) => (
+            <div class="calp-fact-item">
+              <dt>{item.label}</dt>
+              <dd>{item.value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <nav class="calp-anchor-nav" aria-label={t(tr, 'caluanie.anchor_nav_label')}>
+    <div class="container calp-anchor-row">
+      {anchorLinks.map((link) => (
+        <a href={link.href}>{link.label}</a>
+      ))}
+    </div>
+  </nav>
+
+  <section class="calp-summary" id="summary" aria-labelledby="calp-summary-title">
+    <div class="container">
+      <div class="calp-section-head">
+        <div class="calp-kicker">{t(tr, 'caluanie.overview_label')}</div>
+        <h2 id="calp-summary-title">{t(tr, 'caluanie.overview_title')}</h2>
+        <p>{t(tr, 'caluanie.overview_desc1')}</p>
+      </div>
+      <div class="calp-summary-grid">
+        {summaryCards.map((card) => (
+          <article class="calp-summary-card">
+            <h3>{card.title}</h3>
+            <p>{card.body}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="calp-gallery" aria-labelledby="calp-gallery-title">
+    <div class="container">
+      <div class="calp-section-head calp-section-head-tight">
+        <div class="calp-kicker">{t(tr, 'caluanie.overview_label')}</div>
+        <h2 id="calp-gallery-title">{t(tr, 'caluanie.overview_title')}</h2>
+        <p>{t(tr, 'caluanie.overview_desc2')}</p>
+      </div>
+
+      <div class="calp-gallery-grid">
+        <figure class="calp-figure">
+          <Image
+            src={galleryImage}
+            alt={t(tr, 'caluanie.gallery_image_alt')}
+            widths={[640, 960, 1280]}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            quality={80}
+            format="webp"
+            loading="lazy"
+            class="calp-image"
+          />
+          <figcaption>{t(tr, 'caluanie.gallery_image_caption')}</figcaption>
+        </figure>
+
+        <figure class="calp-figure">
+          <Image
+            src={facilityImage}
+            alt={t(tr, 'caluanie.facility_image_alt')}
+            widths={[640, 960, 1280]}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            quality={80}
+            format="webp"
+            loading="lazy"
+            class="calp-image"
+          />
+          <figcaption>{t(tr, 'caluanie.facility_image_caption')}</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section class="calp-specs" id="specifications" aria-labelledby="calp-specs-title">
+    <div class="container calp-specs-grid">
+      <div class="calp-specs-copy">
+        <div class="calp-kicker">{t(tr, 'caluanie.tech_label')}</div>
+        <h2 id="calp-specs-title">{t(tr, 'caluanie.tech_title')}</h2>
+        <p>{t(tr, 'caluanie.tech_desc')}</p>
+
+        <div class="calp-note-card">
+          <h3>{t(tr, 'caluanie.tech_note_title')}</h3>
+          <ul>
+            {cautionItems.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+
+      <div class="calp-table-card">
+        <table class="calp-spec-table">
+          <caption class="calp-sr-only">{t(tr, 'caluanie.tech_table_caption')}</caption>
+          <tbody>
+            {verifiedSpecs.map(([label, value]) => (
+              <tr>
+                <th scope="row">{label}</th>
+                <td>{value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="calp-docs" id="documents" aria-labelledby="calp-docs-title">
+    <div class="container">
+      <div class="calp-section-head">
+        <div class="calp-kicker">{t(tr, 'caluanie.docs_label')}</div>
+          <h2 id="calp-docs-title">{t(tr, 'caluanie.doc_tds_title')}</h2>
+        <p>{t(tr, 'caluanie.doc_tds_desc')}</p>
+      </div>
+
+      <div class="calp-doc-grid">
+        {documentCards.map((card) => (
+          <article class="calp-doc-card">
+            <div class="calp-doc-icon"><i class:list={['fas', card.icon]}></i></div>
+            <div class="calp-doc-body">
+              <div class="calp-doc-meta">{card.code}</div>
+              <h3>{card.title}</h3>
+              <p class="calp-doc-date">{card.date}</p>
+              <p>{card.summary}</p>
+              <p class="calp-doc-note">{card.note}</p>
+              <p class="calp-doc-language">
+                {t(tr, 'common.pdf_language')}: {card.download.languageName}
+                {card.download.isFallback && <span>{t(tr, 'common.document_fallback')}</span>}
+              </p>
+              {card.download.availableVersions.length > 1 && (
+                <div class="calp-doc-languages" aria-label={t(tr, 'common.available_document_languages')}>
+                  {card.download.availableVersions.map((version) => (
+                    <a href={`/api/documents/${card.download.id}?lang=${version.lang}`} download hreflang={version.lang} lang={version.lang}>{version.languageName}</a>
+                  ))}
+                </div>
+              )}
+            </div>
+            <a href={card.download.href} download class="btn btn-outline doc-dl-btn" aria-label={`${card.ariaLabel} (${card.download.languageName})`} title={`${card.ariaLabel} (${card.download.languageName})`}>{card.kind} ({card.download.languageName})<svg class="doc-dl-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="calp-columns" id="handling" aria-labelledby="calp-columns-title">
+    <div class="container">
+      <div class="calp-section-head calp-section-head-tight">
+        <div class="calp-kicker">{t(tr, 'caluanie.safety_label')}</div>
+        <h2 id="calp-columns-title">{t(tr, 'caluanie.safety_title')}</h2>
+      </div>
+
+      <div class="calp-columns-grid">
+        <article class="calp-list-card">
+          <h3>{t(tr, 'caluanie.apps_title')}</h3>
+          <div class="calp-list-stack">
+            {applicationItems.map((item) => (
+              <div class="calp-list-item">
+                <h4>{item.title}</h4>
+                <p>{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </article>
+
+        <article class="calp-list-card calp-list-card-dark">
+          <h3>{t(tr, 'caluanie.safety_title')}</h3>
+          <ul class="calp-bullet-list">
+            {handlingItems.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="calp-links" aria-labelledby="calp-links-title">
+    <div class="container">
+      <div class="calp-section-head calp-section-head-tight">
+        <div class="calp-kicker">{t(tr, 'caluanie.benefits_label')}</div>
+        <h2 id="calp-links-title">{t(tr, 'caluanie.benefits_title')}</h2>
+        <p>{t(tr, 'caluanie.benefits_desc')}</p>
+      </div>
+
+      <div class="calp-link-grid">
+        {relatedLinks.map((link) => (
+          <a href={link.href} class="calp-link-card">
+            <h3>{link.title}</h3>
+            <p>{link.description}</p>
+            <span>{t(tr, 'common.view_full_details')} <i class="fas fa-arrow-right"></i></span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="calp-quote" id="quote" aria-labelledby="calp-quote-title">
+    <div class="container calp-quote-grid">
+      <div class="calp-quote-copy">
+        <div class="calp-kicker">{t(tr, 'caluanie.quote_label')}</div>
+        <h2 id="calp-quote-title">{t(tr, 'caluanie.quote_title')}</h2>
+        <p>{t(tr, 'caluanie.quote_desc')}</p>
+
+        <div class="calp-quote-badges">
+          <span><i class="fas fa-clock"></i> {t(tr, 'caluanie.quote_badge1')}</span>
+          <span><i class="fas fa-file-shield"></i> {t(tr, 'caluanie.quote_badge2')}</span>
+          <span><i class="fas fa-globe"></i> {t(tr, 'caluanie.quote_badge3')}</span>
+        </div>
+
+        <ol class="calp-checklist">
+          {orderChecklist.map((item) => (
+            <li>{item}</li>
+          ))}
+        </ol>
+      </div>
+
+      <div class="calp-form-card">
+        <form class="calp-form">
+          <div class="calp-form-row">
+            <div class="calp-form-group">
+              <label for="calp-name">{t(tr, 'caluanie.form_name')}</label>
+              <input id="calp-name" name="name" type="text" placeholder={t(tr, 'caluanie.form_placeholder_name')} required />
+            </div>
+            <div class="calp-form-group">
+              <label for="calp-email">{t(tr, 'caluanie.form_email')}</label>
+              <input id="calp-email" name="email" type="email" placeholder={t(tr, 'caluanie.form_placeholder_email')} required />
+            </div>
+          </div>
+
+          <input type="hidden" name="product" value={productName} />
+
+          <div class="calp-form-group">
+            <label for="calp-message">{t(tr, 'caluanie.form_message')}</label>
+            <textarea
+              id="calp-message"
+              name="message"
+              rows="7"
+              placeholder={t(tr, 'caluanie.form_placeholder_message')}
+              required
+            ></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-accent calp-submit" aria-label={t(tr, 'caluanie.form_submit')}>{t(tr, 'caluanie.form_submit')} <i class="fas fa-paper-plane"></i></button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="calp-faq" aria-labelledby="calp-faq-title">
+    <div class="container">
+      <div class="calp-section-head">
+        <div class="calp-kicker">{t(tr, 'caluanie.faq_label')}</div>
+        <h2 id="calp-faq-title">{t(tr, 'caluanie.faq_title')}</h2>
+      </div>
+
+      <div class="faq-list calp-faq-list">
+        {faqItems.map((item) => (
+          <article class="faq-item calp-faq-item">
+            <button type="button" class="faq-question calp-faq-question">
+              <span>{item.question}</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+            <div class="faq-answer calp-faq-answer">
+              <div class="faq-answer-inner calp-faq-answer-inner">{item.answer}</div>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .calp-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .calp-hero {
+    position: relative;
+    padding: 160px 0 64px;
+    background:
+      radial-gradient(circle at top left, rgba(252, 82, 32, 0.18), transparent 34%),
+      radial-gradient(circle at top right, rgba(13, 51, 126, 0.14), transparent 28%),
+      linear-gradient(180deg, #f7f4ef 0%, #ffffff 72%);
+    overflow: hidden;
+  }
+
+  .calp-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.08fr) minmax(320px, 0.92fr);
+    gap: 42px;
+    align-items: start;
+  }
+
+  .calp-kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .calp-kicker::before {
+    content: '';
+    width: 42px;
+    height: 1px;
+    background: currentColor;
+  }
+
+  .calp-hero h1 {
+    max-width: 12ch;
+    margin-bottom: 20px;
+    font-size: clamp(2.5rem, 5vw, 4.8rem);
+    line-height: 0.96;
+    letter-spacing: -0.05em;
+    color: var(--near-black);
+  }
+
+  .calp-hero-lead {
+    max-width: 66ch;
+    margin-bottom: 24px;
+    font-size: 1.08rem;
+    line-height: 1.8;
+    color: #4f5357;
+  }
+
+  .calp-chip-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .calp-chip-row span,
+  .calp-quote-badges span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(13, 51, 126, 0.08);
+    border: 1px solid rgba(13, 51, 126, 0.12);
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: #16315e;
+  }
+
+  .calp-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .calp-btn-secondary {
+    background: #fff;
+    color: var(--near-black);
+    border: 1px solid rgba(25, 24, 23, 0.14);
+  }
+
+  .calp-btn-secondary:hover {
+    background: #f5f2ec;
+    color: var(--near-black);
+  }
+
+  .calp-hero-note {
+    max-width: 58ch;
+    margin: 0;
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: #5c6167;
+  }
+
+  .calp-hero-panel {
+    display: grid;
+    gap: 18px;
+  }
+
+  .calp-figure {
+    margin: 0;
+    border-radius: 28px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgba(25, 24, 23, 0.08);
+    box-shadow: 0 24px 60px rgba(17, 22, 33, 0.12);
+  }
+
+  .calp-figure figcaption {
+    padding: 15px 18px 18px;
+    font-size: 0.86rem;
+    line-height: 1.6;
+    color: #5c6167;
+  }
+
+  :global(.calp-image) {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .calp-fact-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin: 0;
+  }
+
+  .calp-fact-item {
+    padding: 16px 18px;
+    border-radius: 20px;
+    background: #0f254b;
+    color: #fff;
+  }
+
+  .calp-fact-item dt {
+    margin-bottom: 8px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.62);
+  }
+
+  .calp-fact-item dd {
+    margin: 0;
+    font-size: 0.98rem;
+    line-height: 1.55;
+    font-weight: 700;
+  }
+
+  .calp-anchor-nav {
+    position: sticky;
+    top: 84px;
+    z-index: 6;
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(14px);
+    border-top: 1px solid rgba(25, 24, 23, 0.06);
+    border-bottom: 1px solid rgba(25, 24, 23, 0.06);
+  }
+
+  .calp-anchor-row {
+    display: flex;
+    gap: 10px;
+    padding: 14px 0;
+    overflow-x: auto;
+  }
+
+  .calp-anchor-row a {
+    flex: 0 0 auto;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: #f7f4ef;
+    border: 1px solid rgba(25, 24, 23, 0.08);
+    font-size: 0.84rem;
+    font-weight: 700;
+    color: var(--near-black);
+  }
+
+  .calp-summary,
+  .calp-gallery,
+  .calp-specs,
+  .calp-docs,
+  .calp-columns,
+  .calp-links,
+  .calp-faq {
+    padding: 92px 0;
+  }
+
+  .calp-quote {
+    padding: 92px 0;
+    background: linear-gradient(135deg, #101820 0%, #172f58 100%);
+  }
+
+  .calp-gallery,
+  .calp-links {
+    background: #f7f4ef;
+  }
+
+  .calp-specs,
+  .calp-columns {
+    background: #ffffff;
+  }
+
+  .calp-docs {
+    background: linear-gradient(180deg, #fff 0%, #fbfaf8 100%);
+  }
+
+  .calp-section-head {
+    max-width: 66ch;
+    margin-bottom: 34px;
+  }
+
+  .calp-section-head-tight {
+    margin-bottom: 26px;
+  }
+
+  .calp-section-head h2 {
+    margin-bottom: 16px;
+    font-size: clamp(2rem, 3vw, 3.3rem);
+    line-height: 1.04;
+    letter-spacing: -0.04em;
+  }
+
+  .calp-section-head p,
+  .calp-specs-copy > p,
+  .calp-doc-card p,
+  .calp-list-item p,
+  .calp-link-card p,
+  .calp-quote-copy > p {
+    margin: 0;
+    color: #58616a;
+    line-height: 1.75;
+  }
+
+  .calp-summary-grid,
+  .calp-doc-grid,
+  .calp-link-grid {
+    display: grid;
+    gap: 20px;
+  }
+
+  .calp-summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .calp-summary-card,
+  .calp-doc-card,
+  .calp-link-card,
+  .calp-list-card,
+  .calp-form-card,
+  .calp-table-card,
+  .calp-note-card {
+    border-radius: 24px;
+    border: 1px solid rgba(25, 24, 23, 0.08);
+  }
+
+  .calp-summary-card {
+    padding: 28px;
+    background: #fff;
+    box-shadow: 0 18px 40px rgba(17, 22, 33, 0.06);
+  }
+
+  .calp-summary-card h3,
+  .calp-doc-card h3,
+  .calp-list-card h3,
+  .calp-link-card h3,
+  .calp-note-card h3 {
+    margin-bottom: 12px;
+    font-size: 1.12rem;
+    line-height: 1.35;
+  }
+
+  .calp-gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+  }
+
+  .calp-specs-grid,
+  .calp-columns-grid,
+  .calp-quote-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px;
+    align-items: start;
+  }
+
+  .calp-note-card {
+    margin-top: 26px;
+    padding: 24px;
+    background: #f7f4ef;
+  }
+
+  .calp-note-card ul,
+  .calp-bullet-list,
+  .calp-checklist {
+    margin: 0;
+    padding-left: 1.2rem;
+  }
+
+  .calp-note-card li,
+  .calp-bullet-list li,
+  .calp-checklist li {
+    margin-bottom: 12px;
+    color: #4f5357;
+    line-height: 1.72;
+  }
+
+  .calp-note-card li:last-child,
+  .calp-bullet-list li:last-child,
+  .calp-checklist li:last-child {
+    margin-bottom: 0;
+  }
+
+  .calp-table-card {
+    padding: 16px;
+    background: #fff;
+    box-shadow: 0 18px 40px rgba(17, 22, 33, 0.06);
+  }
+
+  .calp-spec-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .calp-spec-table th,
+  .calp-spec-table td {
+    padding: 16px 18px;
+    border-bottom: 1px solid rgba(25, 24, 23, 0.08);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  .calp-spec-table th {
+    width: 34%;
+    font-size: 0.86rem;
+    font-weight: 800;
+    color: #122548;
+    background: #f7f4ef;
+  }
+
+  .calp-spec-table td {
+    color: #4f5357;
+    line-height: 1.7;
+  }
+
+  .calp-spec-table tr:last-child th,
+  .calp-spec-table tr:last-child td {
+    border-bottom: 0;
+  }
+
+  .calp-doc-grid,
+  .calp-link-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .calp-doc-card,
+  .calp-link-card,
+  .calp-list-card {
+    padding: 28px;
+    background: #fff;
+  }
+
+  .calp-doc-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    height: 100%;
+  }
+
+  .calp-doc-body {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding-bottom: 32px;
+  }
+
+  .calp-doc-card .btn {
+    margin-top: auto;
+  }
+
+  .calp-doc-card .doc-dl-btn {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 16px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+  }
+
+  .doc-dl-icon {
+    flex: none;
+    transition: transform 0.18s ease;
+  }
+
+  .calp-doc-card .doc-dl-btn:hover .doc-dl-icon {
+    transform: translateY(2px);
+  }
+
+  .calp-doc-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 54px;
+    height: 54px;
+    margin-bottom: 16px;
+    border-radius: 16px;
+    background: #0f254b;
+    color: #fff;
+    font-size: 1.15rem;
+  }
+
+  .calp-doc-meta,
+  .calp-doc-date {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #6b7077;
+  }
+
+  .calp-doc-date {
+    margin-bottom: 12px;
+  }
+
+  .calp-doc-note {
+    margin: 0;
+    font-size: 0.92rem;
+  }
+
+  .calp-doc-language {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--black);
+  }
+
+  .calp-doc-language span {
+    display: block;
+    margin-top: 3px;
+    font-weight: 600;
+    color: var(--body-text);
+  }
+
+  .calp-doc-languages {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+  }
+
+  .calp-doc-languages a {
+    border: 1px solid var(--border);
+    padding: 4px 8px;
+    font-size: 0.76rem;
+    font-weight: 700;
+    color: var(--black);
+    text-decoration: none;
+  }
+
+  .calp-list-stack {
+    display: grid;
+    gap: 18px;
+  }
+
+  .calp-list-item {
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(25, 24, 23, 0.08);
+  }
+
+  .calp-list-item:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+
+  .calp-list-item h4 {
+    margin-bottom: 8px;
+    font-size: 1rem;
+  }
+
+  .calp-list-card-dark {
+    background: #101820;
+    color: #fff;
+    box-shadow: 0 18px 40px rgba(17, 22, 33, 0.08);
+  }
+
+  .calp-list-card-dark h3,
+  .calp-list-card-dark li {
+    color: #fff;
+  }
+
+  .calp-list-card-dark li {
+    color: rgba(255, 255, 255, 0.82);
+  }
+
+  .calp-link-card {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 14px 30px rgba(17, 22, 33, 0.05);
+  }
+
+  .calp-link-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 22px 44px rgba(17, 22, 33, 0.08);
+  }
+
+  .calp-link-card span {
+    margin-top: auto;
+    font-size: 0.85rem;
+    font-weight: 800;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .calp-quote-copy {
+    color: #fff;
+  }
+
+  .calp-quote-copy h2 {
+    margin-bottom: 16px;
+    font-size: clamp(2rem, 3.2vw, 3.4rem);
+    line-height: 1.05;
+    letter-spacing: -0.04em;
+    color: #fff;
+  }
+
+  .calp-quote-copy > p {
+    color: rgba(255, 255, 255, 0.76);
+  }
+
+  .calp-quote-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 24px 0 24px;
+  }
+
+  .calp-quote-badges span {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.12);
+    color: #fff;
+  }
+
+  .calp-form-card {
+    padding: 28px;
+    background: #fff;
+    box-shadow: 0 20px 48px rgba(7, 10, 16, 0.16);
+  }
+
+  .calp-form {
+    display: grid;
+    gap: 18px;
+  }
+
+  .calp-form-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .calp-form-group {
+    display: grid;
+    gap: 8px;
+  }
+
+  .calp-form-group label {
+    font-size: 0.88rem;
+    font-weight: 700;
+    color: #1d2b45;
+  }
+
+  .calp-form-group input,
+  .calp-form-group textarea {
+    width: 100%;
+    padding: 14px 16px;
+    border: 1px solid rgba(25, 24, 23, 0.12);
+    border-radius: 16px;
+    font: inherit;
+    color: var(--near-black);
+    background: #fbfaf8;
+  }
+
+  .calp-form-group textarea {
+    resize: vertical;
+    min-height: 160px;
+  }
+
+  .calp-submit {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .calp-faq-list {
+    display: grid;
+    gap: 14px;
+  }
+
+  .calp-faq-item {
+    overflow: hidden;
+    border-radius: 20px;
+    border: 1px solid rgba(25, 24, 23, 0.08);
+    background: #fff;
+  }
+
+  .calp-faq-question {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 22px;
+    border: 0;
+    background: transparent;
+    font: inherit;
+    font-weight: 800;
+    line-height: 1.5;
+    text-align: left;
+    color: var(--near-black);
+    cursor: pointer;
+  }
+
+  .calp-faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.25s ease;
+  }
+
+  .calp-faq-answer-inner {
+    padding: 0 22px 22px;
+    color: #58616a;
+    line-height: 1.75;
+  }
+
+  .faq-item.active .calp-faq-answer {
+    max-height: 280px;
+  }
+
+  .faq-item.active .calp-faq-question i {
+    transform: rotate(180deg);
+  }
+
+  .calp-faq-question i {
+    transition: transform 0.25s ease;
+    color: var(--accent);
+  }
+
+  @media (max-width: 1080px) {
+    .calp-hero {
+      padding-top: 144px;
+    }
+
+    .calp-hero-grid,
+    .calp-specs-grid,
+    .calp-columns-grid,
+    .calp-quote-grid,
+    .calp-doc-grid,
+    .calp-link-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .calp-summary-grid,
+    .calp-gallery-grid,
+    .calp-form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .calp-hero h1 {
+      max-width: 14ch;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .calp-hero,
+    .calp-summary,
+    .calp-gallery,
+    .calp-specs,
+    .calp-docs,
+    .calp-columns,
+    .calp-links,
+    .calp-quote,
+    .calp-faq {
+      padding: 72px 0;
+    }
+
+    .calp-hero {
+      padding-top: 128px;
+    }
+
+    .calp-hero-actions {
+      flex-direction: column;
+    }
+
+    .calp-hero-actions .btn,
+    .calp-doc-card .btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .calp-fact-list {
+      grid-template-columns: 1fr;
+    }
+
+    .calp-summary-card,
+    .calp-doc-card,
+    .calp-link-card,
+    .calp-list-card,
+    .calp-form-card,
+    .calp-table-card,
+    .calp-note-card {
+      border-radius: 20px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .calp-anchor-row {
+      padding: 10px 0;
+    }
+
+    .calp-anchor-row a,
+    .calp-chip-row span,
+    .calp-quote-badges span {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .calp-figure figcaption,
+    .calp-summary-card,
+    .calp-doc-card,
+    .calp-link-card,
+    .calp-list-card,
+    .calp-form-card,
+    .calp-note-card {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+
+    .calp-faq-question,
+    .calp-faq-answer-inner {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+  }
+</style>

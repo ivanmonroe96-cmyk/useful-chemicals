@@ -1,13 +1,13 @@
 export const prerender = false;
 
 import type { APIRoute } from 'astro';
+import { env } from 'cloudflare:workers';
 
-export const POST: APIRoute = async ({ request, locals }) => {
+export const POST: APIRoute = async ({ request }) => {
   try {
-    const runtime = (locals as any).runtime;
-    const apiKey = runtime?.env?.RESEND_API_KEY;
-    const contactEmail = runtime?.env?.CONTACT_EMAIL || 'info@useful-chemicals.com';
-    const fromEmail = runtime?.env?.FROM_EMAIL || 'UE Chemicals <noreply@useful-chemicals.com>';
+    const apiKey = env.RESEND_API_KEY;
+    const contactEmail = env.CONTACT_EMAIL || 'info@useful-chemicals.com';
+    const fromEmail = env.FROM_EMAIL || 'UE Chemicals <noreply@useful-chemicals.com>';
 
     if (!apiKey) {
       console.error('RESEND_API_KEY is not configured');
@@ -18,7 +18,7 @@ export const POST: APIRoute = async ({ request, locals }) => {
     }
 
     const data = await request.json();
-    const { name, email, phone, product, message } = data;
+    const { name, email, product, message } = data;
 
     if (!name || !email || !message) {
       return new Response(JSON.stringify({ error: 'Name, email, and message are required.' }), {
@@ -27,6 +27,33 @@ export const POST: APIRoute = async ({ request, locals }) => {
       });
     }
 
+    // Input length limits
+    if (typeof name !== 'string' || name.length > 100) {
+      return new Response(JSON.stringify({ error: 'Name must be 100 characters or fewer.' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+    if (typeof email !== 'string' || email.length > 254) {
+      return new Response(JSON.stringify({ error: 'Invalid email address.' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+    // Basic email format check
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return new Response(JSON.stringify({ error: 'Invalid email address.' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+    if (typeof message !== 'string' || message.length > 5000) {
+      return new Response(JSON.stringify({ error: 'Message must be 5000 characters or fewer.' }), {
+        status: 400,
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
     const res = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -41,7 +68,6 @@ export const POST: APIRoute = async ({ request, locals }) => {
           <h2>New Contact Form Submission</h2>
           <p><strong>Name:</strong> ${escapeHtml(name)}</p>
           <p><strong>Email:</strong> ${escapeHtml(email)}</p>
-          <p><strong>Phone:</strong> ${escapeHtml(phone || 'Not provided')}</p>
           <p><strong>Product:</strong> ${escapeHtml(product || 'Not specified')}</p>
           <hr>
           <p><strong>Message:</strong></p>

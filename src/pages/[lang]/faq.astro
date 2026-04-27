@@ -294,6 +294,37 @@ const faqSchema = {
   .fq-cta-inner p { color: rgba(255,255,255,.7); max-width: 580px; margin: 0 auto 30px; line-height: 1.7; position: relative; z-index: 1; }
   .fq-cta-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; z-index: 1; }
 
+  /* Refined visual system */
+  .fq-hero { background: var(--primary-dark); min-height: 58vh; }
+  .fq-hero-overlay { background: linear-gradient(115deg, rgba(8,47,56,0.95) 0%, rgba(15,76,92,0.76) 54%, rgba(47,143,107,0.26) 100%); }
+  .fq-hero-badge,
+  .fq-stat-pill,
+  .fq-sidebar-inner,
+  .fq-nav-link,
+  .fq-cat-icon,
+  .fq-item,
+  .fq-toggle,
+  .fq-cta-inner { border-radius: 8px; }
+  .fq-hero-badge { color: #FFE3D6; background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.18); }
+  .fq-stat-pill { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.16); }
+  .fq-stat-pill i { color: var(--accent); }
+  .fq-content { background: var(--surface); }
+  .fq-sidebar-inner { box-shadow: var(--shadow-sm); }
+  .fq-nav-link.active { background: var(--accent); }
+  .fq-cat-header { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 18px; }
+  .fq-cat-icon { background: var(--primary-soft); color: var(--primary); }
+  .fq-item { box-shadow: 0 6px 20px rgba(8,47,56,0.04); }
+  .fq-item:hover { border-color: rgba(252,82,32,.35); box-shadow: var(--shadow-sm); }
+  .fq-item.active { border-color: var(--accent); box-shadow: 0 12px 34px rgba(252,82,32,.12); }
+  .fq-question:hover { color: var(--accent); }
+  .fq-toggle { color: var(--accent); background: var(--primary-soft); }
+  .fq-item.active .fq-toggle { background: var(--accent); }
+  .fq-cta { background: var(--white); }
+  .fq-cta-inner { background: linear-gradient(135deg, var(--primary-dark), #0B3E49 62%, #0F5E55); box-shadow: var(--shadow-md); }
+  .fq-cta-inner::before,
+  .fq-cta-inner::after { display: none; }
+  .fq-cta-icon { border-radius: 8px; background: rgba(252,82,32,0.15); color: var(--accent); }
+
   /* ===== Responsive ===== */
   @media (max-width: 992px) {
     .fq-grid { grid-template-columns: 1fr; gap: 30px; }

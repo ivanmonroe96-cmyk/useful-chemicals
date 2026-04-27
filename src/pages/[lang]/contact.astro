@@ -23,7 +23,6 @@ const contactSchema = {
     "@type": "Organization",
     "name": "UE Chemicals",
     "email": "info@useful-chemicals.com",
-    "telephone": "+66-951690848",
     "address": { "@type": "PostalAddress", "addressLocality": "Bangkok", "postalCode": "10110", "addressCountry": "TH" }
   }
 };
@@ -50,27 +49,6 @@ const contactSchema = {
           <div>
             <span class="ct-info-label">{t(tr, "contact.email_label")}</span>
             <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a>
-          </div>
-        </div>
-        <div class="ct-info-card">
-          <div class="ct-info-icon"><i class="fab fa-whatsapp"></i></div>
-          <div>
-            <span class="ct-info-label">{t(tr, "contact.whatsapp_label")}</span>
-            <a href="https://wa.me/66951690848" target="_blank" rel="noopener noreferrer">+66 951 690 848</a>
-          </div>
-        </div>
-        <div class="ct-info-card">
-          <div class="ct-info-icon"><i class="fas fa-map-marker-alt"></i></div>
-          <div>
-            <span class="ct-info-label">{t(tr, "contact.visit_label")}</span>
-            <span>{t(tr, "contact.visit_value")}</span>
-          </div>
-        </div>
-        <div class="ct-info-card">
-          <div class="ct-info-icon"><i class="fas fa-clock"></i></div>
-          <div>
-            <span class="ct-info-label">{t(tr, "contact.hours_label")}</span>
-            <span>{t(tr, "contact.hours_value")}</span>
           </div>
         </div>
       </div>
@@ -145,20 +123,6 @@ const contactSchema = {
               </div>
             </div>
             <div class="ct-form-row">
-              <div class="ct-form-group">
-                <label for="ct-phone">{t(tr, "contact.label_phone")}</label>
-                <div class="ct-phone-wrap">
-                  <select name="phoneCode" class="ct-phone-code">
-                    <option>+49</option>
-                    <option>+1</option>
-                    <option>+44</option>
-                    <option>+61</option>
-                    <option>+33</option>
-                    <option>+237</option>
-                  </select>
-                  <input type="tel" id="ct-phone" name="phone" placeholder={t(tr, "contact.placeholder_phone")} />
-                </div>
-              </div>
               <div class="ct-form-group">
                 <label for="ct-product">{t(tr, "contact.label_product")}</label>
                 <select id="ct-product" name="product">
@@ -235,13 +199,10 @@ const contactSchema = {
       status.style.display = 'none';
 
       const formData = new FormData(form);
-      const phoneCode = String(formData.get('phoneCode') || '');
-      const phoneNum = String(formData.get('phone') || '');
 
       const body = {
         name: formData.get('name'),
         email: formData.get('email'),
-        phone: phoneNum ? `${phoneCode} ${phoneNum}` : '',
         product: formData.get('product'),
         message: formData.get('message'),
       };
@@ -336,10 +297,6 @@ const contactSchema = {
   .ct-form-group textarea:focus { outline: none; border-color: var(--accent); background: var(--white); box-shadow: 0 0 0 3px rgba(252,82,32,.08); }
   .ct-form-group textarea { resize: vertical; min-height: 120px; }
 
-  /* Phone */
-  .ct-phone-wrap { display: grid; grid-template-columns: 80px 1fr; gap: 8px; }
-  .ct-phone-code { text-align: center; padding: 12px 6px; }
-
   /* Submit */
   .ct-submit-btn { width: 100%; justify-content: center; gap: 10px; padding: 14px; font-size: 1rem; border-radius: 10px; }
 
@@ -350,6 +307,36 @@ const contactSchema = {
   .ct-faq-item h4 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 10px; }
   .ct-faq-item h4 i { color: var(--accent); font-size: .95rem; }
   .ct-faq-item p { color: var(--body-text); line-height: 1.7; font-size: .9rem; margin: 0; }
+
+  /* Refined visual system */
+  .ct-hero { background: var(--primary-dark); min-height: 58vh; }
+  .ct-hero-overlay { background: linear-gradient(115deg, rgba(8,47,56,0.95) 0%, rgba(15,76,92,0.76) 54%, rgba(47,143,107,0.26) 100%); }
+  .ct-hero-badge { border-radius: 8px; background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.18); color: #FFE3D6; }
+  .ct-hero-sub { color: rgba(255,255,255,0.78); }
+  .ct-hero-cards { grid-template-columns: repeat(4, 1fr); }
+  .ct-info-card { border-radius: 8px; background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.16); }
+  .ct-info-icon { border-radius: 8px; background: rgba(252,82,32,0.15); color: var(--accent); }
+  .ct-form-section { background: linear-gradient(135deg, var(--surface), var(--secondary-soft)); }
+  .ct-feature { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 16px; box-shadow: var(--shadow-sm); }
+  .ct-feature-icon { border-radius: 8px; background: var(--primary-dark); color: var(--accent); }
+  .ct-map,
+  .ct-form-card,
+  .ct-form-status,
+  .ct-form-group input,
+  .ct-form-group select,
+  .ct-form-group textarea,
+  .ct-faq-item { border-radius: 8px; }
+  .ct-form-card { border-color: var(--border); box-shadow: var(--shadow-md); }
+  .ct-form-group input,
+  .ct-form-group select,
+  .ct-form-group textarea { background: var(--surface); }
+  .ct-form-group input:focus,
+  .ct-form-group select:focus,
+  .ct-form-group textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 3px rgba(252,82,32,.12); }
+  .ct-submit-btn { border-radius: 8px; }
+  .ct-faq { background: var(--white); }
+  .ct-faq-item { background: var(--surface); transition: var(--transition); }
+  .ct-faq-item:hover { background: var(--white); box-shadow: var(--shadow-sm); transform: translateY(-3px); }
 
   /* ===== Responsive ===== */
   @media (max-width: 992px) {
