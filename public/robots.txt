@@ -3,6 +3,11 @@ Allow: /
 Disallow: /api/
 
 Sitemap: https://useful-chemicals.com/sitemap-index.xml
+Host: https://useful-chemicals.com
+
+# AI-readable site summaries
+Allow: /llms.txt
+Allow: /llms-full.txt
 
 # Search engine crawlers
 User-agent: Googlebot

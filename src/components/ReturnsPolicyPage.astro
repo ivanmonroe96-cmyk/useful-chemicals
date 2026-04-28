@@ -1,0 +1,208 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { localizedPath } from '../i18n/index';
+import { defaultLang } from '../i18n/languages';
+import { getMerchantReturnPolicy } from '../lib/merchantStructuredData';
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = defaultLang } = Astro.props;
+const lp = (path: string) => localizedPath(path, lang);
+const siteUrl = 'https://useful-chemicals.com';
+const policyUrl = `${siteUrl}${lp('/returns-policy')}`;
+const returnPolicySchema = getMerchantReturnPolicy(policyUrl);
+
+const pageTitle = 'Returns Policy for Industrial Chemicals';
+const pageDescription = 'UE Chemicals return, replacement, damaged shipment, and cancellation policy for quote-based industrial chemical orders.';
+
+const pageSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebPage',
+  name: pageTitle,
+  description: pageDescription,
+  url: policyUrl,
+  mainEntity: returnPolicySchema,
+};
+---
+
+<BaseLayout lang={lang} title={pageTitle} description={pageDescription} activePage="" jsonLd={[pageSchema, returnPolicySchema]}>
+  <section class="returns-hero">
+    <div class="container returns-hero-inner">
+      <div class="section-label">Commercial Policy</div>
+      <h1>Returns Policy</h1>
+      <p>Industrial chemical sales are quote-based and reviewed before dispatch. Returns are restricted because products may be hazardous, regulated, custom-packed, or documentation-controlled.</p>
+      <div class="returns-meta">
+        <span><i class="fas fa-calendar"></i> Last updated: April 2026</span>
+        <span><i class="fas fa-file-invoice"></i> Quote-based B2B orders</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="returns-content">
+    <div class="container returns-grid">
+      <aside class="returns-sidebar" aria-label="Returns policy navigation">
+        <a href="#summary">Summary</a>
+        <a href="#inspection">Shipment inspection</a>
+        <a href="#restricted">Restricted returns</a>
+        <a href="#cancellations">Cancellations</a>
+        <a href="#contact">Claims contact</a>
+      </aside>
+
+      <div class="returns-main">
+        <section id="summary" class="returns-section">
+          <h2>Summary</h2>
+          <p>UE Chemicals does not accept general returns for delivered industrial chemical products. Orders are prepared against a confirmed quotation, buyer qualification, product specification, destination compliance review, and agreed shipping method.</p>
+          <p>Claims for damaged, incorrect, leaking, missing, or document-mismatched shipments must be reported within 7 calendar days of delivery so the shipment can be reviewed.</p>
+        </section>
+
+        <section id="inspection" class="returns-section">
+          <h2>Shipment Inspection</h2>
+          <p>Buyers should inspect packaging, seals, labels, batch references, and documents immediately on receipt. Keep all packaging, labels, photos, carrier paperwork, and safety documents until the claim is resolved.</p>
+          <p>When a claim is approved, UE Chemicals may arrange replacement, corrective documentation, carrier claim support, or another agreed remedy based on the shipment record and applicable regulations.</p>
+        </section>
+
+        <section id="restricted" class="returns-section">
+          <h2>Restricted Returns</h2>
+          <p>Returns are not accepted for opened, used, repacked, relabeled, contaminated, expired, custom-cleared, temperature-compromised, or buyer-mishandled products. Hazardous materials may not be shipped back without written authorization and compliant transport documentation.</p>
+          <p>Regulatory, customs, storage, handling, and safety limitations may prevent physical return even when a claim is valid.</p>
+        </section>
+
+        <section id="cancellations" class="returns-section">
+          <h2>Cancellations</h2>
+          <p>Orders may be cancelled before payment confirmation, production allocation, document preparation, or dispatch booking. Once export documents, packing, carrier booking, or regulatory steps begin, cancellation may be limited or subject to incurred costs.</p>
+          <p>Prices and shipping charges are provided by quotation and may vary by product, quantity, packaging, compliance requirements, and destination.</p>
+        </section>
+
+        <section id="contact" class="returns-section returns-contact">
+          <h2>Claims Contact</h2>
+          <p>Email <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a> with the quotation reference, invoice or pro forma number, delivery date, photos, carrier notes, and a short description of the issue.</p>
+          <div class="returns-actions">
+            <a class="btn btn-primary" href={lp('/contact')}>Contact Sales <i class="fas fa-arrow-right"></i></a>
+            <a class="btn btn-outline" href={lp('/shipping')}>Shipping Policy <i class="fas fa-truck-fast"></i></a>
+            <a class="btn btn-outline" href={lp('/ordering')}>Ordering Process <i class="fas fa-file-invoice"></i></a>
+          </div>
+        </section>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .returns-hero {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #17324d 100%);
+    color: #fff;
+    padding: 8rem 0 5rem;
+  }
+
+  .returns-hero-inner {
+    max-width: 900px;
+  }
+
+  .returns-hero h1 {
+    margin: 0.75rem 0 1rem;
+    color: #fff;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+  }
+
+  .returns-hero p {
+    max-width: 760px;
+    color: rgba(255, 255, 255, 0.86);
+    font-size: 1.1rem;
+    line-height: 1.75;
+  }
+
+  .returns-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  .returns-meta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    padding: 0.65rem 0.85rem;
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  .returns-content {
+    padding: 5rem 0;
+    background: var(--color-bg);
+  }
+
+  .returns-grid {
+    display: grid;
+    grid-template-columns: 260px minmax(0, 1fr);
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .returns-sidebar {
+    position: sticky;
+    top: 6rem;
+    display: grid;
+    gap: 0.5rem;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: #fff;
+  }
+
+  .returns-sidebar a {
+    color: var(--color-text);
+    font-weight: 700;
+    padding: 0.65rem 0.75rem;
+    border-radius: 6px;
+  }
+
+  .returns-sidebar a:hover {
+    background: var(--color-bg-alt);
+    color: var(--color-primary);
+  }
+
+  .returns-main {
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .returns-section {
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    background: #fff;
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+  }
+
+  .returns-section h2 {
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+  }
+
+  .returns-section p {
+    color: var(--color-text-muted);
+    line-height: 1.8;
+  }
+
+  .returns-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (max-width: 900px) {
+    .returns-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .returns-sidebar {
+      position: static;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+  }
+</style>

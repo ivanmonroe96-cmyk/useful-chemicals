@@ -4,6 +4,7 @@ import { Image } from 'astro:assets';
 import { getTranslations, localizedPath, t } from '../../i18n/index';
 import { defaultLang } from '../../i18n/languages';
 import { getDocumentDownload } from '../../lib/documentDownloads';
+import { getQuoteBasedOffer } from '../../lib/merchantStructuredData';
 import heroImage from '../../assets/products/red-mercury/red-mercury-20-20-258-rolling-liquid-sample.jpeg';
 import vialImage from '../../assets/products/red-mercury/red-mercury-cherry-red-vial-laboratory.jpeg';
 import qcImage from '../../assets/products/red-mercury/red-mercury-quality-control-inspection.jpeg';
@@ -27,7 +28,10 @@ const siteUrl = 'https://useful-chemicals.com';
 const productName = 'Red Mercury 20/20-258';
 const pageTitle = t(tr, 'red_mercury.meta_title');
 const pageDescription = t(tr, 'red_mercury.meta_desc');
+const pageKeywords = t(tr, 'red_mercury.meta_keywords');
 const productPageUrl = `${siteUrl}${lp('/products/red-mercury')}`;
+const returnPolicyUrl = `${siteUrl}${lp('/returns-policy')}`;
+const shippingPolicyUrl = `${siteUrl}${lp('/shipping')}`;
 const imageUrls = [heroImage, vialImage, qcImage, containerImage, benchImage].map((image) => `${siteUrl}${image.src}`);
 
 const anchorLinks = [
@@ -157,14 +161,19 @@ const handlingItems = [
 
 const relatedLinks = [
   {
+    href: lp('/products/caluanie'),
+    title: t(tr, 'nav.caluanie'),
+    description: t(tr, 'home.product1_desc'),
+  },
+  {
+    href: lp('/products/silver-mercury'),
+    title: t(tr, 'nav.silver_mercury'),
+    description: t(tr, 'home.product3_desc'),
+  },
+  {
     href: lp('/certificates'),
     title: t(tr, 'red_mercury.link1_title'),
     description: t(tr, 'red_mercury.link1_desc'),
-  },
-  {
-    href: lp('/safety'),
-    title: t(tr, 'red_mercury.link2_title'),
-    description: t(tr, 'red_mercury.link2_desc'),
   },
   {
     href: lp('/ordering'),
@@ -175,11 +184,6 @@ const relatedLinks = [
     href: lp('/shipping'),
     title: t(tr, 'red_mercury.link4_title'),
     description: t(tr, 'red_mercury.link4_desc'),
-  },
-  {
-    href: lp('/products/silver-mercury'),
-    title: t(tr, 'red_mercury.link5_title'),
-    description: t(tr, 'red_mercury.link5_desc'),
   },
   {
     href: lp('/contact'),
@@ -234,7 +238,8 @@ const productSchema = {
     },
   },
   countryOfOrigin: { '@type': 'Country', name: 'Thailand' },
-  keywords: 'red mercury supplier, red mercury tds, red mercury sds, red mercury coa, bangkok chemical supplier',
+  keywords: pageKeywords,
+  offers: getQuoteBasedOffer(productPageUrl, returnPolicyUrl, shippingPolicyUrl),
   additionalProperty: verifiedSpecs.map(([label, value]) => ({
     '@type': 'PropertyValue',
     name: label,
@@ -244,7 +249,7 @@ const productSchema = {
     '@type': 'DigitalDocument',
     name: `${productName} ${card.title}`,
     encodingFormat: 'application/pdf',
-    url: `${siteUrl}${card.download.href}`,
+    url: `${siteUrl}${card.download.directHref}`,
     inLanguage: card.download.language,
     ...(card.publishedDate ? { datePublished: card.publishedDate } : {}),
   })),
@@ -289,6 +294,7 @@ const speakableSchema = {
   lang={lang}
   title={pageTitle}
   description={pageDescription}
+  keywords={pageKeywords}
   activePage="products"
   ogImage={heroImage.src}
   jsonLd={[productSchema, faqSchema, breadcrumbSchema, speakableSchema]}
@@ -550,19 +556,8 @@ const speakableSchema = {
               <p class="rmp-doc-date">{card.date}</p>
               <p>{card.summary}</p>
               <p class="rmp-doc-note">{card.note}</p>
-              <p class="rmp-doc-language">
-                {t(tr, 'common.pdf_language')}: {card.download.languageName}
-                {card.download.isFallback && <span>{t(tr, 'common.document_fallback')}</span>}
-              </p>
-              {card.download.availableVersions.length > 1 && (
-                <div class="rmp-doc-languages" aria-label={t(tr, 'common.available_document_languages')}>
-                  {card.download.availableVersions.map((version) => (
-                    <a href={`/api/documents/${card.download.id}?lang=${version.lang}`} download hreflang={version.lang} lang={version.lang}>{version.languageName}</a>
-                  ))}
-                </div>
-              )}
             </div>
-            <a href={card.download.href} download class="btn btn-outline doc-dl-btn" aria-label={`${card.ariaLabel} (${card.download.languageName})`} title={`${card.ariaLabel} (${card.download.languageName})`}>{card.code} ({card.download.languageName})<svg class="doc-dl-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg></a>
+            <a href={card.download.directHref} download class="btn btn-outline doc-dl-btn" aria-label={card.ariaLabel} title={card.ariaLabel}>{card.code}<svg class="doc-dl-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg></a>
           </article>
         ))}
       </div>

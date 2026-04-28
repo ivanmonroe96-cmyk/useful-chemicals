@@ -1,0 +1,10 @@
+---
+import ReturnsPolicyPage from '../../components/ReturnsPolicyPage.astro';
+import { defaultLang } from '../../i18n/languages';
+import { getLangStaticPaths } from '../../i18n/index';
+
+export const getStaticPaths = getLangStaticPaths;
+const lang = Astro.params.lang ?? defaultLang;
+---
+
+<ReturnsPolicyPage lang={lang} />

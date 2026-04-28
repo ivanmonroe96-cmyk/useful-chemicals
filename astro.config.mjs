@@ -5,8 +5,8 @@ import sitemap from '@astrojs/sitemap';
 
 /** @typedef {'always'|'hourly'|'daily'|'weekly'|'monthly'|'yearly'|'never'} Changefreq */
 
-// Pages that should be excluded from sitemap or have lower priority
-const NOINDEX_PATHS = ['/api/', '/disclaimer/', '/privacy-policy/', '/terms-of-service/', '/impressum/'];
+// Runtime endpoints should not appear in the XML sitemap.
+const SITEMAP_EXCLUDED_PATHS = ['/api/'];
 
 // https://astro.build/config
 export default defineConfig({
@@ -16,7 +16,7 @@ export default defineConfig({
   adapter: cloudflare({ imageService: 'compile' }),
   integrations: [
     sitemap({
-      filter: (page) => !NOINDEX_PATHS.some(path => page.includes(path)),
+      filter: (page) => !SITEMAP_EXCLUDED_PATHS.some(path => page.includes(path)),
       serialize(item) {
         /** @type {Changefreq} */
         let changefreq = 'monthly';
@@ -31,7 +31,7 @@ export default defineConfig({
         } else if (item.url.includes('/blog')) {
           priority = 0.7; changefreq = 'daily';
         // Core marketing pages
-        } else if (['/about/', '/contact/', '/faq/', '/applications/', '/wholesale/', '/ordering/', '/safety/', '/certificates/', '/shipping/'].some(p => item.url.includes(p))) {
+        } else if (['/about/', '/contact/', '/faq/', '/applications/', '/wholesale/', '/ordering/', '/safety/', '/certificates/', '/shipping/', '/returns-policy/', '/privacy-policy/', '/terms-of-service/', '/impressum/', '/disclaimer/'].some(p => item.url.includes(p))) {
           priority = 0.8; changefreq = 'monthly';
         }
         return /** @type {any} */ ({ ...item, priority, changefreq });
