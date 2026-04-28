@@ -2,6 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
+Sitemap: https://useful-chemicals.com/sitemap.xml
 Sitemap: https://useful-chemicals.com/sitemap-index.xml
 Host: https://useful-chemicals.com
 
