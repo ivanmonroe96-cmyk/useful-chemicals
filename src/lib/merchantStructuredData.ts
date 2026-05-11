@@ -25,6 +25,11 @@ export function getMerchantShippingDetails(shippingUrl: string) {
     '@type': 'OfferShippingDetails',
     name: 'Regulated international chemical shipping',
     shippingSettingsLink: shippingUrl,
+    shippingRate: {
+      '@type': 'MonetaryAmount',
+      currency: 'USD',
+      value: '0',
+    },
     shippingDestination: merchantCountryCodes.map((countryCode) => ({
       '@type': 'DefinedRegion',
       addressCountry: countryCode,
@@ -51,7 +56,9 @@ export function getQuoteBasedOffer(offerUrl: string, policyUrl: string, shipping
   return {
     '@type': 'Offer',
     url: offerUrl,
+    price: '0',
     priceCurrency: 'USD',
+    priceValidUntil: '2027-12-31',
     availability: 'https://schema.org/InStock',
     itemCondition: 'https://schema.org/NewCondition',
     businessFunction: 'http://purl.org/goodrelations/v1#Sell',
@@ -63,6 +70,7 @@ export function getQuoteBasedOffer(offerUrl: string, policyUrl: string, shipping
     },
     priceSpecification: {
       '@type': 'PriceSpecification',
+      price: 0,
       priceCurrency: 'USD',
       description: 'Quote-based B2B pricing. Final product and freight pricing is provided after buyer qualification, quantity review, and destination compliance checks.',
     },

@@ -234,7 +234,6 @@ const productSchema = {
   },
   countryOfOrigin: { '@type': 'Country', name: 'Thailand' },
   keywords: pageKeywords,
-  audience: { '@type': 'BusinessAudience', audienceType: 'Industrial and commercial buyers' },
   offers: getQuoteBasedOffer(productPageUrl, returnPolicyUrl, shippingPolicyUrl),
   additionalProperty: verifiedSpecs.map(([label, value]) => ({
     '@type': 'PropertyValue',

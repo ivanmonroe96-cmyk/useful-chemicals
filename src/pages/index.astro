@@ -40,6 +40,7 @@ const homeFaqSchema = {
     </div>
     <div class="container hero-inner">
       <div class="hero-content">
+        <div class="hero-badge">{t(tr, "home.hero_badge")}</div>
         <h1>{t(tr, "home.hero_title")}</h1>
         <p class="hero-sub">{t(tr, "home.hero_sub")}</p>
         <div class="hero-actions">
@@ -104,7 +105,7 @@ const homeFaqSchema = {
         <!-- Card 1 -->
         <a href={lp("/products/caluanie")} class="hp-product-card">
           <div class="hp-product-img">
-            <img src="/images/home-caluanie-product.jpeg" alt={t(tr, "home.product1_name")} />
+            <img src="/images/caluanie-muelear-oxidize-for-sale.jpg" alt={t(tr, "home.product1_name")} />
             <div class="hp-product-num">01</div>
           </div>
           <div class="hp-product-body">
@@ -117,7 +118,7 @@ const homeFaqSchema = {
         <!-- Card 2 -->
         <a href={lp("/products/red-mercury")} class="hp-product-card">
           <div class="hp-product-img">
-            <img loading="lazy" src="/images/home-red-mercury-product.jpeg" alt={t(tr, "home.product2_name")} />
+            <img loading="lazy" src="/images/red-liquid-mercury-for-sale-usa.png" alt={t(tr, "home.product2_name")} />
             <div class="hp-product-num">02</div>
           </div>
           <div class="hp-product-body">
@@ -130,7 +131,7 @@ const homeFaqSchema = {
         <!-- Card 3 -->
         <a href={lp("/products/silver-mercury")} class="hp-product-card">
           <div class="hp-product-img">
-            <img loading="lazy" src="/images/home-silver-mercury-product.jpeg" alt={t(tr, "home.product3_name")} />
+            <img loading="lazy" src="/images/silver-liquid-mercury-for-sale.png" alt={t(tr, "home.product3_name")} />
             <div class="hp-product-num">03</div>
           </div>
           <div class="hp-product-body">
@@ -403,6 +404,19 @@ const homeFaqSchema = {
     padding-bottom: 100px;
   }
   .hero-content { max-width: 700px; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    border: 1px solid rgba(255,255,255,0.2);
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.8);
+    margin-bottom: 24px;
+  }
   .hero h1 {
     color: var(--white);
     font-size: clamp(42px, 6vw, 80px);
@@ -768,8 +782,10 @@ const homeFaqSchema = {
   /* Refined visual system */
   .hero { min-height: 92vh; background: var(--primary-dark); }
   .hero-overlay { background: linear-gradient(115deg, rgba(8,47,56,0.96) 0%, rgba(15,76,92,0.78) 48%, rgba(47,143,107,0.28) 100%); }
+  .hero-badge,
   .hero-scroll,
   .hero-stats { border-radius: 8px; }
+  .hero-badge { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-color: rgba(255,255,255,0.18); color: #FFE3D6; }
   .hero-sub { color: rgba(255,255,255,0.78); }
   .hero-stats { width: fit-content; max-width: 100%; padding: 24px 28px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.14); backdrop-filter: blur(10px); }
   .hero-stat-label { color: rgba(255,255,255,0.66); }

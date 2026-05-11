@@ -19,46 +19,97 @@ const aboutSchema = {
     "foundingLocation": { "@type": "Place", "name": "Bangkok, Thailand" },
     "address": { "@type": "PostalAddress", "addressLocality": "Bangkok", "postalCode": "10110", "addressCountry": "TH" },
     "email": "info@useful-chemicals.com",
+    "telephone": "+66-951690848",
     "knowsAbout": ["Caluanie Muelear Oxidize", "Red Liquid Mercury", "Silver Liquid Mercury", "Industrial Chemical Supply", "Chemical Quality Assurance"],
     "hasCredential": [
       { "@type": "EducationalOccupationalCredential", "credentialCategory": "ISO 9001:2015" },
       { "@type": "EducationalOccupationalCredential", "credentialCategory": "ISO 14001:2015" }
     ],
     "areaServed": { "@type": "Place", "name": "Worldwide" },
-    "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 10 }
-  },
-  "review": [
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": t(tr, "about.testimonial1_author") },
-      "reviewBody": t(tr, "about.testimonial1_text"),
-      "reviewRating": { "@type": "Rating", "ratingValue": "5" }
+    "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 10 },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5.0",
+      "bestRating": "5",
+      "worstRating": "1",
+      "ratingCount": "4"
     },
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": t(tr, "about.testimonial2_author") },
-      "reviewBody": t(tr, "about.testimonial2_text"),
-      "reviewRating": { "@type": "Rating", "ratingValue": "5" }
-    },
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": t(tr, "about.testimonial3_author") },
-      "reviewBody": t(tr, "about.testimonial3_text"),
-      "reviewRating": { "@type": "Rating", "ratingValue": "5" }
-    },
-    {
-      "@type": "Review",
-      "author": { "@type": "Person", "name": t(tr, "about.testimonial4_author") },
-      "reviewBody": t(tr, "about.testimonial4_text"),
-      "reviewRating": { "@type": "Rating", "ratingValue": "5" }
-    }
-  ]
+    "review": [
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": t(tr, "about.testimonial1_author") },
+        "reviewBody": t(tr, "about.testimonial1_text"),
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": t(tr, "about.testimonial2_author") },
+        "reviewBody": t(tr, "about.testimonial2_text"),
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": t(tr, "about.testimonial3_author") },
+        "reviewBody": t(tr, "about.testimonial3_text"),
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" }
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": t(tr, "about.testimonial4_author") },
+        "reviewBody": t(tr, "about.testimonial4_text"),
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" }
+      }
+    ]
+  }
 };
 ---
 
 
 <BaseLayout lang={lang} title={t(tr, "about.meta_title")} description={t(tr, "about.meta_desc")} activePage="about" jsonLd={aboutSchema}>
 
+  <!-- ========== HERO ========== -->
+  <section class="ab-hero">
+    <div class="ab-hero-bg">
+      <img src="/images/caluanie-muelear-oxidize-manufacturer-in-usa.webp" alt="UE Chemicals — Trusted Caluanie Muelear Oxidize manufacturer and supplier" />
+      <div class="ab-hero-overlay"></div>
+    </div>
+    <div class="container ab-hero-inner">
+      <div class="ab-hero-content">
+        <div class="ab-hero-badge"><i class="fas fa-shield-halved"></i> {t(tr, "about.hero_badge")}</div>
+        <h1>{t(tr, "about.hero_title")}</h1>
+        <p class="ab-hero-sub">{t(tr, "about.hero_sub")}</p>
+        <div class="ab-hero-actions">
+          <a href={lp("/products")} class="btn btn-accent">{t(tr, "about.hero_cta_products")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact")} class="btn btn-outline-white">{t(tr, "about.hero_cta_contact")} <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="ab-hero-stats">
+        <div class="ab-hero-stat">
+          <span class="ab-hero-stat-num">{t(tr, "about.hero_stat1_num")}</span>
+          <span class="ab-hero-stat-label">{t(tr, "about.hero_stat1_label")}</span>
+        </div>
+        <div class="ab-hero-stat-divider"></div>
+        <div class="ab-hero-stat">
+          <span class="ab-hero-stat-num">{t(tr, "about.hero_stat2_num")}</span>
+          <span class="ab-hero-stat-label">{t(tr, "about.hero_stat2_label")}</span>
+        </div>
+        <div class="ab-hero-stat-divider"></div>
+        <div class="ab-hero-stat">
+          <span class="ab-hero-stat-num">{t(tr, "about.hero_stat3_num")}</span>
+          <span class="ab-hero-stat-label">{t(tr, "about.hero_stat3_label")}</span>
+        </div>
+        <div class="ab-hero-stat-divider"></div>
+        <div class="ab-hero-stat">
+          <span class="ab-hero-stat-num">{t(tr, "about.hero_stat4_num")}</span>
+          <span class="ab-hero-stat-label">{t(tr, "about.hero_stat4_label")}</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EMPATHY / CONNECTION ========== -->
+  <section class="ab-empathy">
+    <div class="container">
       <div class="ab-empathy-inner">
         <div class="ab-empathy-accent"></div>
         <div class="ab-empathy-content">
@@ -97,6 +148,49 @@ const aboutSchema = {
             <h6>{t(tr, "about.identity_feat2_title")}</h6>
             <p>{t(tr, "about.identity_feat2_desc")}</p>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== EXPERTISE ========== -->
+  <section class="ab-expertise">
+    <div class="container">
+      <div class="ab-expertise-header">
+        <div class="section-label">{t(tr, "about.expertise_label")}</div>
+        <h2>{t(tr, "about.expertise_title")}</h2>
+        <p class="ab-expertise-intro">{t(tr, "about.expertise_p1")}</p>
+      </div>
+      <div class="ab-expertise-grid">
+        <div class="ab-expertise-card">
+          <div class="ab-expertise-icon"><img src="/images/certs/iso-9001.svg" alt="ISO 9001:2015" loading="lazy" /></div>
+          <h5>{t(tr, "about.expertise_item1_title")}</h5>
+          <p>{t(tr, "about.expertise_item1_desc")}</p>
+        </div>
+        <div class="ab-expertise-card">
+          <div class="ab-expertise-icon"><img src="/images/certs/iso-14001.svg" alt="ISO 14001:2015" loading="lazy" /></div>
+          <h5>{t(tr, "about.expertise_item2_title")}</h5>
+          <p>{t(tr, "about.expertise_item2_desc")}</p>
+        </div>
+        <div class="ab-expertise-card">
+          <div class="ab-expertise-icon"><img src="/images/certs/reach.svg" alt="REACH & GHS Compliance" loading="lazy" /></div>
+          <h5>{t(tr, "about.expertise_item3_title")}</h5>
+          <p>{t(tr, "about.expertise_item3_desc")}</p>
+        </div>
+        <div class="ab-expertise-card">
+          <div class="ab-expertise-icon"><i class="fas fa-flask-vial"></i></div>
+          <h5>{t(tr, "about.expertise_item4_title")}</h5>
+          <p>{t(tr, "about.expertise_item4_desc")}</p>
+        </div>
+        <div class="ab-expertise-card">
+          <div class="ab-expertise-icon"><i class="fas fa-list-check"></i></div>
+          <h5>{t(tr, "about.expertise_item5_title")}</h5>
+          <p>{t(tr, "about.expertise_item5_desc")}</p>
+        </div>
+        <div class="ab-expertise-card">
+          <div class="ab-expertise-icon"><i class="fas fa-truck"></i></div>
+          <h5>{t(tr, "about.expertise_item6_title")}</h5>
+          <p>{t(tr, "about.expertise_item6_desc")}</p>
         </div>
       </div>
     </div>
@@ -337,7 +431,7 @@ const aboutSchema = {
       <div class="ab-products-grid">
         <a href={lp("/products/caluanie")} class="ab-prod-card">
           <div class="ab-prod-img">
-            <img loading="lazy" src="/images/home-caluanie-product.jpeg" alt="Buy Caluanie Muelear Oxidize — premium quality for sale" />
+            <img loading="lazy" src="/images/caluanie-muelear-oxidize-for-sale.jpg" alt="Buy Caluanie Muelear Oxidize — premium quality for sale" />
             <div class="ab-prod-num">01</div>
           </div>
           <div class="ab-prod-body">
@@ -348,7 +442,7 @@ const aboutSchema = {
         </a>
         <a href={lp("/products/red-mercury")} class="ab-prod-card">
           <div class="ab-prod-img">
-            <img loading="lazy" src="/images/home-red-mercury-product.jpeg" alt="Red Liquid Mercury for sale — laboratory grade" />
+            <img loading="lazy" src="/images/red-liquid-mercury-for-sale-usa.png" alt="Red Liquid Mercury for sale — laboratory grade" />
             <div class="ab-prod-num">02</div>
           </div>
           <div class="ab-prod-body">
@@ -359,7 +453,7 @@ const aboutSchema = {
         </a>
         <a href={lp("/products/silver-mercury")} class="ab-prod-card">
           <div class="ab-prod-img">
-            <img loading="lazy" src="/images/home-silver-mercury-product.jpeg" alt="Silver Liquid Mercury 99.99% purity for sale" />
+            <img loading="lazy" src="/images/silver-liquid-mercury-for-sale.png" alt="Silver Liquid Mercury 99.99% purity for sale" />
             <div class="ab-prod-num">03</div>
           </div>
           <div class="ab-prod-body">
@@ -403,6 +497,19 @@ const aboutSchema = {
             <p>{t(tr, "about.team_bio")}</p>
           </div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== TRUST BADGES ========== -->
+  <section class="ab-trust-badges">
+    <div class="container">
+      <div class="ab-badges-row">
+        <div class="ab-badge"><img src="/images/certs/iso-9001.svg" alt="ISO 9001:2015 Certified" loading="lazy" /><span>ISO 9001</span></div>
+        <div class="ab-badge"><img src="/images/certs/iso-14001.svg" alt="ISO 14001:2015 Certified" loading="lazy" /><span>ISO 14001</span></div>
+        <div class="ab-badge"><img src="/images/certs/reach.svg" alt="REACH Compliant" loading="lazy" /><span>REACH</span></div>
+        <div class="ab-badge"><img src="/images/certs/ghs.svg" alt="GHS Compliant" loading="lazy" /><span>GHS</span></div>
+        <div class="ab-badge"><img src="/images/certs/gmp.svg" alt="GMP Standards" loading="lazy" /><span>GMP</span></div>
       </div>
     </div>
   </section>
@@ -466,6 +573,22 @@ const aboutSchema = {
   .ab-identity-feat-icon { width: 48px; height: 48px; background: var(--near-black); display: flex; align-items: center; justify-content: center; color: var(--white); flex-shrink: 0; font-size: 18px; }
   .ab-identity-feat h6 { font-size: 15px; margin-bottom: 4px; }
   .ab-identity-feat p { font-size: 14px; margin: 0; color: var(--body-text); }
+
+  /* Expertise Grid */
+  .ab-expertise { padding: 120px 0; background: var(--near-black); }
+  .ab-expertise-header { text-align: center; margin-bottom: 60px; }
+  .ab-expertise-header .section-label { color: rgba(255,255,255,0.6); }
+  .ab-expertise-header .section-label::before { background: var(--accent); }
+  .ab-expertise-header h2 { color: var(--white); font-size: clamp(26px, 3.5vw, 44px); line-height: 1.15; margin-bottom: 20px; }
+  .ab-expertise-intro { color: rgba(255,255,255,0.6); max-width: 700px; margin: 0 auto; line-height: 1.7; }
+  .ab-expertise-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+  .ab-expertise-card { padding: 40px 30px; border: 1px solid rgba(255,255,255,0.08); transition: var(--transition); }
+  .ab-expertise-card:hover { background: rgba(255,255,255,0.04); }
+  .ab-expertise-icon { width: 56px; height: 56px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
+  .ab-expertise-icon img { width: 48px; height: 48px; object-fit: contain; filter: brightness(0) invert(1); }
+  .ab-expertise-icon i { font-size: 24px; color: var(--accent); }
+  .ab-expertise-card h5 { color: var(--white); font-size: 15px; text-transform: uppercase; margin-bottom: 10px; letter-spacing: 0.5px; }
+  .ab-expertise-card p { color: rgba(255,255,255,0.5); font-size: 14px; margin: 0; line-height: 1.6; }
 
   /* Delivery / Proof Section */
   .ab-delivery { padding: 120px 0; background: var(--light-bg); border-top: 1px solid var(--border); }
@@ -577,6 +700,14 @@ const aboutSchema = {
   .ab-team-role { font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); display: block; margin-bottom: 10px; }
   .ab-team-info p { font-size: 14px; color: var(--body-text); margin: 0; line-height: 1.6; }
 
+  /* Trust Badges */
+  .ab-trust-badges { padding: 60px 0; background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .ab-badges-row { display: flex; justify-content: center; align-items: center; gap: 50px; flex-wrap: wrap; }
+  .ab-badge { display: flex; flex-direction: column; align-items: center; gap: 10px; opacity: 0.6; transition: opacity 0.3s; }
+  .ab-badge:hover { opacity: 1; }
+  .ab-badge img { height: 48px; width: auto; }
+  .ab-badge span { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--body-text); }
+
   /* CTA */
   .ab-cta { padding: 100px 0; background: var(--accent); }
   .ab-cta-inner { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
@@ -607,6 +738,9 @@ const aboutSchema = {
   .ab-delivery-card-icon,
   .ab-customer-item-icon,
   .ab-team-avatar { border-radius: 8px; background: var(--primary-dark); color: var(--accent); }
+  .ab-expertise { background: linear-gradient(135deg, var(--primary-dark), #0B3E49 62%, #0F5E55); }
+  .ab-expertise-card { border-color: rgba(255,255,255,0.12); border-radius: 8px; }
+  .ab-expertise-card:hover { background: rgba(255,255,255,0.08); transform: translateY(-3px); }
   .ab-quality-step { background: var(--white); }
   .ab-quality-step::before { background: var(--secondary); }
   .ab-quality-coa,
@@ -621,6 +755,7 @@ const aboutSchema = {
   .ab-prod-num { border-radius: 8px; background: var(--primary-dark); }
   .ab-products-grid { gap: 24px; }
   .ab-facility-content { background: var(--surface); }
+  .ab-badge { background: var(--white); border: 1px solid var(--border); border-radius: 8px; padding: 18px 22px; opacity: 0.85; }
   .ab-cta { background: linear-gradient(135deg, var(--accent), var(--secondary)); }
   .ab-cta-inner { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.22); border-radius: 8px; padding: 42px; backdrop-filter: blur(8px); }
 
@@ -631,6 +766,7 @@ const aboutSchema = {
     .ab-identity { grid-template-columns: 1fr; }
     .ab-identity-image { height: 400px; }
     .ab-identity-content { padding: 60px 24px; }
+    .ab-expertise-grid { grid-template-columns: 1fr 1fr; }
     .ab-delivery-grid { grid-template-columns: 1fr; gap: 50px; }
     .ab-quality-steps { grid-template-columns: 1fr; }
     .ab-quality-step { border-left: none; border-bottom: 1px solid var(--border); }
@@ -656,9 +792,11 @@ const aboutSchema = {
     .ab-hero h1 { font-size: clamp(26px, 7vw, 42px); }
     .ab-hero-stats { flex-direction: column; gap: 20px; align-items: flex-start; }
     .ab-hero-stat-divider { width: 100%; height: 1px; }
+    .ab-expertise-grid { grid-template-columns: 1fr; }
     .ab-quality-coa { flex-direction: column; text-align: center; padding: 24px; }
-    .ab-products, .ab-delivery, .ab-quality, .ab-testimonials { padding: 80px 0; }
+    .ab-products, .ab-expertise, .ab-delivery, .ab-quality, .ab-testimonials { padding: 80px 0; }
     .ab-cta { padding: 60px 0; }
+    .ab-badges-row { gap: 30px; }
     .ab-team-card { flex-direction: column; text-align: center; }
     .ab-empathy { padding: 60px 0; }
   }

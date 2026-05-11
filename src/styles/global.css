@@ -445,6 +445,9 @@ select.form-control { appearance: none; background-image: url('data:image/svg+xm
 .footer-proof i { color: var(--accent); }
 .footer-grid { display: grid; grid-template-columns: 1.7fr 1fr 1fr 1.25fr; gap: 44px; padding: 54px 0 46px; margin-bottom: 0; }
 .footer-brand p { margin-top: 18px; font-size: 15px; color: rgba(255,255,255,0.68); max-width: 360px; line-height: 1.75; }
+.footer-social { display: flex; gap: 12px; margin-top: 20px; }
+.footer-social a { width: 40px; height: 40px; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.72); transition: var(--transition); border-radius: 50%; }
+.footer-social a:hover { background: var(--secondary); border-color: var(--secondary); color: var(--white); transform: translateY(-2px); }
 .footer .logo { color: var(--white); }
 .footer-col h5 { margin-bottom: 20px; font-size: 14px; text-transform: uppercase; color: var(--white); letter-spacing: 0.08em; }
 .footer-col a { display: flex; align-items: flex-start; gap: 9px; padding: 7px 0; font-size: 15px; color: rgba(255,255,255,0.66); line-height: 1.45; }
@@ -472,6 +475,10 @@ select.form-control { appearance: none; background-image: url('data:image/svg+xm
 .scroll-top { position: fixed; bottom: 30px; right: 30px; width: 45px; height: 45px; background: var(--near-black); color: var(--white); border: none; display: flex; align-items: center; justify-content: center; cursor: pointer; opacity: 0; visibility: hidden; transition: var(--transition); z-index: 999; font-size: 1.2rem; border-radius: 50%; }
 .scroll-top.visible { opacity: 1; visibility: visible; }
 .scroll-top:hover { background: var(--accent); transform: translateY(-3px); }
+
+/* WhatsApp Float */
+.whatsapp-float { position: fixed; bottom: 30px; left: 30px; width: 56px; height: 56px; background: #25d366; color: #fff; border-radius: 50% !important; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; z-index: 998; box-shadow: 0 4px 12px rgba(37,211,102,0.4); transition: transform 0.3s, box-shadow 0.3s; text-decoration: none; }
+.whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 6px 20px rgba(37,211,102,0.5); }
 
 /* Section Divider */
 .section-divider { height: 1px; background: var(--border); }
@@ -555,6 +562,7 @@ button:focus-visible,
   .steps-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .scroll-top { right: 16px; bottom: 16px; width: 42px; height: 42px; }
+  .whatsapp-float { left: 16px; bottom: 16px; width: 52px; height: 52px; font-size: 1.6rem; }
   .cookie-content { flex-direction: column; text-align: center; }
   .cookie-buttons { justify-content: center; }
   .footer-topline { padding: 34px 0; }

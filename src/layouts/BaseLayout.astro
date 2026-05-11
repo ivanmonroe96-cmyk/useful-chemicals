@@ -197,9 +197,42 @@ const orgSchema = {
     "@type": "OfferCatalog",
     "name": "Industrial Chemicals",
     "itemListElement": [
-      { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Caluanie Muelear Oxidize", "sku": "UEC-CMO-HQ" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Red Liquid Mercury", "sku": "UEC-RLM-5N" } },
-      { "@type": "Offer", "itemOffered": { "@type": "Product", "name": "Silver Liquid Mercury", "sku": "UEC-SLM-4N" } }
+      {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Caluanie Muelear Oxidize",
+          "sku": "UEC-CMO-HQ",
+          "image": `${siteUrl}/images/home-caluanie-product.jpeg`
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Red Mercury 20/20-258",
+          "sku": "UEC-RM-2020-258",
+          "image": `${siteUrl}/images/home-red-mercury-product.jpeg`
+        }
+      },
+      {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock",
+        "itemOffered": {
+          "@type": "Product",
+          "name": "Silver Liquid Mercury",
+          "sku": "UEC-SLM-Hg-995",
+          "image": `${siteUrl}/images/home-silver-mercury-product.jpeg`
+        }
+      }
     ]
   }
 };

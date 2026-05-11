@@ -29,6 +29,12 @@ const lp = (path: string) => localizedPath(path, lang);
           <img src="/images/logo-white.webp" alt="UE Chemicals" />
         </a>
         <p>{t(tr, 'footer.brand_desc')}</p>
+        <div class="footer-social">
+          <a href="#" aria-label={t(tr, 'footer.social_facebook')}><i class="fab fa-facebook-f"></i></a>
+          <a href="#" aria-label={t(tr, 'footer.social_twitter')}><i class="fab fa-twitter"></i></a>
+          <a href="#" aria-label={t(tr, 'footer.social_linkedin')}><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label={t(tr, 'footer.social_instagram')}><i class="fab fa-instagram"></i></a>
+        </div>
       </div>
       <div class="footer-col">
         <h5>{t(tr, 'footer.quick_links')}</h5>
@@ -49,6 +55,8 @@ const lp = (path: string) => localizedPath(path, lang);
       <div class="footer-col">
         <h5>{t(tr, 'footer.contact_heading')}</h5>
         <a href="mailto:info@useful-chemicals.com"><i class="fas fa-envelope"></i> info@useful-chemicals.com</a>
+        <a href="https://wa.me/66951690848" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66 951 690 848</a>
+        <a href="#"><i class="fas fa-map-marker-alt"></i> {t(tr, 'contact.visit_value')}</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -56,10 +64,8 @@ const lp = (path: string) => localizedPath(path, lang);
       <div class="footer-bottom-links">
         <a href={lp("/privacy-policy")}>{t(tr, 'footer.privacy')}</a>
         <a href={lp("/terms-of-service")}>{t(tr, 'footer.terms')}</a>
-        <a href={lp("/returns-policy")}>Returns</a>
         <a href={lp("/impressum")}>{t(tr, 'footer.impressum')}</a>
         <a href={lp("/disclaimer")}>{t(tr, 'footer.disclaimer')}</a>
-        <a href="/sitemap.xml">Sitemap</a>
       </div>
     </div>
   </div>
