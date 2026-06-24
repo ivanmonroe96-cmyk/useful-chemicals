@@ -1,0 +1,7 @@
+# Redirects for useful-chemicals.com
+# Force HTTPS
+http://useful-chemicals.com/* https://useful-chemicals.com/:splat 301
+http://www.useful-chemicals.com/* https://useful-chemicals.com/:splat 301
+
+# Force non-www
+https://www.useful-chemicals.com/* https://useful-chemicals.com/:splat 301
