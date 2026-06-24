@@ -5,3 +5,7 @@ http://www.useful-chemicals.com/* https://useful-chemicals.com/:splat 301
 
 # Force non-www
 https://www.useful-chemicals.com/* https://useful-chemicals.com/:splat 301
+
+# Fix duplicate content — /en/about/ → /about/
+/en/about/ /about/ 301
+/en/about /about 301
