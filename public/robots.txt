@@ -1,3 +1,6 @@
+# Robots.txt for useful-chemicals.com
+# https://useful-chemicals.com
+
 User-agent: *
 Allow: /
 Disallow: /api/
@@ -10,8 +13,14 @@ Host: https://useful-chemicals.com
 Allow: /llms.txt
 Allow: /llms-full.txt
 
-# Search engine crawlers
+# ─── TRADITIONAL SEARCH ─────────────────────────────────────────────────────
 User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
 Allow: /
 
 User-agent: Bingbot
@@ -20,27 +29,67 @@ Allow: /
 User-agent: Yandex
 Allow: /
 
-# AI / LLM crawlers (GEO & AEO)
-User-agent: GPTBot
+User-agent: DuckDuckBot
 Allow: /
 
-User-agent: Google-Extended
+User-agent: Baiduspider
+Allow: /
+
+# ─── AI / ANSWER ENGINE CRAWLERS ─────────────────────────────────────────────
+
+# OpenAI — ChatGPT search + live fetches
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: anthropic-ai
+# Anthropic — Claude search + live fetches
+User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: ClaudeBot
 Allow: /
 
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
 User-agent: PerplexityBot
 Allow: /
 
-User-agent: Bytespider
+User-agent: Perplexity-User
+Allow: /
+
+# Google AI
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
+
+# Other AI
+User-agent: CCBot
 Allow: /
 
 User-agent: cohere-ai
 Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# ─── BLOCK BAD ACTORS ───────────────────────────────────────────────────────
+User-agent: Bytespider
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: meta-externalagent
+Disallow: /
