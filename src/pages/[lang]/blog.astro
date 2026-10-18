@@ -20,7 +20,7 @@ const posts = [
     date: blogDate,
     category: blog.cat_safety,
     image: "/images/Buy-Silver-Liquid-Mercury.jpg",
-    slug: lp("/blog/silver-liquid-mercury-guide")
+    slug: lp("/blog/silver-liquid-mercury-guide/")
   },
   {
     title: blog.post2_title,
@@ -28,7 +28,7 @@ const posts = [
     date: blogDate,
     category: blog.cat_products,
     image: "/images/caluanie-muelear-oxidize-for-sale.jpg",
-    slug: lp("/blog/caluanie-muelear-oxidize-guide")
+    slug: lp("/blog/caluanie-muelear-oxidize-guide/")
   },
   {
     title: blog.post3_title,
@@ -36,7 +36,7 @@ const posts = [
     date: blogDate,
     category: blog.cat_compliance,
     image: "/images/buy-new-stock-caluanie-muelear-oxidize.jpg",
-    slug: "#"
+    slug: lp("/certificates/")
   },
   {
     title: blog.post4_title,
@@ -44,7 +44,7 @@ const posts = [
     date: blogDate,
     category: blog.cat_products,
     image: "/images/buy-red-liquid-mercury-usa.jpg",
-    slug: lp("/blog/red-mercury-2020-258-guide")
+    slug: lp("/blog/red-mercury-2020-258-guide/")
   },
   {
     title: blog.post5_title,
@@ -52,7 +52,7 @@ const posts = [
     date: blogDate,
     category: blog.cat_logistics,
     image: "/images/red-liquid-mercury-for-sale-usa.png",
-    slug: "#"
+    slug: lp("/shipping/")
   },
   {
     title: blog.post6_title,
@@ -60,7 +60,7 @@ const posts = [
     date: blogDate,
     category: blog.cat_industry,
     image: "/images/caluanie-muelear-oxidize-manufacturer-in-usa.webp",
-    slug: "#"
+    slug: lp("/applications/")
   }
 ];
 
@@ -73,7 +73,7 @@ const blogSchema = {
     "@type": "Blog",
     "name": "UE Chemicals Blog",
     "description": "Industry insights, safety guidelines, and product information for industrial chemicals",
-    "publisher": { "@type": "Organization", "name": "UE Chemicals" }
+    "publisher": { "@type": "Organization", "name": "UE Chemicals", "telephone": "+66954180433" }
   }
 };
 ---
@@ -84,7 +84,6 @@ const blogSchema = {
   <!-- Page Hero -->
   <section class="page-hero">
     <div class="container">
-      <div class="section-label">{t(tr, "blog.hero_label")}</div>
       <h1>{t(tr, "blog.hero_title")}</h1>
       <p>{t(tr, "blog.hero_sub")}</p>
     </div>
@@ -102,20 +101,12 @@ const blogSchema = {
             </div>
             <div class="blog-card-body">
               <span class="blog-card-date"><i class="fas fa-calendar"></i> {post.date}</span>
-              <h3>{post.title}</h3>
+              <h3><a href={post.slug} style="color:inherit;text-decoration:none;">{post.title}</a></h3>
               <p>{post.excerpt}</p>
-              {post.slug === "#" ? (
-                <span class="blog-card-link">{t(tr, "common.coming_soon")} <i class="fas fa-arrow-right"></i></span>
-              ) : (
-                <a href={post.slug} class="blog-card-link">{t(tr, "common.read_more")} <i class="fas fa-arrow-right"></i></a>
-              )}
+              <a href={post.slug} class="blog-card-link">{t(tr, "common.read_more")} <i class="fas fa-arrow-right"></i></a>
             </div>
           </article>
         ))}
-      </div>
-
-      <div class="blog-cta">
-        <p>{t(tr, "blog.more_coming")}</p>
       </div>
     </div>
   </section>
@@ -126,8 +117,9 @@ const blogSchema = {
       <h2>{t(tr, "blog.cta_title")}</h2>
       <p>{t(tr, "blog.cta_desc")}</p>
       <div class="cta-actions">
-        <a href={lp("/contact")} class="btn btn-accent">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
-        <a href={lp("/faq")} class="btn btn-outline">{t(tr, "common.view_faq")} <i class="fas fa-arrow-right"></i></a>
+        <a href={lp("/contact/")} class="btn btn-accent">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+        <a href="https://wa.me/66954180433" class="btn btn-outline" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
+        <a href={lp("/products/")} class="btn btn-outline">{t(tr, "common.view_all_products")} <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </section>

@@ -20,47 +20,15 @@ const aboutSchema = {
     "foundingLocation": { "@type": "Place", "name": "Bangkok, Thailand" },
     "address": { "@type": "PostalAddress", "addressLocality": "Bangkok", "postalCode": "10110", "addressCountry": "TH" },
     "email": "info@useful-chemicals.com",
-    "telephone": "+66-951690848",
+    "telephone": "+66954180433",
+    "sameAs": ["https://wa.me/66954180433"],
     "knowsAbout": ["Caluanie Muelear Oxidize", "Red Liquid Mercury", "Silver Liquid Mercury", "Industrial Chemical Supply", "Chemical Quality Assurance"],
     "hasCredential": [
       { "@type": "EducationalOccupationalCredential", "credentialCategory": "ISO 9001:2015" },
       { "@type": "EducationalOccupationalCredential", "credentialCategory": "ISO 14001:2015" }
     ],
     "areaServed": { "@type": "Place", "name": "Worldwide" },
-    "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 10 },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5.0",
-      "bestRating": "5",
-      "worstRating": "1",
-      "ratingCount": "4"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": t(tr, "about.testimonial1_author") },
-        "reviewBody": t(tr, "about.testimonial1_text"),
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" }
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": t(tr, "about.testimonial2_author") },
-        "reviewBody": t(tr, "about.testimonial2_text"),
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" }
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": t(tr, "about.testimonial3_author") },
-        "reviewBody": t(tr, "about.testimonial3_text"),
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" }
-      },
-      {
-        "@type": "Review",
-        "author": { "@type": "Person", "name": t(tr, "about.testimonial4_author") },
-        "reviewBody": t(tr, "about.testimonial4_text"),
-        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5", "worstRating": "1" }
-      }
-    ]
+    "numberOfEmployees": { "@type": "QuantitativeValue", "minValue": 10 }
   }
 };
 ---
@@ -76,12 +44,12 @@ const aboutSchema = {
     </div>
     <div class="container ab-hero-inner">
       <div class="ab-hero-content">
-        <div class="ab-hero-badge"><i class="fas fa-shield-halved"></i> {t(tr, "about.hero_badge")}</div>
         <h1>{t(tr, "about.hero_title")}</h1>
         <p class="ab-hero-sub">{t(tr, "about.hero_sub")}</p>
         <div class="ab-hero-actions">
-          <a href={lp("/products")} class="btn btn-accent">{t(tr, "about.hero_cta_products")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/contact")} class="btn btn-outline-white">{t(tr, "about.hero_cta_contact")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products/")} class="btn btn-accent">{t(tr, "about.hero_cta_products")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact/")} class="btn btn-outline-white">{t(tr, "about.hero_cta_contact")} <i class="fas fa-arrow-right"></i></a>
+          <a href="https://wa.me/66954180433" class="btn btn-outline-white" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
         </div>
       </div>
       <div class="ab-hero-stats">
@@ -114,7 +82,6 @@ const aboutSchema = {
       <div class="ab-empathy-inner">
         <div class="ab-empathy-accent"></div>
         <div class="ab-empathy-content">
-          <div class="section-label">{t(tr, "about.empathy_label")}</div>
           <h2>{t(tr, "about.empathy_title")}</h2>
           <p>{t(tr, "about.empathy_p1")}</p>
           <p>{t(tr, "about.empathy_p2")}</p>
@@ -130,7 +97,6 @@ const aboutSchema = {
       <img src="/images/about/Whisk_a8e5707ae2a89769b4e4a5d84aafec92dr.png" alt="UE Chemicals manufacturing facility — industrial chemical production" loading="lazy" />
     </div>
     <div class="ab-identity-content">
-      <div class="section-label">{t(tr, "about.identity_label")}</div>
       <h2>{t(tr, "about.identity_title")}</h2>
       <p>{t(tr, "about.identity_p1")}</p>
       <p>{t(tr, "about.identity_p2")}</p>
@@ -158,7 +124,6 @@ const aboutSchema = {
   <section class="ab-expertise">
     <div class="container">
       <div class="ab-expertise-header">
-        <div class="section-label">{t(tr, "about.expertise_label")}</div>
         <h2>{t(tr, "about.expertise_title")}</h2>
         <p class="ab-expertise-intro">{t(tr, "about.expertise_p1")}</p>
       </div>
@@ -202,7 +167,6 @@ const aboutSchema = {
     <div class="container">
       <div class="ab-delivery-grid">
         <div class="ab-delivery-content">
-          <div class="section-label">{t(tr, "about.delivery_label")}</div>
           <h2>{t(tr, "about.delivery_title")}</h2>
           <p>{t(tr, "about.delivery_p1")}</p>
           <p>{t(tr, "about.delivery_p2")}</p>
@@ -245,7 +209,6 @@ const aboutSchema = {
   <section class="ab-quality">
     <div class="container">
       <div class="ab-quality-header">
-        <div class="section-label">{t(tr, "about.quality_label")}</div>
         <h2>{t(tr, "about.quality_title")}</h2>
         <p>{t(tr, "about.quality_p1")}</p>
       </div>
@@ -299,7 +262,6 @@ const aboutSchema = {
       <img src="/images/about/BTC-CHONBURI-PLANT-2-5.6-scaled.jpg" alt="UE Chemicals customer service and support team" loading="lazy" />
     </div>
     <div class="ab-customer-content">
-      <div class="section-label">{t(tr, "about.customer_label")}</div>
       <h2>{t(tr, "about.customer_title")}</h2>
       <p>{t(tr, "about.customer_p1")}</p>
       <div class="ab-customer-items">
@@ -339,7 +301,6 @@ const aboutSchema = {
   <section class="ab-testimonials">
     <div class="container">
       <div class="ab-testimonials-header">
-        <div class="section-label">{t(tr, "about.testimonials_label")}</div>
         <h2>{t(tr, "about.testimonials_title")}</h2>
       </div>
       <div class="ab-testimonials-grid">
@@ -404,7 +365,6 @@ const aboutSchema = {
     <div class="container">
       <div class="ab-transparency-inner">
         <div class="ab-transparency-content">
-          <div class="section-label">{t(tr, "about.transparency_label")}</div>
           <h2>{t(tr, "about.transparency_title")}</h2>
           <p>{t(tr, "about.transparency_p1")}</p>
         </div>
@@ -424,13 +384,12 @@ const aboutSchema = {
     <div class="container">
       <div class="ab-section-header">
         <div>
-          <div class="section-label">{t(tr, "about.products_label")}</div>
           <h2>{t(tr, "about.products_title")}</h2>
         </div>
-        <a href={lp("/products")} class="btn btn-outline">{t(tr, "common.view_all_products")} <i class="fas fa-arrow-right"></i></a>
+        <a href={lp("/products/")} class="btn btn-outline">{t(tr, "common.view_all_products")} <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="ab-products-grid">
-        <a href={lp("/products/caluanie")} class="ab-prod-card">
+        <a href={lp("/products/caluanie/")} class="ab-prod-card">
           <div class="ab-prod-img">
             <img loading="lazy" src="/images/caluanie-muelear-oxidize-for-sale.jpg" alt="Buy Caluanie Muelear Oxidize — premium quality for sale" />
             <div class="ab-prod-num">01</div>
@@ -441,7 +400,7 @@ const aboutSchema = {
             <span class="ab-prod-link">{t(tr, "common.learn_more")} <i class="fas fa-arrow-right"></i></span>
           </div>
         </a>
-        <a href={lp("/products/red-mercury")} class="ab-prod-card">
+        <a href={lp("/products/red-mercury/")} class="ab-prod-card">
           <div class="ab-prod-img">
             <img loading="lazy" src="/images/red-liquid-mercury-for-sale-usa.png" alt="Red Liquid Mercury for sale — laboratory grade" />
             <div class="ab-prod-num">02</div>
@@ -452,7 +411,7 @@ const aboutSchema = {
             <span class="ab-prod-link">{t(tr, "common.learn_more")} <i class="fas fa-arrow-right"></i></span>
           </div>
         </a>
-        <a href={lp("/products/silver-mercury")} class="ab-prod-card">
+        <a href={lp("/products/silver-mercury/")} class="ab-prod-card">
           <div class="ab-prod-img">
             <img loading="lazy" src="/images/silver-liquid-mercury-for-sale.png" alt="Silver Liquid Mercury 99.99% purity for sale" />
             <div class="ab-prod-num">03</div>
@@ -470,11 +429,10 @@ const aboutSchema = {
   <!-- ========== FACILITY ========== -->
   <section class="ab-facility">
     <div class="ab-facility-content">
-      <div class="section-label">{t(tr, "about.facility_label")}</div>
       <h2>{t(tr, "about.facility_title")}</h2>
       <p>{t(tr, "about.facility_p1")}</p>
       <p>{t(tr, "about.facility_p2")}</p>
-      <a href={lp("/certificates")} class="btn btn-primary">{t(tr, "footer.certificates")} <i class="fas fa-arrow-right"></i></a>
+      <a href={lp("/certificates/")} class="btn btn-primary">{t(tr, "footer.certificates")} <i class="fas fa-arrow-right"></i></a>
     </div>
     <div class="ab-facility-image">
       <img loading="lazy" src="/images/about/BTC-P2-1.jpg" alt="UE Chemicals manufacturing facility in Bangkok, Thailand" />
@@ -486,7 +444,6 @@ const aboutSchema = {
     <div class="container">
       <div class="ab-team-inner">
         <div class="ab-team-text">
-          <div class="section-label">{t(tr, "about.team_label")}</div>
           <h2>{t(tr, "about.team_title")}</h2>
           <p>{t(tr, "about.team_desc")}</p>
         </div>
@@ -524,9 +481,9 @@ const aboutSchema = {
           <p>{t(tr, "about.cta_desc")}</p>
         </div>
         <div class="ab-cta-actions">
-          <a href={lp("/contact")} class="btn btn-white">{t(tr, "about.cta_btn_contact")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/ordering")} class="btn btn-outline-white">{t(tr, "about.cta_btn_order")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "about.cta_btn_products")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact/")} class="btn btn-white">{t(tr, "about.cta_btn_contact")} <i class="fas fa-arrow-right"></i></a>
+          <a href="https://wa.me/66954180433" class="btn btn-outline-white" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
+          <a href={lp("/products/")} class="btn btn-outline-white">{t(tr, "about.cta_btn_products")} <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>

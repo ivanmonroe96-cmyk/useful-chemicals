@@ -135,7 +135,6 @@ const faqSchema = {
     </div>
     <div class="container fq-hero-inner">
       <div class="fq-hero-content">
-        <div class="fq-hero-badge"><i class="fas fa-circle-question"></i> {faq.hero_badge}</div>
         <h1>{faq.hero_title}</h1>
         <p class="fq-hero-sub">{faq.hero_sub}</p>
       </div>
@@ -171,7 +170,8 @@ const faqSchema = {
             <div class="fq-sidebar-cta">
               <p>{faq.cant_find}</p>
               <p>{faq.cant_find_desc}</p>
-              <a href={lp("/contact")} class="btn btn-accent" style="width:100%;text-align:center;font-size:.88rem;padding:12px;">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+              <a href={lp("/contact/")} class="btn btn-accent" style="width:100%;text-align:center;font-size:.88rem;padding:12px;">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+              <a href="https://wa.me/66954180433" class="btn btn-outline" style="width:100%;text-align:center;font-size:.88rem;padding:12px;margin-top:8px;" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
             </div>
           </div>
         </aside>
@@ -214,8 +214,11 @@ const faqSchema = {
         <h2>{faq.cta_title}</h2>
         <p>{faq.cta_desc}</p>
         <div class="fq-cta-actions">
-          <a href={lp("/contact")} class="btn btn-white">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "common.browse_products")} <i class="fas fa-flask"></i></a>
+          <a href={lp("/contact/")} class="btn btn-white">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+          <a href="https://wa.me/66954180433" class="btn btn-outline-white" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
+          <a href={lp("/products/caluanie/")} class="btn btn-outline-white">{t(tr, "nav.caluanie")} <i class="fas fa-flask"></i></a>
+          <a href={lp("/products/red-mercury/")} class="btn btn-outline-white">{t(tr, "nav.red_mercury")} <i class="fas fa-flask"></i></a>
+          <a href={lp("/products/silver-mercury/")} class="btn btn-outline-white">{t(tr, "nav.silver_mercury")} <i class="fas fa-flask"></i></a>
         </div>
       </div>
     </div>

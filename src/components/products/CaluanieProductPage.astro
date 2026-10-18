@@ -155,34 +155,34 @@ const orderChecklist = [
 
 const relatedLinks = [
   {
-    href: lp('/products/red-mercury'),
-    title: t(tr, 'nav.red_mercury'),
-    description: t(tr, 'home.product2_desc'),
+    href: lp('/blog/caluanie-muelear-oxidize-guide/'),
+    title: t(tr, 'blog.article_caluanie.hero_title'),
+    description: t(tr, 'caluanie.benefits_link5_desc'),
   },
   {
-    href: lp('/products/silver-mercury'),
-    title: t(tr, 'nav.silver_mercury'),
-    description: t(tr, 'home.product3_desc'),
+    href: lp('/wholesale/'),
+    title: t(tr, 'nav.wholesale'),
+    description: t(tr, 'wholesale.hero_sub'),
   },
   {
-    href: lp('/applications'),
-    title: t(tr, 'common.view_applications'),
-    description: t(tr, 'caluanie.benefits_link1_desc'),
+    href: lp('/shipping/'),
+    title: t(tr, 'footer.shipping'),
+    description: t(tr, 'shipping.hero_sub'),
   },
   {
-    href: lp('/certificates'),
+    href: lp('/certificates/'),
     title: t(tr, 'common.request_documentation'),
     description: t(tr, 'caluanie.benefits_link3_desc'),
   },
   {
-    href: lp('/ordering'),
-    title: t(tr, 'common.how_to_order'),
-    description: t(tr, 'caluanie.benefits_link4_desc'),
+    href: lp('/products/red-mercury/'),
+    title: t(tr, 'nav.red_mercury'),
+    description: t(tr, 'home.product2_desc'),
   },
   {
-    href: lp('/contact'),
-    title: t(tr, 'common.contact_us'),
-    description: t(tr, 'caluanie.benefits_link6_desc'),
+    href: lp('/products/silver-mercury/'),
+    title: t(tr, 'nav.silver_mercury'),
+    description: t(tr, 'home.product3_desc'),
   },
 ];
 
@@ -268,7 +268,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: t(tr, 'nav.home'), item: `${siteUrl}${lp('/')}` },
-    { '@type': 'ListItem', position: 2, name: t(tr, 'nav.products'), item: `${siteUrl}${lp('/products')}` },
+    { '@type': 'ListItem', position: 2, name: t(tr, 'nav.products'), item: `${siteUrl}${lp('/products/')}` },
     { '@type': 'ListItem', position: 3, name: productName, item: productPageUrl },
   ],
 };
@@ -297,7 +297,6 @@ const speakableSchema = {
   <section class="calp-hero" aria-labelledby="calp-hero-title">
     <div class="container calp-hero-grid">
       <div class="calp-hero-copy">
-        <div class="calp-kicker">{t(tr, 'caluanie.hero_badge')}</div>
         <h1 id="calp-hero-title">{t(tr, 'caluanie.hero_title')}</h1>
         <p class="calp-hero-lead">{t(tr, 'caluanie.hero_sub')}</p>
         <div class="calp-chip-row" aria-label={t(tr, 'caluanie.hero_chip_row_label')}>
@@ -307,6 +306,7 @@ const speakableSchema = {
         </div>
         <div class="calp-hero-actions">
           <a href="#quote" class="btn btn-accent" aria-label={t(tr, 'common.get_quote')}>{t(tr, 'common.get_quote')} <i class="fas fa-arrow-right"></i></a>
+          <a href="https://wa.me/66954180433" target="_blank" rel="noopener noreferrer" class="btn btn-outline" aria-label="WhatsApp +66954180433"><i class="fab fa-whatsapp"></i> +66954180433</a>
         </div>
         <p class="calp-hero-note">{t(tr, 'caluanie.hero_note')}</p>
       </div>
@@ -350,7 +350,6 @@ const speakableSchema = {
   <section class="calp-summary" id="summary" aria-labelledby="calp-summary-title">
     <div class="container">
       <div class="calp-section-head">
-        <div class="calp-kicker">{t(tr, 'caluanie.overview_label')}</div>
         <h2 id="calp-summary-title">{t(tr, 'caluanie.overview_title')}</h2>
         <p>{t(tr, 'caluanie.overview_desc1')}</p>
       </div>
@@ -368,7 +367,6 @@ const speakableSchema = {
   <section class="calp-gallery" aria-labelledby="calp-gallery-title">
     <div class="container">
       <div class="calp-section-head calp-section-head-tight">
-        <div class="calp-kicker">{t(tr, 'caluanie.overview_label')}</div>
         <h2 id="calp-gallery-title">{t(tr, 'caluanie.overview_title')}</h2>
         <p>{t(tr, 'caluanie.overview_desc2')}</p>
       </div>
@@ -408,7 +406,6 @@ const speakableSchema = {
   <section class="calp-specs" id="specifications" aria-labelledby="calp-specs-title">
     <div class="container calp-specs-grid">
       <div class="calp-specs-copy">
-        <div class="calp-kicker">{t(tr, 'caluanie.tech_label')}</div>
         <h2 id="calp-specs-title">{t(tr, 'caluanie.tech_title')}</h2>
         <p>{t(tr, 'caluanie.tech_desc')}</p>
 
@@ -441,8 +438,7 @@ const speakableSchema = {
   <section class="calp-docs" id="documents" aria-labelledby="calp-docs-title">
     <div class="container">
       <div class="calp-section-head">
-        <div class="calp-kicker">{t(tr, 'caluanie.docs_label')}</div>
-          <h2 id="calp-docs-title">{t(tr, 'caluanie.doc_tds_title')}</h2>
+        <h2 id="calp-docs-title">{t(tr, 'caluanie.doc_tds_title')}</h2>
         <p>{t(tr, 'caluanie.doc_tds_desc')}</p>
       </div>
 
@@ -467,7 +463,6 @@ const speakableSchema = {
   <section class="calp-columns" id="handling" aria-labelledby="calp-columns-title">
     <div class="container">
       <div class="calp-section-head calp-section-head-tight">
-        <div class="calp-kicker">{t(tr, 'caluanie.safety_label')}</div>
         <h2 id="calp-columns-title">{t(tr, 'caluanie.safety_title')}</h2>
       </div>
 
@@ -499,7 +494,6 @@ const speakableSchema = {
   <section class="calp-links" aria-labelledby="calp-links-title">
     <div class="container">
       <div class="calp-section-head calp-section-head-tight">
-        <div class="calp-kicker">{t(tr, 'caluanie.benefits_label')}</div>
         <h2 id="calp-links-title">{t(tr, 'caluanie.benefits_title')}</h2>
         <p>{t(tr, 'caluanie.benefits_desc')}</p>
       </div>
@@ -519,7 +513,6 @@ const speakableSchema = {
   <section class="calp-quote" id="quote" aria-labelledby="calp-quote-title">
     <div class="container calp-quote-grid">
       <div class="calp-quote-copy">
-        <div class="calp-kicker">{t(tr, 'caluanie.quote_label')}</div>
         <h2 id="calp-quote-title">{t(tr, 'caluanie.quote_title')}</h2>
         <p>{t(tr, 'caluanie.quote_desc')}</p>
 
@@ -527,6 +520,7 @@ const speakableSchema = {
           <span><i class="fas fa-clock"></i> {t(tr, 'caluanie.quote_badge1')}</span>
           <span><i class="fas fa-file-shield"></i> {t(tr, 'caluanie.quote_badge2')}</span>
           <span><i class="fas fa-globe"></i> {t(tr, 'caluanie.quote_badge3')}</span>
+          <a href="https://wa.me/66954180433" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--primary-dark);"><i class="fab fa-whatsapp"></i> +66954180433</a>
         </div>
 
         <ol class="calp-checklist">
@@ -571,7 +565,6 @@ const speakableSchema = {
   <section class="calp-faq" aria-labelledby="calp-faq-title">
     <div class="container">
       <div class="calp-section-head">
-        <div class="calp-kicker">{t(tr, 'caluanie.faq_label')}</div>
         <h2 id="calp-faq-title">{t(tr, 'caluanie.faq_title')}</h2>
       </div>
 

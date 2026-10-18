@@ -33,12 +33,12 @@ const safetySchema = {
     </div>
     <div class="container sf-hero-inner">
       <div class="sf-hero-content">
-        <div class="sf-hero-badge"><i class="fas fa-shield-halved"></i> {t(tr, "safety.hero_badge")}</div>
         <h1>{t(tr, "safety.hero_title")}</h1>
         <p class="sf-hero-sub">{t(tr, "safety.hero_sub")}</p>
         <div class="sf-hero-actions">
-          <a href={lp("/contact")} class="btn btn-accent">{t(tr, "safety.request_sds")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "common.view_products")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact/")} class="btn btn-accent">{t(tr, "safety.request_sds")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products/")} class="btn btn-outline-white">{t(tr, "common.view_products")} <i class="fas fa-arrow-right"></i></a>
+          <a href="https://wa.me/66954180433" class="btn btn-outline-white" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
         </div>
       </div>
       <div class="sf-hero-stats">
@@ -95,8 +95,11 @@ const safetySchema = {
         <div class="sf-chem-header-inner">
           <div class="sf-chem-num">01</div>
           <div>
-            <div class="sf-chem-tag">{t(tr, "safety.safety_protocol")}</div>
             <h2>{t(tr, "safety.cal_title")}</h2>
+          </div>
+          <div style="margin-left:auto;display:flex;gap:12px;flex-wrap:wrap;">
+            <a href={lp("/products/caluanie/")} class="btn btn-primary">{t(tr, "common.view_product")} <i class="fas fa-arrow-right"></i></a>
+            <a href="/docs/caluanie-sds.pdf" class="btn btn-outline" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> SDS PDF</a>
           </div>
         </div>
       </div>
@@ -170,8 +173,11 @@ const safetySchema = {
         <div class="sf-chem-header-inner">
           <div class="sf-chem-num">02</div>
           <div>
-            <div class="sf-chem-tag">{t(tr, "safety.safety_protocol")}</div>
             <h2>{t(tr, "safety.red_title")}</h2>
+          </div>
+          <div style="margin-left:auto;display:flex;gap:12px;flex-wrap:wrap;">
+            <a href={lp("/products/red-mercury/")} class="btn btn-primary">{t(tr, "common.view_product")} <i class="fas fa-arrow-right"></i></a>
+            <a href="/docs/red-mercury-sds.pdf" class="btn btn-outline" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> SDS PDF</a>
           </div>
         </div>
       </div>
@@ -245,8 +251,11 @@ const safetySchema = {
         <div class="sf-chem-header-inner">
           <div class="sf-chem-num">03</div>
           <div>
-            <div class="sf-chem-tag">{t(tr, "safety.safety_protocol")}</div>
             <h2>{t(tr, "safety.silver_title")}</h2>
+          </div>
+          <div style="margin-left:auto;display:flex;gap:12px;flex-wrap:wrap;">
+            <a href={lp("/products/silver-mercury/")} class="btn btn-primary">{t(tr, "common.view_product")} <i class="fas fa-arrow-right"></i></a>
+            <a href="/docs/silver-mercury-sds.pdf" class="btn btn-outline" target="_blank" rel="noopener"><i class="fas fa-file-pdf"></i> SDS PDF</a>
           </div>
         </div>
       </div>
@@ -319,7 +328,6 @@ const safetySchema = {
       <img src="/images/about/Whisk_a8e5707ae2a89769b4e4a5d84aafec92dr.png" alt={t(tr, "safety.commitment_title")} />
     </div>
     <div class="sf-commitment-content">
-      <div class="section-label">{t(tr, "safety.commitment_label")}</div>
       <h2>{t(tr, "safety.commitment_title")}</h2>
       <p>{t(tr, "safety.commitment_desc")}</p>
       <div class="sf-commitment-badges">
@@ -336,7 +344,7 @@ const safetySchema = {
           <span>{t(tr, "home.trust_support")}</span>
         </div>
       </div>
-      <a href={lp("/contact")} class="btn btn-primary">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+      <a href={lp("/contact/")} class="btn btn-primary">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
     </div>
   </section>
 
@@ -349,8 +357,9 @@ const safetySchema = {
           <p>{t(tr, "safety.cta_desc")}</p>
         </div>
         <div class="sf-cta-actions">
-          <a href={lp("/contact")} class="btn btn-white">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "common.view_products")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact/")} class="btn btn-white">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+          <a href="https://wa.me/66954180433" class="btn btn-outline-white" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
+          <a href={lp("/products/")} class="btn btn-outline-white">{t(tr, "common.view_products")} <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>

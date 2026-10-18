@@ -33,12 +33,12 @@ const shippingSchema = {
     </div>
     <div class="container sh-hero-inner">
       <div class="sh-hero-content">
-        <div class="sh-hero-badge"><i class="fas fa-truck-fast"></i> {t(tr, "shipping.hero_badge")}</div>
         <h1>{t(tr, "shipping.hero_title")}</h1>
         <p class="sh-hero-sub">{t(tr, "shipping.hero_sub")}</p>
         <div class="sh-hero-actions">
-          <a href={lp("/contact")} class="btn btn-accent">{t(tr, "shipping.hero_get_quote")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/ordering")} class="btn btn-outline-white">{t(tr, "shipping.hero_ordering")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact/")} class="btn btn-accent">{t(tr, "shipping.hero_get_quote")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/ordering/")} class="btn btn-outline-white">{t(tr, "shipping.hero_ordering")} <i class="fas fa-arrow-right"></i></a>
+          <a href="https://wa.me/66954180433" class="btn btn-outline-white" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
         </div>
       </div>
       <div class="sh-hero-stats">
@@ -62,7 +62,6 @@ const shippingSchema = {
   <section class="sh-overview">
     <div class="container">
       <div class="sh-overview-intro">
-        <div class="section-label">{t(tr, "shipping.overview_label")}</div>
         <h2>{t(tr, "shipping.overview_title")}</h2>
         <p>{t(tr, "shipping.overview_desc")}</p>
       </div>
@@ -95,7 +94,6 @@ const shippingSchema = {
   <section class="sh-regs">
     <div class="container">
       <div class="text-center" style="margin-bottom:50px;">
-        <div class="section-label">{t(tr, "shipping.regs_label")}</div>
         <h2 class="section-title">{t(tr, "shipping.regs_title")}</h2>
         <p style="max-width:680px;margin:0 auto;color:var(--body-text);">{t(tr, "shipping.regs_desc")}</p>
       </div>
@@ -157,35 +155,34 @@ const shippingSchema = {
     <div class="container">
       <div class="sh-pack-grid">
         <div class="sh-pack-content">
-          <div class="section-label">{t(tr, "shipping.pack_label")}</div>
           <h2>{t(tr, "shipping.pack_title")}</h2>
           <p>{t(tr, "shipping.pack_desc")}</p>
           <div class="sh-pack-items">
             <div class="sh-pack-item">
               <div class="sh-pack-item-icon"><i class="fas fa-flask"></i></div>
               <div>
-                <strong>{t(tr, "shipping.pack1_title")}</strong>
+                <strong><a href={lp("/products/caluanie/")} style="color:inherit;text-decoration:underline;">{t(tr, "shipping.pack1_title")}</a></strong>
                 <p>{t(tr, "shipping.pack1_desc")}</p>
               </div>
             </div>
             <div class="sh-pack-item">
               <div class="sh-pack-item-icon"><i class="fas fa-bottle-droplet"></i></div>
               <div>
-                <strong>{t(tr, "shipping.pack2_title")}</strong>
+                <strong><a href={lp("/products/silver-mercury/")} style="color:inherit;text-decoration:underline;">{t(tr, "shipping.pack2_title")}</a></strong>
                 <p>{t(tr, "shipping.pack2_desc")}</p>
               </div>
             </div>
             <div class="sh-pack-item">
               <div class="sh-pack-item-icon"><i class="fas fa-tags"></i></div>
               <div>
-                <strong>{t(tr, "shipping.pack3_title")}</strong>
+                <strong><a href={lp("/products/red-mercury/")} style="color:inherit;text-decoration:underline;">{t(tr, "shipping.pack3_title")}</a></strong>
                 <p>{t(tr, "shipping.pack3_desc")}</p>
               </div>
             </div>
             <div class="sh-pack-item">
               <div class="sh-pack-item-icon"><i class="fas fa-lock"></i></div>
               <div>
-                <strong>{t(tr, "shipping.pack4_title")}</strong>
+                <strong><a href={lp("/wholesale/")} style="color:inherit;text-decoration:underline;">{t(tr, "shipping.pack4_title")}</a></strong>
                 <p>{t(tr, "shipping.pack4_desc")}</p>
               </div>
             </div>
@@ -210,7 +207,6 @@ const shippingSchema = {
   <section class="sh-timeline">
     <div class="container">
       <div class="text-center" style="margin-bottom:50px;">
-        <div class="section-label">{t(tr, "shipping.timeline_label")}</div>
         <h2 class="section-title">{t(tr, "shipping.timeline_title")}</h2>
         <p style="max-width:600px;margin:0 auto;color:var(--body-text);">{t(tr, "shipping.timeline_desc")}</p>
       </div>
@@ -277,7 +273,6 @@ const shippingSchema = {
   <section class="sh-process">
     <div class="container">
       <div class="text-center" style="margin-bottom:50px;">
-        <div class="section-label">{t(tr, "shipping.process_label")}</div>
         <h2 class="section-title">{t(tr, "shipping.process_title")}</h2>
       </div>
       <div class="sh-steps">
@@ -315,7 +310,8 @@ const shippingSchema = {
         <h2>{t(tr, "shipping.cta_title")}</h2>
         <p>{t(tr, "shipping.cta_desc")}</p>
         <div class="sh-cta-actions">
-          <a href={lp("/contact")} class="btn btn-white">{t(tr, "shipping.cta_quote")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact/")} class="btn btn-white">{t(tr, "shipping.cta_quote")} <i class="fas fa-arrow-right"></i></a>
+          <a href="https://wa.me/66954180433" class="btn btn-outline-white" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
           <a href="mailto:info@useful-chemicals.com" class="btn btn-outline-white">{t(tr, "shipping.cta_email")} <i class="fas fa-envelope"></i></a>
         </div>
       </div>

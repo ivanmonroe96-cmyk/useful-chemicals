@@ -16,9 +16,9 @@ const productListSchema = {
   "description": products.meta_desc,
   "numberOfItems": 3,
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": products.caluanie_title, "url": "https://useful-chemicals.com/products/caluanie" },
-    { "@type": "ListItem", "position": 2, "name": products.red_title, "url": "https://useful-chemicals.com/products/red-mercury" },
-    { "@type": "ListItem", "position": 3, "name": products.silver_title, "url": "https://useful-chemicals.com/products/silver-mercury" }
+    { "@type": "ListItem", "position": 1, "name": products.caluanie_title, "url": `https://useful-chemicals.com${lp("/products/caluanie/")}` },
+    { "@type": "ListItem", "position": 2, "name": products.red_title, "url": `https://useful-chemicals.com${lp("/products/red-mercury/")}` },
+    { "@type": "ListItem", "position": 3, "name": products.silver_title, "url": `https://useful-chemicals.com${lp("/products/silver-mercury/")}` }
   ]
 };
 
@@ -26,8 +26,8 @@ const breadcrumbSchema = {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   "itemListElement": [
-    { "@type": "ListItem", "position": 1, "name": tr.nav.home, "item": "https://useful-chemicals.com/" },
-    { "@type": "ListItem", "position": 2, "name": tr.nav.products, "item": "https://useful-chemicals.com/products" }
+    { "@type": "ListItem", "position": 1, "name": tr.nav.home, "item": `https://useful-chemicals.com${lp("/")}` },
+    { "@type": "ListItem", "position": 2, "name": tr.nav.products, "item": `https://useful-chemicals.com${lp("/products/")}` }
   ]
 };
 ---
@@ -43,12 +43,12 @@ const breadcrumbSchema = {
     </div>
     <div class="container pr-hero-inner">
       <div class="pr-hero-content">
-        <div class="pr-hero-badge"><i class="fas fa-flask"></i> {t(tr, "products.hero_badge")}</div>
         <h1>{t(tr, "products.hero_title")}</h1>
         <p class="pr-hero-sub">{t(tr, "products.hero_sub")}</p>
         <div class="pr-hero-actions">
-          <a href={lp("/contact")} class="btn btn-accent">{t(tr, "common.get_quote")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/applications")} class="btn btn-outline-white">{t(tr, "common.view_applications")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact/")} class="btn btn-accent">{t(tr, "common.get_quote")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/wholesale/")} class="btn btn-outline-white">{t(tr, "nav.wholesale")} <i class="fas fa-boxes-stacked"></i></a>
+          <a href="https://wa.me/66954180433" class="btn btn-outline-white" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
         </div>
       </div>
       <div class="pr-hero-stats">
@@ -107,7 +107,6 @@ const breadcrumbSchema = {
         <div class="pr-block-num">01</div>
       </div>
       <div class="pr-block-content">
-        <div class="pr-block-tag">{t(tr, "products.caluanie_tag")}</div>
         <h2>{t(tr, "products.caluanie_title")}</h2>
         <p>{t(tr, "products.caluanie_desc")}</p>
         <div class="pr-block-specs">
@@ -124,7 +123,10 @@ const breadcrumbSchema = {
             <span>{t(tr, "products.caluanie_spec3")}</span>
           </div>
         </div>
-        <a href={lp("/products/caluanie")} class="btn btn-primary">{t(tr, "common.view_full_details")} <i class="fas fa-arrow-right"></i></a>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href={lp("/products/caluanie/")} class="btn btn-primary">{t(tr, "common.view_full_details")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/blog/caluanie-muelear-oxidize-guide/")} class="btn btn-outline">{t(tr, "blog.post2_title")} <i class="fas fa-book-open"></i></a>
+        </div>
       </div>
     </div>
 
@@ -135,7 +137,6 @@ const breadcrumbSchema = {
         <div class="pr-block-num">02</div>
       </div>
       <div class="pr-block-content">
-        <div class="pr-block-tag">{t(tr, "products.red_tag")}</div>
         <h2>{t(tr, "products.red_title")}</h2>
         <p>{t(tr, "products.red_desc")}</p>
         <div class="pr-block-specs">
@@ -152,7 +153,10 @@ const breadcrumbSchema = {
             <span>{t(tr, "products.red_spec3")}</span>
           </div>
         </div>
-        <a href={lp("/products/red-mercury")} class="btn btn-primary">{t(tr, "common.view_full_details")} <i class="fas fa-arrow-right"></i></a>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href={lp("/products/red-mercury/")} class="btn btn-primary">{t(tr, "common.view_full_details")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/blog/red-mercury-2020-258-guide/")} class="btn btn-outline">{t(tr, "blog.post4_title")} <i class="fas fa-book-open"></i></a>
+        </div>
       </div>
     </div>
 
@@ -163,7 +167,6 @@ const breadcrumbSchema = {
         <div class="pr-block-num">03</div>
       </div>
       <div class="pr-block-content">
-        <div class="pr-block-tag">{t(tr, "products.silver_tag")}</div>
         <h2>{t(tr, "products.silver_title")}</h2>
         <p>{t(tr, "products.silver_desc")}</p>
         <div class="pr-block-specs">
@@ -180,7 +183,10 @@ const breadcrumbSchema = {
             <span>{t(tr, "products.silver_spec3")}</span>
           </div>
         </div>
-        <a href={lp("/products/silver-mercury")} class="btn btn-primary">{t(tr, "common.view_full_details")} <i class="fas fa-arrow-right"></i></a>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href={lp("/products/silver-mercury/")} class="btn btn-primary">{t(tr, "common.view_full_details")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/blog/silver-liquid-mercury-guide/")} class="btn btn-outline">{t(tr, "blog.post1_title")} <i class="fas fa-book-open"></i></a>
+        </div>
       </div>
     </div>
   </section>
@@ -194,8 +200,9 @@ const breadcrumbSchema = {
           <p>{t(tr, "products.cta_desc")}</p>
         </div>
         <div class="pr-cta-actions">
-          <a href={lp("/contact")} class="btn btn-white">{t(tr, "common.get_quote")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/applications")} class="btn btn-outline-white">{t(tr, "common.view_applications")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact/")} class="btn btn-white">{t(tr, "common.get_quote")} <i class="fas fa-arrow-right"></i></a>
+          <a href="https://wa.me/66954180433" class="btn btn-outline-white" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
+          <a href={lp("/wholesale/")} class="btn btn-outline-white">{t(tr, "nav.wholesale")} <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>

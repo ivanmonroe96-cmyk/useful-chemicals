@@ -161,34 +161,34 @@ const handlingItems = [
 
 const relatedLinks = [
   {
-    href: lp('/products/caluanie'),
-    title: t(tr, 'nav.caluanie'),
-    description: t(tr, 'home.product1_desc'),
+    href: lp('/blog/red-mercury-2020-258-guide/'),
+    title: t(tr, 'blog.post4_title'),
+    description: t(tr, 'blog.post4_excerpt'),
   },
   {
-    href: lp('/products/silver-mercury'),
-    title: t(tr, 'nav.silver_mercury'),
-    description: t(tr, 'home.product3_desc'),
+    href: lp('/wholesale/'),
+    title: t(tr, 'nav.wholesale'),
+    description: t(tr, 'wholesale.hero_sub'),
   },
   {
-    href: lp('/certificates'),
-    title: t(tr, 'red_mercury.link1_title'),
-    description: t(tr, 'red_mercury.link1_desc'),
-  },
-  {
-    href: lp('/ordering'),
-    title: t(tr, 'red_mercury.link3_title'),
-    description: t(tr, 'red_mercury.link3_desc'),
-  },
-  {
-    href: lp('/shipping'),
+    href: lp('/shipping/'),
     title: t(tr, 'red_mercury.link4_title'),
     description: t(tr, 'red_mercury.link4_desc'),
   },
   {
-    href: lp('/contact'),
-    title: t(tr, 'red_mercury.link6_title'),
-    description: t(tr, 'red_mercury.link6_desc'),
+    href: lp('/certificates/'),
+    title: t(tr, 'red_mercury.link1_title'),
+    description: t(tr, 'red_mercury.link1_desc'),
+  },
+  {
+    href: lp('/products/caluanie/'),
+    title: t(tr, 'nav.caluanie'),
+    description: t(tr, 'home.product1_desc'),
+  },
+  {
+    href: lp('/products/silver-mercury/'),
+    title: t(tr, 'nav.silver_mercury'),
+    description: t(tr, 'home.product3_desc'),
   },
 ];
 
@@ -233,7 +233,7 @@ const productSchema = {
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Bangkok',
-      postalCode: '10260',
+      postalCode: '10110',
       addressCountry: 'TH',
     },
   },
@@ -255,6 +255,26 @@ const productSchema = {
   })),
 };
 
+const videoSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'VideoObject',
+  name: t(tr, 'red_mercury.video_title'),
+  description: t(tr, 'red_mercury.video_desc'),
+  thumbnailUrl: [`${siteUrl}/videos/red-mercury-rolling-liquid-test-poster.jpg`],
+  uploadDate: '2026-04-23T08:00:00+07:00',
+  contentUrl: `${siteUrl}/videos/red-mercury-rolling-liquid-test.mp4`,
+  embedUrl: `${productPageUrl}#video`,
+  publisher: {
+    '@type': 'Organization',
+    name: 'UE Chemicals',
+    url: `${siteUrl}/`,
+    logo: {
+      '@type': 'ImageObject',
+      url: `${siteUrl}/images/favicon.png`,
+    },
+  },
+};
+
 const faqSchema = {
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
@@ -273,7 +293,7 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: t(tr, 'nav.home'), item: `${siteUrl}${lp('/')}` },
-    { '@type': 'ListItem', position: 2, name: t(tr, 'nav.products'), item: `${siteUrl}${lp('/products')}` },
+    { '@type': 'ListItem', position: 2, name: t(tr, 'nav.products'), item: `${siteUrl}${lp('/products/')}` },
     { '@type': 'ListItem', position: 3, name: productName, item: productPageUrl },
   ],
 };
@@ -297,12 +317,11 @@ const speakableSchema = {
   keywords={pageKeywords}
   activePage="products"
   ogImage={heroImage.src}
-  jsonLd={[productSchema, faqSchema, breadcrumbSchema, speakableSchema]}
+  jsonLd={[productSchema, videoSchema, faqSchema, breadcrumbSchema, speakableSchema]}
 >
   <section class="rmp-hero" aria-labelledby="rmp-hero-title">
     <div class="container rmp-hero-grid">
       <div class="rmp-hero-copy">
-        <div class="rmp-kicker">{t(tr, 'red_mercury.hero_badge')}</div>
         <h1 id="rmp-hero-title">{t(tr, 'red_mercury.hero_title')}</h1>
         <p class="rmp-hero-lead">{t(tr, 'red_mercury.hero_sub')}</p>
         <div class="rmp-chip-row" aria-label={t(tr, 'red_mercury.hero_chip_row_label')}>
@@ -312,6 +331,7 @@ const speakableSchema = {
         </div>
         <div class="rmp-hero-actions">
           <a href="#quote" class="btn btn-accent">{t(tr, 'common.get_quote')} <i class="fas fa-arrow-right"></i></a>
+          <a href="https://wa.me/66954180433" target="_blank" rel="noopener noreferrer" class="btn btn-outline" aria-label="WhatsApp +66954180433"><i class="fab fa-whatsapp"></i> +66954180433</a>
         </div>
         <p class="rmp-hero-note">{t(tr, 'red_mercury.hero_note')}</p>
       </div>
@@ -355,7 +375,6 @@ const speakableSchema = {
   <section class="rmp-summary" id="summary" aria-labelledby="rmp-summary-title">
     <div class="container">
       <div class="rmp-section-head">
-        <div class="rmp-kicker">{t(tr, 'red_mercury.overview_label')}</div>
         <h2 id="rmp-summary-title">{t(tr, 'red_mercury.overview_title')}</h2>
         <p>{t(tr, 'red_mercury.overview_desc1')}</p>
       </div>
@@ -373,7 +392,6 @@ const speakableSchema = {
   <section class="rmp-gallery" aria-labelledby="rmp-gallery-title">
     <div class="container">
       <div class="rmp-section-head rmp-section-head-tight">
-        <div class="rmp-kicker">{t(tr, 'red_mercury.overview_label')}</div>
         <h2 id="rmp-gallery-title">{t(tr, 'red_mercury.docs_label')}</h2>
         <p>{t(tr, 'red_mercury.overview_desc2')}</p>
       </div>
@@ -441,7 +459,6 @@ const speakableSchema = {
   <section class="rmp-specs" id="specifications" aria-labelledby="rmp-specs-title">
     <div class="container rmp-specs-grid">
       <div class="rmp-specs-copy">
-        <div class="rmp-kicker">{t(tr, 'red_mercury.tech_label')}</div>
         <h2 id="rmp-specs-title">{t(tr, 'red_mercury.tech_title')}</h2>
         <p>{t(tr, 'red_mercury.tech_desc')}</p>
 
@@ -474,7 +491,6 @@ const speakableSchema = {
   <section class="rmp-video" id="video" aria-labelledby="rmp-video-title">
     <div class="container">
       <div class="rmp-section-head">
-        <div class="rmp-kicker">{t(tr, 'red_mercury.video_label')}</div>
         <h2 id="rmp-video-title">{t(tr, 'red_mercury.video_title')}</h2>
         <p>{t(tr, 'red_mercury.video_desc')}</p>
       </div>
@@ -541,7 +557,6 @@ const speakableSchema = {
   <section class="rmp-docs" id="documents" aria-labelledby="rmp-docs-title">
     <div class="container">
       <div class="rmp-section-head">
-        <div class="rmp-kicker">{t(tr, 'red_mercury.docs_label')}</div>
         <h2 id="rmp-docs-title">{t(tr, 'red_mercury.docs_label')}</h2>
         <p>{t(tr, 'red_mercury.doc_tds_desc')}</p>
       </div>
@@ -567,7 +582,6 @@ const speakableSchema = {
   <section class="rmp-columns" id="handling" aria-labelledby="rmp-columns-title">
     <div class="container">
       <div class="rmp-section-head rmp-section-head-tight">
-        <div class="rmp-kicker">{t(tr, 'red_mercury.safety_label')}</div>
         <h2 id="rmp-columns-title">{t(tr, 'red_mercury.safety_title')}</h2>
       </div>
 
@@ -599,7 +613,6 @@ const speakableSchema = {
   <section class="rmp-links" aria-labelledby="rmp-links-title">
     <div class="container">
       <div class="rmp-section-head rmp-section-head-tight">
-        <div class="rmp-kicker">{t(tr, 'red_mercury.benefits_label')}</div>
         <h2 id="rmp-links-title">{t(tr, 'red_mercury.benefits_title')}</h2>
         <p>{t(tr, 'red_mercury.benefits_desc')}</p>
       </div>
@@ -619,7 +632,6 @@ const speakableSchema = {
   <section class="rmp-quote" id="quote" aria-labelledby="rmp-quote-title">
     <div class="container rmp-quote-grid">
       <div class="rmp-quote-copy">
-        <div class="rmp-kicker">{t(tr, 'red_mercury.quote_label')}</div>
         <h2 id="rmp-quote-title">{t(tr, 'red_mercury.quote_title')}</h2>
         <p>{t(tr, 'red_mercury.quote_desc')}</p>
 
@@ -627,6 +639,7 @@ const speakableSchema = {
           <span><i class="fas fa-clock"></i> {t(tr, 'red_mercury.quote_badge1')}</span>
           <span><i class="fas fa-file-shield"></i> {t(tr, 'red_mercury.quote_badge2')}</span>
           <span><i class="fas fa-globe"></i> {t(tr, 'red_mercury.quote_badge3')}</span>
+          <a href="https://wa.me/66954180433" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--primary-dark);"><i class="fab fa-whatsapp"></i> +66954180433</a>
         </div>
 
         <ol class="rmp-checklist">
@@ -671,7 +684,6 @@ const speakableSchema = {
   <section class="rmp-faq" aria-labelledby="rmp-faq-title">
     <div class="container">
       <div class="rmp-section-head">
-        <div class="rmp-kicker">{t(tr, 'red_mercury.faq_label')}</div>
         <h2 id="rmp-faq-title">{t(tr, 'red_mercury.faq_title')}</h2>
       </div>
 

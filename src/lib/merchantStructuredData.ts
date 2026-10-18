@@ -65,8 +65,9 @@ export function getQuoteBasedOffer(offerUrl: string, policyUrl: string, shipping
     seller: {
       '@type': 'Organization',
       name: 'UE Chemicals',
-      url: 'https://useful-chemicals.com',
+      url: 'https://useful-chemicals.com/',
       email: 'info@useful-chemicals.com',
+      telephone: '+66954180433',
     },
     priceSpecification: {
       '@type': 'PriceSpecification',

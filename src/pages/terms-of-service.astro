@@ -37,7 +37,6 @@ const liabilityItems = [terms.liability_item1, terms.liability_item2, terms.liab
   <section class="lg-hero">
     <div class="lg-hero-bg"></div>
     <div class="container lg-hero-inner">
-      <div class="lg-hero-badge"><i class="fas fa-file-contract"></i> {terms.hero_badge}</div>
       <h1>{terms.title}</h1>
       <p class="lg-hero-sub">{terms.hero_sub}</p>
       <div class="lg-hero-meta">
@@ -101,7 +100,7 @@ const liabilityItems = [terms.liability_item1, terms.liability_item2, terms.liab
             <h3>{terms.shipping_title}</h3>
             <ul>
               {shippingItems.map((item) => <li>{item}</li>)}
-              <li>{terms.shipping_item4_prefix} <a href={lp("/shipping")}>{terms.shipping_item4_link}</a> {terms.shipping_item4_suffix}</li>
+              <li>{terms.shipping_item4_prefix} <a href={lp("/shipping/")}>{terms.shipping_item4_link}</a> {terms.shipping_item4_suffix}</li>
             </ul>
           </div>
 
@@ -164,6 +163,7 @@ const liabilityItems = [terms.liability_item1, terms.liability_item2, terms.liab
             <p>{terms.contact_intro}</p>
             <div class="lg-contact-card">
               <div><i class="fas fa-envelope"></i> <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a></div>
+              <div><i class="fab fa-whatsapp"></i> <a href="https://wa.me/66954180433" target="_blank" rel="noopener noreferrer">+66954180433</a></div>
               <div><i class="fas fa-map-marker-alt"></i> {t(tr, 'contact.visit_value')}</div>
             </div>
           </div>

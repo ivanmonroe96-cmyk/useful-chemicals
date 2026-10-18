@@ -17,8 +17,17 @@ const lp = (path: string) => localizedPath(path, lang);
 const key = (name: string) => `${namespace}.${name}`;
 
 const productName = t(tr, productNavKey);
-const title = t(tr, key('meta_title'));
-const description = t(tr, key('meta_desc'));
+const isRed = namespace === 'red_mercury';
+const productSlug = isRed ? '/products/red-mercury/' : '/products/silver-mercury/';
+const title = isRed
+  ? t(tr, 'blog.post4_title')
+  : t(tr, 'blog.post1_title');
+const description = isRed
+  ? t(tr, 'blog.post4_excerpt')
+  : t(tr, 'blog.post1_excerpt');
+const guideHeading = isRed
+  ? t(tr, 'blog.post4_title')
+  : t(tr, 'blog.post1_title');
 const articleUrl = `https://useful-chemicals.com${lp(slug)}`;
 const articleDate = new Intl.DateTimeFormat(lang, { month: 'long', year: 'numeric' }).format(new Date(Date.UTC(2026, 3, 1)));
 
@@ -41,7 +50,7 @@ const applications = [1, 2, 3].map((item) => ({
 
 const safetyItems = [1, 2, 3, 4].map((item) => t(tr, key(`safety${item}`)));
 
-const docs = namespace === 'red_mercury'
+const docs = isRed
   ? [
       ['doc_tds_title', 'doc_tds_desc'],
       ['doc_sds_title', 'doc_sds_desc'],
@@ -55,13 +64,22 @@ const docs = namespace === 'red_mercury'
 const articleSchema = {
   '@context': 'https://schema.org',
   '@type': 'Article',
-  headline: title,
+  headline: guideHeading,
   description,
-  author: { '@type': 'Organization', name: 'UE Chemicals', url: 'https://useful-chemicals.com' },
-  publisher: { '@type': 'Organization', name: 'UE Chemicals' },
+  author: { '@type': 'Person', name: 'UE Chemicals Lab Team', jobTitle: 'Chemical Safety Specialists', url: 'https://useful-chemicals.com/about/', worksFor: { '@type': 'Organization', name: 'UE Chemicals', url: 'https://useful-chemicals.com/' } },
+  publisher: {
+    '@type': 'Organization',
+    name: 'UE Chemicals',
+    logo: { '@type': 'ImageObject', url: 'https://useful-chemicals.com/images/favicon.png' },
+  },
   datePublished: '2026-04-26',
-  dateModified: '2026-04-26',
+  dateModified: '2026-10-18',
   image: `https://useful-chemicals.com${image}`,
+  about: {
+    '@type': 'Product',
+    name: productName,
+    url: `https://useful-chemicals.com${lp(productSlug)}`,
+  },
   mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
 };
 
@@ -70,8 +88,8 @@ const breadcrumbSchema = {
   '@type': 'BreadcrumbList',
   itemListElement: [
     { '@type': 'ListItem', position: 1, name: t(tr, 'nav.home'), item: `https://useful-chemicals.com${lp('/')}` },
-    { '@type': 'ListItem', position: 2, name: t(tr, 'nav.blog'), item: `https://useful-chemicals.com${lp('/blog')}` },
-    { '@type': 'ListItem', position: 3, name: productName, item: articleUrl },
+    { '@type': 'ListItem', position: 2, name: t(tr, 'nav.blog'), item: `https://useful-chemicals.com${lp('/blog/')}` },
+    { '@type': 'ListItem', position: 3, name: guideHeading, item: articleUrl },
   ],
 };
 ---
@@ -79,17 +97,16 @@ const breadcrumbSchema = {
 <BaseLayout lang={lang} title={title} description={description} activePage="blog" ogImage={image} jsonLd={[articleSchema, breadcrumbSchema]}>
   <section class="guide-hero">
     <div class="guide-hero-media">
-      <img src={image} alt={title} />
+      <img src={image} alt={guideHeading} />
       <div class="guide-hero-shade"></div>
     </div>
     <div class="container guide-hero-inner">
-      <a class="guide-back" href={lp('/blog')}><i class="fas fa-arrow-left"></i> {t(tr, 'nav.blog')}</a>
-      <span class="guide-badge">{t(tr, 'blog.cat_products')}</span>
-      <h1>{t(tr, key('hero_title'))}</h1>
+      <a class="guide-back" href={lp('/blog/')}><i class="fas fa-arrow-left"></i> {t(tr, 'nav.blog')}</a>
+      <h1>{guideHeading}</h1>
       <p>{t(tr, key('hero_sub'))}</p>
       <div class="guide-meta">
         <span><i class="fas fa-calendar"></i> {articleDate}</span>
-        <span><i class="fas fa-flask"></i> {productName}</span>
+        <span><i class="fas fa-flask"></i> <a href={lp(productSlug)} style="color: inherit; text-decoration: underline;">{productName}</a></span>
       </div>
     </div>
   </section>
@@ -100,6 +117,9 @@ const breadcrumbSchema = {
         <h2>{t(tr, key('overview_title'))}</h2>
         <p>{t(tr, key('overview_desc1'))}</p>
         <p>{t(tr, key('overview_desc2'))}</p>
+        <p>
+          <a href={lp(productSlug)}><strong>{t(tr, 'common.view_product')}: {productName} (COA, SDS & Bulk Quote) &rarr;</strong></a>
+        </p>
       </section>
 
       <section class="guide-section">
@@ -155,8 +175,11 @@ const breadcrumbSchema = {
         <h2>{t(tr, key('quote_title'))}</h2>
         <p>{t(tr, key('quote_desc'))}</p>
         <div class="guide-actions">
-          <a href={lp(namespace === 'red_mercury' ? '/products/red-mercury' : '/products/silver-mercury')} class="btn btn-outline">{t(tr, 'common.view_product')} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp('/contact')} class="btn btn-accent">{t(tr, 'common.get_quote')} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp(productSlug)} class="btn btn-outline">{t(tr, 'common.view_product')} — {productName} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp('/wholesale/')} class="btn btn-outline">{t(tr, 'nav.wholesale')} <i class="fas fa-boxes-stacked"></i></a>
+          <a href={lp('/shipping/')} class="btn btn-outline">{t(tr, 'footer.shipping')} <i class="fas fa-truck-fast"></i></a>
+          <a href={lp('/contact/')} class="btn btn-accent">{t(tr, 'common.get_quote')} <i class="fas fa-arrow-right"></i></a>
+          <a href="https://wa.me/66954180433" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp +66954180433</a>
         </div>
       </section>
     </div>

@@ -19,12 +19,12 @@ const lp = (path: string) => localizedPath(path, lang);
     </div>
     <div class="container app-hero-inner">
       <div class="app-hero-content">
-        <div class="app-hero-badge"><i class="fas fa-industry"></i> {t(tr, "applications.hero_badge")}</div>
         <h1>{t(tr, "applications.hero_title")}</h1>
         <p class="app-hero-sub">{t(tr, "applications.hero_sub")}</p>
         <div class="app-hero-actions">
-          <a href={lp("/contact")} class="btn btn-accent">{t(tr, "common.request_consultation")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "common.our_products")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact/")} class="btn btn-accent">{t(tr, "common.request_consultation")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products/")} class="btn btn-outline-white">{t(tr, "common.our_products")} <i class="fas fa-arrow-right"></i></a>
+          <a href="https://wa.me/66954180433" class="btn btn-outline-white" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
         </div>
       </div>
       <div class="app-hero-stats">
@@ -75,7 +75,6 @@ const lp = (path: string) => localizedPath(path, lang);
     <div class="container">
       <div class="chem-showcase-header">
         <div>
-          <div class="section-label">{t(tr, "applications.showcase_label")}</div>
           <h2>{t(tr, "applications.showcase_title")}</h2>
         </div>
         <p class="chem-showcase-intro">{t(tr, "applications.showcase_intro")}</p>
@@ -89,7 +88,6 @@ const lp = (path: string) => localizedPath(path, lang);
         <div class="chem-block-label">01</div>
       </div>
       <div class="chem-block-content">
-        <div class="chem-block-tag">{t(tr, "applications.cal_tag")}</div>
         <h3>{t(tr, "applications.cal_title")}</h3>
         <div class="chem-apps">
           <div class="chem-app-item">
@@ -114,7 +112,10 @@ const lp = (path: string) => localizedPath(path, lang);
             </div>
           </div>
         </div>
-        <a href={lp("/products/caluanie")} class="btn btn-primary">{t(tr, "common.view_product")} <i class="fas fa-arrow-right"></i></a>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href={lp("/products/caluanie/")} class="btn btn-primary">{t(tr, "common.view_product")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/wholesale/")} class="btn btn-outline">{t(tr, "nav.wholesale")} <i class="fas fa-boxes-stacked"></i></a>
+        </div>
       </div>
     </div>
 
@@ -125,7 +126,6 @@ const lp = (path: string) => localizedPath(path, lang);
         <div class="chem-block-label">02</div>
       </div>
       <div class="chem-block-content">
-        <div class="chem-block-tag">{t(tr, "applications.red_tag")}</div>
         <h3>{t(tr, "applications.red_title")}</h3>
         <div class="chem-apps">
           <div class="chem-app-item">
@@ -150,7 +150,10 @@ const lp = (path: string) => localizedPath(path, lang);
             </div>
           </div>
         </div>
-        <a href={lp("/products/red-mercury")} class="btn btn-primary">{t(tr, "common.view_product")} <i class="fas fa-arrow-right"></i></a>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href={lp("/products/red-mercury/")} class="btn btn-primary">{t(tr, "common.view_product")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/wholesale/")} class="btn btn-outline">{t(tr, "nav.wholesale")} <i class="fas fa-boxes-stacked"></i></a>
+        </div>
       </div>
     </div>
 
@@ -161,7 +164,6 @@ const lp = (path: string) => localizedPath(path, lang);
         <div class="chem-block-label">03</div>
       </div>
       <div class="chem-block-content">
-        <div class="chem-block-tag">{t(tr, "applications.silver_tag")}</div>
         <h3>{t(tr, "applications.silver_title")}</h3>
         <div class="chem-apps">
           <div class="chem-app-item">
@@ -186,7 +188,10 @@ const lp = (path: string) => localizedPath(path, lang);
             </div>
           </div>
         </div>
-        <a href={lp("/products/silver-mercury")} class="btn btn-primary">{t(tr, "common.view_product")} <i class="fas fa-arrow-right"></i></a>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;">
+          <a href={lp("/products/silver-mercury/")} class="btn btn-primary">{t(tr, "common.view_product")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/wholesale/")} class="btn btn-outline">{t(tr, "nav.wholesale")} <i class="fas fa-boxes-stacked"></i></a>
+        </div>
       </div>
     </div>
   </section>
@@ -195,7 +200,6 @@ const lp = (path: string) => localizedPath(path, lang);
   <section class="app-industries">
     <div class="container">
       <div class="app-industries-header">
-        <div class="section-label">{t(tr, "applications.industries_label")}</div>
         <h2>{t(tr, "applications.industries_title")}</h2>
       </div>
       <div class="app-industries-grid">
@@ -239,7 +243,6 @@ const lp = (path: string) => localizedPath(path, lang);
       <img loading="lazy" src="/images/about/BTC-CHONBURI-PLANT-2-5.6-scaled.jpg" alt={t(tr, "applications.split_title")} />
     </div>
     <div class="app-split-content">
-      <div class="section-label">{t(tr, "applications.split_label")}</div>
       <h2>{t(tr, "applications.split_title")}</h2>
       <p>{t(tr, "applications.split_desc")}</p>
       <div class="app-split-features">
@@ -258,7 +261,7 @@ const lp = (path: string) => localizedPath(path, lang);
           </div>
         </div>
       </div>
-      <a href={lp("/contact")} class="btn btn-primary">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+      <a href={lp("/contact/")} class="btn btn-primary">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
     </div>
   </section>
 
@@ -267,13 +270,12 @@ const lp = (path: string) => localizedPath(path, lang);
     <div class="container">
       <div class="app-products-header">
         <div>
-          <div class="section-label">{t(tr, "applications.products_label")}</div>
           <h2>{t(tr, "applications.products_title")}</h2>
         </div>
-        <a href={lp("/products")} class="btn btn-outline">{t(tr, "common.view_all_products")} <i class="fas fa-arrow-right"></i></a>
+        <a href={lp("/products/")} class="btn btn-outline">{t(tr, "common.view_all_products")} <i class="fas fa-arrow-right"></i></a>
       </div>
       <div class="app-products-grid">
-        <a href={lp("/products/caluanie")} class="app-prod-card">
+        <a href={lp("/products/caluanie/")} class="app-prod-card">
           <div class="app-prod-img">
             <img loading="lazy" src="/images/home-caluanie-product.jpeg" alt={t(tr, "applications.cal_title")} />
             <div class="app-prod-num">01</div>
@@ -284,7 +286,7 @@ const lp = (path: string) => localizedPath(path, lang);
             <span class="app-prod-link">{t(tr, "common.learn_more")} <i class="fas fa-arrow-right"></i></span>
           </div>
         </a>
-        <a href={lp("/products/red-mercury")} class="app-prod-card">
+        <a href={lp("/products/red-mercury/")} class="app-prod-card">
           <div class="app-prod-img">
             <img loading="lazy" src="/images/home-red-mercury-product.jpeg" alt={t(tr, "applications.red_title")} />
             <div class="app-prod-num">02</div>
@@ -295,7 +297,7 @@ const lp = (path: string) => localizedPath(path, lang);
             <span class="app-prod-link">{t(tr, "common.learn_more")} <i class="fas fa-arrow-right"></i></span>
           </div>
         </a>
-        <a href={lp("/products/silver-mercury")} class="app-prod-card">
+        <a href={lp("/products/silver-mercury/")} class="app-prod-card">
           <div class="app-prod-img">
             <img loading="lazy" src="/images/home-silver-mercury-product.jpeg" alt={t(tr, "applications.silver_title")} />
             <div class="app-prod-num">03</div>
@@ -319,8 +321,9 @@ const lp = (path: string) => localizedPath(path, lang);
           <p>{t(tr, "applications.cta_desc")}</p>
         </div>
         <div class="app-cta-actions">
-          <a href={lp("/contact")} class="btn btn-white">{t(tr, "common.get_quote")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/ordering")} class="btn btn-outline-white">{t(tr, "common.how_to_order")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact/")} class="btn btn-white">{t(tr, "common.get_quote")} <i class="fas fa-arrow-right"></i></a>
+          <a href="https://wa.me/66954180433" class="btn btn-outline-white" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
+          <a href={lp("/ordering/")} class="btn btn-outline-white">{t(tr, "common.how_to_order")} <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>

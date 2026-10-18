@@ -40,12 +40,12 @@ const homeFaqSchema = {
     </div>
     <div class="container hero-inner">
       <div class="hero-content">
-        <div class="hero-badge">{t(tr, "home.hero_badge")}</div>
         <h1>{t(tr, "home.hero_title")}</h1>
         <p class="hero-sub">{t(tr, "home.hero_sub")}</p>
         <div class="hero-actions">
-          <a href={lp("/products")} class="btn btn-accent">{t(tr, "common.explore_products")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/contact")} class="btn btn-outline-white">{t(tr, "common.get_quote")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products/")} class="btn btn-accent">{t(tr, "common.explore_products")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/wholesale/")} class="btn btn-outline-white">{t(tr, "nav.wholesale")} <i class="fas fa-boxes-stacked"></i></a>
+          <a href="https://wa.me/66954180433" class="btn btn-outline-white" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
         </div>
       </div>
       <div class="hero-stats">
@@ -95,15 +95,14 @@ const homeFaqSchema = {
     <div class="container">
       <div class="hp-section-header">
         <div>
-          <div class="section-label">{t(tr, "common.our_products")}</div>
           <h2>{t(tr, "home.products_title")}</h2>
         </div>
-        <a href={lp("/products")} class="btn btn-outline">{t(tr, "common.view_all_products")} <i class="fas fa-arrow-right"></i></a>
+        <a href={lp("/products/")} class="btn btn-outline">{t(tr, "common.view_all_products")} <i class="fas fa-arrow-right"></i></a>
       </div>
 
       <div class="hp-products-grid">
         <!-- Card 1 -->
-        <a href={lp("/products/caluanie")} class="hp-product-card">
+        <a href={lp("/products/caluanie/")} class="hp-product-card">
           <div class="hp-product-img">
             <img src="/images/caluanie-muelear-oxidize-for-sale.jpg" alt={t(tr, "home.product1_name")} />
             <div class="hp-product-num">01</div>
@@ -116,7 +115,7 @@ const homeFaqSchema = {
         </a>
 
         <!-- Card 2 -->
-        <a href={lp("/products/red-mercury")} class="hp-product-card">
+        <a href={lp("/products/red-mercury/")} class="hp-product-card">
           <div class="hp-product-img">
             <img loading="lazy" src="/images/red-liquid-mercury-for-sale-usa.png" alt={t(tr, "home.product2_name")} />
             <div class="hp-product-num">02</div>
@@ -129,7 +128,7 @@ const homeFaqSchema = {
         </a>
 
         <!-- Card 3 -->
-        <a href={lp("/products/silver-mercury")} class="hp-product-card">
+        <a href={lp("/products/silver-mercury/")} class="hp-product-card">
           <div class="hp-product-img">
             <img loading="lazy" src="/images/silver-liquid-mercury-for-sale.png" alt={t(tr, "home.product3_name")} />
             <div class="hp-product-num">03</div>
@@ -150,7 +149,6 @@ const homeFaqSchema = {
       <img loading="lazy" src="/images/about/BTC-P2-1.jpg" alt={t(tr, "home.about_title")} />
     </div>
     <div class="hp-about-content">
-      <div class="section-label">{t(tr, "home.about_label")}</div>
       <h2>{t(tr, "home.about_title")}</h2>
       <p>{t(tr, "home.about_desc")}</p>
       <div class="hp-about-features">
@@ -169,7 +167,7 @@ const homeFaqSchema = {
           </div>
         </div>
       </div>
-      <a href={lp("/about")} class="btn btn-primary">{t(tr, "common.learn_about_us")} <i class="fas fa-arrow-right"></i></a>
+      <a href={lp("/about/")} class="btn btn-primary">{t(tr, "common.learn_about_us")} <i class="fas fa-arrow-right"></i></a>
     </div>
   </section>
 
@@ -177,7 +175,6 @@ const homeFaqSchema = {
   <section class="hp-applications">
     <div class="container">
       <div class="text-center">
-        <div class="section-label">{t(tr, "home.apps_label")}</div>
         <h2>{t(tr, "home.apps_title")}</h2>
       </div>
       <div class="hp-app-grid">
@@ -213,7 +210,7 @@ const homeFaqSchema = {
         </div>
       </div>
       <div class="text-center" style="margin-top:50px;">
-        <a href={lp("/applications")} class="btn btn-primary">{t(tr, "common.see_all_applications")} <i class="fas fa-arrow-right"></i></a>
+        <a href={lp("/applications/")} class="btn btn-primary">{t(tr, "common.see_all_applications")} <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </section>
@@ -223,7 +220,6 @@ const homeFaqSchema = {
     <div class="container">
       <div class="hp-why-grid">
         <div class="hp-why-content">
-          <div class="section-label">{t(tr, "home.why_label")}</div>
           <h2>{t(tr, "home.why_title")}</h2>
           <p>{t(tr, "home.why_desc")}</p>
         </div>
@@ -265,7 +261,6 @@ const homeFaqSchema = {
   <section class="hp-testimonials">
     <div class="container">
       <div class="text-center" style="margin-bottom:50px;">
-        <div class="section-label">{t(tr, "home.testimonials_label")}</div>
         <h2>{t(tr, "home.testimonials_title")}</h2>
       </div>
       <div class="hp-test-grid">
@@ -317,7 +312,6 @@ const homeFaqSchema = {
     <div class="container">
       <div class="hp-section-header">
         <div>
-          <div class="section-label">{t(tr, "home.faq_label")}</div>
           <h2>{t(tr, "home.faq_title")}</h2>
         </div>
       </div>
@@ -359,8 +353,9 @@ const homeFaqSchema = {
           <p>{t(tr, "home.cta_desc")}</p>
         </div>
         <div class="hp-cta-actions">
-          <a href={lp("/contact")} class="btn btn-white">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/ordering")} class="btn btn-outline-white">{t(tr, "common.how_to_order")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact/")} class="btn btn-white">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+          <a href="https://wa.me/66954180433" class="btn btn-outline-white" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
+          <a href={lp("/ordering/")} class="btn btn-outline-white">{t(tr, "common.how_to_order")} <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>

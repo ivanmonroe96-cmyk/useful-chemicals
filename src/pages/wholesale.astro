@@ -33,12 +33,12 @@ const wholesaleSchema = {
     </div>
     <div class="container wh-hero-inner">
       <div class="wh-hero-content">
-        <div class="wh-hero-badge"><i class="fas fa-boxes-stacked"></i> {t(tr, "wholesale.hero_badge")}</div>
-        <h1>{t(tr, "wholesale.hero_title").split(' ').slice(0, 2).join(' ')}<br />{t(tr, "wholesale.hero_title").split(' ').slice(2).join(' ')}</h1>
+        <h1>{t(tr, "wholesale.hero_title")}</h1>
         <p class="wh-hero-sub">{t(tr, "wholesale.hero_sub")}</p>
         <div class="wh-hero-actions">
-          <a href={lp("/contact")} class="btn btn-accent">{t(tr, "wholesale.request_quote")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "wholesale.view_products")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact/")} class="btn btn-accent">{t(tr, "wholesale.request_quote")} <i class="fas fa-arrow-right"></i></a>
+          <a href="https://wa.me/66954180433" class="btn btn-outline-white" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
+          <a href={lp("/products/")} class="btn btn-outline-white">{t(tr, "wholesale.view_products")} <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
       <div class="wh-hero-highlights">
@@ -54,7 +54,6 @@ const wholesaleSchema = {
   <section class="wh-benefits">
     <div class="container">
       <div class="wh-section-header">
-        <div class="section-label">{t(tr, "wholesale.benefits_label")}</div>
         <h2>{t(tr, "wholesale.benefits_title")}</h2>
         <p>{t(tr, "wholesale.benefits_desc")}</p>
       </div>
@@ -103,7 +102,6 @@ const wholesaleSchema = {
   <section class="wh-products">
     <div class="container">
       <div class="wh-section-header">
-        <div class="section-label">{t(tr, "wholesale.products_label")}</div>
         <h2>{t(tr, "wholesale.products_title")}</h2>
       </div>
       <div class="wh-products-grid">
@@ -112,7 +110,6 @@ const wholesaleSchema = {
           <div class="wh-product-inner">
             <div class="wh-product-head">
               <h3>{t(tr, "nav.caluanie")}</h3>
-              <span class="wh-product-badge">{t(tr, "wholesale.cal_badge")}</span>
             </div>
             <ul class="wh-product-specs">
               <li><span class="wh-spec-label">{t(tr, "products.caluanie_spec1_label")}</span><span>{t(tr, "wholesale.cal_app")}</span></li>
@@ -121,7 +118,7 @@ const wholesaleSchema = {
               <li><span class="wh-spec-label">{t(tr, "common.moq")}</span><span>{t(tr, "wholesale.cal_moq")}</span></li>
               <li class="wh-spec-stock"><i class="fas fa-circle-check"></i> {t(tr, "wholesale.cal_stock")}</li>
             </ul>
-            <a href={lp("/products/caluanie")} class="wh-product-btn">{t(tr, "wholesale.view_details")} <i class="fas fa-arrow-right"></i></a>
+            <a href={lp("/products/caluanie/")} class="wh-product-btn">{t(tr, "wholesale.view_details")} <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
         <div class="wh-product-card">
@@ -129,7 +126,6 @@ const wholesaleSchema = {
           <div class="wh-product-inner">
             <div class="wh-product-head">
               <h3>{t(tr, "nav.red_mercury")}</h3>
-              <span class="wh-product-badge wh-badge-red">{t(tr, "red_mercury.tech_formula_val")}</span>
             </div>
             <ul class="wh-product-specs">
               <li><span class="wh-spec-label">{t(tr, "red_mercury.tech_purity")}</span><span>{t(tr, "wholesale.red_purity")}</span></li>
@@ -138,7 +134,7 @@ const wholesaleSchema = {
               <li><span class="wh-spec-label">{t(tr, "red_mercury.tech_packs")}</span><span>{t(tr, "wholesale.red_packs")}</span></li>
               <li class="wh-spec-stock"><i class="fas fa-circle-check"></i> {t(tr, "wholesale.red_stock")}</li>
             </ul>
-            <a href={lp("/products/red-mercury")} class="wh-product-btn">{t(tr, "wholesale.view_details")} <i class="fas fa-arrow-right"></i></a>
+            <a href={lp("/products/red-mercury/")} class="wh-product-btn">{t(tr, "wholesale.view_details")} <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
         <div class="wh-product-card">
@@ -146,7 +142,6 @@ const wholesaleSchema = {
           <div class="wh-product-inner">
             <div class="wh-product-head">
               <h3>{t(tr, "nav.silver_mercury")}</h3>
-              <span class="wh-product-badge wh-badge-silver">{t(tr, "silver_mercury.tech_cas_val")}</span>
             </div>
             <ul class="wh-product-specs">
               <li><span class="wh-spec-label">{t(tr, "silver_mercury.tech_purity")}</span><span>{t(tr, "wholesale.silver_purity")}</span></li>
@@ -155,7 +150,7 @@ const wholesaleSchema = {
               <li><span class="wh-spec-label">{t(tr, "common.moq")}</span><span>{t(tr, "wholesale.silver_moq")}</span></li>
               <li class="wh-spec-stock"><i class="fas fa-circle-check"></i> {t(tr, "wholesale.silver_stock")}</li>
             </ul>
-            <a href={lp("/products/silver-mercury")} class="wh-product-btn">{t(tr, "wholesale.view_details")} <i class="fas fa-arrow-right"></i></a>
+            <a href={lp("/products/silver-mercury/")} class="wh-product-btn">{t(tr, "wholesale.view_details")} <i class="fas fa-arrow-right"></i></a>
           </div>
         </div>
       </div>
@@ -166,7 +161,6 @@ const wholesaleSchema = {
   <section class="wh-process">
     <div class="container">
       <div class="wh-section-header">
-        <div class="section-label">{t(tr, "wholesale.process_label")}</div>
         <h2>{t(tr, "wholesale.process_title")}</h2>
       </div>
       <div class="wh-process-track">
@@ -209,7 +203,6 @@ const wholesaleSchema = {
   <section class="wh-industries">
     <div class="container">
       <div class="wh-section-header">
-        <div class="section-label">{t(tr, "wholesale.industries_label")}</div>
         <h2>{t(tr, "wholesale.industries_title")}</h2>
       </div>
       <div class="wh-industries-grid">
@@ -265,8 +258,9 @@ const wholesaleSchema = {
         <h2>{t(tr, "wholesale.cta_title")}</h2>
         <p>{t(tr, "wholesale.cta_desc")}</p>
         <div class="wh-cta-actions">
-          <a href={lp("/contact")} class="btn btn-white">{t(tr, "wholesale.cta_quote")}
+          <a href={lp("/contact/")} class="btn btn-white">{t(tr, "wholesale.cta_quote")}
             <i class="fas fa-arrow-right"></i></a>
+          <a href="https://wa.me/66954180433" class="btn btn-outline-white" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
           <a href="mailto:info@useful-chemicals.com" class="btn btn-outline-white">{t(tr, "wholesale.cta_email")} <i class="fas fa-envelope"></i></a>
         </div>
       </div>

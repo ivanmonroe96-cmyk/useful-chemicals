@@ -155,7 +155,6 @@ const certsSchema = {
     </div>
     <div class="container cq-hero-inner">
       <div class="cq-hero-content">
-        <div class="cq-hero-badge"><i class="fas fa-certificate"></i> {certs.hero_badge}</div>
         <h1>{certs.hero_title}</h1>
         <p class="cq-hero-sub">{certs.hero_sub}</p>
         <div class="cq-hero-metrics">
@@ -178,11 +177,15 @@ const certsSchema = {
     <div class="container">
       <div class="cq-overview-grid">
         <div class="cq-overview-text">
-          <div class="section-label">{certs.overview_label}</div>
           <h2>{certs.overview_title}</h2>
           <p>{certs.overview_desc1}</p>
           <p>{certs.overview_desc2}</p>
-          <a href={lp("/contact")} class="btn btn-accent" style="margin-top:16px;">{t(tr, "common.request_documentation")} <i class="fas fa-arrow-right"></i></a>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:20px;">
+            <a href={lp("/products/caluanie/")} class="btn btn-outline">{t(tr, "nav.caluanie")} <i class="fas fa-arrow-right"></i></a>
+            <a href={lp("/products/red-mercury/")} class="btn btn-outline">{t(tr, "nav.red_mercury")} <i class="fas fa-arrow-right"></i></a>
+            <a href={lp("/products/silver-mercury/")} class="btn btn-outline">{t(tr, "nav.silver_mercury")} <i class="fas fa-arrow-right"></i></a>
+          </div>
+          <a href={lp("/contact/")} class="btn btn-accent" style="margin-top:16px;">{t(tr, "common.request_documentation")} <i class="fas fa-arrow-right"></i></a>
         </div>
         <div class="cq-overview-visual">
           <div class="cq-trust-badge">
@@ -204,7 +207,6 @@ const certsSchema = {
   <section class="cq-certs">
     <div class="container">
       <div class="cq-section-header">
-        <div class="section-label">{certs.certs_label}</div>
         <h2>{certs.certs_title}</h2>
         <p>{certs.certs_desc}</p>
       </div>
@@ -229,7 +231,6 @@ const certsSchema = {
   <section class="cq-docs">
     <div class="container">
       <div class="cq-section-header">
-        <div class="section-label">{certs.docs_label}</div>
         <h2>{certs.docs_title}</h2>
         <p>{certs.docs_desc}</p>
       </div>
@@ -253,7 +254,6 @@ const certsSchema = {
   <section class="cq-process">
     <div class="container">
       <div class="cq-section-header">
-        <div class="section-label">{certs.qc_label}</div>
         <h2>{certs.qc_title}</h2>
         <p>{certs.qc_desc}</p>
       </div>
@@ -282,8 +282,9 @@ const certsSchema = {
         <h2>{certs.cta_title}</h2>
         <p>{certs.cta_desc}</p>
         <div class="cq-cta-actions">
-          <a href={lp("/contact")} class="btn btn-white">{t(tr, "common.request_documentation")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "common.browse_products")} <i class="fas fa-flask"></i></a>
+          <a href={lp("/contact/")} class="btn btn-white">{t(tr, "common.request_documentation")} <i class="fas fa-arrow-right"></i></a>
+          <a href="https://wa.me/66954180433" class="btn btn-outline-white" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i> +66954180433</a>
+          <a href={lp("/products/")} class="btn btn-outline-white">{t(tr, "common.browse_products")} <i class="fas fa-flask"></i></a>
         </div>
       </div>
     </div>

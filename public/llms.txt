@@ -5,37 +5,38 @@
 ## Company Information
 
 - **Name**: UE Chemicals
-- **Website**: https://useful-chemicals.com
+- **Website**: https://useful-chemicals.com/
 - **Location**: Bangkok, 10110, Thailand
-- **Contact**: info@useful-chemicals.com
+- **Email**: info@useful-chemicals.com
+- **WhatsApp / Phone**: +66954180433 (https://wa.me/66954180433)
 - **Industry**: Industrial Chemical Manufacturing & Supply
 
 ## Products
 
 ### Caluanie Muelear Oxidize
 - Industrial liquid oxidizer used in metalworking, refining, mineral extraction, and chemical manufacturing
-- High-density formula manufactured in Thailand
-- Available in wholesale and bulk quantities
+- High-density formula (~1.2 g/cm³) manufactured in Bangkok, Thailand
+- Available in 1 L, 5 L, 10 L, 25 L containers and 200 L drums
 - SKU: UEC-CMO-HQ
-- Product page: https://useful-chemicals.com/products/caluanie
+- Product page: https://useful-chemicals.com/products/caluanie/
 
-### Red Liquid Mercury
-- Chemical formula: Sb₂O₇Hg₂
-- Purity: 99.999% (5N Grade)
+### Red Liquid Mercury 20/20-258
+- Chemical formula: Sb₂O₇Hg₂ (Hg₂Sb₂O₇)
+- Purity: ≥99.995% (5N Grade)
 - Density: 20.2 g/cm³
-- Used in research, industrial, and specialized applications
-- SKU: UEC-RLM-5N
-- Product page: https://useful-chemicals.com/products/red-mercury
+- Used in research, chemical synthesis, and specialized industrial applications
+- SKU: UEC-RM-2020-258
+- Product page: https://useful-chemicals.com/products/red-mercury/
 
 ### Silver Liquid Mercury
 - Chemical formula: Hg (elemental mercury)
-- Purity: 99.99% (4N Grade)
+- Purity: ≥99.99% (4N Grade)
 - CAS Number: 7439-97-6
-- Density: 13.534 g/cm³
+- Density: 13.534 g/cm³ at 25°C
 - Used in gold extraction, scientific instruments, manufacturing, and laboratory research
-- Shipped in UN-approved 34.5 kg steel flasks
-- SKU: UEC-SLM-4N
-- Product page: https://useful-chemicals.com/products/silver-mercury
+- Shipped in UN-approved 34.5 kg steel flasks (UN 2809)
+- SKU: UEC-SLM-Hg-995
+- Product page: https://useful-chemicals.com/products/silver-mercury/
 
 ## Key Pages
 

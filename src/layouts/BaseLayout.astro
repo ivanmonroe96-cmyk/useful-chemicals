@@ -43,12 +43,22 @@ function normalizeWhitespace(value: string): string {
 
 function truncateAtWord(value: string, maxLength: number): string {
   if (value.length <= maxLength) return value;
-  if (maxLength <= 3) return value.slice(0, maxLength);
-
-  const sliced = value.slice(0, maxLength - 3);
+  const sliced = value.slice(0, maxLength);
+  const sepBoundary = Math.max(
+    sliced.lastIndexOf(' | '),
+    sliced.lastIndexOf(' — '),
+    sliced.lastIndexOf(' - '),
+    sliced.lastIndexOf(' · '),
+    sliced.lastIndexOf('. ')
+  );
+  if (sepBoundary > Math.floor(maxLength * 0.55)) {
+    return sliced.slice(0, sepBoundary).replace(/[.,;:\-—|·\s]+$/, '').trim();
+  }
   const boundary = sliced.lastIndexOf(' ');
-  const trimmed = (boundary > Math.floor(maxLength * 0.6) ? sliced.slice(0, boundary) : sliced).trim();
-  return `${trimmed}...`;
+  const trimmed = (boundary > Math.floor(maxLength * 0.6) ? sliced.slice(0, boundary) : sliced)
+    .replace(/[.,;:\-—|·\s]+$/, '')
+    .trim();
+  return trimmed;
 }
 
 function normalizePathForSeo(path: string, locale: string): string {
@@ -67,11 +77,18 @@ const maxTitleLength = 60;
 const brandSuffix = ' | UE Chemicals';
 const locationSuffix = ' | Bangkok, Thailand';
 const titleHasBrand = /\bue\b/i.test(normalizedTitle);
-const safeTitleCore = truncateAtWord(
-  normalizedTitle,
-  titleHasBrand ? maxTitleLength : Math.max(20, maxTitleLength - brandSuffix.length),
-);
-let fullTitle = titleHasBrand ? safeTitleCore : `${safeTitleCore}${brandSuffix}`;
+let fullTitle = normalizedTitle;
+if (!titleHasBrand) {
+  if (`${normalizedTitle}${brandSuffix}`.length <= maxTitleLength) {
+    fullTitle = `${normalizedTitle}${brandSuffix}`;
+  } else if (`${normalizedTitle} | UE`.length <= maxTitleLength) {
+    fullTitle = `${normalizedTitle} | UE`;
+  } else {
+    fullTitle = truncateAtWord(normalizedTitle, maxTitleLength);
+  }
+} else {
+  fullTitle = truncateAtWord(normalizedTitle, maxTitleLength);
+}
 if (fullTitle.length < minTitleLength && !/bangkok|thailand/i.test(fullTitle)) {
   fullTitle = truncateAtWord(`${fullTitle}${locationSuffix}`, maxTitleLength);
 }
@@ -83,7 +100,7 @@ const siteMetaKeywords = normalizeWhitespace(t(tr, 'site.meta_keywords'));
 const metaKeywords = normalizeWhitespace(keywords || siteMetaKeywords);
 const selectedDescription = normalizeWhitespace(description || defaultDescription);
 const maxDescriptionLength = 160;
-const minDescriptionLength = 120;
+const minDescriptionLength = 110;
 let metaDescription = selectedDescription;
 const descriptionFallbacks = [defaultDescription, organizationDescription, websiteDescription];
 for (const fallbackDescription of descriptionFallbacks) {
@@ -123,7 +140,7 @@ const uiLabels = {
 };
 
 const cleanPath = getLocalizedPath(pagePath, defaultLang);
-const returnPolicyUrl = `${siteUrl}${localizedPath('/returns-policy', lang)}`;
+const returnPolicyUrl = `${siteUrl}${localizedPath('/returns-policy/', lang)}`;
 
 const langDir = languages.find(l => l.code === lang)?.dir || 'ltr';
 
@@ -131,10 +148,12 @@ const orgSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "UE Chemicals",
-  "url": siteUrl,
+  "url": `${siteUrl}/`,
   "logo": `${siteUrl}/images/favicon.png`,
   "image": `${siteUrl}/images/ue-chemicals.png`,
   "description": t(tr, 'site.organization_description'),
+  "email": "info@useful-chemicals.com",
+  "telephone": "+66954180433",
   "address": {
     "@type": "PostalAddress",
     "streetAddress": "Bangkok",
@@ -147,15 +166,15 @@ const orgSchema = {
     {
       "@type": "ContactPoint",
       "contactType": "sales",
+      "telephone": "+66954180433",
       "email": "info@useful-chemicals.com",
+      "url": "https://wa.me/66954180433",
       "availableLanguage": languages.map(l => l.name)
     }
   ],
   "hasMerchantReturnPolicy": getMerchantReturnPolicy(returnPolicyUrl),
   "sameAs": [
-    "https://www.facebook.com/uechemicals",
-    "https://www.linkedin.com/company/ue-chemicals",
-    "https://twitter.com/uechemicals"
+    "https://wa.me/66954180433"
   ],
   "foundingLocation": {
     "@type": "Place",
@@ -187,11 +206,11 @@ const orgSchema = {
   ],
   "knowsAbout": [
     "Caluanie Muelear Oxidize",
-    "Red Liquid Mercury",
-    "Silver Liquid Mercury",
+    "Red Liquid Mercury 20/20-258",
+    "Silver Liquid Mercury CAS 7439-97-6",
     "Industrial Chemical Supply",
     "Chemical Export",
-    "Hazardous Materials Shipping"
+    "ADR IMDG IATA Hazardous Materials Shipping"
   ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
@@ -199,6 +218,7 @@ const orgSchema = {
     "itemListElement": [
       {
         "@type": "Offer",
+        "url": `${siteUrl}${localizedPath('/products/caluanie/', lang)}`,
         "price": "0",
         "priceCurrency": "USD",
         "availability": "https://schema.org/InStock",
@@ -206,11 +226,13 @@ const orgSchema = {
           "@type": "Product",
           "name": "Caluanie Muelear Oxidize",
           "sku": "UEC-CMO-HQ",
+          "url": `${siteUrl}${localizedPath('/products/caluanie/', lang)}`,
           "image": `${siteUrl}/images/home-caluanie-product.jpeg`
         }
       },
       {
         "@type": "Offer",
+        "url": `${siteUrl}${localizedPath('/products/red-mercury/', lang)}`,
         "price": "0",
         "priceCurrency": "USD",
         "availability": "https://schema.org/InStock",
@@ -218,11 +240,13 @@ const orgSchema = {
           "@type": "Product",
           "name": "Red Mercury 20/20-258",
           "sku": "UEC-RM-2020-258",
+          "url": `${siteUrl}${localizedPath('/products/red-mercury/', lang)}`,
           "image": `${siteUrl}/images/home-red-mercury-product.jpeg`
         }
       },
       {
         "@type": "Offer",
+        "url": `${siteUrl}${localizedPath('/products/silver-mercury/', lang)}`,
         "price": "0",
         "priceCurrency": "USD",
         "availability": "https://schema.org/InStock",
@@ -230,6 +254,7 @@ const orgSchema = {
           "@type": "Product",
           "name": "Silver Liquid Mercury",
           "sku": "UEC-SLM-Hg-995",
+          "url": `${siteUrl}${localizedPath('/products/silver-mercury/', lang)}`,
           "image": `${siteUrl}/images/home-silver-mercury-product.jpeg`
         }
       }
@@ -300,9 +325,8 @@ const allSchemas = jsonLd
   <title>{fullTitle}</title>
   <meta name="description" content={metaDescription} />
   {metaKeywords && <meta name="keywords" content={metaKeywords} />}
-  {metaKeywords && <meta name="news_keywords" content={metaKeywords} />}
   {googleSiteVerification && <meta name="google-site-verification" content={googleSiteVerification} />}
-  {noindex && <meta name="robots" content="noindex, nofollow" />}
+  {noindex ? <meta name="robots" content="noindex, nofollow" /> : <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />}
   <link rel="canonical" href={canonical} />
 
   <!-- Open Graph -->
@@ -357,6 +381,16 @@ const allSchemas = jsonLd
   </main>
   <Footer lang={lang} />
   <CookieBanner lang={lang} />
+  <a
+    href="https://wa.me/66954180433"
+    class="whatsapp-float"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="WhatsApp +66954180433"
+    title="WhatsApp +66954180433"
+  >
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
   <ScrollTop lang={lang} />
 
   <script is:inline type="module" src={mainScriptUrl}></script>

@@ -30,9 +30,8 @@ const pageSchema = {
 <BaseLayout lang={lang} title={pageTitle} description={pageDescription} activePage="" jsonLd={[pageSchema, returnPolicySchema]}>
   <section class="returns-hero">
     <div class="container returns-hero-inner">
-      <div class="section-label">Commercial Policy</div>
       <h1>Returns Policy</h1>
-      <p>Industrial chemical sales are quote-based and reviewed before dispatch. Returns are restricted because products may be hazardous, regulated, custom-packed, or documentation-controlled.</p>
+      <p>Industrial chemical sales are quote-based and reviewed before dispatch. Returns are restricted because products are regulated, custom-packed, and shipped under batch-specific compliance documentation.</p>
       <div class="returns-meta">
         <span><i class="fas fa-calendar"></i> Last updated: April 2026</span>
         <span><i class="fas fa-file-invoice"></i> Quote-based B2B orders</span>
@@ -53,35 +52,35 @@ const pageSchema = {
       <div class="returns-main">
         <section id="summary" class="returns-section">
           <h2>Summary</h2>
-          <p>UE Chemicals does not accept general returns for delivered industrial chemical products. Orders are prepared against a confirmed quotation, buyer qualification, product specification, destination compliance review, and agreed shipping method.</p>
-          <p>Claims for damaged, incorrect, leaking, missing, or document-mismatched shipments must be reported within 7 calendar days of delivery so the shipment can be reviewed.</p>
+          <p>UE Chemicals does not accept general returns for delivered industrial chemical products. Orders for <a href={lp('/products/caluanie/')}>Caluanie Muelear Oxidize</a>, <a href={lp('/products/red-mercury/')}>Red Liquid Mercury 20/20-258</a>, and <a href={lp('/products/silver-mercury/')}>Silver Liquid Mercury</a> are prepared against a confirmed Proforma Invoice, buyer qualification, batch COA/SDS verification, and destination compliance review.</p>
+          <p>Claims for damaged, incorrect, leaking, missing, or document-mismatched shipments must be reported within 7 calendar days of delivery so our Bangkok quality and logistics desk can review the shipment record.</p>
         </section>
 
         <section id="inspection" class="returns-section">
           <h2>Shipment Inspection</h2>
-          <p>Buyers should inspect packaging, seals, labels, batch references, and documents immediately on receipt. Keep all packaging, labels, photos, carrier paperwork, and safety documents until the claim is resolved.</p>
-          <p>When a claim is approved, UE Chemicals may arrange replacement, corrective documentation, carrier claim support, or another agreed remedy based on the shipment record and applicable regulations.</p>
+          <p>Buyers should inspect packaging, tamper-evident seals, hazard labels, batch references, and COA/SDS documents immediately on receipt. Keep all original containers, UN markings, photos, carrier paperwork, and safety documents until the claim is resolved.</p>
+          <p>When a claim is approved, UE Chemicals arranges replacement stock, corrective documentation, carrier insurance claim support, or an agreed credit based on the shipment record and applicable transport regulations.</p>
         </section>
 
         <section id="restricted" class="returns-section">
           <h2>Restricted Returns</h2>
-          <p>Returns are not accepted for opened, used, repacked, relabeled, contaminated, expired, custom-cleared, temperature-compromised, or buyer-mishandled products. Hazardous materials may not be shipped back without written authorization and compliant transport documentation.</p>
+          <p>Returns are not accepted for opened, used, repacked, relabeled, contaminated, custom-cleared, temperature-compromised, or buyer-mishandled chemicals. Hazardous materials (including UN 2809 Class 6.1/8 shipments) cannot be shipped back without written authorization and licensed ADR/IMDG/IATA dangerous goods documentation.</p>
           <p>Regulatory, customs, storage, handling, and safety limitations may prevent physical return even when a claim is valid.</p>
         </section>
 
         <section id="cancellations" class="returns-section">
           <h2>Cancellations</h2>
-          <p>Orders may be cancelled before payment confirmation, production allocation, document preparation, or dispatch booking. Once export documents, packing, carrier booking, or regulatory steps begin, cancellation may be limited or subject to incurred costs.</p>
-          <p>Prices and shipping charges are provided by quotation and may vary by product, quantity, packaging, compliance requirements, and destination.</p>
+          <p>Orders may be cancelled before payment confirmation, batch allocation, export document preparation, or carrier booking. Once export paperwork, drum/flask sealing, or hazmat carrier booking begins, cancellation is subject to incurred packaging and compliance costs.</p>
+          <p>Prices and freight charges are provided by Proforma Invoice and depend on product grade, volume, UN packaging format, and destination port.</p>
         </section>
 
         <section id="contact" class="returns-section returns-contact">
           <h2>Claims Contact</h2>
-          <p>Email <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a> with the quotation reference, invoice or pro forma number, delivery date, photos, carrier notes, and a short description of the issue.</p>
+          <p>Email <a href="mailto:info@useful-chemicals.com">info@useful-chemicals.com</a> or message WhatsApp <a href="https://wa.me/66954180433" target="_blank" rel="noopener noreferrer">+66954180433</a> with your Proforma Invoice number, batch reference, delivery date, photos of the container seals, and carrier delivery notes.</p>
           <div class="returns-actions">
-            <a class="btn btn-primary" href={lp('/contact')}>Contact Sales <i class="fas fa-arrow-right"></i></a>
-            <a class="btn btn-outline" href={lp('/shipping')}>Shipping Policy <i class="fas fa-truck-fast"></i></a>
-            <a class="btn btn-outline" href={lp('/ordering')}>Ordering Process <i class="fas fa-file-invoice"></i></a>
+            <a class="btn btn-primary" href={lp('/contact/')}>Contact Sales <i class="fas fa-arrow-right"></i></a>
+            <a class="btn btn-outline" href={lp('/shipping/')}>Shipping Policy <i class="fas fa-truck-fast"></i></a>
+            <a class="btn btn-outline" href={lp('/ordering/')}>Ordering Process <i class="fas fa-file-invoice"></i></a>
           </div>
         </section>
       </div>

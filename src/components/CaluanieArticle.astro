@@ -26,12 +26,12 @@ const articleSchema = {
   "@type": "Article",
   "headline": a.meta_title,
   "description": a.meta_desc,
-  "author": { "@type": "Organization", "name": "UE Chemicals", "url": "https://useful-chemicals.com" },
+  "author": { "@type": "Person", "name": "UE Chemicals Lab Team", "jobTitle": "Chemical Safety Specialists", "url": "https://useful-chemicals.com/about/", "worksFor": { "@type": "Organization", "name": "UE Chemicals", "url": "https://useful-chemicals.com/" } },
   "publisher": { "@type": "Organization", "name": "UE Chemicals", "logo": { "@type": "ImageObject", "url": "https://useful-chemicals.com/images/favicon.png" } },
   "datePublished": "2026-04-13",
-  "dateModified": "2026-04-13",
+  "dateModified": "2026-10-18",
   "image": "https://useful-chemicals.com/images/home-caluanie-product.jpeg",
-  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://useful-chemicals.com${lp('/blog/caluanie-muelear-oxidize-guide')}` }
+  "mainEntityOfPage": { "@type": "WebPage", "@id": `https://useful-chemicals.com${lp('/blog/caluanie-muelear-oxidize-guide/')}` }
 };
 
 const faqSchema = {
@@ -49,8 +49,8 @@ const breadcrumbSchema = {
   "@type": "BreadcrumbList",
   "itemListElement": [
     { "@type": "ListItem", "position": 1, "name": t(tr, 'nav.home'), "item": `https://useful-chemicals.com${lp('/')}` },
-    { "@type": "ListItem", "position": 2, "name": t(tr, 'nav.blog'), "item": `https://useful-chemicals.com${lp('/blog')}` },
-    { "@type": "ListItem", "position": 3, "name": a.hero_title, "item": `https://useful-chemicals.com${lp('/blog/caluanie-muelear-oxidize-guide')}` }
+    { "@type": "ListItem", "position": 2, "name": t(tr, 'nav.blog'), "item": `https://useful-chemicals.com${lp('/blog/')}` },
+    { "@type": "ListItem", "position": 3, "name": a.hero_title, "item": `https://useful-chemicals.com${lp('/blog/caluanie-muelear-oxidize-guide/')}` }
   ]
 };
 ---
@@ -65,8 +65,7 @@ const breadcrumbSchema = {
     </div>
     <div class="container art-hero-inner">
       <div class="art-hero-content">
-        <a href={lp("/blog")} class="art-back"><i class="fas fa-arrow-left"></i> {t(tr, "nav.blog")}</a>
-        <div class="art-hero-badge"><i class="fas fa-book-open"></i> {a.hero_badge}</div>
+        <a href={lp("/blog/")} class="art-back"><i class="fas fa-arrow-left"></i> {t(tr, "nav.blog")}</a>
         <h1>{a.hero_title}</h1>
         <p class="art-hero-sub">{a.hero_sub}</p>
         <div class="art-hero-meta">
@@ -296,8 +295,9 @@ const breadcrumbSchema = {
         <p>{a.conclusion_p1}</p>
         <p>{a.conclusion_p2}</p>
         <div class="art-conclusion-actions">
-          <a href={lp("/products/caluanie")} class="btn btn-accent">{t(tr, "common.view_product")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/contact")} class="btn btn-primary">{a.conclusion_cta} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products/caluanie/")} class="btn btn-accent">{t(tr, "common.view_product")} — {t(tr, "nav.caluanie")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/wholesale/")} class="btn btn-outline">{t(tr, "nav.wholesale")} (25L–200L Drums) <i class="fas fa-boxes-stacked"></i></a>
+          <a href="https://wa.me/66954180433" target="_blank" rel="noopener noreferrer" class="btn btn-primary"><i class="fab fa-whatsapp"></i> WhatsApp +66954180433</a>
         </div>
       </section>
 
@@ -305,17 +305,17 @@ const breadcrumbSchema = {
       <section class="art-related">
         <h3>{t(tr, "common.learn_more")}</h3>
         <div class="art-related-grid">
-          <a href={lp("/products/caluanie")} class="art-related-card">
+          <a href={lp("/products/caluanie/")} class="art-related-card">
             <img loading="lazy" src="/images/home-caluanie-product.jpeg" alt={t(tr, 'nav.caluanie')} />
-            <span>{t(tr, "nav.caluanie")}</span>
+            <span>{t(tr, "nav.caluanie")} — Specs, COA & SDS</span>
           </a>
-          <a href={lp("/safety")} class="art-related-card">
-            <img loading="lazy" src="/images/about/Whisk_09152e171d89c6285db4abb298799bacdr.png" alt={t(tr, 'footer.safety')} />
-            <span>{t(tr, "footer.safety")}</span>
+          <a href={lp("/wholesale/")} class="art-related-card">
+            <img loading="lazy" src="/images/about/Whisk_09152e171d89c6285db4abb298799bacdr.png" alt={t(tr, 'footer.wholesale')} />
+            <span>{t(tr, "footer.wholesale")} & Drum Pricing</span>
           </a>
-          <a href={lp("/certificates")} class="art-related-card">
-            <img loading="lazy" src="/images/azienda3.png" alt={t(tr, 'footer.certificates')} />
-            <span>{t(tr, "footer.certificates")}</span>
+          <a href={lp("/shipping/")} class="art-related-card">
+            <img loading="lazy" src="/images/azienda3.png" alt={t(tr, 'footer.shipping')} />
+            <span>{t(tr, "footer.shipping")} (ADR / IMDG / IATA)</span>
           </a>
         </div>
       </section>
@@ -332,8 +332,8 @@ const breadcrumbSchema = {
           <p>{t(tr, "blog.cta_desc")}</p>
         </div>
         <div class="art-cta-actions">
-          <a href={lp("/contact")} class="btn btn-white">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
-          <a href={lp("/products")} class="btn btn-outline-white">{t(tr, "common.view_products")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/contact/")} class="btn btn-white">{t(tr, "common.contact_us")} <i class="fas fa-arrow-right"></i></a>
+          <a href={lp("/products/caluanie/")} class="btn btn-outline-white">{t(tr, "nav.caluanie")} <i class="fas fa-arrow-right"></i></a>
         </div>
       </div>
     </div>

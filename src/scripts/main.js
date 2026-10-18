@@ -195,7 +195,7 @@ function closeSearch() {
   searchOverlay?.classList.remove('active');
   syncBodyScrollLock();
   if (searchInput) searchInput.value = '';
-  if (searchResults) searchResults.innerHTML = '';
+  if (searchResults) searchResults.replaceChildren();
 }
 
 searchToggle?.addEventListener('click', openSearch);
@@ -210,18 +210,31 @@ document.addEventListener('keydown', (e) => {
 searchInput?.addEventListener('input', () => {
   const q = searchInput.value.trim().toLowerCase();
   if (!searchResults) return;
-  if (!q) { searchResults.innerHTML = ''; return; }
+  if (!q) { searchResults.replaceChildren(); return; }
 
   const matches = sitePages.filter(p =>
     p.title.toLowerCase().includes(q) || p.description.toLowerCase().includes(q)
   );
 
+  searchResults.replaceChildren();
   if (matches.length === 0) {
-    searchResults.innerHTML = `<p class="search-no-results">${noResultsLabel}</p>`;
+    const emptyP = document.createElement('p');
+    emptyP.className = 'search-no-results';
+    emptyP.textContent = noResultsLabel;
+    searchResults.appendChild(emptyP);
   } else {
-    searchResults.innerHTML = matches.map(p =>
-      `<a href="${p.url}" class="search-result-item"><h4>${p.title}</h4><p>${p.description}</p></a>`
-    ).join('');
+    matches.forEach(p => {
+      const link = document.createElement('a');
+      link.href = p.url;
+      link.className = 'search-result-item';
+      const titleEl = document.createElement('h4');
+      titleEl.textContent = p.title;
+      const descEl = document.createElement('p');
+      descEl.textContent = p.description;
+      link.appendChild(titleEl);
+      link.appendChild(descEl);
+      searchResults.appendChild(link);
+    });
   }
 });
 
